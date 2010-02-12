@@ -247,23 +247,29 @@ int check_run_modus(string run_status){
   if( ( run_status == "-SEARCH_SUPERHIRN_PARAMETER" ) || ( run_status == "-SSP" ) ){
     my_RUN.LastArgumentMode = -1;
     my_RUN.ArgumentModeON = true;
-    return -1;
+    return my_RUN.LastArgumentMode;
   }
   
   // convert a parameter xml file into a param.def
   if( ( run_status == "-RESTORE_PARAM" ) || ( run_status == "-RE_PARAM" ) ){
     my_RUN.LastArgumentMode = -2;
     my_RUN.ArgumentModeON = true;
-    return -2;
+    return my_RUN.LastArgumentMode;
   }
 
   // specify the custom parameter file to use: 
   if( ( run_status == "-PARAMETER_FILE" ) || ( run_status == "-PARAM" ) ){
     my_RUN.LastArgumentMode = -10;
     my_RUN.ArgumentModeON = true;
-    return -10;
+    return my_RUN.LastArgumentMode;
   }  
   
+  // specify the custom parameter file to use: 
+  if( ( run_status == "-SET_PARAMETERS" ) || ( run_status == "-SP" ) ){
+    my_RUN.LastArgumentMode = -11;
+    my_RUN.ArgumentModeON = true;
+    return my_RUN.LastArgumentMode;
+  }  
   
   // this is the argument mode, the string here should be an argument
   // of the previous superhirn mode:
@@ -276,6 +282,7 @@ int check_run_modus(string run_status){
     my_RUN.SuperHirnProcessArguments.insert( make_pair(mode, run_status) );
     my_RUN.LastArgumentMode = -1;
     my_RUN.ArgumentModeON = false;
+    
     return 0;
   }
 
@@ -293,7 +300,7 @@ void print_help(){
   cout<<endl<<endl;
   
   printf("\tS U P E R H I R N   is run as following:\n");
-  printf("\tSuperHirn -<RUN MODUS> <OPTIONAL PARAMETERS>\n");
+  printf("\tSuperHirn -<RUN MODUS> <MODUS PARAMETERS> <PARAM.DEF PARAMETERS>\n");
   printf("\twith RUN MODUS...\n");
   printf("\t\tA.\t-FEATURE_EXTRACTION(FE) (<MzXML PATH>):\t\tdo peak extraction\n");
   printf("\t\tB.\t-BUILD_GUIDE_TREE(BT):\t\t\t\tdo peak extraction and create alignment topology\n");
@@ -312,6 +319,8 @@ void print_help(){
   printf("\n\t\tOther SuperHirn argument options:\n");
   printf("\t\t\t 1* add -PARAM <File> to specify another parameter file than 'param.def'\n");
   printf("\t\t\t (example: SuperHirn -BT -CM -PARAM myOldParam.def)\n");
+  printf("\t\t\t 2* add -SET_PARAMETERS(SP) <STRING> to replace parameters from the PARAM.def file.\n");
+  printf("\t\t\t (example: SuperHirn -FE -CM -SP mz_tol 0.01 )\n");
   
   
   cout<<endl<<endl;
@@ -355,6 +364,17 @@ int main( int argc, char* argv[]){
     // remove the process:
     my_RUN.SuperHirnProcessesIDs.erase( -10 );
     my_RUN.SuperHirnProcessArguments.erase( -10 );
+  }
+
+  //-------------------------------------------------------------------------
+  // check if user specified additional external parameters 
+  P = my_RUN.SuperHirnProcessesIDs.find( -11 );
+  if( P != my_RUN.SuperHirnProcessesIDs.end() ){
+    map<int, string>::iterator s = my_RUN.SuperHirnProcessArguments.find( -11 );
+    param_initializer::EXTRACT_ARGUMENT_PARAMETERS( (*s).second );
+    // remove the process:
+    my_RUN.SuperHirnProcessesIDs.erase( -11 );
+    my_RUN.SuperHirnProcessArguments.erase( -11 );
   }
   
   

@@ -1,20 +1,3 @@
-///////////////////////////////////////////////////////////////////////////
-//
-//  written by Lukas N Mueller, 30.3.05
-//  Lukas.Mueller@imsb.biol.ethz.ch
-//  Group of Prof. Ruedi Aebersold, IMSB, ETH Hoenggerberg, Zurich
-// 
-//
-// **********************************************************************//
-// CLASS paramManager:
-//
-// variable description:
-//
-//
-// function description:
-//
-//
-// **********************************************************************//
 
 #define USE_PARAM_MANAGER
 #include "use.h"
@@ -22,47 +5,33 @@
 
 
 
-////////////////////////////////////////////////
-// constructor for the object paramManager:
 paramManager::paramManager(){
 }
 
-//////////////////////////////////////////////////
-// class desctructor of paramManager
 paramManager::~paramManager(){
   allParameters.clear();
 }
 
-//////////////////////////////////////////////////
-// class copy constructor of paramManager
 paramManager::paramManager(const paramManager& tmp){
 }
 
-//////////////////////////////////////////////////
-// class copy constructor of paramManager
 paramManager::paramManager(const paramManager* tmp){
 }
 
-//////////////////////////////////////////////////
-// copy constructor:
 paramManager& paramManager::operator=(const paramManager& tmp){
   return *this;
 }
     
 
-//////////////////////////////////////////////////////
-// - extract all parameters from the ROOT and defined param file
-// - 
 void paramManager::extractAndStoreParameters(){
   
   extractRootParameters();
   extractCostumParameters();
+  replaceByGlobalParameters();
   storeALLParameterinXMLFile();
 }
 
 
-//////////////////////////////////////////////////////
-// extract all parameters from the ROOT file:
 void paramManager::extractRootParameters(){
 
   // find root parameter file:
@@ -77,8 +46,22 @@ void paramManager::extractRootParameters(){
 }
 
 
-//////////////////////////////////////////////////////
-// extract all parameters from the costum file:
+void paramManager::replaceByGlobalParameters(){
+  
+  // find root parameter file:
+  map<string, string>::iterator Start = read_param::global_parameters.begin();
+  while( Start != read_param::global_parameters.end() )
+    {
+      map<string, string>::iterator F = allParameters.find( Start->first );
+      if( F != allParameters.end() )
+        {
+          F->second = Start->second; 
+        }
+      Start++;
+    }
+}
+
+
 void paramManager::extractCostumParameters(){
   
   // get costum parameter file:
@@ -94,8 +77,6 @@ void paramManager::extractCostumParameters(){
 
 
 
-//////////////////////////////////////////////////////
-// extract all parameters from a file:
 void paramManager::extractParametersFromFile( string file){
   
 
@@ -129,8 +110,6 @@ void paramManager::extractParametersFromFile( string file){
 
 
 
-////////////////////////////////////////////////////////////
-// store a parameter from a line: <tag>=<value>
 void paramManager::storeParameterLine( string in){
   
   string tag = in.substr(0, in.find("=") );
@@ -146,8 +125,6 @@ void paramManager::storeParameterLine( string in){
   
 }
 
-////////////////////////////////////////////////////////////
-// store all parameters in a file:
 void paramManager::storeALLParameterinXMLFile( ){
   
   // create the outfile:
@@ -210,8 +187,6 @@ void paramManager::storeALLParameterinXMLFile( ){
 
 
 
-////////////////////////////////////////////////////////////
-// restore all parameters in a XML file to the paramRestore file:
 void paramManager::restoreParamFile( string in ){
   
   XMLfile = in;
@@ -247,8 +222,6 @@ void paramManager::restoreParamFile( string in ){
 }
 
 
-////////////////////////////////////////////////////////////
-// store all parameters in a param file:
 void paramManager::storeALLParameterinPARAMFile( ){
   
   // create the outfile:

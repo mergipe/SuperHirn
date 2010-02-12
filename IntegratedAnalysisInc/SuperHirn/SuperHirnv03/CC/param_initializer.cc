@@ -22,34 +22,21 @@
 
 
 
-////////////////////////////////////////////////
-// constructor for the object param_initializer:
 param_initializer::param_initializer(){
 }
 
-//////////////////////////////////////////////////
-// class desctructor of param_initializer
 param_initializer::~param_initializer(){
 }
-
-//////////////////////////////////////////////////
-// class copy constructor of param_initializer
 param_initializer::param_initializer(const param_initializer& tmp){
 }
 
-//////////////////////////////////////////////////
-// class copy constructor of param_initializer
 param_initializer::param_initializer(const param_initializer* tmp){
 }
 
-//////////////////////////////////////////////////
-// copy constructor:
 param_initializer& param_initializer::operator=(const param_initializer& tmp){
   return *this;
 }
 
-//////////////////////////////////////////////////
-// checks if root parameter file is available:
 bool param_initializer::check_ROOT_PARAM( ){
   // read parameters from "param.def"
   read_param* def = new read_param();
@@ -69,8 +56,6 @@ bool param_initializer::check_ROOT_PARAM( ){
 }
 
 
-//////////////////////////////////////////////////
-// initialze all object static parameters:
 void param_initializer::INIT_ALL(){
   
   // read parameters from "param.def"
@@ -394,8 +379,6 @@ void param_initializer::INIT_ALL(){
 
 
 
-//////////////////////////////////////////////////
-// initialze parameters for the ms2 fragment tracing:
 void param_initializer::MS2_FRAGMENT_TRACE_INITIALIZATION(){
   
   // read parameters from "param.def"
@@ -417,14 +400,10 @@ void param_initializer::MS2_FRAGMENT_TRACE_INITIALIZATION(){
 }
 
 
-//////////////////////////////////////////////////
-// initialze parameters peak detection classes;
 void param_initializer::PEAK_DETECTION_CLASS_INITIALIZATION(){
   FT_PEAK_DETECT_initializer::init_all();
 }
 
-//////////////////////////////////////////////////
-// initialze parameters for cpp library environment:
 void param_initializer::CPP_LIBRARY_ENVIRONMENT_PARAMETERS(){
   
   // read parameters from "param.def"
@@ -438,8 +417,29 @@ void param_initializer::CPP_LIBRARY_ENVIRONMENT_PARAMETERS(){
 
 
 
-//////////////////////////////////////////////////
-// set the path to the parameter file:
 void param_initializer::DEFINE_COSTUM_PARAM(string in){
   read_param::COSTUM_PARAM_FILE = in;
 }
+
+
+
+void param_initializer::EXTRACT_ARGUMENT_PARAMETERS(string in)
+{
+  // argument consists of key/value pairs separated by a space:
+  // example: key1(value1)key2(value2)etc.
+  // parse these here and set in read_param class as global variables: 
+  string sepStartValue("(");
+  string sepEndValue(")");
+  
+  while( in.size() > 0 )
+    {
+      // key:
+      string key = in.substr( 0, in.find( sepStartValue ) ); 
+      in.erase( 0, in.find( sepStartValue ) + sepStartValue.size() ); 
+      string value = in.substr( 0, in.find( sepEndValue ) ); 
+      in.erase( 0, in.find( sepEndValue ) + sepEndValue.size() ); 
+      read_param::addGlobalParameter( key, value );
+    }
+
+}
+

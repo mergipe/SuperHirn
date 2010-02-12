@@ -30,11 +30,11 @@
 #include "GENERAL_USE.h"
 
 
+map<string, string> read_param::global_parameters;
 string read_param::COSTUM_PARAM_FILE = "param.def";
 string read_param::ROOT_PARAM_FILE;
 
-////////////////////////////////////////////////
-// constructor for the object ana_summarizer:
+
 read_param::read_param(){
   
   // parameter which checks if file is ok
@@ -49,9 +49,6 @@ read_param::read_param(){
  
 }
 
-//////////////////////////////////////////////////
-// class desctructor
-
 read_param::~read_param(){
  
  if(reader != NULL){
@@ -65,10 +62,18 @@ read_param::~read_param(){
 }
 
 
-///////////////////////////////////////////////////
-// searches the definition file for a tag and
-// and returns the full line where the tag was found:
 string read_param::search_line_by_tag(string tag){
+  
+  // check if the searched parameter is not already globally stored in the 
+  // static variable global_parameters:
+  map<string, string>::iterator F = global_parameters.find( tag );
+  if( F != global_parameters.end() )
+    {
+      return tag + "=" + F->second;
+    }
+   
+  
+  
   
   // if the root param is open,
   // then close it and open again
@@ -117,9 +122,6 @@ string read_param::search_line_by_tag(string tag){
 }
 
 
-///////////////////////////////////////////////////
-// trim from a pos of teh string the end of a  
-// string, remove space etc.
 string read_param::trim_end_of_string( string IN, int pos ){
   
   // erase all after the content:
@@ -132,11 +134,6 @@ string read_param::trim_end_of_string( string IN, int pos ){
   return IN;
 }
 
-///////////////////////////////////////////////////
-// searches the definition file for a tag and
-// copy the found string into OUT, then tranforms it
-// if required into double / int via overloading
-// here for chars
 string read_param::search_tag(string tag){
   
   // save this line from after start tag on:
@@ -150,14 +147,12 @@ string read_param::search_tag(string tag){
 
 
 
-////////////////////////////////////////////////
-// here for double
 void read_param::search_tag(string tag, double* d_OUT){
   
   // save this line from after start tag on:
   string OUT = search_line_by_tag( tag );
   // erase stuff before the tag:
-  OUT.erase(0, tag.size() +1);    
+  OUT.erase(0, tag.size() + 1);    
   // convert:
   *d_OUT = atof(OUT.c_str());
   
@@ -165,8 +160,6 @@ void read_param::search_tag(string tag, double* d_OUT){
 
 
 
-///////////////////////////////////////////////////
-// here for int's
 void read_param::search_tag(string tag, int* d_OUT){
   
   // save this line from after start tag on:
@@ -176,8 +169,6 @@ void read_param::search_tag(string tag, int* d_OUT){
   *d_OUT = atoi(OUT.c_str());
 }
 
-////////////////////////////////////////////////////////
-// here for unsigned int's
 void read_param::search_tag(string tag, unsigned int* d_OUT){
   
   // save this line from after start tag on:
@@ -190,8 +181,6 @@ void read_param::search_tag(string tag, unsigned int* d_OUT){
 }
 
 
-/////////////////////////////////////////////////////
-// here for bool's
 void read_param::search_tag(string tag, bool* d_OUT){
   
   
@@ -209,8 +198,6 @@ void read_param::search_tag(string tag, bool* d_OUT){
   }  
 }
 
-///////////////////////////////////////////////////////
-// here for float's
 void read_param::search_tag(string tag, float* d_OUT){
   
   // save this line from after start tag on:
@@ -222,8 +209,6 @@ void read_param::search_tag(string tag, float* d_OUT){
 }
 
 
-////////////////////////////////////////////////////////////
-// here for vector of doubles:
 void read_param::search_tag(string tag, vector<double>* d_OUT){
   
   d_OUT->clear();
@@ -244,8 +229,6 @@ void read_param::search_tag(string tag, vector<double>* d_OUT){
 
 }
 
-////////////////////////////////////////////////////////////////
-// here for vector of vectors<doubles>:
 void read_param::search_tag(string tag, vector< vector<double> >* d_OUT){
   
   d_OUT->clear();
@@ -290,8 +273,7 @@ void read_param::search_tag(string tag, vector< vector<double> >* d_OUT){
   }
 }
 
-//////////////////////////////////////////////////////////////////
-// here for vector of map<doubles, double>:
+
 void read_param::search_tag(string tag, map<double,double>* d_OUT){
   
   d_OUT->clear();
@@ -323,8 +305,7 @@ void read_param::search_tag(string tag, map<double,double>* d_OUT){
 }
 
 
-////////////////////////////////////////////////////////////////////////
-// here for map <int, vectors<int>:
+
 void read_param::search_tag(string tag, map<int, vector<int> >* d_OUT){
   
   d_OUT->clear();
@@ -348,8 +329,8 @@ void read_param::search_tag(string tag, map<int, vector<int> >* d_OUT){
   }
 }
 
-////////////////////////////////////////////////////////////////////////
-// here for map <int,  vectors<doubles>:
+
+
 void read_param::search_tag(string tag, map<int, vector<double> >* d_OUT){
 
   d_OUT->clear();
@@ -399,8 +380,8 @@ void read_param::search_tag(string tag, map<int, vector<double> >* d_OUT){
 
 }
 
-//////////////////////////////////////////////////////////////////////////
-// here for map <string,  vectors<doubles>:
+
+
 void read_param::search_tag(string tag, map<string, vector<double> >* d_OUT){
   
   d_OUT->clear();
@@ -446,8 +427,7 @@ void read_param::search_tag(string tag, map<string, vector<double> >* d_OUT){
   }
 }
 
-/////////////////////////////////////////////////////////////////////
-// here for map <string,  vectors<doubles>:
+
 void read_param::search_tag(string tag, map<string, vector<string> >* d_OUT){
   
   d_OUT->clear();
@@ -497,8 +477,7 @@ void read_param::search_tag(string tag, map<string, vector<string> >* d_OUT){
 
 
 
-///////////////////////////////////////////////////
-// print error message:
+
 void read_param::print_error(){
   if( ROOT_FILE_OPEN ){
     printf("\n *** \n ERROR opening file '%s', read_param.cc::113 \n *** \n", ROOT_PARAM_FILE.c_str() );
@@ -509,8 +488,8 @@ void read_param::print_error(){
   stopp_program();
 }
 
-///////////////////////////////////////////////////
-// print error message of the tag search
+
+
 void read_param::print_search_error(string tag){
   if( ROOT_FILE_OPEN ){
     printf("\n *** \n ERROR:: tag '%s' was not found in '%s' \n *** \n", tag.c_str(), ROOT_PARAM_FILE.c_str() );
@@ -521,8 +500,7 @@ void read_param::print_search_error(string tag){
   stopp_program();
 }
 
-///////////////////////////////////////////////////
-// stopp the program since a parameter was not found:
+
 void read_param::stopp_program(){
   printf("*** PROGRAM EXIT::incomplete parameter input *** \n\n\n");
   exit(0);
@@ -530,8 +508,6 @@ void read_param::stopp_program(){
 
 
 
-///////////////////////////////////////////////////
-// OPENS THE ROOT PARAMETER FILE:
 bool read_param::open_ROOT_PARAM( string TAG ){
   
   if( ROOT_FILE_OPEN ){
@@ -568,8 +544,7 @@ bool read_param::open_ROOT_PARAM( string TAG ){
 }
 
 
-///////////////////////////////////////////////////
-// OPENS THE ROOT PARAMETER FILE:
+
 void read_param::open_CUSTOM_PARAM( ){
   
   if( file_check || ROOT_FILE_OPEN ){
@@ -597,9 +572,7 @@ void read_param::open_CUSTOM_PARAM( ){
 
 
 
-///////////////////////////////////////////////////
-// searches the root parameter file for tags
-// by string search:
+
 void read_param::search_param_help(string tag){
   
   printf( "\t\tParameter file search for string '%s':\n", tag.c_str() );
@@ -643,8 +616,6 @@ void read_param::search_param_help(string tag){
 
 
 
-////////////////////////////////////////////
-// print the text of a parameter to screen
 void read_param::show_parameter_to_screen(){
   
 
@@ -672,3 +643,8 @@ void read_param::show_parameter_to_screen(){
   
 }
   
+
+void read_param::addGlobalParameter(string iKey, string iValue)
+{
+  global_parameters.insert( make_pair( iKey, iValue ) );
+}
