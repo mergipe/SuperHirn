@@ -137,10 +137,13 @@ void SuperHirn_manager::start_peak_extraction( ) {
   
   IMP->start_peak_extraction_from_mzxml_data();
   ALL_LC_MS_RUNS = IMP->get_parsed_DATA();
-
+  
   delete IMP;
   IMP = NULL;
   
+  // store the parsed data out:
+  storeExtractedSingleRuns();
+
 }
 
 
@@ -697,6 +700,58 @@ void SuperHirn_manager::print_MASTER_to_XML_file( string Prefix ){
   delete writter;
   writter = NULL;
   
+}
+
+
+
+
+void SuperHirn_manager::storeExtractedSingleRuns()
+{
+
+  string out_dir;
+  read_param* def = new read_param();
+  out_dir = def->search_tag("MY PROJECT NAME");
+  if( out_dir[ out_dir.size() - 1] != '/'){
+    out_dir += "/";
+  }
+  string tmp = "ANALYSIS_";
+  tmp += out_dir + "LC_MS_RUNS/";
+  out_dir = tmp;
+  
+  file_sys check;
+  if( !check.check_directory( out_dir) ){
+    mkdir(out_dir.c_str(),0777);
+  }
+  
+  
+  LC_MS_ITERATOR LCMS = ALL_LC_MS_RUNS.begin();
+  while( LCMS != ALL_LC_MS_RUNS.end())
+    {
+      
+      string fileName = out_dir;
+      fileName += LCMS->get_spec_name() + ".xml";
+      
+      // write LC/MS stuff:
+      // write first the LC/MS MASTER run:
+      LC_MS_XML_writer* LC_W = new LC_MS_XML_writer( fileName ) ;
+      LC_W->write_XML_MAIN_HEADER();    
+      LC_W->write_LC_MS_run_2_XML_tag( &(*LCMS) );
+      
+      // now write the features:
+      vector<LC_MS_FEATURE>::iterator p = LCMS->get_feature_list_begin();
+      while( p != LCMS->get_feature_list_end()){
+        LC_W->write_feature_2_XML_tag( &(*p), true );
+        p++;
+      }
+      
+      LC_W->write_LC_MS_run_close_tag();
+      LC_W->write_XML_MAIN_HEADER_CLOSE();
+      
+      delete LC_W;
+      LC_W = NULL;
+      
+      LCMS++;
+    }
 }
 
 

@@ -86,6 +86,9 @@ public:
   // all the time into XML formatted file:
   void print_MASTER_to_XML_file();
   void print_MASTER_to_XML_file( string );
+
+  void storeExtractedSingleRuns();
+  
     // prints out a feature
   void print_feature_to_file(feature*, ofstream*);
   // plots a LC/MS run:

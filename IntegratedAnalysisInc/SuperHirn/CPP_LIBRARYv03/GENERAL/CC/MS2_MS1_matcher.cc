@@ -24,9 +24,9 @@ int MS2_MS1_matcher::POST_SCAN_TOL;
 int MS2_MS1_matcher::SCAN_TOL;
 
 #ifdef DEBUG
-bool MS2_MS1_matcher::NON_MATCH_VIEW = true;
+bool MS2_MS1_matcher::NON_MATCH_VIEW = false;
 #else
-bool MS2_MS1_matcher::NON_MATCH_VIEW = true;
+bool MS2_MS1_matcher::NON_MATCH_VIEW = false;
 #endif
 
 int MS2_MS1_matcher::AM_APEX_COUNTER = 0;
