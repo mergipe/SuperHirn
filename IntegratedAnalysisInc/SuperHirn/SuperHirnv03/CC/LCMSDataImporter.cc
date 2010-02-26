@@ -26,8 +26,9 @@ bool LCMSDataImporter::CREATE_FEATURE_ELUTION_PROFILES = false;
 
 ////////////////////////////////////////////////
 // constructor for the object LCMSDataImporter:
-LCMSDataImporter::LCMSDataImporter( ){
-  
+LCMSDataImporter::LCMSDataImporter( ) :
+pepXMLParser(NULL)
+{
 
   //////////////////////////////////
   // read parameters from "param.def"
@@ -65,6 +66,12 @@ LCMSDataImporter::LCMSDataImporter( ){
 // class desctructor of LCMSDataImporter
 LCMSDataImporter::~LCMSDataImporter(){
   LC_MS_RUNS.clear();
+  
+  if( pepXMLParser != NULL )
+    {
+      delete pepXMLParser;
+      pepXMLParser = NULL;
+    }
 }
 
 //////////////////////////////////////////////////
@@ -357,6 +364,71 @@ void LCMSDataImporter::parse_from_MASTER_MAPS(){
 
 
 
+void LCMSDataImporter::extractPepXMLInformation() 
+{
+ 
+  if( !ORIGINAL_INTERACT_DIR.empty() ){
+    
+    if( ORIGINAL_INTERACT_DIR[ORIGINAL_INTERACT_DIR.size() - 1] != '/'){
+      ORIGINAL_INTERACT_DIR += '/';
+    }
+    
+    printf("\n\n\t\t\t-- extracting pepXML information from '%s'...\n", ORIGINAL_INTERACT_DIR.c_str());
+    
+    this->pepXMLParser = new GeneralMSMSXMLParser();
+
+    file_sys accessor;
+    accessor.read_dir( ORIGINAL_INTERACT_DIR, ".xml");
+    char* file = accessor.get_next_file();
+    while(file != NULL){        
+      this->pepXMLParser->startMSMSXMLFileParsing( file );
+      // next mzXML file:
+      file = accessor.get_next_file();
+    }
+  }
+}
+
+
+void LCMSDataImporter::addPepXMLInfoToLCMS(LC_MS* iRun) 
+{  
+  if( this->pepXMLParser == NULL)
+    {
+      this->extractPepXMLInformation();
+    }
+  
+  
+  // try to add now a scan depending on its spectrum name
+  // to the corresponing LC/MS run in the batch:
+  // now get the ms2_info and transform to features:
+  MS2_MS1_matcher* MATCHER = new MS2_MS1_matcher();
+  vector<ms2_info>::iterator X = this->pepXMLParser->getMSMSListStart();
+  while( X != this->pepXMLParser->getMSMSListEnd()){
+    
+    // get the spectrum name:
+    string MS2_name = (*X).get_ORIGINAL_INTERACT_FILE();
+    
+    // remove the last _p
+    string suffix = "_p";
+    if( MS2_name.rfind( suffix ) != string::npos ){
+      MS2_name.erase( MS2_name.rfind( suffix ), MS2_name.size( ) - MS2_name.rfind( suffix ) );
+    }
+    // remove the last _c
+    suffix = "_c";
+    if( MS2_name.rfind( suffix ) != string::npos ){
+      MS2_name.erase( MS2_name.rfind( suffix ), MS2_name.size( ) - MS2_name.rfind( suffix ) );
+    }
+    
+    // check if its the correct LC/MS run:
+    if( iRun->get_spec_name().find( MS2_name ) != string::npos  ){
+      MATCHER->combine_LC_MS_specific_MS2_to_MS1_data(iRun, &(*X));
+    }
+    X++; 
+  }
+  
+  MATCHER->show_annotation_overview();
+  delete MATCHER;
+  MATCHER = NULL;
+}
 
 
 /////////////////////////////////////////////////////
@@ -496,13 +568,18 @@ void LCMSDataImporter::start_peak_extraction_from_mzxml_data(){
     while(p != FT_controller->get_parsed_DATA_END()){
       
       // get the run:
-      LC_MS* THIS_RUN = &(*p);
+      LC_MS* run = &(*p);
       
       // order by parent mass:
-      THIS_RUN->order_by_mass();
+      run->order_by_mass();
       
+      // assigned MS/MS information:
+      this->addPepXMLInfoToLCMS( run );
+
       // copy into the name map
-      LC_MS_NAME_MAP.insert( make_pair( THIS_RUN->get_spec_name(), *THIS_RUN ) );
+      LC_MS_NAME_MAP.insert( make_pair( run->get_spec_name(), *run ) );
+      
+      // write out the LC-MS run:
         
       bar.update_progress();
       p++;

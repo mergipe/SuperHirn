@@ -37,6 +37,8 @@ private:
   void completeXMLFile();
   
   XMLFormatParserInterface* XMLInt;
+  
+  vector<ms2_info> MSMSInfoList;
 
   
   ////////////////////////////////////////////////
@@ -53,10 +55,15 @@ private:
   
   // starts the parsing process of the input file:
   bool startMSMSXMLFileParsing();  
+
+  /// \brief Start parsing of a XML file:
+  /// \param string path to the XML file
+  bool startMSMSXMLFileParsing(string file);
+
   
   // access the parsed MS/MS information:
-  vector<ms2_info>::iterator getMSMSListStart(){return XMLInt->getMSMSList_START();};
-  vector<ms2_info>::iterator getMSMSListEnd(){return XMLInt->getMSMSList_END();};
+  vector<ms2_info>::iterator getMSMSListStart(){return MSMSInfoList.begin();};
+  vector<ms2_info>::iterator getMSMSListEnd(){return MSMSInfoList.end();};
 
   
 };

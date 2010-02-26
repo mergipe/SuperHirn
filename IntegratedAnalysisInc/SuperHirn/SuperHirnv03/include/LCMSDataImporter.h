@@ -21,24 +21,9 @@
 #define LCMS_DATA_IMPORTER_H
 
 
-
+class GeneralMSMSXMLParser;
 class LCMSDataImporter{
 
-    
-    ////////////////////////////////////////////////
-    // declaration of the private members:
-
-private:
-
-  ////////////////////////////////////////////////
-    // declaration of the public members:
-  
-  string MZXMLINPUT_DIR;
-  string LC_MS_RUN_DIR;
-  string ORIGINAL_INTERACT_DIR;
-  string PROT_XML_DIR;
-  
-  vector<LC_MS> LC_MS_RUNS;
   
 public:
 
@@ -140,6 +125,26 @@ public:
   vector<LC_MS> get_parsed_DATA(){return LC_MS_RUNS;};
   vector<LC_MS>::iterator get_parsed_DATA_START(){return LC_MS_RUNS.begin();};
   vector<LC_MS>::iterator get_parsed_DATA_END(){return LC_MS_RUNS.end();};
+  
+  
+private:
+
+  string MZXMLINPUT_DIR;
+  string LC_MS_RUN_DIR;
+  string ORIGINAL_INTERACT_DIR;
+  string PROT_XML_DIR;
+  
+  vector<LC_MS> LC_MS_RUNS;
+  
+  GeneralMSMSXMLParser* pepXMLParser;
+  
+  /// \brief Method to extraction pepXML information from the specified folder/file (ORIGINAL_INTERACT_DIR)
+  void extractPepXMLInformation();
+
+  /// \brief Method to assign extracted MS/MS information to the input LC-MS run
+  /// \param iRun LC_MS* LC-MS run to add pepXML information
+  void addPepXMLInfoToLCMS(LC_MS* iRun);
+  
 };
 
 #endif

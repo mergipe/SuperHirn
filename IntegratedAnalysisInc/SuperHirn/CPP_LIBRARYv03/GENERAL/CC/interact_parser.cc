@@ -544,10 +544,12 @@ bool interact_parser::check_MS2_SCAN_VALIDITY( ms2_info* IN ){
   
   //////////////////////////
   // check the retention time range
+  /*
   double TR = IN->getRetentionTime();
   if( ( ( TR < TR_MIN) && ( TR != -1.0) ) || ( ( TR > interact_parser::TR_MAX) && ( TR != -1.0) )  ){
     return false;
   }
+   */
   
     
   //////////////////////////

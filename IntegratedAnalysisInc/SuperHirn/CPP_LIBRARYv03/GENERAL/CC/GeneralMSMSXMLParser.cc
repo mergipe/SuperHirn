@@ -21,7 +21,9 @@
 
 ////////////////////////////////////////////////
 // constructor for the object INTERACT_MS_GeneralMSMSXMLParser:
-GeneralMSMSXMLParser::GeneralMSMSXMLParser( ){
+GeneralMSMSXMLParser::GeneralMSMSXMLParser()
+{
+   XMLInt = NULL;
 }
 
 ////////////////////////////////////////////////
@@ -42,8 +44,14 @@ GeneralMSMSXMLParser::~GeneralMSMSXMLParser(){
 }
 
 
-//////////////////////////////////////////////////
-// starts the parsing process of the input file:
+bool GeneralMSMSXMLParser::startMSMSXMLFileParsing(string file)
+{
+  this->setXMLParsingFile( file );
+  return this->startMSMSXMLFileParsing();
+}
+
+
+
 bool GeneralMSMSXMLParser::startMSMSXMLFileParsing(){
 
   if( XMLInt != NULL ){
@@ -81,11 +89,19 @@ bool GeneralMSMSXMLParser::startMSMSXMLFileParsing(){
     // if correct XML, then start parsing:
     if( XMLInt != NULL ){
       XMLInt->parseMSMSInfo( this->getXMLDocument( ) );
+      
+      vector<ms2_info>::iterator Start = XMLInt->getMSMSList_START();
+      while( Start != XMLInt->getMSMSList_END() )
+        {
+          this->MSMSInfoList.push_back( *Start );
+          Start++;
+        }
       return true;
     }
   }
   return false;
 }
+
 
 
 ////////////////////////////////////////////////////////////////
