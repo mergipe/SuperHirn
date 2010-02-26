@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project name="SuperDbPusher" default="jar" basedir=".">
+
+
+	<!-- ************************************************************** -->
+	<!-- Change only here: 												-->
+	
+	<!-- This is the target directory to which the jar will be compiled -->
+	<property name="OutputDirectory" value="../distributions/" />
+	
+	
+	<!-- Version number of the jar -->
+	<property name="Version" value="v0.1" />
+		
+	<!-- ************************************************************** -->
+
+	<property name="ProgamName" value="SuperDbPusher" />
+	<property name="libDir" value="./libs" />
+	<property name="codeSource" value="src/ch/" />
+	<property name="dist" value="${OutputDirectory}/${ProgamName}${Version}" />
+	<property name="targetSrc" value="${dist}/classes/" />
+	<property name="targetLibs" value="${dist}/lib" />
+	<property name="binDir" value="${dist}/bin/" />
+	<property name="jarName" value="${dist}/${ProgamName}.jar" />
+
+
+	<path id="jarset">
+		<pathelement location="${libDir}/commons-beanutils-1.8.2.jar" />
+		<pathelement location="${libDir}/dom4j-1.6.1.jar" />
+		<pathelement location="${libDir}/jdom.jar" />
+		<pathelement location="${libDir}/mysql-connector-java-5.1.12-bin.jar" />
+	</path>
+
+
+	<target name="jar" description="make jar file">
+
+
+		<delete dir="${dist}"/>
+		<mkdir dir="${dist}" />
+		<mkdir dir="${binDir}"/>
+		<mkdir dir="${targetSrc}"/>
+
+		<copydir dest="${targetSrc}/" src="${codeSource}/" />
+
+		<copy todir="${dist}">
+			<fileset file="${ProgamName}.jar"/>
+			<fileset dir="${libDir}" excludes="**/*.svn" />
+		</copy>
+
+		<javac srcdir="${targetSrc}" destdir="${binDir}">
+			<classpath refid="jarset" />
+		</javac>
+
+		<jar destfile="${jarName}">
+			<fileset dir="${binDir}">
+				<include name="ch/**" />
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="Lukas N. Mueller, 2010" />
+				<attribute name="Main-Class" value="ch.superdbpusher.SuperHirnDataPusher" />
+				<attribute name="Class-Path" value="${ProgramName}.jar dom4j-1.6.1.jar jdom.jar mysql-connector-java-5.1.12-bin.jar commons-beanutils-1.8.2.jar" />
+			</manifest>
+		</jar>
+
+		<delete dir="${binDir}"/>
+
+	</target>
+</project>
