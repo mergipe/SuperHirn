@@ -18,7 +18,8 @@
 
 #define USE_DATA_PLOTTER
 #include "GENERAL_USE.h"
-
+#include <stdio.h>
+using namespace std;
 
 string data_plotter::GNU_PLOT_DIR = "gnu_plots/";
 
