@@ -120,9 +120,8 @@ void FT_PeakDetectController::start_scan_parsing_of_mzXML_file( ){
   }
   
   
-  // THIS_LC_MS->show_info();
   // store the extracted run to XML:
-  write_out_parsed_LC_MS( THIS_LC_MS );
+  // write_out_parsed_LC_MS( THIS_LC_MS );
   
   // add it to the spectrum list:
   LC_MS_RUNS.push_back( *THIS_LC_MS );

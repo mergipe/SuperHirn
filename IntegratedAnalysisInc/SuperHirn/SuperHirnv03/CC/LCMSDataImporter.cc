@@ -521,26 +521,7 @@ void LCMSDataImporter::start_peak_extraction_from_mzxml_data(){
   LCMSRUNS_DIR += LC_MS_RUN_DIR + "LC_MS_RUNS/";
 		if (accessor.check_directory(LCMSRUNS_DIR)) {
     printf("\n\t--- Importing LC-MS runs from %s:\n\n", LCMSRUNS_DIR.c_str());
-
     parse_from_XML_data();
-    // parseLCMSDataFromXML( LCMSRUNS_DIR );
-
-    /*
-    importer* IMP = new importer();
-    IMP->read_XML_files(LCMSRUNS_DIR);
-    vector<LC_MS> parsed_xml_runs = IMP->get_lc_ms_list();
-    delete IMP;
-    IMP = NULL;
-    
-    // copy into the name map
-    vector<LC_MS>::iterator P = parsed_xml_runs.begin();
-    while( P != parsed_xml_runs.end() ){      
-      LC_MS_NAME_MAP.insert( make_pair( P->get_spec_name(), &(*P) ) );
-      P++;
-    }
-    parsed_xml_runs.clear();
-    */
-    
 		}
   
   
