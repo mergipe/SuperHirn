@@ -1,6 +1,6 @@
 package ch.superdbpusher.xmlParsing;
 
-/*
+/**
  * Simple console output of the progress of a specific task. 
  * 
  * @author Lukas N. Mueller
@@ -66,7 +66,7 @@ public class XMLProgress {
 	  
 	}
 
-	/*
+	/**
 	 * print the progess
 	 * @param int progess
 	 */

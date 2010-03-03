@@ -20,15 +20,22 @@ package ch.superdbpusher.xmlParsing;
 
 import java.util.Iterator;
 
-
 import org.dom4j.Element;
 import org.dom4j.ElementPath;
 import org.dom4j.ElementHandler;
 
-
 import ch.superdbpusher.proteomics.LCMS;
 import ch.superdbpusher.proteomics.MS1Feature;
 import ch.superdbpusher.proteomics.MS2Info;
+
+
+/**
+ * The class is a handler for the DOM parser LCMSReader that parses XML files from SuperHirn processor. 
+ * 
+ * @author Lukas N. Mueller (Lukas.Mueller@imsb.biol.ethz.ch)
+ * @see LCMSReader
+ * 
+ */
 
 
 public class XMLSuperHirnHandler implements ElementHandler {
@@ -48,7 +55,8 @@ public class XMLSuperHirnHandler implements ElementHandler {
 
 		// create the LCMS instance:
 		String name = lcmsElement.attributeValue("name");
-	//	int nbFeatures = Integer.parseInt( lcmsElement.attributeValue("number_of_features") );
+		// int nbFeatures = Integer.parseInt(
+		// lcmsElement.attributeValue("number_of_features") );
 		this.lcms = new LCMS(name, 0);
 
 		// parse the LC-MS element:
@@ -68,7 +76,7 @@ public class XMLSuperHirnHandler implements ElementHandler {
 
 	}
 
-	/*
+	/**
 	 * function to extrat all MS1 features:
 	 */
 	private void parseMS1features(Element ROOT) {
@@ -92,7 +100,7 @@ public class XMLSuperHirnHandler implements ElementHandler {
 
 	}
 
-	/*
+	/**
 	 * parse a MS1 feature form XML:
 	 */
 	protected MS1Feature parseMS1Feature(Element element) {
@@ -101,9 +109,11 @@ public class XMLSuperHirnHandler implements ElementHandler {
 
 			double mz = Double.parseDouble(element.attributeValue("m_z"));
 			int z = Integer.parseInt(element.attributeValue("charge_state"));
-			//int lcmsID = Integer.parseInt(element.attributeValue("LC_MS_ID"));
+			// int lcmsID =
+			// Integer.parseInt(element.attributeValue("LC_MS_ID"));
 			double Tr = Double.parseDouble(element.attributeValue("Tr"));
-			double startTr = Double.parseDouble(element.attributeValue("Tr_Start"));
+			double startTr = Double.parseDouble(element
+					.attributeValue("Tr_Start"));
 			double endTr = Double.parseDouble(element.attributeValue("Tr_End"));
 			int id = Integer.parseInt(element.attributeValue("Feature_ID"));
 
@@ -136,8 +146,8 @@ public class XMLSuperHirnHandler implements ElementHandler {
 				}
 
 				// here all the info is available, construct the feature:
-				FEA = new MS1Feature(mz, Tr, startTr, endTr, SCAN_APEX, SCAN_START, SCAN_END,
-						z, PEAK_AREA, APEX_INTENSITY, id);
+				FEA = new MS1Feature(mz, Tr, startTr, endTr, SCAN_APEX,
+						SCAN_START, SCAN_END, z, PEAK_AREA, APEX_INTENSITY, id);
 				FEA.setSignalToNoise(snRatio);
 				FEA.setBackgroundNoiseLevel(BGLevel);
 			}
@@ -183,8 +193,7 @@ public class XMLSuperHirnHandler implements ElementHandler {
 		}
 	}
 
-
-	/*
+	/**
 	 * extract a MS2 scan and add to the MS1 fetaure:
 	 */
 	private void extractMS2Info(Element MS2_INFO, MS1Feature IN) {
@@ -274,7 +283,7 @@ public class XMLSuperHirnHandler implements ElementHandler {
 
 	}
 
-	/*
+	/**
 	 * store a feature in teh lc-ms map before check its validity:
 	 */
 	private void storeMS1FeatureInLCMS(MS1Feature IN) {

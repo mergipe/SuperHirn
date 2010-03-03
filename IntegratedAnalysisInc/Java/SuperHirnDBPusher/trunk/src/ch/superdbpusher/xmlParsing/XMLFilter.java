@@ -13,7 +13,7 @@ import java.io.FileFilter;
 
 public class XMLFilter implements FileFilter {
 
-	/*
+	/**
 	 * Accepts directories and files ending with .xml
 	 * @param iFile File input file to check
 	 * @return boolean

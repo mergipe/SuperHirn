@@ -34,14 +34,14 @@ public class MS1Feature implements Cloneable, Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/*
+	/**
 	 * Class comparator for MS1 feature based on m/z comparisons
 	 */
 	static private class MyComparator implements Comparator<MS1Feature> {
 
 		public int compare(MS1Feature A, MS1Feature B) {
 
-			if (A.mz() == B.mz() ) {
+			if (A.mz() == B.mz()) {
 				return 0;
 			} else if (A.mz() > B.mz()) {
 				return 1;
@@ -51,7 +51,7 @@ public class MS1Feature implements Cloneable, Serializable {
 
 	}
 
-	/*
+	/**
 	 * Class comparator for MS1 feature based on ppm m/z comparisons
 	 */
 	static public boolean compareMassAtPPMLevel(double mzA, double mzB) {
@@ -71,7 +71,7 @@ public class MS1Feature implements Cloneable, Serializable {
 		return true;
 	}
 
-	/*
+	/**
 	 * compare retention time values:
 	 */
 	static public boolean compareRetentionTimes(double rtA, double rtB) {
@@ -83,7 +83,7 @@ public class MS1Feature implements Cloneable, Serializable {
 		return true;
 	}
 
-	/*
+	/**
 	 * get the PPM value of a double at a cetrain Mas
 	 */
 	static public double getMassPPMLevel(double iMz, double value) {
@@ -93,7 +93,7 @@ public class MS1Feature implements Cloneable, Serializable {
 
 	}
 
-	/*
+	/**
 	 * get PPM value for a certain mass
 	 */
 	static public double getMassAtPPMLevel(double mz) {
@@ -148,8 +148,9 @@ public class MS1Feature implements Cloneable, Serializable {
 
 	private SortedMap<Double, Vector<MS2Info>> ms2Ids;
 
-	public MS1Feature(double iMz, double iRT, double iRTStart, double iRTEnd, int iApexScan, int iStartScan,
-			int iEndScan, int iZ, double iArea, double iApexIntens, int iID) {
+	public MS1Feature(double iMz, double iRT, double iRTStart, double iRTEnd,
+			int iApexScan, int iStartScan, int iEndScan, int iZ, double iArea,
+			double iApexIntens, int iID) {
 		this.mz = iMz;
 		this.id = iID;
 		this.apexScan = iApexScan;
@@ -165,7 +166,7 @@ public class MS1Feature implements Cloneable, Serializable {
 
 	}
 
-	/*
+	/**
 	 * override the clone methode:
 	 */
 	@SuppressWarnings("unchecked")
@@ -241,8 +242,9 @@ public class MS1Feature implements Cloneable, Serializable {
 		System.out.printf("m/z:%.3f%s", this.mz, SEP);
 		System.out.printf("[+%d],%s", this.z, SEP);
 		System.out.printf("Area:%.2f%s", this.peakArea, SEP);
-		System.out.printf(",Tr:%.2f[%.1f:%.1f][%d:%d:%d]%s",
-				this.tr(), this.trStart, this.trEnd, this.startScan, this.apexScan, this.endScan, SEP);
+		System.out.printf(",Tr:%.2f[%.1f:%.1f][%d:%d:%d]%s", this.tr(),
+				this.trStart, this.trEnd, this.startScan, this.apexScan,
+				this.endScan, SEP);
 		System.out.printf(",LC-MS Id:%d", this.lcMSID());
 		System.out.printf("\n");
 
@@ -337,8 +339,7 @@ public class MS1Feature implements Cloneable, Serializable {
 	public SortedMap<Integer, MS1Feature> alignedFeatures() {
 		return this.matches;
 	}
-	
-	
+
 	// get all identifed peptides associated to this ms1 feature:
 	public SortedMap<Double, Vector<MS2Info>> peptideIds() {
 		return this.ms2Ids;
@@ -369,16 +370,17 @@ public class MS1Feature implements Cloneable, Serializable {
 	public double mz() {
 		return this.mz;
 	}
-	
-	/// access the mzXML file name
-	/// @return string, mzXML file name
+
+	// / access the mzXML file name
+	// / @return string, mzXML file name
 	public String mzXMLName() {
 		return this.mzXMLName;
 	}
-	
-	/*
-	 *  Set the mzXML file name
-	 *  @param String
+
+	/**
+	 * Set the mzXML file name
+	 * 
+	 * @param String
 	 */
 	public void setMzXMLName(String iName) {
 		this.mzXMLName = iName;
@@ -400,14 +402,14 @@ public class MS1Feature implements Cloneable, Serializable {
 		return this.tr;
 	}
 
-	/*
+	/**
 	 * set /get signal to noise value:
 	 */
 	public void setSignalToNoise(double in) {
 		this.signaToNoise = in;
 	}
 
-	/*
+	/**
 	 * set / get background noise value:
 	 */
 	public void setBackgroundNoiseLevel(double in) {
@@ -425,22 +427,27 @@ public class MS1Feature implements Cloneable, Serializable {
 	public int id() {
 		return this.id;
 	}
-	
+
 	public int startScan() {
 		return this.startScan;
 	}
+
 	public int endScan() {
 		return this.endScan;
 	}
+
 	public int apexScan() {
 		return this.apexScan;
 	}
+
 	public double retentionTimeStart() {
 		return this.trStart;
 	}
+
 	public double retentionTimeEnd() {
 		return this.trEnd;
 	}
+
 	public void setLCMSID(int iID) {
 		this.lcmsID = iID;
 	}
@@ -453,7 +460,7 @@ public class MS1Feature implements Cloneable, Serializable {
 		return new MyComparator();
 	}
 
-	/*
+	/**
 	 * defines if two features are equal(0) of not (1)
 	 */
 	static public Boolean FeatureEqualComparator(MS1Feature A, MS1Feature B) {
@@ -465,7 +472,7 @@ public class MS1Feature implements Cloneable, Serializable {
 		}
 	}
 
-	/*
+	/**
 	 * defines if two features are equal(0) of not (1)
 	 */
 	static public int FeatureComparator(MS1Feature A, MS1Feature B) {
@@ -474,4 +481,3 @@ public class MS1Feature implements Cloneable, Serializable {
 	}
 
 }
-

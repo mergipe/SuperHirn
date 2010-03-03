@@ -40,16 +40,17 @@ public class LCMSReader {
 	protected File xmlFile;
 	protected LCMS lcms;
 
-	/*
+	/**
 	 * Public constructor of LCMSReader.
 	 * 
-	 * @param iFile file to the XML file which will be parsed
+	 * @param iFile
+	 *            file to the XML file which will be parsed
 	 */
 	public LCMSReader(File iFile) {
 		this.xmlFile = iFile;
 	}
 
-	/**
+	/***
 	 * Start the XML parsing process.
 	 * 
 	 * @throws Exception
@@ -64,11 +65,12 @@ public class LCMSReader {
 		}
 	}
 
-	/*
+	/**
 	 * Start parsing of the input file using a SAX parser
 	 * 
-	 * @param iFile file of the XML to be parsed throws DocumentException throws
-	 * Exception
+	 * @param iFile
+	 *            file of the XML to be parsed throws DocumentException throws
+	 *            Exception
 	 */
 	public void parseLargeXML(File iFile) throws DocumentException, Exception {
 		SAXReader reader = new SAXReader();
@@ -79,7 +81,7 @@ public class LCMSReader {
 		this.lcms = handler.lcms();
 	}
 
-	/*
+	/**
 	 * Get the parsed LCMS run
 	 * 
 	 * @return LCMS

@@ -15,7 +15,7 @@ import ch.superdbpusher.proteomics.MS2Info;
 import ch.superdbpusher.xmlParsing.LCMSReader;
 import ch.superdbpusher.xmlParsing.XMLFilter;
 
-/*
+/**
  * Manager organizes the process of XML parsing and sending data to the RDS. It starts from either a folder or xml file. 
  * For each file, an instance of the class LCMS is generated which is then passed to the RDS class LCMSRDSFeeder which imports the 
  * data of the LCMS class in the to database.
@@ -32,6 +32,9 @@ public class Manager {
 	static private String featureTableName = "MS1_FEATURES";
 	static private String ms2IdTableName = "MS2_ASSIGNMENTS";
 
+	/** 
+	 * These are the database access parameters:
+	 */
 	static private String host = "ins-pass-uniprot.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
 	static private String user = "lmueller";
 	static private String passwd = "relleuml";
@@ -40,7 +43,7 @@ public class Manager {
 
 	private clsDataAccess rdsAccess;
 
-	/*
+	/**
 	 * Constructor wih argument path to a file or directory
 	 * 
 	 * @param iPath file or directory of XML files to parse
@@ -50,7 +53,7 @@ public class Manager {
 		this.rdsAccess = null;
 	}
 
-	/*
+	/**
 	 * Starts the main process of parsing and imporing data - establishes a
 	 * connection to the database - parses XML file - deconnects from database
 	 */
@@ -112,13 +115,12 @@ public class Manager {
 			System.out.println("Input file/directory '" + this.target.getPath()
 					+ "' does not exist or can not be accessed.");
 		}
-		
-		
+
 		return out;
 
 	}
 
-	/*
+	/**
 	 * Processes a file by parsing it and then sending the extracted LCMS
 	 * instance to the database module.
 	 * 
@@ -137,7 +139,7 @@ public class Manager {
 		}
 	}
 
-	/*
+	/**
 	 * Processes a LCMS run by extracting the data and input it into the
 	 * database.
 	 * 

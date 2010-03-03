@@ -13,7 +13,8 @@ import java.util.Set;
  
  
  
- /**
+
+/**
 	 * @author Lukas Mueller
 	 * @version L2J0.1, 24.8.06
 	 * 
@@ -69,12 +70,12 @@ public class MS2Info implements Cloneable{
 	// monoisotopic masses of all amino acids:
 	static public final double[] monoisotopic_AA_mass = { 71.03711, 0.0, 103.00919, 115.02694, 129.04259, 147.06841, 57.02146, 137.05891, 113.08406, 0.0, 128.09496, 113.08406, 131.04049, 114.04293, 0.0, 97.05276, 128.05858, 156.10111, 87.03203, 101.04768, 0.0, 99.06841, 186.07931, 0.0, 163.06333, 0.0};
 	
-	/*
+/**
 	 * Retention time coefficients as defined by Krokhin et al, MCP, 3 (9), 908, 2004
 	 */
 	static public final double[] retentionTimeCoeffKrokhin = { 0.8, 0, -0.8, -0.5, 0.0, 10.5, -0.9, -1.3, 8.4, 0, -1.9, 9.6, 5.8, -1.2, 0, 0.2, -0.9, -1.3, -0.8, 0.4, 0, 5.0, 11.0, 0, 4.0, 0};
 	
-	/*
+/**
 	 * Retention time coefficients as defined by Guo et al, refr 40 in Krokhin et al, MCP, 3 (9), 908, 2004
 	 */
 	static public final double[] retentionTimeCoeffGuo = { 2.0, 0, 2.6, 0.2, 1.1, 8.1, -0.2, -2.1, 7.4, 0, -2.1, 8.1, 5.5, -0.6, 0, 2.0, 0.0, -0.6, -0.2, 0.6, 0, 5.0, 8.8, 0, 4.5, 0};
@@ -142,7 +143,7 @@ public class MS2Info implements Cloneable{
 		this.setRetentionTime(-1.0);
 	}
 	        	
-	/**
+/***
 	 * Sets the
 	 * 
 	 * @param in
@@ -152,7 +153,7 @@ public class MS2Info implements Cloneable{
 	 *            scan start of a MS2 scan
 	 */    	
 	public void set_scan_start( int IN){this.scan_start = IN;};
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -160,7 +161,7 @@ public class MS2Info implements Cloneable{
 	 */	
 	public int get_scan_start( ){	return scan_start ;};
 	
-	/**
+/***
 	 * Sets the
 	 * 
 	 * @param in
@@ -170,7 +171,7 @@ public class MS2Info implements Cloneable{
 	 *            scan start of a MS2 scan
 	 */    	
 	public void set_scan_end( int IN){	scan_end= IN;};
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -178,7 +179,7 @@ public class MS2Info implements Cloneable{
 	 */	
 	public int get_scan_end( ){	return scan_end;};
 	
-	/**
+/***
 	 * Sets the
 	 * 
 	 * @param in
@@ -188,7 +189,7 @@ public class MS2Info implements Cloneable{
 	 *            charge state of a MS2 scan
 	 */    	
 	public void set_chrg( int IN){	chrg = IN;};
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -196,7 +197,7 @@ public class MS2Info implements Cloneable{
 	 */	
 	public int get_chrg( ){	return chrg;};
 
-	/**
+/***
 	 * Sets
 	 * 
 	 * @param in
@@ -211,7 +212,7 @@ public class MS2Info implements Cloneable{
 		molecular_mass *= (double) chrg;
 		molecular_mass -= (double)chrg * _MONO_H; 
 	};
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -219,7 +220,7 @@ public class MS2Info implements Cloneable{
 	 */	
 	public double get_precursor_mz( ){	return mono_mz;};
 	
-	/**
+/***
 	 * Sets
 	 * 
 	 * @param from
@@ -228,7 +229,7 @@ public class MS2Info implements Cloneable{
 	 *            pepXML file of a MS2 scan
 	 */    	
 	public void set_pepXML( String IN){	pepXML_file= IN;};
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -236,7 +237,7 @@ public class MS2Info implements Cloneable{
 	 */	
 	public String get_pepXML( ){	return pepXML_file;};
 	
-	/**
+/***
 	 * Sets a modified AA at pos by the mod
 	 * 
 	 * @param pos
@@ -254,7 +255,7 @@ public class MS2Info implements Cloneable{
 		set_theo_mz_from_SQ();
 		set_FULL_SQ();
 	};
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return at pos
@@ -273,7 +274,7 @@ public class MS2Info implements Cloneable{
 		
 	}
 	
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return at pos
@@ -308,7 +309,7 @@ public class MS2Info implements Cloneable{
 		MS2_interpretation = true;
 		};
 	
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -323,7 +324,7 @@ public class MS2Info implements Cloneable{
 		}
 	};	
 	
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -331,21 +332,21 @@ public class MS2Info implements Cloneable{
 	 */	
 	public String get_SQ( ){ return SQ;}
 	
-	/*
+/**
 	 * get the retention time of the scan:
 	 */
 	public Double getRetentionTime(){
 		return Tr;
 	}
 	
-	/*
+/**
 	 * set the retention time
 	 */
 	public void setRetentionTime(double in){
 		this.Tr = in;
 	}
 	
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -354,7 +355,7 @@ public class MS2Info implements Cloneable{
 	public String getFullSQ( ){ 
 		return String.format("%s.%s", this.prev_AA, this.get_SQ());
 		};	
-	/**
+/***
 	 * Sets IN
 	 * 
 	 * @param IN
@@ -368,7 +369,7 @@ public class MS2Info implements Cloneable{
 		set_FULL_SQ();
 	};
 
-	/**
+/***
 	 * Returns
 	 * 
 	 * @return
@@ -377,7 +378,7 @@ public class MS2Info implements Cloneable{
 	public Boolean check_MS2_interpretation( ){ return MS2_interpretation; };
 
 	
-	/**
+/***
 	 * Compute the theoretical mass from the sequence incorporating available AA
 	 * modifications
 	 * 
@@ -431,7 +432,7 @@ public class MS2Info implements Cloneable{
 	}
 	
 	
-	/**
+/***
 	 * Compute the theoretical mass from the sequence incorporating available AA
 	 * modifications
 	 * 
@@ -454,7 +455,7 @@ public class MS2Info implements Cloneable{
 		return TMP;
 	}
 	
-	/**
+/***
 	 * Compute the theoretical retention time coefficient as defined by Krokhein et al., MCP, 2004
 	 * 
 	 * 
@@ -511,7 +512,7 @@ public class MS2Info implements Cloneable{
 	}
 	
 	
-	/**
+/***
 	 * Compute the theoretical molecular mass from the sequence incorporating available AA
 	 * modifications
 	 * 
@@ -528,7 +529,7 @@ public class MS2Info implements Cloneable{
 		return TMP;
 	}
 	
-	/**
+/***
 	 * Compute the theoretical molecular mass from the sequence incorporating available AA
 	 * modifications
 	 * 
@@ -547,7 +548,7 @@ public class MS2Info implements Cloneable{
 		return TMP;
 	}
 	
-	/*
+/**
 	 * Compute the molecular mass from a m/z and charge state
 	 */
 	static public double computeMolecularMass( double iMz, int iZ){
@@ -558,7 +559,7 @@ public class MS2Info implements Cloneable{
 	}
 	
 	
-	/*
+/**
 	 * get the amino acid mass for an amio acid:
 	 */
 	static public double getAminoAcidMass( char AA){
@@ -584,7 +585,7 @@ public class MS2Info implements Cloneable{
 	}
 	
 	
-	/*
+/**
 	 * get the amino acid mass for an amio acid:
 	 */
 	static public double getAminoAcidFrequency( char AA){
@@ -603,7 +604,7 @@ public class MS2Info implements Cloneable{
 		  return aminoAcidFrequencies[ nb ] / 100.00;
 	}
 	
-	/*
+/**
 	 * get the amino acid mass for an amio acid:
 	 */
 	static public double getRetentionTimeCoefficientGuo( char AA ){
@@ -618,7 +619,7 @@ public class MS2Info implements Cloneable{
 		return retentionTimeCoeffGuo[ nb ];
 	}
 	
-	/*
+/**
 	 * get the amino acid mass for an amio acid:
 	 */
 	static public double getRetentionTimeCoefficientKrokhein( char AA ){
@@ -634,7 +635,7 @@ public class MS2Info implements Cloneable{
 	}
 	
 	
-	/**
+/***
 	 * Returns the theoretical mono isptopic mass of a given AA at pos
 	 * 
 	 * 
@@ -656,7 +657,7 @@ public class MS2Info implements Cloneable{
 
 	
 	
-	/**
+/***
 	 * get the full modified AA seuqence
 	 * 
 	 * 
@@ -680,7 +681,7 @@ public class MS2Info implements Cloneable{
 
 	}
 	
-	/**
+/***
 	 * print the full information of the MS2_info object
 	 * 
 	 */    	
@@ -695,7 +696,7 @@ public class MS2Info implements Cloneable{
 	}
 	
 	
-	/**
+/***
 	 * print the full information of the MS2_info object
 	 * 
 	 */    	
@@ -828,7 +829,7 @@ public class MS2Info implements Cloneable{
 			}
 		}
 	
-	/*
+/**
 	 * if a seqeuence is proteotypic
 	 */
 	public Boolean isProteotypic(){
@@ -840,7 +841,7 @@ public class MS2Info implements Cloneable{
 		}
 	}
 	
-	/*
+/**
 	 * get the protein association probability for a AC:
 	 */
 	public double getACProbability( String iAC){

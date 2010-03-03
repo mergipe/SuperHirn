@@ -1,16 +1,14 @@
 package ch.superdbpusher;
 
 /**
- * @brief SuperHirnDataPusher parses XML output files of the program SuperHirn
- *        and imports a subset of this data in the a relational database system.
+ * SuperHirnDataPusher parses XML output files of the program SuperHirn and imports a subset of this data in the a relational database system.
  * 
  * @author Lukas N. Mueller
  */
 public class SuperHirnDataPusher {
 
 	/**
-	 * @param args
-	 *            the command line arguments
+	 * @param args String[] command line arguments passed to the main method
 	 */
 	public static void main(String[] args) {
 		
