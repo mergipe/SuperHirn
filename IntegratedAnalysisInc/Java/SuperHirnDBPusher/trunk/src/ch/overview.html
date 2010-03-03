@@ -1,0 +1,14 @@
+<HTML>
+<BODY>
+<h3>Scope</h3>
+This package provides class for the parsing of data formatted in XML from the label-free quantification program SuperHirn. Fruther, database integration classes are provide which import the extracted data into a MySQL database. 
+<br>
+<br>
+<h3>Usage</h3>
+The compiled jar file can be used as following:<br>
+jar -jar SuperHirnDbPusher.jar $ARGUMENT$
+<br>
+<br>
+$ARGUMENTS$ should be a valid absolute or relative path to a mzXML file or a folder containing mzXML files. The single file, or in the later case the diferent files in the folder, is/are parsed sequentially and important right after parsing to the database. Database access parameters (host, port, user, etc.) are hard coded in the class Manager (see doc). To change them, go to to the class file Manager.java and recompile the jar using the provided ant file. 
+</BODY>
+</HTML>
