@@ -345,31 +345,20 @@ public class clsDataAccess {
 		ResultSet rsRecordset = null;
 
 		try {
-			if (connectToMySQL()) {
+		
+			Connection myConnection = this.getConnection();
+			if (myConnection != null) {
+		
 				// Get the data from the database table
-				sSQLSelect = conMySQL.createStatement();
+				sSQLSelect = myConnection.createStatement();
 				rsRecordset = sSQLSelect.executeQuery(sSELECTString.toString());
 
 				// Generate RowSetDynaClass object
 				rsdcObject = new RowSetDynaClass(rsRecordset, false);
 
-				// Close the statement, recordset and connection
+				// Close the statement, recordset
 				rsRecordset.close();
 				sSQLSelect.close();
-				conMySQL.close();
-
-				/*
-				 * // Get the number of rows to process rsRecordset.last();
-				 * iRecordCount = rsRecordset.getRow(); rsRecordset.first(); //
-				 * Check if a record was retrieved for processing if
-				 * (iRecordCount == 0) { writeTime = new Date();
-				 * System.out.println
-				 * (DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
-				 * DateFormat.MEDIUM).format(writeTime).toString() +
-				 * "There was no data extracted from\n\nDatabase: " +
-				 * sDatabaseName + "\n\nusing\n\nStatement: " + sSELECTString);
-				 * rsRecordset.close(); rsRecordset = null; return null; }
-				 */
 			}
 
 		} catch (Exception eX) {

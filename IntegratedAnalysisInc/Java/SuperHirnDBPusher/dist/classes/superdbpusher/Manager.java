@@ -2,6 +2,7 @@ package ch.superdbpusher;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.Vector;
@@ -38,16 +39,21 @@ public class Manager {
 	/** 
 	 * These are the database access parameters:
 	 */
-	static private String host = "ins-pass-uniprot.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
-	static private String user = "lmueller";
-	static private String passwd = "relleuml";
-	static private String database = "db_lukas_dev";
+	static private String host = "poc-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";		
+	static private String user = "gsaxena";
+	static private String passwd = "polk0912888";
+	static private String database = "db_pass_gautam_tgt";
+	//static private String host = "ins-pass-uniprot.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
+	//static private String user = "lmueller";
+	//static private String passwd = "relleuml";
+	//static private String database = "db_lukas_dev";
+	
 	static private int port = 3306;
 
 	private clsDataAccess rdsAccess;
 
 	/**
-	 * Constructor wih argument path to a file or directory
+	 * Constructor with argument path to a file or directory
 	 * 
 	 * @param iPath file or directory of XML files to parse
 	 */
@@ -179,17 +185,17 @@ public class Manager {
 			
 			String select = "SELECT idLC_MS_RUN FROM " + Manager.LCMSTableName
 			+ " WHERE mzXML_Name=";
-			query = query + "'" + iRun.name() + "'";
-			query = query + ")";
+			select = select + "'" + iRun.name() + "'";
 			// get the inserted LC_MS id back:
 			RowSetDynaClass rec = this.rdsAccess.getRecordSet(select);
 			if( rec.getRows().size()!= 1 )
 			{	
 				System.out.print("Multiple LC-MS entries with same name " + iRun.name());
 			}
+			
+
 			DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
-			int LCMS_table_id = Integer.parseInt(			
-					(String) dbDataRow.get("idLC_MS_RUN") );
+			int LCMS_table_id = (Integer)dbDataRow.get("idLC_MS_RUN");			
 			return LCMS_table_id;
 			
 			
@@ -216,7 +222,7 @@ public class Manager {
 					+ "," + iFeature.retentionTimeStart() + ","
 					+ iFeature.retentionTimeEnd() + "," + iFeature.apexScan();
 			query = query + ",";
-			query = query + "'" + LC_MS_ID + "'" + ","
+			query = query + LC_MS_ID + ","
 					+ iFeature.signalToNoise() + "," + iFeature.id();
 			query = query + ")";
 			this.rdsAccess.performSQLStatement(query);
@@ -236,7 +242,7 @@ public class Manager {
 
 				String statement = "INSERT INTO " + Manager.ms2IdTableName;
 				statement = statement
-						+ " ( fk_LC_MS_ID, fkMS1FeatureID, scan_number) VALUES(";
+						+ " ( fkLC_MS_ID, fkMS1_ID, scan_number) VALUES(";
 
 				Iterator I = peps.entrySet().iterator();
 				while (I.hasNext()) {
@@ -246,7 +252,7 @@ public class Manager {
 					while (vI.hasNext()) {
 						MS2Info inf = (MS2Info) vI.next();
 						String sql = statement;
-						sql = sql + "'" + LC_MS_ID + "'" + ",";
+						sql = sql + LC_MS_ID + ",";
 						sql = sql + iFeature.id() + ",";
 						sql = sql + inf.get_scan_start() + ")";
 						this.rdsAccess.performSQLStatement(sql);
