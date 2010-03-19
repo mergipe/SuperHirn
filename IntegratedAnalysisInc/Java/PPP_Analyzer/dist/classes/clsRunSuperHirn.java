@@ -27,7 +27,8 @@ public class clsRunSuperHirn{
     /*
      * command to start SuperHirn
      */
-    static private String SuperHirnCommand = "/Users/muellelu/bin/SuperHirnv03 ";
+    //static private String SuperHirnCommand = "/Users/muellelu/bin/SuperHirnv03 ";
+    static private String SuperHirnCommand = "SuperHirnv03 ";
 
     /*
      * Path to SuperHirn output directory
