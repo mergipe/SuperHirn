@@ -48,12 +48,12 @@ public class clsRunSuperHirn{
     /**
      * Path for xtandem2xml conversion file 
      */
-    static private String PepXMLFileFolder = "/root/DATA/pepXML/";
-
+    static private String PepXMLFileFolder = "AS3/jenny_55555/SITT/xtandem_output/";
+    
     /**
      * command to start Superhirn result to database import process
      */
-    static private String dbPusherCommand = "java -jar Java/SuperHirnDBPusher/distributions/SuperDbPusherv0.1/SuperDbPusher.jar ";
+    static private String dbPusherCommand = "java -jar Java/SuperDBPusher/distributions/SuperDbPusherv0.1/SuperDbPusher.jar ";
     
     /**
      * command to cleanup Superhirn results 
@@ -86,7 +86,7 @@ public class clsRunSuperHirn{
     		// get the mzXML file path from the table:
 			RowSetDynaClass mzXMLFileRecord;
 			mzXMLFileRecord = Main.objDataAccess
-					.getRecordSet("SELECT mzXML_file_name from to_ms_file WHERE to_ms_file_key = "
+					.getRecordSet("SELECT mzXML_file_name, mzXML_file_location from to_ms_file WHERE to_ms_file_key = "
 							+ iFileKey);
 			
 			// Check if a recordset was returned
@@ -96,7 +96,7 @@ public class clsRunSuperHirn{
 						.get(0);
 				// Build the load strings
 				errTime = new Date();
-				mzXMLTarget = (String) dbDataRow.get("mzXML_file_name");
+				mzXMLTarget = (String) dbDataRow.get("mzXML_file_location") + (String) dbDataRow.get("mzXML_file_name");
 				System.out.println(DateFormat.getDateTimeInstance(
 						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
 						.toString()
@@ -120,6 +120,55 @@ public class clsRunSuperHirn{
         
     }
     
+    
+    /**
+     * Get the path to the tandem file defined by it key from the database table
+     * @param iFileKey String table (primary)key of tuple containing the tandem file path
+     */
+    private String getTandemFile( String iFileKey){
+    	
+    	String mzXMLTarget = new String("");
+    	try
+    	{
+     
+    		// get the mzXML file path from the table:
+			RowSetDynaClass mzXMLFileRecord;
+			mzXMLFileRecord = Main.objDataAccess
+					.getRecordSet("SELECT search_output_file_name, search_ouput_location " +
+							"from to_search_details WHERE to_ms_file_key = "
+							+ iFileKey);
+			
+			// Check if a recordset was returned
+			if (!mzXMLFileRecord.getRows().isEmpty()) {
+
+				DynaBean dbDataRow = (DynaBean) mzXMLFileRecord.getRows()
+						.get(0);
+				// Build the load strings
+				errTime = new Date();
+				mzXMLTarget = (String) dbDataRow.get("search_ouput_location") + (String) dbDataRow.get("search_output_file_name");
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " clsRunSuperHirn: processing file " + mzXMLTarget);
+
+			}
+
+		} catch (NotAvailableException e) {
+			errTime = new Date();
+			System.out
+					.println(DateFormat.getDateTimeInstance(
+							DateFormat.MEDIUM, DateFormat.MEDIUM)
+							.format(errTime).toString()
+							+ " Unable to get tandem file for SuperHirn processing. Process will exit.");
+
+      
+       
+    	}
+        
+        return mzXMLTarget;
+        
+    }
+    
 
     /**
      * Performs a label free quantification workflow on a mzXML file which is defined by its
@@ -127,11 +176,29 @@ public class clsRunSuperHirn{
      * @param mzXMLFileKey String primary key for identifying the corresponding tuple in the table to_ms_file
      * @return int 
      */
-    public int labelfreeQuantificationOnMzXMLFile(String mzXMLFileKey) 
+    public int labelfreeQuantificationOnMzXMLFile(String mzXMLFileKey, String tandemXMLFileKey) 
     {
 		// Initialize return value
 		int exitVal = 1;
 
+		
+		/*
+		 * copy files from amazon to the instance:
+		 */
+		
+		exitVal = this.downloadXTandemFile( mzXMLFileKey );
+		if( exitVal != 0){
+			return exitVal;
+		}
+		
+		exitVal = this.downloadMzXMLFile( mzXMLFileKey );
+		if( exitVal != 0){
+			return exitVal;
+		}
+		
+		
+		
+		
 		// conversion of xtandem to pepxml format:
 		/*
 		exitVal = this.convertTandemToPepXML(xtandemFile);
@@ -297,4 +364,112 @@ public class clsRunSuperHirn{
 		return exitVal;
 
     }
+    
+    
+    private int downloadMzXMLFile( String iKey)
+    {
+    	String fileName = this.getMzXMLFile(iKey);
+   
+    	this.getFromAmazon(fileName);
+    	
+    	return 1;
+    	
+    }
+
+    private int downloadXTandemFile( String iKey)
+    {
+    	String fileName = this.getTandemFile(iKey);  
+    	this.getFromAmazon(fileName);
+    	
+    	return 1;
+    	
+    }
+    
+    
+    private void getFromAmazon( String iFile){
+   
+		// Amazon S3 storage
+		clsAmazon oAmazonS3 = new clsAmazon();  
+		oAmazonS3.ConnectToAmazon(); 
+		oAmazonS3.SetBucket(iFile);
+		if( !oAmazonS3.DownloadFile(iFile) )
+		{
+			errTime = new Date();
+			System.out
+					.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
+							DateFormat.MEDIUM).format(errTime).toString()
+							+ " Unable to download file " + iFile);   			
+		}
+		
+		
+		
+		
+		/*
+		oAmazonS3.SetBucket(objBuildXMLFile
+				.CurrentXMLOutputFile());
+
+		// Patrick Compress the file which will add
+		// a .gz to the filename
+		zippedFileName = objBuildXMLFile
+				.CurrentXMLOutputFile();
+		if (compressFile(
+				objBuildXMLFile
+						.SearchOutputLocation()
+						.toLowerCase()
+						+ objBuildXMLFile
+								.CurrentXMLOutputFile(),
+				objBuildXMLFile
+						.SearchOutputLocation()
+						.toLowerCase()
+						+ objBuildXMLFile
+								.CurrentXMLOutputFile()
+						+ ".gz", false) == true) {
+			zippedFileName = objBuildXMLFile
+					.CurrentXMLOutputFile()
+					+ ".gz";
+		}
+		// Upload file to Bucket. If it fails, set
+		// the processing status fields accordingly
+		if (oAmazonS3.UploadFile(objBuildXMLFile
+				.SearchOutputLocation()
+				.toLowerCase()
+				+ zippedFileName.toLowerCase())) {
+			searchDate = new java.util.Date();
+			i_UPDATE_Result = Main.objDataAccess
+					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'SEARCHED SUCCESSFULLY',end_search_datetime = '"
+							+ dateFormat
+									.format(searchDate)
+							+ "' WHERE to_ms_file_key = "
+							+ arSearchList[0][iSearchListCount]
+							+ " AND tmx_key = "
+							+ arSearchList[1][iSearchListCount]);
+			String deletedFile = oAmazonS3
+					.delTempFile();
+			if (deletedFile.compareTo("\n") != 0) {
+				errTime = new Date();
+				System.out.println(DateFormat
+						.getDateTimeInstance(
+								DateFormat.MEDIUM,
+								DateFormat.MEDIUM)
+						.format(errTime).toString()
+						+ deletedFile);
+			}
+		} else {
+			searchDate = new java.util.Date();
+			i_UPDATE_Result = Main.objDataAccess
+					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'ERROR SEARCHING',end_search_datetime = '"
+							+ dateFormat
+									.format(searchDate)
+							+ "' WHERE to_ms_file_key = "
+							+ arSearchList[0][iSearchListCount]
+							+ " AND tmx_key = "
+							+ arSearchList[1][iSearchListCount]);
+			iXTandemSearchResult = 1;
+		}
+
+		// Kill the Amazon object
+		oAmazonS3 = null;
+	*/
+	}
+    
 }

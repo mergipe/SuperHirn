@@ -55,6 +55,12 @@ public class Main {
 			password = "3terevea888";
 			port = 3306;
 			
+			host = "poc-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
+			database = "db_dn_pass_dev";
+			user = "gsaxena";
+			password = "polk0912888";
+			port = 3306;
+
 			errTime = new Date();
 			System.err.println(DateFormat.getDateTimeInstance(
 					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString()
