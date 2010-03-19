@@ -86,7 +86,7 @@ public class clsRunSuperHirn{
     		// get the mzXML file path from the table:
 			RowSetDynaClass mzXMLFileRecord;
 			mzXMLFileRecord = Main.objDataAccess
-					.getRecordSet("SELECT mzXML_file_name from to_ms_file WHERE to_ms_file_key = "
+					.getRecordSet("SELECT mzXML_file_name, mzXML_file_location from to_ms_file WHERE to_ms_file_key = "
 							+ iFileKey);
 			
 			// Check if a recordset was returned
@@ -96,7 +96,7 @@ public class clsRunSuperHirn{
 						.get(0);
 				// Build the load strings
 				errTime = new Date();
-				mzXMLTarget = (String) dbDataRow.get("mzXML_file_name");
+				mzXMLTarget = (String) dbDataRow.get("mzXML_file_location") + (String) dbDataRow.get("mzXML_file_name");
 				System.out.println(DateFormat.getDateTimeInstance(
 						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
 						.toString()
@@ -120,6 +120,55 @@ public class clsRunSuperHirn{
         
     }
     
+    
+    /**
+     * Get the path to the tandem file defined by it key from the database table
+     * @param iFileKey String table (primary)key of tuple containing the tandem file path
+     */
+    private String getTandemFile( String iFileKey){
+    	
+    	String mzXMLTarget = new String("");
+    	try
+    	{
+     
+    		// get the mzXML file path from the table:
+			RowSetDynaClass mzXMLFileRecord;
+			mzXMLFileRecord = Main.objDataAccess
+					.getRecordSet("SELECT search_output_file_name, search_ouput_location " +
+							"from to_search_details WHERE to_ms_file_key = "
+							+ iFileKey);
+			
+			// Check if a recordset was returned
+			if (!mzXMLFileRecord.getRows().isEmpty()) {
+
+				DynaBean dbDataRow = (DynaBean) mzXMLFileRecord.getRows()
+						.get(0);
+				// Build the load strings
+				errTime = new Date();
+				mzXMLTarget = (String) dbDataRow.get("search_ouput_location") + (String) dbDataRow.get("search_output_file_name");
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " clsRunSuperHirn: processing file " + mzXMLTarget);
+
+			}
+
+		} catch (NotAvailableException e) {
+			errTime = new Date();
+			System.out
+					.println(DateFormat.getDateTimeInstance(
+							DateFormat.MEDIUM, DateFormat.MEDIUM)
+							.format(errTime).toString()
+							+ " Unable to get tandem file for SuperHirn processing. Process will exit.");
+
+      
+       
+    	}
+        
+        return mzXMLTarget;
+        
+    }
+    
 
     /**
      * Performs a label free quantification workflow on a mzXML file which is defined by its
@@ -127,11 +176,29 @@ public class clsRunSuperHirn{
      * @param mzXMLFileKey String primary key for identifying the corresponding tuple in the table to_ms_file
      * @return int 
      */
-    public int labelfreeQuantificationOnMzXMLFile(String mzXMLFileKey) 
+    public int labelfreeQuantificationOnMzXMLFile(String mzXMLFileKey, String tandemXMLFileKey) 
     {
 		// Initialize return value
 		int exitVal = 1;
 
+		
+		/*
+		 * copy files from amazon to the instance:
+		 */
+		
+		exitVal = this.downloadXTandemFile( mzXMLFileKey );
+		if( exitVal != 0){
+			return exitVal;
+		}
+		
+		exitVal = this.downloadMzXMLFile( mzXMLFileKey );
+		if( exitVal != 0){
+			return exitVal;
+		}
+		
+		
+		
+		
 		// conversion of xtandem to pepxml format:
 		/*
 		exitVal = this.convertTandemToPepXML(xtandemFile);
@@ -299,12 +366,45 @@ public class clsRunSuperHirn{
     }
     
     
+    private int downloadMzXMLFile( String iKey)
+    {
+    	String fileName = this.getMzXMLFile(iKey);
+   
+    	this.getFromAmazon(fileName);
+    	
+    	return 1;
+    	
+    }
+
+    private int downloadXTandemFile( String iKey)
+    {
+    	String fileName = this.getTandemFile(iKey);  
+    	this.getFromAmazon(fileName);
+    	
+    	return 1;
+    	
+    }
+    
+    
     private void getFromAmazon( String iFile){
    
-    	/*
 		// Amazon S3 storage
 		clsAmazon oAmazonS3 = new clsAmazon();  
 		oAmazonS3.ConnectToAmazon(); 
+		oAmazonS3.SetBucket(iFile);
+		if( !oAmazonS3.DownloadFile(iFile) )
+		{
+			errTime = new Date();
+			System.out
+					.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
+							DateFormat.MEDIUM).format(errTime).toString()
+							+ " Unable to download file " + iFile);   			
+		}
+		
+		
+		
+		
+		/*
 		oAmazonS3.SetBucket(objBuildXMLFile
 				.CurrentXMLOutputFile());
 
@@ -369,8 +469,7 @@ public class clsRunSuperHirn{
 
 		// Kill the Amazon object
 		oAmazonS3 = null;
-		*/
-	
+	*/
 	}
     
 }

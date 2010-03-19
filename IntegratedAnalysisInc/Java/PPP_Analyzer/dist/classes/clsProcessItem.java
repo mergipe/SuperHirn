@@ -690,7 +690,7 @@ public class clsProcessItem {
 			
 			// Get the search list
 			objSearchList = new clsSearchList();
-			String arSearchList[][] = objSearchList.GetSearchList();
+			String arSearchList[][] = objSearchList.GetSuperHirnList();
 
 			errTime = new Date();
 			System.out.println(DateFormat.getDateTimeInstance(
@@ -714,12 +714,12 @@ public class clsProcessItem {
 				errTime = new Date();
 
 				String pmzXML = arSearchList[0][iSearchListCount];
-				String pmzXML_Key = arSearchList[1][iSearchListCount];
+				String tandemXML = arSearchList[1][iSearchListCount];
 
 				System.out.println(DateFormat.getDateTimeInstance(
 						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
 						.toString()
-						+ " Preparing to process file by SuperHirn: " + pmzXML);
+						+ " Preparing SuperHirn processing of mzXML /tandemXML file: " + pmzXML + " / " + tandemXML);
 
 				// Display success message
 				errTime = new Date();
@@ -728,13 +728,17 @@ public class clsProcessItem {
 				// transmission_status of "SEARCHING"
 				// SIK - Update start_search_datetime
 				searchDate = new java.util.Date();
+				
+				/*
 				i_UPDATE_Result = Main.objDataAccess
-						.WriteRecord("UPDATE to_ms_file SET transmission_status = 'SEARCHING',start_search_datetime = '"
+						.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'DONE_FE', start_search_datetime = '"
 								+ dateFormat.format(searchDate)
 								+ "' WHERE to_ms_file_key = "
-								+ pmzXML
-								+ " AND tmx_key = " + pmzXML_Key);
-
+								+ pmzXML );
+								*/
+				i_UPDATE_Result = 1;
+				
+				
 				// Check that the execution was ok
 				if (i_UPDATE_Result == 0) {
 					errTime = new Date();
@@ -742,7 +746,7 @@ public class clsProcessItem {
 							.println(DateFormat.getDateTimeInstance(
 									DateFormat.MEDIUM, DateFormat.MEDIUM)
 									.format(errTime).toString()
-									+ " Unable to set transmission status in to_ms_file table to 'SEARCHING'. Process will exit.");
+									+ " Unable to set SuperHirnStatus in to_ms_file table to 'DONE_FE'. Process will exit.");
 				} else {
 
 					// Display progress message
@@ -759,10 +763,10 @@ public class clsProcessItem {
 					objRunSuperHirn = new clsRunSuperHirn();
 					if (sStorage_Location.contains("AS3")) {
 						iSuperHirnResult = objRunSuperHirn
-								.labelfreeQuantificationOnMzXMLFile(pmzXML);
+								.labelfreeQuantificationOnMzXMLFile(pmzXML, tandemXML);
 					} else {
 						iSuperHirnResult = objRunSuperHirn
-						.labelfreeQuantificationOnMzXMLFile(pmzXML);
+						.labelfreeQuantificationOnMzXMLFile(pmzXML, tandemXML);
 					}
 
 					
