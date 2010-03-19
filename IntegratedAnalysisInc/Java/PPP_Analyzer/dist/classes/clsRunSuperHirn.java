@@ -356,7 +356,6 @@ public class clsRunSuperHirn{
     	
     	// remove .gz and add .mzXML:
     	fileName = fileName.substring(0, fileName.lastIndexOf("."));
-    	fileName = fileName + ".mzXML";
     	return fileName;  
     }
 
