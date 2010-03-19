@@ -52,7 +52,7 @@ public class clsRunSuperHirn{
     /**
      * command to start Superhirn result to database import process
      */
-    static private String dbPusherCommand = "java -jar Java/SuperDBPusher/distributions/SuperDbPusherv0.1/SuperDbPusher.jar ";
+    static private String dbPusherCommand = "java -jar Java/SuperDBPusher/SuperDbPusher.jar ";
     
     /**
      * command to cleanup Superhirn results 
@@ -219,6 +219,7 @@ public class clsRunSuperHirn{
 		// clean up pepXML conversion files:
 		exitVal = this.cleanUpFile(pepXML);
 		exitVal = this.cleanUpFile(mzXML);
+		exitVal = this.cleanUpFile(mzXML + ".gz");
 
 		return exitVal;
     }
