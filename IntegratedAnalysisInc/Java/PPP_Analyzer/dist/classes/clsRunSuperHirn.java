@@ -184,12 +184,11 @@ public class clsRunSuperHirn{
 			return -1;
 		}
 			
-		/*
 		String mzXML = this.downloadMzXMLFile( mzXMLFileKey );
 		if( mzXML == null ){
 			return -1;
 		}
-		/*
+		
 		
 		// conversion of xtandem to pepxml format:
 		/*
@@ -200,15 +199,15 @@ public class clsRunSuperHirn{
 		*/
 
 		// run feature extraction:
-		exitVal = this.runSuperHirnFeatureExtraction(mzXMLFileKey);
+		exitVal = this.runSuperHirnFeatureExtraction(mzXML);
 		if( exitVal != 0){
-			//return exitVal;
+			return exitVal;
 		}
 		
 		// import to database:
 		exitVal = this.runSuperHirnDBPusher();
 		if( exitVal != 0){
-			//return exitVal;
+			return exitVal;
 		}
 		
 		// clean up superhirn results:
@@ -219,7 +218,7 @@ public class clsRunSuperHirn{
 		
 		// clean up pepXML conversion files:
 		exitVal = this.cleanUpFile(pepXML);
-		//exitVal = this.cleanUpFile(mzXML);
+		exitVal = this.cleanUpFile(mzXML);
 
 		return exitVal;
     }
