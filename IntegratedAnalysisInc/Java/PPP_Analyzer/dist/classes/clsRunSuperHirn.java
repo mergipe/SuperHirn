@@ -48,12 +48,12 @@ public class clsRunSuperHirn{
     /**
      * Path for xtandem2xml conversion file 
      */
-    static private String PepXMLFileFolder = "/root/DATA/pepXML/";
-
+    static private String PepXMLFileFolder = "AS3/jenny_55555/SITT/xtandem_output/";
+    
     /**
      * command to start Superhirn result to database import process
      */
-    static private String dbPusherCommand = "java -jar Java/SuperHirnDBPusher/distributions/SuperDbPusherv0.1/SuperDbPusher.jar ";
+    static private String dbPusherCommand = "java -jar Java/SuperDBPusher/distributions/SuperDbPusherv0.1/SuperDbPusher.jar ";
     
     /**
      * command to cleanup Superhirn results 
@@ -297,4 +297,80 @@ public class clsRunSuperHirn{
 		return exitVal;
 
     }
+    
+    
+    private void getFromAmazon( String iFile){
+   
+    	/*
+		// Amazon S3 storage
+		clsAmazon oAmazonS3 = new clsAmazon();  
+		oAmazonS3.ConnectToAmazon(); 
+		oAmazonS3.SetBucket(objBuildXMLFile
+				.CurrentXMLOutputFile());
+
+		// Patrick Compress the file which will add
+		// a .gz to the filename
+		zippedFileName = objBuildXMLFile
+				.CurrentXMLOutputFile();
+		if (compressFile(
+				objBuildXMLFile
+						.SearchOutputLocation()
+						.toLowerCase()
+						+ objBuildXMLFile
+								.CurrentXMLOutputFile(),
+				objBuildXMLFile
+						.SearchOutputLocation()
+						.toLowerCase()
+						+ objBuildXMLFile
+								.CurrentXMLOutputFile()
+						+ ".gz", false) == true) {
+			zippedFileName = objBuildXMLFile
+					.CurrentXMLOutputFile()
+					+ ".gz";
+		}
+		// Upload file to Bucket. If it fails, set
+		// the processing status fields accordingly
+		if (oAmazonS3.UploadFile(objBuildXMLFile
+				.SearchOutputLocation()
+				.toLowerCase()
+				+ zippedFileName.toLowerCase())) {
+			searchDate = new java.util.Date();
+			i_UPDATE_Result = Main.objDataAccess
+					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'SEARCHED SUCCESSFULLY',end_search_datetime = '"
+							+ dateFormat
+									.format(searchDate)
+							+ "' WHERE to_ms_file_key = "
+							+ arSearchList[0][iSearchListCount]
+							+ " AND tmx_key = "
+							+ arSearchList[1][iSearchListCount]);
+			String deletedFile = oAmazonS3
+					.delTempFile();
+			if (deletedFile.compareTo("\n") != 0) {
+				errTime = new Date();
+				System.out.println(DateFormat
+						.getDateTimeInstance(
+								DateFormat.MEDIUM,
+								DateFormat.MEDIUM)
+						.format(errTime).toString()
+						+ deletedFile);
+			}
+		} else {
+			searchDate = new java.util.Date();
+			i_UPDATE_Result = Main.objDataAccess
+					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'ERROR SEARCHING',end_search_datetime = '"
+							+ dateFormat
+									.format(searchDate)
+							+ "' WHERE to_ms_file_key = "
+							+ arSearchList[0][iSearchListCount]
+							+ " AND tmx_key = "
+							+ arSearchList[1][iSearchListCount]);
+			iXTandemSearchResult = 1;
+		}
+
+		// Kill the Amazon object
+		oAmazonS3 = null;
+		*/
+	
+	}
+    
 }
