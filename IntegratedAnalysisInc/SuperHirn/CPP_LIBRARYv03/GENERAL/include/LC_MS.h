@@ -181,9 +181,9 @@ public:
   string get_spec_name(){return spec_name;};
   void set_spec_name(string IN){spec_name = IN;};
   
-  // set / get spectrum id:
+  /// \brief set/get spectrum id:
   int get_spectrum_ID(){return spectrum_id;};
-  void set_spectrum_ID(int IN){spectrum_id = IN;};
+  void set_spectrum_ID(int iID);
   
   // set the id of all features
   void setFeatureLCMSID();

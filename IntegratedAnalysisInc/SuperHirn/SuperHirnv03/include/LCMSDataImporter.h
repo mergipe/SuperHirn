@@ -145,6 +145,16 @@ private:
   /// \param iRun LC_MS* LC-MS run to add pepXML information
   void addPepXMLInfoToLCMS(LC_MS* iRun);
   
+  /// \brief get the output directory to which processed results are stored
+  /// \return string
+  string getOutputDirectory();
+
+  /// \brief Write a LC-MS run to XML
+  /// \param iRun LC_MS* pointer to the LC-MS instance
+  void writeLCMSToXML(LC_MS* iRun);
+
+
+  
 };
 
 #endif

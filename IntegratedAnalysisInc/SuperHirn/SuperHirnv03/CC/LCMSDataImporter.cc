@@ -220,22 +220,13 @@ void LCMSDataImporter::order_by_mass() {
 
 //////////////////////////////////////////////////
 // assign LC-MS ids to feature
-void LCMSDataImporter::assigenLCMSIdToFeatures() {
-  
+void LCMSDataImporter::assigenLCMSIdToFeatures() 
+{  
+  int i = 0;
   vector<LC_MS>::iterator P = LC_MS_RUNS.begin();
   while( P != LC_MS_RUNS.end() ){
-
-    LC_MS* run = &(*P);
-    
-    vector<LC_MS_FEATURE>::iterator F = run->get_feature_list_begin();
-    while( F != run->get_feature_list_end() ){
-      
-      feature* fea = &(*F);
-      fea->set_spectrum_ID( run->get_spectrum_ID() );
-      
-      F++;
-    }
-    
+    P->set_spectrum_ID( i );
+    i++;
     P++;
   }
   
@@ -546,18 +537,14 @@ void LCMSDataImporter::add_interact_info() {
   
 }
 
-/////////////////////////////////////////////////////////
-// extract mzXML runs from raw data, i.e. mzXML files:
+
 void LCMSDataImporter::start_peak_extraction_from_mzxml_data(){
     
-  // map containig all runs in alphabetical order:
   map<string, LC_MS> LC_MS_NAME_MAP;
 
-  //////////////////////////////////////////////////
   // start the peak extraction of mzXML data:
   FT_PeakDetectController* FT_controller = new FT_PeakDetectController( MZXMLINPUT_DIR );
   FT_controller->parseMzXMLData();
-
   // preprocess now the extracted runs if not empty
   if( !FT_controller->getParsedDataEmpty() ){
     
@@ -565,21 +552,18 @@ void LCMSDataImporter::start_peak_extraction_from_mzxml_data(){
     progress_bar bar(LC_MS_RUNS.size());
     
     vector<LC_MS>::iterator p = FT_controller->get_parsed_DATA_START();
-    while(p != FT_controller->get_parsed_DATA_END()){
-      
-      // get the run:
+    while(p != FT_controller->get_parsed_DATA_END())
+      {
       LC_MS* run = &(*p);
-      
-      // order by parent mass:
       run->order_by_mass();
+      run->set_spectrum_ID( LC_MS_NAME_MAP.size() );
       
       // assigned MS/MS information:
       this->addPepXMLInfoToLCMS( run );
-
+      // write out the LC-MS run:
+      this->writeLCMSToXML( run );
       // copy into the name map
       LC_MS_NAME_MAP.insert( make_pair( run->get_spec_name(), *run ) );
-      
-      // write out the LC-MS run:
         
       bar.update_progress();
       p++;
@@ -646,9 +630,8 @@ void LCMSDataImporter::write_out_parsed_LC_MS(){
   
   string tmp = "ANALYSIS_";
   tmp += out_dir + "LC_MS_RUNS/";
-  out_dir = tmp;
+  out_dir = tmp;  
   mkdir(out_dir.c_str(),0777);
-  
   vector<LC_MS>::iterator p = LC_MS_RUNS.begin();
   while(p != LC_MS_RUNS.end()){
     // write the LC/MS run out to a file:
@@ -658,6 +641,30 @@ void LCMSDataImporter::write_out_parsed_LC_MS(){
   }
   
   printf("\n\t\tInput LC-MS runs have been written to '%s'... \n", out_dir.c_str());
+}
+
+
+
+string LCMSDataImporter::getOutputDirectory(){
+  
+  string out_dir;
+  
+  read_param* def = new read_param();
+  out_dir = def->search_tag("MY PROJECT NAME");  
+  if( out_dir[ out_dir.size() - 1] != '/'){
+    out_dir += "/";
+  }
+  
+  string tmp = "ANALYSIS_";
+  tmp += out_dir + "LC_MS_RUNS/";
+  out_dir = tmp;
+  
+  file_sys accessor;
+  if( ! accessor.check_file_exists( out_dir) )
+    {
+      mkdir(out_dir.c_str(),0777);  
+    }
+  return out_dir;
 }
 
 
@@ -712,6 +719,33 @@ void LCMSDataImporter::write_out_LC_MS_run(LC_MS* IN, string OUT){
   LC_W->write_LC_MS_run_close_tag();
   LC_W->write_XML_MAIN_HEADER_CLOSE();
 
+  delete LC_W;
+  LC_W = NULL;
+}
+
+
+void LCMSDataImporter::writeLCMSToXML(LC_MS* iRun)
+{
+  
+  string file_name = this->getOutputDirectory();
+  file_name += iRun->get_spec_name() + ".xml";
+  
+  // write LC/MS stuff:
+  // write first the LC/MS MASTER run:
+  LC_MS_XML_writer* LC_W = new LC_MS_XML_writer( file_name ) ;
+  LC_W->write_XML_MAIN_HEADER();    
+  LC_W->write_LC_MS_run_2_XML_tag( iRun );
+  
+  // now write the features:
+  vector<LC_MS_FEATURE>::iterator p = iRun->get_feature_list_begin();
+  while( p != iRun->get_feature_list_end()){
+    LC_W->write_feature_2_XML_tag( &(*p), true );
+    p++;
+  }
+  
+  LC_W->write_LC_MS_run_close_tag();
+  LC_W->write_XML_MAIN_HEADER_CLOSE();
+  
   delete LC_W;
   LC_W = NULL;
 }

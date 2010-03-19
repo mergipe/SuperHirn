@@ -93,7 +93,7 @@ void FT_PeakDetectController::start_scan_parsing_of_mzXML_file( ){
   // get the titel of the current LC_MS run:
   string name = get_target_file();
   name.erase(0, name.rfind("/")+1);
-  name.erase(name.rfind(".mzXML"), name.size() - name.rfind(".mzXML"));
+  name.erase(name.rfind("."), name.size() - name.rfind("."));
   
   // create a new LC/MS:
   THIS_LC_MS = new LC_MS( name );
@@ -448,6 +448,7 @@ void FT_PeakDetectController::parseMzXMLData(){
     // with the according extension:
     // read the following endings:
     vector<string> endings;
+    endings.push_back( ".mzxml" );
     endings.push_back( ".mzXML" );
     // endings.push_back( ".mzData" );
     // endings.push_back( ".mzML" );
