@@ -13,6 +13,10 @@ import java.text.*;
  */
 public class Main {
 
+	
+	static public int port;
+	static public String host, database, user, password;
+
 	// Declare public variables and objects
 	public static clsDataAccess objDataAccess;
 	public static clsAmazon amazonObject;
@@ -26,7 +30,7 @@ public class Main {
 	//
 	public static String sXMLFilePath = "";
 	// SIK09092009 Change the command to be either SAXON or XTANDEM
-	private static final String commandHelp = "Please provide the process to run - 'XTANDEM' , 'SAXON' or 'SCHEDULER'";
+	private static final String commandHelp = "Please provide the process to run - 'XTANDEM' , 'SAXON' , 'GENERIC_SCRIPT_MODE' or 'SCHEDULER'";
 	public static String currErrorMessage = null;
 	private static Date errTime;
 	protected static EmailDevTeam emailError = new EmailDevTeam();
@@ -41,8 +45,22 @@ public class Main {
 		// SIK09092009 Support Saxon logic for connecting to target DBs
 		// Connection conMySQL = null;
 		//
-
-		if (args.length < 6) {
+		
+		/// Lukas: only for testing purpose are here database connection stuff hardcoded:
+		if (args.length == 1) {
+			
+			host = "ins-pass-uniprot.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
+			database = "db_dn_pass_dev";
+			user = "aeveret3";
+			password = "3terevea888";
+			port = 3306;
+			
+			errTime = new Date();
+			System.err.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString()
+					+ " Too few arguments.\n" );
+		}
+		else if (args.length < 6) {
 			errTime = new Date();
 			currErrorMessage = "Too few arguments.\n" + commandHelp;
 			System.err.println(DateFormat.getDateTimeInstance(
@@ -52,21 +70,22 @@ public class Main {
 			emailError.SendEmail();
 			System.exit(1);
 		}
+		else{
+			host = args[1];
+			database = args[2];
+			user = args[3];
+			password = args[4];
+			port = Integer.parseInt(args[5]);
+
+		}
 
 		String sCommand = args[0].toLowerCase();
 		processName = sCommand;
 
 		if (sCommand.equals("scheduler")) {
 			oMasterScheduler = new MasterScheduler();
-			boolean isScheduled = oMasterScheduler.Schedule(args[1], args[2],
-					args[3], args[4], Integer.parseInt(args[5]));
-			/*
-			 * if(args.length>4){ isScheduled=oMasterScheduler.Schedule(args[1],
-			 * args[2], args[3],Integer.parseInt(args[4])); } else
-			 * if(args.length>3){ isScheduled=oMasterScheduler.Schedule(args[1],
-			 * args[2], args[3]); } else{
-			 * isScheduled=oMasterScheduler.Schedule(); }
-			 */
+			boolean isScheduled = oMasterScheduler.Schedule(host, database,
+					user, password, port);
 			if (!isScheduled) {
 				errTime = new Date();
 				currErrorMessage = "Failed to start scheduler";
@@ -88,8 +107,7 @@ public class Main {
 			// Instantiate public Data Access object
 			// SIKTest
 			// objDataAccess = new clsDataAccess("edwin_pass_tgt", "polk9876");
-			objDataAccess = new clsDataAccess(args[1], args[3], args[4],
-					Integer.parseInt(args[5]));
+			objDataAccess = new clsDataAccess(host, user, password, port);
 
 			// Load the Process List class
 			try {
@@ -138,7 +156,7 @@ public class Main {
 				// SIK09092009
 				numThreadErrors = 0;
 				// Instantiate Process List object
-				objProcessList = new clsProcessList(args[2]);
+				objProcessList = new clsProcessList( database );
 				// Execute the class
 				// SIK09092009 Execute correct process depending on user
 				// specification
@@ -228,7 +246,7 @@ public class Main {
 					 * Start cluster routine after saxon has finished executing
 					 */
 
-					if (new Main().doCluster(args[2])) {
+					if (new Main().doCluster( database )) {
 						continue;
 					} else {
 						errTime = new Date();
