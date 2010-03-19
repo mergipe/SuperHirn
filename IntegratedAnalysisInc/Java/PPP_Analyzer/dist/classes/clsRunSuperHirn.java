@@ -32,7 +32,6 @@ public class clsRunSuperHirn{
     /**
      * command to start SuperHirn
      */
-    //static private String SuperHirnCommand = "/Users/muellelu/bin/SuperHirnv03 ";
     static private String SuperHirnCommand = "SuperHirnv03 ";
 
     /**
@@ -48,7 +47,7 @@ public class clsRunSuperHirn{
     /**
      * Path for xtandem2xml conversion file 
      */
-    static private String PepXMLFileFolder = "AS3/jenny_55555/SITT/xtandem_output/";
+    //static private String PepXMLFileFolder = "AS3/jenny_55555/SITT/xtandem_output/";
     
     /**
      * command to start Superhirn result to database import process
@@ -60,10 +59,6 @@ public class clsRunSuperHirn{
      */
     static private String tandemToXMLCommand = "tandem2xml ";
 
-    /**
-     * command to cleanup Superhirn results 
-     */
-    static private String cleanupPepXMLCommand = "rm -rf ";
     
     /**
      * command to cleanup Superhirn results 
@@ -165,7 +160,7 @@ public class clsRunSuperHirn{
        
     	}
         
-        return mzXMLTarget;
+		return mzXMLTarget;
         
     }
     
@@ -186,18 +181,15 @@ public class clsRunSuperHirn{
 		 * copy files from amazon to the instance:
 		 */
 		
-		exitVal = this.downloadXTandemFile( mzXMLFileKey );
-		if( exitVal != 0){
-			return exitVal;
+		if( !this.downloadXTandemFile( mzXMLFileKey ) ){
+			return -1;
 		}
-		
-		exitVal = this.downloadMzXMLFile( mzXMLFileKey );
-		if( exitVal != 0){
-			return exitVal;
+				
+		/*
+		if( !this.downloadMzXMLFile( mzXMLFileKey )){
+			return -1;
 		}
-		
-		
-		
+		*/
 		
 		// conversion of xtandem to pepxml format:
 		/*
@@ -210,23 +202,23 @@ public class clsRunSuperHirn{
 		// run feature extraction:
 		exitVal = this.runSuperHirnFeatureExtraction(mzXMLFileKey);
 		if( exitVal != 0){
-			return exitVal;
+			//return exitVal;
 		}
 		
 		// import to database:
 		exitVal = this.runSuperHirnDBPusher();
 		if( exitVal != 0){
-			return exitVal;
+			//return exitVal;
 		}
 		
 		// clean up superhirn results:
 		exitVal = this.cleanUpSuperHirnResults();
 		if( exitVal != 0){
-			return exitVal;
+			//return exitVal;
 		}
 		
 		// clean up pepXML conversion files:
-		exitVal = this.cleanUpPepXMLFiles();
+		exitVal = this.cleanUpXMLFiles(mzXMLFileKey);
 		if( exitVal != 0){
 			return exitVal;
 		}
@@ -281,10 +273,19 @@ public class clsRunSuperHirn{
      * Runs the pepXML converions file cleanup
      * @return int 
      */
-    private int cleanUpPepXMLFiles() 
-    {
-		String command = new String(clsRunSuperHirn.cleanupPepXMLCommand 
-				+ " " + clsRunSuperHirn.PepXMLFileFolder + "*");
+    private int cleanUpXMLFiles(String iFileKey) 
+    {    
+    	String mzXML = getMzXMLFile(iFileKey);
+		String command = new String("rm -rf " + mzXML);
+		this.runCommand(command);
+
+		String pepXML = this.getTandemFile(iFileKey);
+		
+		// remove .gz:
+		pepXML = pepXML.substring(0, 
+				pepXML.indexOf("."));
+		pepXML = pepXML + "*";
+		command = new String("rm -rf " + pepXML);
 		return this.runCommand(command);
     }
 
@@ -293,11 +294,12 @@ public class clsRunSuperHirn{
      * @param xtandemFile String path to the xtandem file
      * @return int 
      */
-    private int convertTandemToPepXML(String xtandemFile) 
+    private int convertTandemToPepXML(String iFileKey) 
     {
+		String xTandem = this.getTandemFile(iFileKey);
 		String command = new String(clsRunSuperHirn.tandemToXMLCommand 
-				+ " " + xtandemFile
-				+ " " + clsRunSuperHirn.PepXMLFileFolder + xtandemFile);
+				+ " " + xTandem
+				+ "TestingData/pepXML/input.xml");
 		return this.runCommand(command);
     }
     
@@ -366,27 +368,21 @@ public class clsRunSuperHirn{
     }
     
     
-    private int downloadMzXMLFile( String iKey)
+    private boolean downloadMzXMLFile( String iKey)
     {
-    	String fileName = this.getMzXMLFile(iKey);
-   
-    	this.getFromAmazon(fileName);
-    	
-    	return 1;
-    	
+    	String fileName = this.getMzXMLFile(iKey);  	
+    	return this.getFromAmazon(fileName.toLowerCase());  
     }
 
-    private int downloadXTandemFile( String iKey)
+    private boolean downloadXTandemFile( String iKey)
     {
-    	String fileName = this.getTandemFile(iKey);  
-    	this.getFromAmazon(fileName);
-    	
-    	return 1;
-    	
+    	String fileName = this.getTandemFile(iKey); 
+    	return this.getFromAmazon( fileName.toLowerCase() );
+ 	
     }
     
     
-    private void getFromAmazon( String iFile){
+    private boolean getFromAmazon( String iFile){
    
 		// Amazon S3 storage
 		clsAmazon oAmazonS3 = new clsAmazon();  
@@ -398,8 +394,11 @@ public class clsRunSuperHirn{
 			System.out
 					.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
 							DateFormat.MEDIUM).format(errTime).toString()
-							+ " Unable to download file " + iFile);   			
+							+ " Unable to download file " + iFile); 
+			return false;
 		}
+		
+		return true;
 		
 		
 		
