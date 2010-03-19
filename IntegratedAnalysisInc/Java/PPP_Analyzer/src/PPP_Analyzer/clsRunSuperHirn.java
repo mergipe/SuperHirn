@@ -12,10 +12,15 @@ import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.RowSetDynaClass;
 
 /**
- * Class which executes the SuperHirn command by either:
- * - passing a single mzXML file to SuperHirn
+ * Class to executes label-free qunatification workflow for PASS. This include 
+ * the SuperHirn processing (feature extraction, ms2 to ms1 mapping, LC-MS alignment, etc.), integration
+ * of SuperHirn XML results into PASS database, tandem2pepXML conversion and finally data cleanup:
+ * - Commands runSuperHirn: feature extraction of an mzXML input file
+ * - Commands runSuperHirnDBPusher: parsing and importing of SuperHirn results into PASS database
+ * - Commands runCleanUp...: clean up (deletion) of intermediate files
+ * - etc.
  *
- * @author Lukas N Mueller
+ * @author Lukas N. Mueller
  */
 public class clsRunSuperHirn{
 
@@ -24,31 +29,53 @@ public class clsRunSuperHirn{
     
     
 
-    /*
+    /**
      * command to start SuperHirn
      */
-    static private String SuperHirnCommand = "/Users/muellelu/bin/SuperHirnv03 ";
+    //static private String SuperHirnCommand = "/Users/muellelu/bin/SuperHirnv03 ";
+    static private String SuperHirnCommand = "SuperHirnv03 ";
 
-    /*
+    /**
      * Path to SuperHirn output directory
      */
     static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/ ";
 
-    /*
+    /**
      * Path to SuperHirn parameter file
      */
     static private String SuperHirnParameterFilePath = "-PARAM /root/param.def";
     
-    /*
+    /**
+     * Path for xtandem2xml conversion file 
+     */
+    static private String PepXMLFileFolder = "/root/DATA/pepXML/";
+
+    /**
      * command to start Superhirn result to database import process
      */
     static private String dbPusherCommand = "java -jar Java/SuperHirnDBPusher/distributions/SuperDbPusherv0.1/SuperDbPusher.jar ";
     
-    /*
+    /**
+     * command to cleanup Superhirn results 
+     */
+    static private String tandemToXMLCommand = "tandem2xml ";
+
+    /**
+     * command to cleanup Superhirn results 
+     */
+    static private String cleanupPepXMLCommand = "rm -rf ";
+    
+    /**
      * command to cleanup Superhirn results 
      */
     static private String cleanupSHCommand = "rm -rf ";
     
+    
+    
+    /**
+     * Get the path to the mzXML defined by it key from the database table
+     * @param iFileKey String table (primary)key of tuple containing the the mzXML file path
+     */
     private String getMzXMLFile( String iFileKey){
     	
     	String mzXMLTarget = new String("");
@@ -92,8 +119,60 @@ public class clsRunSuperHirn{
         return mzXMLTarget;
         
     }
+    
 
-    public int runSuperHirn(String mzXMLFileKey) 
+    /**
+     * Performs a label free quantification workflow on a mzXML file which is defined by its
+     * mysql primary tuple key.
+     * @param mzXMLFileKey String primary key for identifying the corresponding tuple in the table to_ms_file
+     * @return int 
+     */
+    public int labelfreeQuantificationOnMzXMLFile(String mzXMLFileKey) 
+    {
+		// Initialize return value
+		int exitVal = 1;
+
+		// conversion of xtandem to pepxml format:
+		/*
+		exitVal = this.convertTandemToPepXML(xtandemFile);
+		if( exitVal != 0){
+			return exitVal;
+		}
+		*/
+
+		// run feature extraction:
+		exitVal = this.runSuperHirnFeatureExtraction(mzXMLFileKey);
+		if( exitVal != 0){
+			return exitVal;
+		}
+		
+		// import to database:
+		exitVal = this.runSuperHirnDBPusher();
+		if( exitVal != 0){
+			return exitVal;
+		}
+		
+		// clean up superhirn results:
+		exitVal = this.cleanUpSuperHirnResults();
+		if( exitVal != 0){
+			return exitVal;
+		}
+		
+		// clean up pepXML conversion files:
+		exitVal = this.cleanUpPepXMLFiles();
+		if( exitVal != 0){
+			return exitVal;
+		}
+
+		return exitVal;
+    }
+
+    /**
+     * Runs SuperHirn feature extraction on the input mzXML file table key
+     * @param mzXMLFileKey String mzXML file path
+     * @return int 
+     */
+    private int runSuperHirnFeatureExtraction(String mzXMLFileKey) 
     {
 		// Initialize return value
 		int exitVal = 1;
@@ -111,19 +190,55 @@ public class clsRunSuperHirn{
     }
     
     
-    public int runSuperHirnDBPusher() 
+    /**
+     * Runs the SuperHirn XML result parsing and importing into PASS database
+     * @return int 
+     */
+    private int runSuperHirnDBPusher() 
     {
 		String command = new String(clsRunSuperHirn.dbPusherCommand + " " + clsRunSuperHirn.SuperHirnOutPutPath);
 		return this.runCommand(command);
     }
     
-    public int cleanUpSuperHirnResults() 
+    /**
+     * Runs the SuperHirn XML result cleanup
+     * @return int 
+     */
+    private int cleanUpSuperHirnResults() 
     {
 		String command = new String(clsRunSuperHirn.cleanupSHCommand + " " + SuperHirnOutPutPath);
 		return this.runCommand(command);
     }
+
+    /**
+     * Runs the pepXML converions file cleanup
+     * @return int 
+     */
+    private int cleanUpPepXMLFiles() 
+    {
+		String command = new String(clsRunSuperHirn.cleanupPepXMLCommand 
+				+ " " + clsRunSuperHirn.PepXMLFileFolder + "*");
+		return this.runCommand(command);
+    }
+
+    /**
+     * Converts a xTandem result file to pepXML file
+     * @param xtandemFile String path to the xtandem file
+     * @return int 
+     */
+    private int convertTandemToPepXML(String xtandemFile) 
+    {
+		String command = new String(clsRunSuperHirn.tandemToXMLCommand 
+				+ " " + xtandemFile
+				+ " " + clsRunSuperHirn.PepXMLFileFolder + xtandemFile);
+		return this.runCommand(command);
+    }
     
-    
+    /**
+     * Executes a command, prints the command output to the console and returns an integer. The integer
+     * represents the status of the command exectution (see Process)
+     * @return int 
+     */
     private int runCommand(String Command)
     {
     	

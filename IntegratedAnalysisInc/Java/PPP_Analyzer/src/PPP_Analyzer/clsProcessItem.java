@@ -663,6 +663,7 @@ public class clsProcessItem {
 		 */
 	}
 
+	
 	/*
 	 * Method for running APP_Analyzer in SuperHirn mode.
 	 * 
@@ -686,19 +687,7 @@ public class clsProcessItem {
 		try {
 
 			Main.objDataAccess.SetDatabase(sTargetDatabase);
-
-			// Get the storage location to determine whether to use Amazon S3 or
-			// NAS.
-			// sStorage_Location =
-			// Main.objDataAccess.GetOutputPath("storage_location");
-			// Get the Path of the search file from the tm_variables table
-			// sSearchFilesPath_Lin =
-			// Main.objDataAccess.GetOutputPath("ftp_dir_search_results_lf").toLowerCase();
-			// Get the Path of the output superhirn file from the tm_variables
-			// table
-			// sXMLOutputFilePath_Win =
-			// Main.objDataAccess.GetOutputPath("search_output_location");
-
+			
 			// Get the search list
 			objSearchList = new clsSearchList();
 			String arSearchList[][] = objSearchList.GetSearchList();
@@ -763,17 +752,21 @@ public class clsProcessItem {
 							errTime).toString()
 							+ " Executing SuperHirn processing...\n\n");
 
-					// ////////////////
-					// Execute the SuperHirn command for each mzXML file:
+					
+					/**********************
+					 * Execute the SuperHirn command for each mzXML file
+					 */
 					objRunSuperHirn = new clsRunSuperHirn();
 					if (sStorage_Location.contains("AS3")) {
 						iSuperHirnResult = objRunSuperHirn
-								.runSuperHirn(pmzXML);
+								.labelfreeQuantificationOnMzXMLFile(pmzXML);
 					} else {
 						iSuperHirnResult = objRunSuperHirn
-								.runSuperHirn(pmzXML);
+						.labelfreeQuantificationOnMzXMLFile(pmzXML);
 					}
 
+					
+					
 					// UPDATE record in to_ms_file table with
 					// transmission_status of "SEARCHED SUCCESSFULLY"
 					// SIK - Update end_search_datetime also to record time
@@ -801,18 +794,6 @@ public class clsProcessItem {
 										+ arSearchList[1][iSearchListCount]);
 					}
 
-					/*
-					 * Integrate now the processed data into the database by
-					 * SuperHirnDBPusher:
-					 */
-					iSuperHirnResult = objRunSuperHirn.runSuperHirnDBPusher();
-					
-					
-					/*
-					 * Clean up SuperHirn results
-					 */
-					iSuperHirnResult = objRunSuperHirn.cleanUpSuperHirnResults();
-					
 				}
 
 				// Increment search list counter
