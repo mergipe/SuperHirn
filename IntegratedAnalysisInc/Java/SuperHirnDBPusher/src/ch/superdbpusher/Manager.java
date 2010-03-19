@@ -2,6 +2,7 @@ package ch.superdbpusher;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.Vector;
@@ -179,17 +180,17 @@ public class Manager {
 			
 			String select = "SELECT idLC_MS_RUN FROM " + Manager.LCMSTableName
 			+ " WHERE mzXML_Name=";
-			query = query + "'" + iRun.name() + "'";
-			query = query + ")";
+			select = select + "'" + iRun.name() + "'";
 			// get the inserted LC_MS id back:
 			RowSetDynaClass rec = this.rdsAccess.getRecordSet(select);
 			if( rec.getRows().size()!= 1 )
 			{	
 				System.out.print("Multiple LC-MS entries with same name " + iRun.name());
 			}
+			
+
 			DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
-			int LCMS_table_id = Integer.parseInt(			
-					(String) dbDataRow.get("idLC_MS_RUN") );
+			int LCMS_table_id = (Integer)dbDataRow.get("idLC_MS_RUN");			
 			return LCMS_table_id;
 			
 			
@@ -216,7 +217,7 @@ public class Manager {
 					+ "," + iFeature.retentionTimeStart() + ","
 					+ iFeature.retentionTimeEnd() + "," + iFeature.apexScan();
 			query = query + ",";
-			query = query + "'" + LC_MS_ID + "'" + ","
+			query = query + LC_MS_ID + ","
 					+ iFeature.signalToNoise() + "," + iFeature.id();
 			query = query + ")";
 			this.rdsAccess.performSQLStatement(query);
@@ -246,7 +247,7 @@ public class Manager {
 					while (vI.hasNext()) {
 						MS2Info inf = (MS2Info) vI.next();
 						String sql = statement;
-						sql = sql + "'" + LC_MS_ID + "'" + ",";
+						sql = sql + LC_MS_ID + ",";
 						sql = sql + iFeature.id() + ",";
 						sql = sql + inf.get_scan_start() + ")";
 						this.rdsAccess.performSQLStatement(sql);
