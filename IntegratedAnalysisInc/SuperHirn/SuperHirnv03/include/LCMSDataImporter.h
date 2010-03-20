@@ -152,6 +152,10 @@ private:
   /// \brief Write a LC-MS run to XML
   /// \param iRun LC_MS* pointer to the LC-MS instance
   void writeLCMSToXML(LC_MS* iRun);
+  
+  
+  LC_MS* findLCMSByMS2Name( string MS2_Name );
+
 
 
   

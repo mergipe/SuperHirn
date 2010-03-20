@@ -480,30 +480,7 @@ void LCMSDataImporter::add_interact_info() {
             }
             
             // get the spectrum name:
-            string MS2_name = (*X).get_ORIGINAL_INTERACT_FILE();
-            
-            // remove the last _p
-            string suffix = "_p";
-            if( MS2_name.rfind( suffix ) != string::npos ){
-              MS2_name.erase( MS2_name.rfind( suffix ), MS2_name.size( ) - MS2_name.rfind( suffix ) );
-            }
-            // remove the last _c
-            suffix = "_c";
-            if( MS2_name.rfind( suffix ) != string::npos ){
-              MS2_name.erase( MS2_name.rfind( suffix ), MS2_name.size( ) - MS2_name.rfind( suffix ) );
-            }
-            
-            // find the corresponing LC/MS run:
-            LC_MS* THIS_RUN = NULL;
-            vector<LC_MS>::iterator LCMS = get_parsed_DATA_START();
-            while( LCMS != get_parsed_DATA_END() ){
-              if( (*LCMS).get_spec_name().find( MS2_name ) != string::npos  ){
-                THIS_RUN = &(*LCMS);
-                break;
-              }
-              LCMS++;
-            }
-            
+            LC_MS* THIS_RUN = this->findLCMSByMS2Name( (*X).get_ORIGINAL_INTERACT_FILE() );            
             if( THIS_RUN ){
               // matches a MS2-info to a feature:
               MATCHER->combine_LC_MS_specific_MS2_to_MS1_data(THIS_RUN, &(*X));
@@ -748,6 +725,47 @@ void LCMSDataImporter::writeLCMSToXML(LC_MS* iRun)
   
   delete LC_W;
   LC_W = NULL;
+}
+
+
+LC_MS* LCMSDataImporter::findLCMSByMS2Name( string MS2_name )
+{
+  
+  // remove the last _p
+  string suffix = "_p";
+  if( MS2_name.rfind( suffix ) != string::npos ){
+    MS2_name.erase( MS2_name.rfind( suffix ), MS2_name.size( ) - MS2_name.rfind( suffix ) );
+  }
+  // remove the last _c
+  suffix = "_c";
+  if( MS2_name.rfind( suffix ) != string::npos ){
+    MS2_name.erase( MS2_name.rfind( suffix ), MS2_name.size( ) - MS2_name.rfind( suffix ) );
+  }
+  
+  // convert to lower case:
+  for(unsigned int i=0;i<MS2_name.length();i++)
+    {
+      MS2_name[i] = tolower(MS2_name[i]);
+    }
+  
+  // find the corresponing LC/MS run:
+  vector<LC_MS>::iterator LCMS = get_parsed_DATA_START();
+  while( LCMS != get_parsed_DATA_END() ){
+
+    string lcmsName = (*LCMS).get_spec_name();
+    for(unsigned int i=0;i<lcmsName.length();i++)
+      {
+        lcmsName[i] = tolower(lcmsName[i]);
+      }
+  
+    if( lcmsName.find( MS2_name ) != string::npos  ){
+      return &(*LCMS);
+      break;
+    }
+    LCMS++;
+  }
+  
+  return NULL;
 }
 
 
