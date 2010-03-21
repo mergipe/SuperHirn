@@ -354,7 +354,7 @@ public class clsRunSuperHirn{
     	{
     		return null;
     	}
-    	
+    	    	
     	// remove .gz and add .mzXML:
     	fileName = fileName.substring(0, fileName.lastIndexOf("."));
     	return fileName;  
@@ -391,6 +391,7 @@ public class clsRunSuperHirn{
 			return false;
 		}
 		
+    	this.cleanUpFile(iFile);
 		return true;
 		
 		
