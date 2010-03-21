@@ -52,7 +52,7 @@ public class clsRunSuperHirn{
     /**
      * command to start Superhirn result to database import process
      */
-    static private String dbPusherCommand = "java -jar Java/SuperDBPusher/SuperDbPusher.jar ";
+    static private String dbPusherCommand = "java -Xmx1g -Xms1g -jar Java/SuperDBPusher/SuperDbPusher.jar ";
     
     /**
      * command to cleanup Superhirn results 
