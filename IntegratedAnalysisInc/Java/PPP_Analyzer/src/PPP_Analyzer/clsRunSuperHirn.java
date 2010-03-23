@@ -29,10 +29,11 @@ public class clsRunSuperHirn{
     
     
 
+    private boolean VERBOSE = false;
+    
     /**
      * command to start SuperHirn
      */
-    //static private String SuperHirnCommand = "/Users/muellelu/bin/SuperHirnv03 ";
     static private String SuperHirnCommand = "SuperHirnv03 ";
 
     /**
@@ -48,22 +49,22 @@ public class clsRunSuperHirn{
     /**
      * Path for xtandem2xml conversion file 
      */
-    static private String PepXMLFileFolder = "AS3/jenny_55555/SITT/xtandem_output/";
+    //static private String PepXMLFileFolder = "AS3/jenny_55555/SITT/xtandem_output/";
     
     /**
      * command to start Superhirn result to database import process
      */
-    static private String dbPusherCommand = "java -jar Java/SuperDBPusher/distributions/SuperDbPusherv0.1/SuperDbPusher.jar ";
+    static private String dbPusherCommand = "java -Xmx1g -Xms1g -jar Java/SuperDBPusher/SuperDbPusher.jar ";
     
     /**
      * command to cleanup Superhirn results 
      */
-    static private String tandemToXMLCommand = "tandem2xml ";
+    static private String tandemToXMLCommand = "Tandem2Xml ";
 
     /**
-     * command to cleanup Superhirn results 
+     * path to the pepXML converions output directory
      */
-    static private String cleanupPepXMLCommand = "rm -rf ";
+    static private String tandemToXMLOutputDir = "TestingData/pepXML/";
     
     /**
      * command to cleanup Superhirn results 
@@ -80,9 +81,7 @@ public class clsRunSuperHirn{
     	
     	String mzXMLTarget = new String("");
     	try
-    	{
-       
-       	
+    	{ 	
     		// get the mzXML file path from the table:
 			RowSetDynaClass mzXMLFileRecord;
 			mzXMLFileRecord = Main.objDataAccess
@@ -165,7 +164,7 @@ public class clsRunSuperHirn{
        
     	}
         
-        return mzXMLTarget;
+		return mzXMLTarget;
         
     }
     
@@ -185,30 +184,24 @@ public class clsRunSuperHirn{
 		/*
 		 * copy files from amazon to the instance:
 		 */
-		
-		exitVal = this.downloadXTandemFile( mzXMLFileKey );
-		if( exitVal != 0){
-			return exitVal;
+		String xTandem = this.downloadXTandemFile( mzXMLFileKey );
+		if( xTandem == null ){
+			return -1;
 		}
-		
-		exitVal = this.downloadMzXMLFile( mzXMLFileKey );
-		if( exitVal != 0){
-			return exitVal;
+			
+		String mzXML = this.downloadMzXMLFile( mzXMLFileKey );
+		if( mzXML == null ){
+			return -1;
 		}
-		
-		
-		
 		
 		// conversion of xtandem to pepxml format:
-		/*
-		exitVal = this.convertTandemToPepXML(xtandemFile);
-		if( exitVal != 0){
-			return exitVal;
+		String pepXML = this.convertTandemToPepXML( xTandem );
+		if( pepXML != null){
+			return -1;
 		}
-		*/
 
 		// run feature extraction:
-		exitVal = this.runSuperHirnFeatureExtraction(mzXMLFileKey);
+		exitVal = this.runSuperHirnFeatureExtraction(mzXML);
 		if( exitVal != 0){
 			return exitVal;
 		}
@@ -222,38 +215,27 @@ public class clsRunSuperHirn{
 		// clean up superhirn results:
 		exitVal = this.cleanUpSuperHirnResults();
 		if( exitVal != 0){
-			return exitVal;
+			//return exitVal;
 		}
 		
 		// clean up pepXML conversion files:
-		exitVal = this.cleanUpPepXMLFiles();
-		if( exitVal != 0){
-			return exitVal;
-		}
+		exitVal = this.cleanUpFile(pepXML);
+		exitVal = this.cleanUpFile(mzXML);
+		exitVal = this.cleanUpFile(mzXML + ".gz");
 
 		return exitVal;
     }
 
     /**
-     * Runs SuperHirn feature extraction on the input mzXML file table key
+     * Runs SuperHirn feature extraction on the input mzXML file 
      * @param mzXMLFileKey String mzXML file path
      * @return int 
      */
-    private int runSuperHirnFeatureExtraction(String mzXMLFileKey) 
+    private int runSuperHirnFeatureExtraction(String mzXMLFile) 
     {
-		// Initialize return value
-		int exitVal = 1;
-		String mzXMLTarget = this.getMzXMLFile(mzXMLFileKey);
-		if (!mzXMLTarget.isEmpty()) {
-			String command = new String( 
-					clsRunSuperHirn.SuperHirnCommand + " -FE TestingData/mzXML/" + mzXMLTarget 
-					+ " " +
-					clsRunSuperHirn.SuperHirnParameterFilePath
-					);
-			
-			exitVal = this.runCommand(command);
-		}
-		return exitVal;
+    	String command = new String(clsRunSuperHirn.SuperHirnCommand + " -FE "
+    			+ mzXMLFile + " " + clsRunSuperHirn.SuperHirnParameterFilePath);
+		return this.runCommand(command);
     }
     
     
@@ -278,13 +260,12 @@ public class clsRunSuperHirn{
     }
 
     /**
-     * Runs the pepXML converions file cleanup
+     * Clean up of a file 
      * @return int 
      */
-    private int cleanUpPepXMLFiles() 
-    {
-		String command = new String(clsRunSuperHirn.cleanupPepXMLCommand 
-				+ " " + clsRunSuperHirn.PepXMLFileFolder + "*");
+    private int cleanUpFile(String iFile) 
+    {    
+		String command = new String("rm -rf " + iFile);
 		return this.runCommand(command);
     }
 
@@ -293,12 +274,21 @@ public class clsRunSuperHirn{
      * @param xtandemFile String path to the xtandem file
      * @return int 
      */
-    private int convertTandemToPepXML(String xtandemFile) 
+    private String convertTandemToPepXML(String iFile) 
     {
-		String command = new String(clsRunSuperHirn.tandemToXMLCommand 
-				+ " " + xtandemFile
-				+ " " + clsRunSuperHirn.PepXMLFileFolder + xtandemFile);
-		return this.runCommand(command);
+    	String pepXML = iFile.substring(
+    			iFile.lastIndexOf( File.separator ) );
+    	pepXML = clsRunSuperHirn.tandemToXMLOutputDir + File.separator + pepXML;
+
+    	String command = new String(clsRunSuperHirn.tandemToXMLCommand 
+				+ " " + iFile
+				+ " " + pepXML);
+		if( this.runCommand(command) != -1 )
+		{
+			this.cleanUpFile(iFile);
+			return pepXML;
+		}
+		return null;
     }
     
     /**
@@ -308,6 +298,15 @@ public class clsRunSuperHirn{
      */
     private int runCommand(String Command)
     {
+    	
+    	/*
+    	 * Runnning SuperHirn processing in verbose mode where commands are not execute
+    	 */
+    	if( VERBOSE )
+    	{
+    		System.out.println( Command );
+    		return 1;
+    	}
     	
     	int exitVal = -1;
 		try {
@@ -366,27 +365,36 @@ public class clsRunSuperHirn{
     }
     
     
-    private int downloadMzXMLFile( String iKey)
+    private String downloadMzXMLFile( String iKey)
     {
-    	String fileName = this.getMzXMLFile(iKey);
-   
-    	this.getFromAmazon(fileName);
-    	
-    	return 1;
-    	
+    	String fileName = this.getMzXMLFile(iKey);      	
+    	fileName = fileName.toLowerCase();
+    	if( !this.getFromAmazon(fileName) )
+    	{
+    		return null;
+    	}
+    	    	
+    	// remove .gz and add .mzXML:
+    	fileName = fileName.substring(0, fileName.lastIndexOf("."));
+    	return fileName;  
     }
 
-    private int downloadXTandemFile( String iKey)
+    private String downloadXTandemFile( String iKey)
     {
-    	String fileName = this.getTandemFile(iKey);  
-    	this.getFromAmazon(fileName);
-    	
-    	return 1;
-    	
+    	String fileName = this.getTandemFile(iKey); 
+    	fileName = fileName.toLowerCase();
+    	if( !this.getFromAmazon(fileName) )
+    	{
+    		return null;
+    	}
+    	// remove .gz and add .mzXML:
+    	fileName = fileName.substring(0, fileName.lastIndexOf("."));
+    	return fileName;  
+ 	
     }
     
     
-    private void getFromAmazon( String iFile){
+    private boolean getFromAmazon( String iFile){
    
 		// Amazon S3 storage
 		clsAmazon oAmazonS3 = new clsAmazon();  
@@ -398,8 +406,12 @@ public class clsRunSuperHirn{
 			System.out
 					.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
 							DateFormat.MEDIUM).format(errTime).toString()
-							+ " Unable to download file " + iFile);   			
+							+ " Unable to download file " + iFile); 
+			return false;
 		}
+		
+    	this.cleanUpFile(iFile);
+		return true;
 		
 		
 		

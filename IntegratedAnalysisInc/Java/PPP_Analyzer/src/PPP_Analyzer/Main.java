@@ -140,24 +140,6 @@ public class Main {
 
 			// Run the program in a continuous loop
 			do {
-				/*
-				 * ************************************************* This
-				 * section added to aid in faster testing of the cluster related
-				 * classes, i.e. ClusterClass and CDHitClusterOutputParser
-				 */
-				/*
-				 * if (amazonObject == null) { amazonObject = new clsAmazon(); }
-				 * if (amazonObject.createBucket("ia_cluster_files")) {
-				 * System.out.println("bucket created"); System.exit(0); } else
-				 * { System.exit(0); }
-				 * 
-				 * 
-				 * 
-				 * 
-				 * if (new Main().doCluster(args[2])) { continue; } else if
-				 * (true) { break; }
-				 */
-				// **************************************************
 
 				// SIK09092009
 				numThreadErrors = 0;

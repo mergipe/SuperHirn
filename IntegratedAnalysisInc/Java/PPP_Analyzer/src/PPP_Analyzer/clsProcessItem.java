@@ -769,8 +769,7 @@ public class clsProcessItem {
 						.labelfreeQuantificationOnMzXMLFile(pmzXML, tandemXML);
 					}
 
-					
-					
+						
 					// UPDATE record in to_ms_file table with
 					// transmission_status of "SEARCHED SUCCESSFULLY"
 					// SIK - Update end_search_datetime also to record time
@@ -779,23 +778,18 @@ public class clsProcessItem {
 					// - it will show when the AMI instance was freed
 					if (iSuperHirnResult == 0) {
 
-						searchDate = new java.util.Date();
 						i_UPDATE_Result = Main.objDataAccess
-								.WriteRecord("UPDATE to_ms_file SET transmission_status = 'SEARCHED SUCCESSFULLY',end_search_datetime = '"
+								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'DONE_FE', start_search_datetime = '"
 										+ dateFormat.format(searchDate)
-										+ "' WHERE to_ms_file_key = "
-										+ arSearchList[0][iSearchListCount]
-										+ " AND tmx_key = "
-										+ arSearchList[1][iSearchListCount]);
+										+ "' WHERE to_ms_file_key = " + pmzXML);
+
 					} else {
-						searchDate = new java.util.Date();
+
 						i_UPDATE_Result = Main.objDataAccess
-								.WriteRecord("UPDATE to_ms_file SET transmission_status = 'ERROR SEARCHING',end_search_datetime = '"
+								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'ERRO_FE', start_search_datetime = '"
 										+ dateFormat.format(searchDate)
-										+ "' WHERE to_ms_file_key = "
-										+ arSearchList[0][iSearchListCount]
-										+ " AND tmx_key = "
-										+ arSearchList[1][iSearchListCount]);
+										+ "' WHERE to_ms_file_key = " + pmzXML);
+				
 					}
 
 				}
