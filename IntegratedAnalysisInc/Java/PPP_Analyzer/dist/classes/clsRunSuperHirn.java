@@ -29,6 +29,8 @@ public class clsRunSuperHirn{
     
     
 
+    private boolean VERBOSE = false;
+    
     /**
      * command to start SuperHirn
      */
@@ -57,8 +59,12 @@ public class clsRunSuperHirn{
     /**
      * command to cleanup Superhirn results 
      */
-    static private String tandemToXMLCommand = "tandem2xml ";
+    static private String tandemToXMLCommand = "Tandem2XML ";
 
+    /**
+     * path to the pepXML converions output directory
+     */
+    static private String tandemToXMLOutputDir = "TestingData/pepXML/";
     
     /**
      * command to cleanup Superhirn results 
@@ -178,9 +184,8 @@ public class clsRunSuperHirn{
 		/*
 		 * copy files from amazon to the instance:
 		 */
-		
-		String pepXML = this.downloadXTandemFile( mzXMLFileKey );
-		if( pepXML == null ){
+		String xTandem = this.downloadXTandemFile( mzXMLFileKey );
+		if( xTandem == null ){
 			return -1;
 		}
 			
@@ -189,14 +194,11 @@ public class clsRunSuperHirn{
 			return -1;
 		}
 		
-		
 		// conversion of xtandem to pepxml format:
-		/*
-		exitVal = this.convertTandemToPepXML(xtandemFile);
-		if( exitVal != 0){
-			return exitVal;
+		String pepXML = this.convertTandemToPepXML( xTandem );
+		if( pepXML != null){
+			return -1;
 		}
-		*/
 
 		// run feature extraction:
 		exitVal = this.runSuperHirnFeatureExtraction(mzXML);
@@ -272,13 +274,21 @@ public class clsRunSuperHirn{
      * @param xtandemFile String path to the xtandem file
      * @return int 
      */
-    private int convertTandemToPepXML(String iFileKey) 
+    private String convertTandemToPepXML(String iFile) 
     {
-		String xTandem = this.getTandemFile(iFileKey);
-		String command = new String(clsRunSuperHirn.tandemToXMLCommand 
-				+ " " + xTandem
-				+ "TestingData/pepXML/input.xml");
-		return this.runCommand(command);
+    	String pepXML = iFile.substring(
+    			iFile.lastIndexOf( File.separator ) );
+    	pepXML = clsRunSuperHirn.tandemToXMLOutputDir + File.separator + pepXML;
+
+    	String command = new String(clsRunSuperHirn.tandemToXMLCommand 
+				+ " " + iFile
+				+ " " + pepXML);
+		if( this.runCommand(command) != -1 )
+		{
+			this.cleanUpFile(iFile);
+			return pepXML;
+		}
+		return null;
     }
     
     /**
@@ -288,6 +298,15 @@ public class clsRunSuperHirn{
      */
     private int runCommand(String Command)
     {
+    	
+    	/*
+    	 * Runnning SuperHirn processing in verbose mode where commands are not execute
+    	 */
+    	if( VERBOSE )
+    	{
+    		System.out.println( Command );
+    		return 1;
+    	}
     	
     	int exitVal = -1;
 		try {
