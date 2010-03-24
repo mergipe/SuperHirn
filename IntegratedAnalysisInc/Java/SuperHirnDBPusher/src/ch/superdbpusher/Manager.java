@@ -39,10 +39,15 @@ public class Manager {
 	/** 
 	 * These are the database access parameters:
 	 */
-	static private String host = "ins-pass-uniprot.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
-	static private String user = "lmueller";
-	static private String passwd = "relleuml";
-	static private String database = "db_lukas_dev";
+	static private String host = "poc-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";		
+	static private String user = "gsaxena";
+	static private String passwd = "polk0912888";
+	static private String database = "db_pass_gautam_tgt";
+	//static private String host = "ins-pass-uniprot.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
+	//static private String user = "lmueller";
+	//static private String passwd = "relleuml";
+	//static private String database = "db_lukas_dev";
+	
 	static private int port = 3306;
 
 	private clsDataAccess rdsAccess;
@@ -171,6 +176,14 @@ public class Manager {
 	private int write(LCMS iRun) {
 		try {
 
+			
+			
+			// check first if data has been previously stored with this name
+			// then remove it:
+			this.checkIfExistsInDatabase(iRun);
+			
+			
+			// now insert new and continues
 			String query = "INSERT INTO " + Manager.LCMSTableName
 					+ " (mzXML_Name) VALUES(";
 			query = query + "'" + iRun.name() + "'";
@@ -237,7 +250,7 @@ public class Manager {
 
 				String statement = "INSERT INTO " + Manager.ms2IdTableName;
 				statement = statement
-						+ " ( fk_LC_MS_ID, fkMS1FeatureID, scan_number) VALUES(";
+						+ " ( fkLC_MS_ID, fkMS1_ID, scan_number) VALUES(";
 
 				Iterator I = peps.entrySet().iterator();
 				while (I.hasNext()) {
@@ -259,6 +272,55 @@ public class Manager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void  checkIfExistsInDatabase(LCMS iRun) {
+		try {
+
+			String select = "SELECT idLC_MS_RUN FROM " + Manager.LCMSTableName
+			+ " WHERE mzXML_Name=";
+			select = select + "'" + iRun.name() + "'";
+			
+			// get the inserted LC_MS id back:
+			RowSetDynaClass rec = this.rdsAccess.getRecordSet(select);
+			if( rec.getRows().size() == 0  )
+			{	
+				System.out.print("No data associated with LCMS name " + iRun.name());
+			}
+			else{
+				
+				System.out.print("Remove data associated with LCMS name " + iRun.name());
+			}
+			
+			
+			for(int i=0;i<rec.getRows().size(); i++ ){
+				
+				DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
+				int LCMS_key = (Integer)dbDataRow.get("idLC_MS_RUN");			
+
+				// delete in MS2_ASSIGNMENTS where foreign key column is fkLC_MS_ID:
+				String delete = "DELETE FROM " + Manager.ms2IdTableName
+				+ " WHERE fkLC_MS_ID=" + LCMS_key;
+				this.rdsAccess.performSQLStatement(delete);			
+				
+				// delete in MS1_FEATURES where foreign key column is fkLC_MS_ID:
+				delete = "DELETE FROM " + Manager.featureTableName
+				+ " WHERE fkLC_MS_ID=" + LCMS_key;
+				this.rdsAccess.performSQLStatement(delete);			
+				
+				// delete in LC_MS_RUNS where foreign key column is idLC_MS_RUN:
+				delete = "DELETE FROM " + Manager.LCMSTableName
+				+ " WHERE idLC_MS_RUN=" + LCMS_key;
+				this.rdsAccess.performSQLStatement(delete);			
+				
+			}
+			
+			
+		} catch (DatabaseAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }
