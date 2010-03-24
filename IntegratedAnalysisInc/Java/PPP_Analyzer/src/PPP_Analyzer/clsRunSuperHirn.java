@@ -20,6 +20,7 @@ import org.apache.commons.beanutils.RowSetDynaClass;
  * - Commands runCleanUp...: clean up (deletion) of intermediate files
  * - etc.
  *
+ * For testing, process can also be run in VERBOSE (see attribute VERBOSE and set to true) mode, where commands are only printed to screen.
  * @author Lukas N. Mueller
  */
 public class clsRunSuperHirn{
@@ -29,7 +30,11 @@ public class clsRunSuperHirn{
     
     
 
-    private boolean VERBOSE = true;
+    /**
+     * Set this attribute to true for running the class in testing mode.
+     * Otherwise set to false.
+     */
+    private boolean VERBOSE = false;
     
     /**
      * command to start SuperHirn
