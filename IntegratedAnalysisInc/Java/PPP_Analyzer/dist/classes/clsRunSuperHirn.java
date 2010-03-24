@@ -64,7 +64,7 @@ public class clsRunSuperHirn{
     /**
      * command to cleanup Superhirn results 
      */
-    static private String tandemToXMLCommand = "Tandem2Xml ";
+    static private String tandemToXMLCommand = "Tandem2XML ";
 
     /**
      * path to the pepXML converions output directory
