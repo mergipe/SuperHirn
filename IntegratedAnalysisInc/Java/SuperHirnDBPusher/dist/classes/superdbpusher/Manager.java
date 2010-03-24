@@ -176,6 +176,14 @@ public class Manager {
 	private int write(LCMS iRun) {
 		try {
 
+			
+			
+			// check first if data has been previously stored with this name
+			// then remove it:
+			this.checkIfExistsInDatabase(iRun);
+			
+			
+			// now insert new and continues
 			String query = "INSERT INTO " + Manager.LCMSTableName
 					+ " (mzXML_Name) VALUES(";
 			query = query + "'" + iRun.name() + "'";
@@ -264,6 +272,55 @@ public class Manager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void  checkIfExistsInDatabase(LCMS iRun) {
+		try {
+
+			String select = "SELECT idLC_MS_RUN FROM " + Manager.LCMSTableName
+			+ " WHERE mzXML_Name=";
+			select = select + "'" + iRun.name() + "'";
+			
+			// get the inserted LC_MS id back:
+			RowSetDynaClass rec = this.rdsAccess.getRecordSet(select);
+			if( rec.getRows().size() == 0  )
+			{	
+				System.out.print("No data associated with LCMS name " + iRun.name());
+			}
+			else{
+				
+				System.out.print("Remove data associated with LCMS name " + iRun.name());
+			}
+			
+			
+			for(int i=0;i<rec.getRows().size(); i++ ){
+				
+				DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
+				int LCMS_key = (Integer)dbDataRow.get("idLC_MS_RUN");			
+
+				// delete in MS2_ASSIGNMENTS where foreign key column is fkLC_MS_ID:
+				String delete = "DELETE *  FROM " + Manager.ms2IdTableName
+				+ " fkLC_MS_ID=" + LCMS_key;
+				this.rdsAccess.performSQLStatement(delete);			
+				
+				// delete in MS1_FEATURES where foreign key column is fkLC_MS_ID:
+				delete = "DELETE *  FROM " + Manager.featureTableName
+				+ " fkLC_MS_ID=" + LCMS_key;
+				this.rdsAccess.performSQLStatement(delete);			
+				
+				// delete in LC_MS_RUNS where foreign key column is idLC_MS_RUN:
+				delete = "DELETE *  FROM " + Manager.LCMSTableName
+				+ " idLC_MS_RUN=" + LCMS_key;
+				this.rdsAccess.performSQLStatement(delete);			
+				
+			}
+			
+			
+		} catch (DatabaseAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }
