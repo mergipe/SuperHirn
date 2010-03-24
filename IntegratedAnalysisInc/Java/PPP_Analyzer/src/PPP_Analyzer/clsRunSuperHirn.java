@@ -281,17 +281,33 @@ public class clsRunSuperHirn{
      */
     private String convertTandemToPepXML(String iFile) 
     {
-    	String pepXML = iFile.substring(
+    	String pepXMLFileName = iFile.substring(
     			iFile.lastIndexOf( "/" ) + 1);
-    	pepXML = clsRunSuperHirn.tandemToXMLOutputDir + pepXML;
+    	
+    	// move first file one folder up:
+    	// this is added to move the file one folder up to where the mzXML is
+    	// this because for tandem2xml conversion the mzXML needs to be in the same folder as the xtandem file:
+    	String movedPepXML = iFile.substring( 0,
+    			iFile.lastIndexOf( "/" ) );
+    	movedPepXML = movedPepXML.substring( 0,
+    			movedPepXML.lastIndexOf( "/" ) + 1) + pepXMLFileName;
+    	
+    	String mvCommand = "mv " + iFile + " " + movedPepXML;
+		if( this.runCommand(mvCommand) == -1 )
+		{
+			return null;
+		}
+    	
+    	
+    	String pepXML = clsRunSuperHirn.tandemToXMLOutputDir + pepXMLFileName;
 
     	String command = new String(clsRunSuperHirn.tandemToXMLCommand 
-				+ " " + iFile
+				+ " " + movedPepXML
 				+ " " + pepXML);
 		if( this.runCommand(command) != -1 )
 		{
-			this.cleanUpFile(iFile);
-			return pepXML;
+			this.cleanUpFile( movedPepXML );
+			return null;
 		}
 		return null;
     }
