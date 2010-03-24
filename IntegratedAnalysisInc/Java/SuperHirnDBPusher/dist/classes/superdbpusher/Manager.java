@@ -299,18 +299,18 @@ public class Manager {
 				int LCMS_key = (Integer)dbDataRow.get("idLC_MS_RUN");			
 
 				// delete in MS2_ASSIGNMENTS where foreign key column is fkLC_MS_ID:
-				String delete = "DELETE *  FROM " + Manager.ms2IdTableName
-				+ " fkLC_MS_ID=" + LCMS_key;
+				String delete = "DELETE FROM " + Manager.ms2IdTableName
+				+ " WHERE fkLC_MS_ID=" + LCMS_key;
 				this.rdsAccess.performSQLStatement(delete);			
 				
 				// delete in MS1_FEATURES where foreign key column is fkLC_MS_ID:
-				delete = "DELETE *  FROM " + Manager.featureTableName
-				+ " fkLC_MS_ID=" + LCMS_key;
+				delete = "DELETE FROM " + Manager.featureTableName
+				+ " WHERE fkLC_MS_ID=" + LCMS_key;
 				this.rdsAccess.performSQLStatement(delete);			
 				
 				// delete in LC_MS_RUNS where foreign key column is idLC_MS_RUN:
-				delete = "DELETE *  FROM " + Manager.LCMSTableName
-				+ " idLC_MS_RUN=" + LCMS_key;
+				delete = "DELETE FROM " + Manager.LCMSTableName
+				+ " WHERE idLC_MS_RUN=" + LCMS_key;
 				this.rdsAccess.performSQLStatement(delete);			
 				
 			}
