@@ -340,7 +340,7 @@ public class clsRunSuperHirn{
     	if( VERBOSE )
     	{
     		System.out.println( Command );
-    		return 1;
+    		return 0;
     	}
     	
     	int exitVal = -1;
@@ -367,24 +367,24 @@ public class clsRunSuperHirn{
 			// Wait for process to complete
 			exitVal = p.waitFor();
 
-			// Wait for process to complete
-			// p.waitFor();
-			// exitVal = p.exitValue();
-
-			errTime = new Date();
-			System.out.println(DateFormat.getDateTimeInstance(
-					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
-					.toString()
-					+ " Process Exit Value : " + exitVal);
 
 			// read any errors from the attempted command
-			errTime = new Date();
-			System.out.println(DateFormat.getDateTimeInstance(
-					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
-					.toString()
-					+ " Here is the standard error of the command (if any):\n");
-			while ((s = stdError.readLine()) != null) {
-				System.out.println(s);
+			if( exitVal != 0){
+				errTime = new Date();
+
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " Process Exit abnormaly with value: " + exitVal);
+
+				System.out
+						.println(DateFormat.getDateTimeInstance(
+								DateFormat.MEDIUM, DateFormat.MEDIUM).format(
+								errTime).toString()
+								+ " Here is the standard error of the command (if any):\n");
+				while ((s = stdError.readLine()) != null) {
+					System.out.println(s);
+				}
 			}
 
 		} catch (IOException e) {
