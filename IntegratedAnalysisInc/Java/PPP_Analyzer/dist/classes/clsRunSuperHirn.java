@@ -191,12 +191,14 @@ public class clsRunSuperHirn{
 		 */
 		String xTandem = this.downloadXTandemFile( mzXMLFileKey );
 		if( xTandem == null ){
+			System.out.println( "Error in xtandem download/unzipping, stop this thread");	
 			return -1;
 		}
 		System.out.println( "Get XTandem ok:" + exitVal);	
 		
 		String mzXML = this.downloadMzXMLFile( mzXMLFileKey );
 		if( mzXML == null ){
+			System.out.println( "Error in mzXML download/unzipping, stop this thread");	
 			return -1;
 		}
 		System.out.println( "Get MZXML ok:"  + exitVal);	
@@ -204,6 +206,7 @@ public class clsRunSuperHirn{
 		// conversion of xtandem to pepxml format:
 		String pepXML = this.convertTandemToPepXML( xTandem );
 		if( pepXML == null){
+			System.out.println( "Error in xtandem conversion, stop this thread");	
 			return -1;
 		}
 		System.out.println( "Convert PepXML ok:"  + exitVal);	
@@ -211,6 +214,7 @@ public class clsRunSuperHirn{
 		// run feature extraction:
 		exitVal = this.runSuperHirnFeatureExtraction(mzXML);
 		if( exitVal == -1){
+			System.out.println( "Error in superhirn processing, stop this thread");	
 			return exitVal;
 		}
 		System.out.println( "SuperHirn processing ok:" + exitVal);	
@@ -218,6 +222,7 @@ public class clsRunSuperHirn{
 		// import to database:
 		exitVal = this.runSuperHirnDBPusher();
 		if( exitVal == -1){
+			System.out.println( "Error in SuperHirn data import, stop this thread");	
 			return exitVal;
 		}
 		System.out.println( "SuperHirn processing ok: " + exitVal);	
