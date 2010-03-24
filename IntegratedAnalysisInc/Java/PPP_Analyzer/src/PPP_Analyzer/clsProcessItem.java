@@ -693,11 +693,6 @@ public class clsProcessItem {
 			String arSearchList[][] = objSearchList.GetSuperHirnList();
 
 			errTime = new Date();
-			System.out.println(DateFormat.getDateTimeInstance(
-					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
-					.toString()
-					+ " SuperHirn processing about to start");
-			// if (arSearchList[0].toString().isEmpty()) {
 			if (arSearchList == null) {
 				errTime = new Date();
 				System.out.println(DateFormat.getDateTimeInstance(
@@ -705,6 +700,14 @@ public class clsProcessItem {
 						.toString()
 						+ " There is nothing to process for SuperHirn.");
 				return;
+			}
+			else
+			{
+
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " SuperHirn processing about to start for " + arSearchList[0].length + " items.");
 			}
 
 			// Process the search list
@@ -776,7 +779,7 @@ public class clsProcessItem {
 					// search completed
 					// - Update this field even if search is not successful
 					// - it will show when the AMI instance was freed
-					if (iSuperHirnResult == 0) {
+					if (iSuperHirnResult == 1) {
 
 						i_UPDATE_Result = Main.objDataAccess
 								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'DONE_FE', start_search_datetime = '"
@@ -786,7 +789,7 @@ public class clsProcessItem {
 					} else {
 
 						i_UPDATE_Result = Main.objDataAccess
-								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'ERRO_FE', start_search_datetime = '"
+								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'ERROR_FE', start_search_datetime = '"
 										+ dateFormat.format(searchDate)
 										+ "' WHERE to_ms_file_key = " + pmzXML);
 				
