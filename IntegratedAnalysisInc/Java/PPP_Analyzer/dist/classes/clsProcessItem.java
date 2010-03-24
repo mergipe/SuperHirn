@@ -779,7 +779,7 @@ public class clsProcessItem {
 					// search completed
 					// - Update this field even if search is not successful
 					// - it will show when the AMI instance was freed
-					if (iSuperHirnResult == 1) {
+					if (iSuperHirnResult == 0) {
 
 						i_UPDATE_Result = Main.objDataAccess
 								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'DONE_FE', start_search_datetime = '"

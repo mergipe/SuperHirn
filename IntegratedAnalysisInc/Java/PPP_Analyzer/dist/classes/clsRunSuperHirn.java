@@ -304,7 +304,7 @@ public class clsRunSuperHirn{
     	String command = new String(clsRunSuperHirn.tandemToXMLCommand 
 				+ " " + movedPepXML
 				+ " " + pepXML);
-		if( this.runCommand(command) != -1 )
+		if( this.runCommand(command) != 0 )
 		{
 			this.cleanUpFile( movedPepXML );
 			return pepXML;
