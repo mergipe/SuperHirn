@@ -183,7 +183,7 @@ public class clsRunSuperHirn{
     public int labelfreeQuantificationOnMzXMLFile(String mzXMLFileKey, String tandemXMLFileKey) 
     {
 		// Initialize return value
-		int exitVal = 1;
+		int exitVal = 0;
 
 		
 		/*
@@ -193,40 +193,49 @@ public class clsRunSuperHirn{
 		if( xTandem == null ){
 			return -1;
 		}
-			
+		System.out.println( "Get XTandem ok:" + exitVal);	
+		
 		String mzXML = this.downloadMzXMLFile( mzXMLFileKey );
 		if( mzXML == null ){
 			return -1;
 		}
+		System.out.println( "Get MZXML ok:"  + exitVal);	
 		
 		// conversion of xtandem to pepxml format:
 		String pepXML = this.convertTandemToPepXML( xTandem );
 		if( pepXML == null){
 			return -1;
 		}
+		System.out.println( "Convert PepXML ok:"  + exitVal);	
 
 		// run feature extraction:
 		exitVal = this.runSuperHirnFeatureExtraction(mzXML);
 		if( exitVal == -1){
 			return exitVal;
 		}
+		System.out.println( "SuperHirn processing ok:" + exitVal);	
 		
 		// import to database:
 		exitVal = this.runSuperHirnDBPusher();
 		if( exitVal == -1){
 			return exitVal;
 		}
+		System.out.println( "SuperHirn processing ok: " + exitVal);	
 		
 		// clean up superhirn results:
 		exitVal = this.cleanUpSuperHirnResults();
 		if( exitVal == -1){
 			return exitVal;
 		}
+		System.out.println( "Clean SuperHirn results ok: " + exitVal);	
 		
 		// clean up pepXML conversion files:
 		exitVal = this.cleanUpFile(pepXML);
+		System.out.println( "Clean PepXML results ok: " + exitVal);	
 		exitVal = this.cleanUpFile(mzXML);
+		System.out.println( "Clean mzXML results ok: " + exitVal);	
 		exitVal = this.cleanUpFile(mzXML + ".gz");
+		System.out.println( "Clean mzXML.gz results ok: " + exitVal);	
 
 		return exitVal;
     }
