@@ -307,7 +307,7 @@ public class clsRunSuperHirn{
     			movedPepXML.lastIndexOf( "/" ) + 1) + pepXMLFileName;
     	
     	String mvCommand = "mv " + iFile + " " + movedPepXML;
-		if( this.runCommand(mvCommand) == -1 )
+		if( this.runCommand(mvCommand) != 0 )
 		{
 			return null;
 		}
@@ -318,7 +318,7 @@ public class clsRunSuperHirn{
     	String command = new String(clsRunSuperHirn.tandemToXMLCommand 
 				+ " " + movedPepXML
 				+ " " + pepXML);
-		if( this.runCommand(command) != 0 )
+		if( this.runCommand(command) == 0 )
 		{
 			this.cleanUpFile( movedPepXML );
 			return pepXML;
