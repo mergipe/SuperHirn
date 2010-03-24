@@ -29,7 +29,7 @@ public class clsRunSuperHirn{
     
     
 
-    private boolean VERBOSE = false;
+    private boolean VERBOSE = true;
     
     /**
      * command to start SuperHirn
@@ -59,7 +59,7 @@ public class clsRunSuperHirn{
     /**
      * command to cleanup Superhirn results 
      */
-    static private String tandemToXMLCommand = "Tandem2XML ";
+    static private String tandemToXMLCommand = "Tandem2Xml ";
 
     /**
      * path to the pepXML converions output directory
@@ -196,26 +196,26 @@ public class clsRunSuperHirn{
 		
 		// conversion of xtandem to pepxml format:
 		String pepXML = this.convertTandemToPepXML( xTandem );
-		if( pepXML != null){
+		if( pepXML == null){
 			return -1;
 		}
 
 		// run feature extraction:
 		exitVal = this.runSuperHirnFeatureExtraction(mzXML);
-		if( exitVal != 0){
+		if( exitVal == -1){
 			return exitVal;
 		}
 		
 		// import to database:
 		exitVal = this.runSuperHirnDBPusher();
-		if( exitVal != 0){
+		if( exitVal == -1){
 			return exitVal;
 		}
 		
 		// clean up superhirn results:
 		exitVal = this.cleanUpSuperHirnResults();
-		if( exitVal != 0){
-			//return exitVal;
+		if( exitVal == -1){
+			return exitVal;
 		}
 		
 		// clean up pepXML conversion files:
@@ -277,13 +277,13 @@ public class clsRunSuperHirn{
     private String convertTandemToPepXML(String iFile) 
     {
     	String pepXML = iFile.substring(
-    			iFile.lastIndexOf( File.separator ) );
-    	pepXML = clsRunSuperHirn.tandemToXMLOutputDir + File.separator + pepXML;
+    			iFile.lastIndexOf( "/" ) + 1);
+    	pepXML = clsRunSuperHirn.tandemToXMLOutputDir + pepXML;
 
     	String command = new String(clsRunSuperHirn.tandemToXMLCommand 
 				+ " " + iFile
 				+ " " + pepXML);
-		if( this.runCommand(command) != 0 )
+		if( this.runCommand(command) != -1 )
 		{
 			this.cleanUpFile(iFile);
 			return pepXML;
@@ -396,6 +396,11 @@ public class clsRunSuperHirn{
     
     private boolean getFromAmazon( String iFile){
    
+    	if( VERBOSE )
+    	{
+    		System.out.println( "Downloading from amazon file " + iFile);
+    		return true;
+    	}
 		// Amazon S3 storage
 		clsAmazon oAmazonS3 = new clsAmazon();  
 		oAmazonS3.ConnectToAmazon(); 

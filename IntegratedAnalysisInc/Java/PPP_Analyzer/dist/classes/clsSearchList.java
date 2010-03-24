@@ -112,7 +112,6 @@ public class clsSearchList {
 
         // Initialize Variables       
         int iRecordCount = 0;
-        //int[][] arSearchList = {{},{}};
         String s_To_MS_File_Key = "";
         String s_To_TandemXML_File_Key = "";
         int iStringTrim = 0;
@@ -137,7 +136,8 @@ public class clsSearchList {
             			"tsd.to_search_details_key, tsd.search_output_file_name,tsd.search_ouput_location " +
             			"FROM " + "to_ms_file tms INNER JOIN to_search_details tsd " +
             			"WHERE tms.transmission_status ='SEARCHED SUCCESSFULLY' " +
-            			"AND tms.SuperHirnStatus='READY_FOR_FE'"
+            			"AND tms.SuperHirnStatus='READY_FOR_FE' " +
+            			"AND tms.to_ms_file_key = tsd.to_ms_file_key"
             			);
 
             // Check if a recordset was returned
@@ -159,7 +159,6 @@ public class clsSearchList {
 
                 // Build the load strings
                 errTime = new Date();
-//                System.out.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString() + " clsSearchList.GetSearchList : Build the load strings");
                 s_To_MS_File_Key = s_To_MS_File_Key + (Integer) dbDataRow.get("to_ms_file_key") + ",";
                 s_To_TandemXML_File_Key = s_To_TandemXML_File_Key + (Integer) dbDataRow.get("to_search_details_key") + ",";
 
