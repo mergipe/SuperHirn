@@ -307,7 +307,7 @@ public class clsRunSuperHirn{
 		if( this.runCommand(command) != -1 )
 		{
 			this.cleanUpFile( movedPepXML );
-			return null;
+			return pepXML;
 		}
 		return null;
     }
