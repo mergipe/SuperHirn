@@ -781,12 +781,15 @@ public class clsProcessItem {
 					// - it will show when the AMI instance was freed
 					if (iSuperHirnResult == 0) {
 
+						System.out.println( "SuperHirn processing finished correc, updating DONE_FE on " + pmzXML);	
 						i_UPDATE_Result = Main.objDataAccess
 								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'DONE_FE', start_search_datetime = '"
 										+ dateFormat.format(searchDate)
 										+ "' WHERE to_ms_file_key = " + pmzXML);
 
 					} else {
+
+						System.out.println( "ERROR: SuperHirn processing finished incorrect, updating ERROR_FE on " + pmzXML);	
 
 						i_UPDATE_Result = Main.objDataAccess
 								.WriteRecord("UPDATE to_ms_file SET SuperhirnStatus = 'ERROR_FE', start_search_datetime = '"

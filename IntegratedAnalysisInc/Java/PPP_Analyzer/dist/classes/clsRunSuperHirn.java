@@ -217,7 +217,7 @@ public class clsRunSuperHirn{
 			System.out.println( "Error in superhirn processing, stop this thread");	
 			return exitVal;
 		}
-		System.out.println( "SuperHirn processing ok:" + exitVal);	
+		System.out.println( "SuperHirn processing ok: " + exitVal);	
 		
 		// import to database:
 		exitVal = this.runSuperHirnDBPusher();
@@ -225,7 +225,7 @@ public class clsRunSuperHirn{
 			System.out.println( "Error in SuperHirn data import, stop this thread");	
 			return exitVal;
 		}
-		System.out.println( "SuperHirn processing ok: " + exitVal);	
+		System.out.println( "SuperHirn data import ok: " + exitVal);	
 		
 		// clean up superhirn results:
 		exitVal = this.cleanUpSuperHirnResults();
