@@ -582,8 +582,6 @@ public class clsRunSuperHirn{
     private int uploadFile(String iFile, String iLocation)
     {      	
     	
-		
-    	iLocation = iLocation.toLowerCase();
 
     	// Amazon S3 storage
     	clsAmazon oAmazonS3 = new clsAmazon(); // Instantiate
@@ -594,18 +592,18 @@ public class clsRunSuperHirn{
     	oAmazonS3.ConnectToAmazon(); // Connect to
     	oAmazonS3.SetBucket( iFile);
 
-    	String gzFile = iFile.toLowerCase() + ".gz";
+    	String gzFile = iFile + ".gz";
     	
     	System.out.println( "Compressing to " + gzFile);	
 		
-    	if( this.compressFile( iFile.toLowerCase(), gzFile, false ) )
+    	if( this.compressFile( iFile, gzFile, false ) )
 		{
 			
 	    	System.out.println( "Uploading file" + gzFile + " to " + iLocation);	
 
 	    	// Upload file to Bucket. If it fails, set
 			// the processing status fields accordingly
-			oAmazonS3.UploadFile(iLocation + gzFile);
+			oAmazonS3.UploadFile(iLocation.toLowerCase() + gzFile.toLowerCase());
 			return 0;
 
 		}
