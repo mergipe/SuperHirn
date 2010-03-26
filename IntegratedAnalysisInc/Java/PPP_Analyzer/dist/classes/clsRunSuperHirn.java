@@ -603,7 +603,7 @@ public class clsRunSuperHirn{
 
 	    	// Upload file to Bucket. If it fails, set
 			// the processing status fields accordingly
-			oAmazonS3.UploadFile(gzFile);
+			oAmazonS3.UploadFile(gzFile.toLowerCase());
 			return 0;
 
 		}
