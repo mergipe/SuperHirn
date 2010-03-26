@@ -664,7 +664,9 @@ public class clsRunSuperHirn{
 			.WriteRecord(
 					"UPDATE to_ms_file SET SH_XML_file_name= '" + 
 					gzFile + "' WHERE to_ms_file_key = " + iDatabaseKey );
-		
+
+	    	System.out.println( "Update to_ms_file at key" + iDatabaseKey + " to " + gzFile + ":" + i_UPDATE_Result);	
+
 			return i_UPDATE_Result;
 
 		}

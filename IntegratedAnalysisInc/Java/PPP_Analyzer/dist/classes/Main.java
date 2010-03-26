@@ -106,7 +106,7 @@ public class Main {
 		// SIK09092009 determine whether correct process (xtandem or saxon has
 		// been specified
 		boolean process;
-		process = sCommand.equals("xtandem") || sCommand.equals("generic_script_mode") || sCommand.equals("saxon")
+		process = sCommand.equals("xtandem") || sCommand.equals("generic_script_mode_cm") || sCommand.equals("generic_script_mode") || sCommand.equals("saxon")
 				|| sCommand.equals("cluster");
 
 		if (process) {
@@ -156,6 +156,9 @@ public class Main {
 				 */
 				else if (sCommand.equals("generic_script_mode")) {
 					objProcessList.LoadProcessList("GENERIC_SCRIPT_MODE");
+				} 
+				else if (sCommand.equals("generic_script_mode_cm")) {
+					objProcessList.LoadProcessList("GENERIC_SCRIPT_MODE_CM");
 				} 
 				else {
 					if (objProcessList.LoadProcessList("SAXON")) {
