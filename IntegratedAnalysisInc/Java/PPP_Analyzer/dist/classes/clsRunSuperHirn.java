@@ -649,14 +649,14 @@ public class clsRunSuperHirn{
     	
     	System.out.println( "Compressing to " + gzFile);	
 		
-    	if( this.compressFile( iFile.toLowerCase(), gzFile, false ) )
+    	if( this.compressFile( iFile, gzFile, false ) )
 		{
 			
 	    	System.out.println( "Uploading file" + gzFile + " to " + iLocation);	
 
 	    	// Upload file to Bucket. If it fails, set
 			// the processing status fields accordingly
-			oAmazonS3.UploadFile(gzFile.toLowerCase());
+			oAmazonS3.UploadFile(gzFile);
 			return 0;
 
 		}
