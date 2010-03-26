@@ -45,7 +45,7 @@ public class clsRunSuperHirn{
     /**
      * Path to SuperHirn output directory
      */
-    static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/ ";
+    static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/";
 
     /**
      * Path to SuperHirn MasterMap
@@ -553,7 +553,6 @@ public class clsRunSuperHirn{
     	if( file.isDirectory() )
     	{
     		
-
         	String[] files = file.list();
         	System.out.println( file.getAbsolutePath() + "is a directory with files:" + files.length);	
 
