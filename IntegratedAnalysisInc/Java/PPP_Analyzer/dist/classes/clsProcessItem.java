@@ -6,6 +6,7 @@ package PPP_Analyzer;
 
 import java.text.*; //SIK - to allow use of dateFormat
 import java.util.Date;
+import java.util.Vector;
 import java.io.*;
 import java.util.zip.*;
 import java.util.Iterator;
@@ -803,6 +804,112 @@ public class clsProcessItem {
 				// Increment search list counter
 				iSearchListCount += 1;
 			} while (iSearchListCount < arSearchList[0].length);
+
+		} catch (Exception eX) {
+			errTime = new Date();
+			Main.currErrorMessage = eX.toString();
+			System.err.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+					.toString()
+					+ " Error occured in class 'clsProcessItem': ");
+			eX.printStackTrace();
+			Main.emailError.SendEmail();
+			System.exit(1);
+		}
+	}
+
+	/**
+	 * Method for running APP_Analyzer in SuperHirn Alignment mode.
+	 * 
+	 * @author Lukas N. Mueller
+	 */
+	public void LoadSuperHirnAlignmentList(){
+
+		try {
+
+			Main.objDataAccess.SetDatabase(sTargetDatabase);
+
+			// Get the search list
+			objSearchList = new clsSearchList();
+			Vector<Integer> arSearchList = objSearchList
+					.GetSuperHirnAlignmentList();
+
+			errTime = new Date();
+			if (arSearchList.isEmpty()) {
+				errTime = new Date();
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " There is nothing to process for SuperHirn.");
+				return;
+			} else {
+
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " SuperHirn processing about to start for "
+						+ arSearchList.size() + " items.");
+			}
+
+			// Process all together
+			Main.objDataAccess.SetDatabase(sTargetDatabase);
+			errTime = new Date();
+
+			// Display success message
+			errTime = new Date();
+
+			// UPDATE record in to_ms_file table with
+			// transmission_status of "SEARCHING"
+			// SIK - Update start_search_datetime
+			//searchDate = new java.util.Date();
+
+			// Display progress message
+			errTime = new Date();
+			System.out.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+					.toString()
+					+ " Executing SuperHirn processing...\n\n");
+
+			/**********************
+			 * Execute the SuperHirn command for each mzXML file
+			 */
+			objRunSuperHirn = new clsRunSuperHirn();
+			int iSuperHirnResult = objRunSuperHirn.lcmsAlignment(arSearchList);
+
+			
+			
+			// UPDATE record in to_ms_file table with
+			// transmission_status of "SEARCHED SUCCESSFULLY"
+			// SIK - Update end_search_datetime also to record time
+			// search completed
+			// - Update this field even if search is not successful
+			// - it will show when the AMI instance was freed
+			/*
+			 * if (iSuperHirnResult == 0) {
+			 * 
+			 * System.out
+			 * .println("SuperHirn processing finished correc, updating DONE_FE on "
+			 * + pmzXML); i_UPDATE_Result = Main.objDataAccess.WriteRecord(
+			 * "UPDATE to_ms_file SET SuperhirnStatus = 'DONE_FE', start_search_datetime = '"
+			 * + dateFormat.format(searchDate) + "' WHERE to_ms_file_key = " +
+			 * pmzXML);
+			 * 
+			 * } else {
+			 * 
+			 * System.out.println(
+			 * "ERROR: SuperHirn processing finished incorrect, updating ERROR_FE on "
+			 * + pmzXML);
+			 * 
+			 * i_UPDATE_Result = Main.objDataAccess.WriteRecord(
+			 * "UPDATE to_ms_file SET SuperhirnStatus = 'ERROR_FE', start_search_datetime = '"
+			 * + dateFormat.format(searchDate) + "' WHERE to_ms_file_key = " +
+			 * pmzXML);
+			 * 
+			 * }
+			 */
+
+		
+
 
 		} catch (Exception eX) {
 			errTime = new Date();

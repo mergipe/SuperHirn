@@ -6,6 +6,7 @@ package PPP_Analyzer;
 
 import java.io.*;
 import java.util.Date;
+import java.util.Vector;
 import java.util.zip.GZIPOutputStream;
 import java.text.*;
 
@@ -179,6 +180,54 @@ public class clsRunSuperHirn{
         
     }
     
+    /**
+     * Get the path to the XML file defined by it key from the database table
+     * @param iFileKey String table (primary)key of tuple containing the tandem file path
+     */
+    private String getXMLFile( String iFileKey){
+    	
+    	String xmlTarget = new String("");
+    	try
+    	{
+     
+    		// get the mzXML file path from the table:
+			RowSetDynaClass xmlFileRecord;
+			xmlFileRecord = Main.objDataAccess
+					.getRecordSet("SELECT mzXML_file_location, SH_APML_file_name, SH_XML_file_name " +
+							"from to_search_details WHERE to_ms_file_key = "
+							+ iFileKey);
+			
+			// Check if a recordset was returned
+			if (!xmlFileRecord.getRows().isEmpty()) {
+
+				DynaBean dbDataRow = (DynaBean) xmlFileRecord.getRows()
+						.get(0);
+				// Build the load strings
+				errTime = new Date();
+				xmlTarget = (String) dbDataRow.get("mzXML_file_location") + (String) dbDataRow.get("SH_XML_file_name");
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " clsRunSuperHirn: processing file " + xmlTarget);
+
+			}
+
+		} catch (NotAvailableException e) {
+			errTime = new Date();
+			System.out
+					.println(DateFormat.getDateTimeInstance(
+							DateFormat.MEDIUM, DateFormat.MEDIUM)
+							.format(errTime).toString()
+							+ " Unable to get tandem file for SuperHirn processing. Process will exit.");
+
+      
+       
+    	}
+        
+		return xmlTarget;
+        
+    }
+    
 
     /**
      * Performs a label free quantification workflow on a mzXML file which is defined by its
@@ -265,7 +314,7 @@ public class clsRunSuperHirn{
      * @param String[] xmlFiles array of download paths from the AMI
      * @return int 
      */
-    public int lcmsAlignment(String[] xmlFiles) 
+    public int lcmsAlignment(Vector<Integer> xmlFiles) 
     {
 		// Initialize return value
 		int exitVal = 0;
@@ -273,7 +322,7 @@ public class clsRunSuperHirn{
 		/*
 		 * copy XML files from amazon to the instance:
 		 */
-		exitVal= this.downloadXMLFiles( xmlFiles );
+		exitVal = this.downloadXMLFiles( xmlFiles );
 		if( exitVal == -1 ){
 			System.out.println( "Error in xtandem download/unzipping, stop this thread");	
 			return exitVal;
@@ -290,7 +339,8 @@ public class clsRunSuperHirn{
 		System.out.println( "SuperHirn processing ok: " + exitVal);	
 		
 		// import to database:
-		exitVal = this.runSuperHirnDBPusher();
+		// adopt here the database pusher:
+		// exitVal = this.runSuperHirnDBPusher();
 		if( exitVal == -1){
 			System.out.println( "Error in SuperHirn data import, stop this thread");	
 			return exitVal;
@@ -504,13 +554,16 @@ public class clsRunSuperHirn{
  	
     }
     
-    private int downloadXMLFiles( String[] iFiles)
+    private int downloadXMLFiles( Vector<Integer> iKeys)
     {
     	
-    	for( int i=0;i<iFiles.length; i++ )
+    	for( int i=0;i<iKeys.size(); i++ )
     	{
-    		String fileName = iFiles[i].toLowerCase();
-			if (!this.getFromAmazon(fileName)) {
+    		// get file from database:
+    		String key = new String();
+    		key = key + iKeys.get(i);
+    		String fileName = this.getXMLFile(key); 
+			if (!this.getFromAmazon(fileName.toLowerCase())) {
 				return -1;
 			}
 		}
@@ -592,11 +645,11 @@ public class clsRunSuperHirn{
     	oAmazonS3.ConnectToAmazon(); // Connect to
     	oAmazonS3.SetBucket( iFile);
 
-    	String gzFile = iFile + ".gz";
+    	String gzFile = iFile.toLowerCase() + ".gz";
     	
     	System.out.println( "Compressing to " + gzFile);	
 		
-    	if( this.compressFile( iFile, gzFile, false ) )
+    	if( this.compressFile( iFile.toLowerCase(), gzFile, false ) )
 		{
 			
 	    	System.out.println( "Uploading file" + gzFile + " to " + iLocation);	
