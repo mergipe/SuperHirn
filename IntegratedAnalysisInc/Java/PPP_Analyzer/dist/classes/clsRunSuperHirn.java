@@ -553,7 +553,9 @@ public class clsRunSuperHirn{
     	if( file.isDirectory() )
     	{
     		
-    		String[] files = file.list();
+
+        	String[] files = file.list();
+        	System.out.println( file.getAbsolutePath() + "is a directory with files:" + files.length);	
 
     		String location = "";
     		// get the storage location:
@@ -570,6 +572,9 @@ public class clsRunSuperHirn{
         		}
     		}
     	
+    	}
+    	else{
+        	System.out.println( file.getAbsolutePath() + "is NOT a directory");	
     	}
     	return 0;
     }
