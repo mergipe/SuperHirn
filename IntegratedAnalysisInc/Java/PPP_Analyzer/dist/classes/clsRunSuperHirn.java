@@ -6,6 +6,7 @@ package PPP_Analyzer;
 
 import java.io.*;
 import java.util.Date;
+import java.util.zip.GZIPOutputStream;
 import java.text.*;
 
 import org.apache.commons.beanutils.DynaBean;
@@ -34,7 +35,7 @@ public class clsRunSuperHirn{
      * Set this attribute to true for running the class in testing mode.
      * Otherwise set to false.
      */
-    private boolean VERBOSE = false;
+    private boolean VERBOSE = true;
     
     /**
      * command to start SuperHirn
@@ -45,6 +46,11 @@ public class clsRunSuperHirn{
      * Path to SuperHirn output directory
      */
     static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/ ";
+
+    /**
+     * Path to SuperHirn MasterMap
+     */
+    static private String SuperHirnMasterMap = "ANALYSIS_TestData/PROCESSED_MASTER.xml";
 
     /**
      * Path to SuperHirn parameter file
@@ -185,7 +191,6 @@ public class clsRunSuperHirn{
 		// Initialize return value
 		int exitVal = 0;
 
-		
 		/*
 		 * copy files from amazon to the instance:
 		 */
@@ -220,12 +225,22 @@ public class clsRunSuperHirn{
 		System.out.println( "SuperHirn processing ok: " + exitVal);	
 		
 		// import to database:
-		exitVal = this.runSuperHirnDBPusher();
+		//exitVal = this.runSuperHirnDBPusher();
 		if( exitVal == -1){
 			System.out.println( "Error in SuperHirn data import, stop this thread");	
 			return exitVal;
 		}
 		System.out.println( "SuperHirn data import ok: " + exitVal);	
+		
+		
+		// clean up superhirn results:
+		exitVal = this.uploadXMLFiles();
+		if( exitVal == -1){
+			return exitVal;
+		}
+		System.out.println( "Upload XML SuperHirn results ok: " + exitVal);	
+		
+		
 		
 		// clean up superhirn results:
 		exitVal = this.cleanUpSuperHirnResults();
@@ -244,6 +259,57 @@ public class clsRunSuperHirn{
 
 		return exitVal;
     }
+    
+    /**
+     * Performs a alignment of input file
+     * @param String[] xmlFiles array of download paths from the AMI
+     * @return int 
+     */
+    public int lcmsAlignment(String[] xmlFiles) 
+    {
+		// Initialize return value
+		int exitVal = 0;
+
+		/*
+		 * copy XML files from amazon to the instance:
+		 */
+		exitVal= this.downloadXMLFiles( xmlFiles );
+		if( exitVal == -1 ){
+			System.out.println( "Error in xtandem download/unzipping, stop this thread");	
+			return exitVal;
+		}
+		System.out.println( "Getting XML files ok:" + exitVal);	
+		
+
+		// run feature extraction:
+		exitVal = this.runSuperHirnAlignment();
+		if( exitVal == -1){
+			System.out.println( "Error in superhirn alignment, stop this thread");	
+			return exitVal;
+		}
+		System.out.println( "SuperHirn processing ok: " + exitVal);	
+		
+		// import to database:
+		exitVal = this.runSuperHirnDBPusher();
+		if( exitVal == -1){
+			System.out.println( "Error in SuperHirn data import, stop this thread");	
+			return exitVal;
+		}
+		System.out.println( "SuperHirn data import ok: " + exitVal);	
+		
+		// clean up superhirn xml results:
+		exitVal = this.cleanUpSuperHirnResults();
+		if( exitVal == -1){
+			return exitVal;
+		}
+		System.out.println( "Clean SuperHirn xml results ok: " + exitVal);	
+		
+		// clean up the MasterMap:
+		exitVal = this.cleanUpFile(SuperHirnMasterMap);
+		System.out.println( "Clean MasterMap: " + exitVal);	
+	
+		return exitVal;
+    }
 
     /**
      * Runs SuperHirn feature extraction on the input mzXML file 
@@ -257,6 +323,16 @@ public class clsRunSuperHirn{
 		return this.runCommand(command);
     }
     
+    /**
+     * Runs SuperHirn alignment 
+     * @return int 
+     */
+    private int runSuperHirnAlignment() 
+    {
+    	String command = new String(clsRunSuperHirn.SuperHirnCommand + " -CM "
+    			+ clsRunSuperHirn.SuperHirnParameterFilePath);
+		return this.runCommand(command);
+    }
     
     /**
      * Runs the SuperHirn XML result parsing and importing into PASS database
@@ -428,6 +504,21 @@ public class clsRunSuperHirn{
  	
     }
     
+    private int downloadXMLFiles( String[] iFiles)
+    {
+    	
+    	for( int i=0;i<iFiles.length; i++ )
+    	{
+    		String fileName = iFiles[i].toLowerCase();
+			if (!this.getFromAmazon(fileName)) {
+				return -1;
+			}
+		}
+    	
+    	return 0;
+ 	
+    }
+    
     
     private boolean getFromAmazon( String iFile){
    
@@ -452,76 +543,147 @@ public class clsRunSuperHirn{
 		
     	this.cleanUpFile(iFile);
 		return true;
-		
-		
-		
-		
-		/*
-		oAmazonS3.SetBucket(objBuildXMLFile
-				.CurrentXMLOutputFile());
+	
+    }
+    
+    private int uploadXMLFiles()
+    {      	
+    	
+    	File file = new File( clsRunSuperHirn.SuperHirnOutPutPath );
+    	if( file.isDirectory() )
+    	{
+    		
+    		String[] files = file.list();
 
-		// Patrick Compress the file which will add
-		// a .gz to the filename
-		zippedFileName = objBuildXMLFile
-				.CurrentXMLOutputFile();
-		if (compressFile(
-				objBuildXMLFile
-						.SearchOutputLocation()
-						.toLowerCase()
-						+ objBuildXMLFile
-								.CurrentXMLOutputFile(),
-				objBuildXMLFile
-						.SearchOutputLocation()
-						.toLowerCase()
-						+ objBuildXMLFile
-								.CurrentXMLOutputFile()
-						+ ".gz", false) == true) {
-			zippedFileName = objBuildXMLFile
-					.CurrentXMLOutputFile()
-					+ ".gz";
+    		String location = "";
+    		// get the storage location:
+    		if( files.length > 0){
+    			location = "as3/jenny_55555/sitt/";    			
+    		}
+    		
+    		
+    		
+    		for( int i=0; i<files.length; i++)
+    		{
+        		if( this.uploadFile(files[i], location) != 0 ){
+        			return -1;
+        		}
+    		}
+    	
+    	}
+    	return 0;
+    }
+ 
+    
+    
+    private int uploadFile(String iFile, String iLocation)
+    {      	
+    	
+		
+    	iLocation = iLocation.toLowerCase();
+
+    	// Amazon S3 storage
+    	clsAmazon oAmazonS3 = new clsAmazon(); // Instantiate
+												// new
+												// custom
+												// Amazon S3
+												// object
+    	oAmazonS3.ConnectToAmazon(); // Connect to
+    	oAmazonS3.SetBucket( iFile);
+
+    	String gzFile = iFile.toLowerCase() + ".gz";
+    	
+    	System.out.println( "Compressing to " + gzFile);	
+		
+    	if( this.compressFile( iFile.toLowerCase(), gzFile, false ) )
+		{
+			
+	    	System.out.println( "Uploading file" + gzFile + " to " + iLocation);	
+
+	    	// Upload file to Bucket. If it fails, set
+			// the processing status fields accordingly
+			oAmazonS3.UploadFile(iLocation + gzFile);
+			return 0;
+
 		}
-		// Upload file to Bucket. If it fails, set
-		// the processing status fields accordingly
-		if (oAmazonS3.UploadFile(objBuildXMLFile
-				.SearchOutputLocation()
-				.toLowerCase()
-				+ zippedFileName.toLowerCase())) {
-			searchDate = new java.util.Date();
-			i_UPDATE_Result = Main.objDataAccess
-					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'SEARCHED SUCCESSFULLY',end_search_datetime = '"
-							+ dateFormat
-									.format(searchDate)
-							+ "' WHERE to_ms_file_key = "
-							+ arSearchList[0][iSearchListCount]
-							+ " AND tmx_key = "
-							+ arSearchList[1][iSearchListCount]);
-			String deletedFile = oAmazonS3
-					.delTempFile();
-			if (deletedFile.compareTo("\n") != 0) {
-				errTime = new Date();
-				System.out.println(DateFormat
-						.getDateTimeInstance(
-								DateFormat.MEDIUM,
-								DateFormat.MEDIUM)
-						.format(errTime).toString()
-						+ deletedFile);
+		return -1;
+    }
+	
+    
+	
+    /**
+	 * This procedure compresses a file to the .gz or .gzip zip format and may
+	 * retain or delete the original uncompressed file.
+	 * 
+	 * @param inputFile
+	 *            The complete path to the file we wish to decompress
+	 * @param outputFile
+	 *            The complete path to where we wish to store the uncompressed
+	 *            file
+	 * @param keepCompressed
+	 *            Whether to retain the original compressed file
+	 * @return A boolean value indicating success or failure of the
+	 *         decompression
+	 */
+	public boolean compressFile(String inputFile, String outputFile,
+			boolean keepOriginal) {
+		GZIPOutputStream outStream;
+		FileInputStream inStream;
+		byte[] buf;
+		int len;
+							boolean isZipped = false;
+		File delSource;
+
+		try {
+			isZipped = false;
+			// The file to write out.
+			outStream = new GZIPOutputStream(new FileOutputStream(outputFile));
+
+			// The original file that we shall compress;
+			inStream = new FileInputStream(inputFile);
+
+			buf = new byte[1024];
+			while ((len = inStream.read(buf)) > 0) {
+				outStream.write(buf, 0, len);
 			}
-		} else {
-			searchDate = new java.util.Date();
-			i_UPDATE_Result = Main.objDataAccess
-					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'ERROR SEARCHING',end_search_datetime = '"
-							+ dateFormat
-									.format(searchDate)
-							+ "' WHERE to_ms_file_key = "
-							+ arSearchList[0][iSearchListCount]
-							+ " AND tmx_key = "
-							+ arSearchList[1][iSearchListCount]);
-			iXTandemSearchResult = 1;
-		}
+			inStream.close();
 
-		// Kill the Amazon object
-		oAmazonS3 = null;
-	*/
+			outStream.finish();
+			outStream.close();
+
+			// If keepCompressed is false delete the source file otherwise keep
+			// them both
+			if (keepOriginal == false) {
+				delSource = new File(inputFile);
+				delSource.delete();
+			}
+
+			isZipped = true;
+		} catch (SecurityException se) {
+			// Will occur if the user does not have delete rights
+			errTime = new Date();
+			System.err.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+					.toString()
+					+ " Error occured in class 'clsProcessItem': ");
+			se.printStackTrace();
+			Main.emailError.SendEmail();
+			System.exit(1);
+			return true; // Because we have unzipped ok only deletion failed
+		} catch (Exception ex) {
+			errTime = new Date();
+			Main.currErrorMessage = "Error occured in class 'clsProcessItem' while uncompressing file: "
+					+ inputFile + " " + ex.toString();
+			System.err.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+					.toString()
+					+ " Error occured in class 'clsProcessItem': ");
+			ex.printStackTrace();
+			Main.emailError.SendEmail();
+			System.exit(1);
+			return false;
+		}
+		return isZipped;
 	}
     
 }
