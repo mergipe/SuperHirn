@@ -618,7 +618,7 @@ public class clsRunSuperHirn{
     	
     		for( int i=0; i<files.length; i++)
     		{
-        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath + files[i], location) != 0 ){
+        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, files[i], location) != 0 ){
         			return -1;
         		}
     		}
@@ -632,7 +632,7 @@ public class clsRunSuperHirn{
  
     
     
-    private int uploadFile(String iFile, String iLocation)
+    private int uploadFile(String iSourceLocation, String iFile, String iTargetLocation)
     {      	
     	
 
@@ -649,10 +649,10 @@ public class clsRunSuperHirn{
     	
     	System.out.println( "Compressing to " + gzFile);	
 		
-    	if( this.compressFile( iFile, gzFile, false ) )
+    	if( this.compressFile( iSourceLocation + iFile, gzFile, false ) )
 		{
 			
-	    	System.out.println( "Uploading file" + gzFile + " to " + iLocation);	
+	    	System.out.println( "Uploading file" + gzFile + " to " + iTargetLocation);	
 
 	    	// Upload file to Bucket. If it fails, set
 			// the processing status fields accordingly
