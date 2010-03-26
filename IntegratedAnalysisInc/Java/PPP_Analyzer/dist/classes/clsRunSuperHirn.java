@@ -283,7 +283,7 @@ public class clsRunSuperHirn{
 		
 		
 		// clean up superhirn results:
-		exitVal = this.uploadXMLFiles();
+		exitVal = this.uploadXMLFiles(mzXMLFileKey);
 		if( exitVal == -1){
 			return exitVal;
 		}
@@ -599,7 +599,7 @@ public class clsRunSuperHirn{
 	
     }
     
-    private int uploadXMLFiles()
+    private int uploadXMLFiles(String iKey)
     {      	
     	
     	File file = new File( clsRunSuperHirn.SuperHirnOutPutPath );
@@ -618,7 +618,7 @@ public class clsRunSuperHirn{
     	
     		for( int i=0; i<files.length; i++)
     		{
-        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, files[i], location) != 0 ){
+        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, files[i], location, iKey) != 0 ){
         			return -1;
         		}
     		}
@@ -632,7 +632,7 @@ public class clsRunSuperHirn{
  
     
     
-    private int uploadFile(String iSourceLocation, String iFile, String iTargetLocation)
+    private int uploadFile(String iSourceLocation, String iFile, String iTargetLocation, String iDatabaseKey)
     {      	
     	
 
@@ -657,7 +657,15 @@ public class clsRunSuperHirn{
 	    	// Upload file to Bucket. If it fails, set
 			// the processing status fields accordingly
 			oAmazonS3.UploadFile(gzFile);
-			return 0;
+			
+			
+			// update the database:
+			int i_UPDATE_Result = Main.objDataAccess
+			.WriteRecord(
+					"UPDATE to_ms_file SET SH_XML_file_name= '" + 
+					gzFile + "' WHERE to_ms_file_key = " + iDatabaseKey );
+		
+			return i_UPDATE_Result;
 
 		}
 		return -1;
