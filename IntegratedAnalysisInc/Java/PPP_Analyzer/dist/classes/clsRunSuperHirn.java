@@ -562,11 +562,10 @@ public class clsRunSuperHirn{
     			location = "as3/jenny_55555/sitt/";    			
     		}
     		
-    		
-    		
+    	
     		for( int i=0; i<files.length; i++)
     		{
-        		if( this.uploadFile(files[i], location) != 0 ){
+        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath + files[i], location) != 0 ){
         			return -1;
         		}
     		}
