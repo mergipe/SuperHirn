@@ -669,7 +669,7 @@ public class clsRunSuperHirn{
     	if( this.compressFile( iSourceLocation + iFile, gzFile, false ) )
 		{
 			
-	    	System.out.println( "Uploading file" + gzFile + " to " + iTargetLocation);	
+	    	System.out.println( "Uploading file '" + gzFile + "' to " + iTargetLocation);	
 
 	    	// Upload file to Bucket. If it fails, set
 			// the processing status fields accordingly
