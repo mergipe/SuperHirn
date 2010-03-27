@@ -36,7 +36,7 @@ public class clsRunSuperHirn{
      * Set this attribute to true for running the class in testing mode.
      * Otherwise set to false.
      */
-    private boolean VERBOSE = true;
+    private boolean VERBOSE = false;
     
     /**
      * command to start SuperHirn
@@ -194,7 +194,7 @@ public class clsRunSuperHirn{
 			RowSetDynaClass xmlFileRecord;
 			xmlFileRecord = Main.objDataAccess
 					.getRecordSet("SELECT mzXML_file_location, SH_APML_file_name, SH_XML_file_name " +
-							"from to_search_details WHERE to_ms_file_key = "
+							"from to_ms_file WHERE to_ms_file_key = "
 							+ iFileKey);
 			
 			// Check if a recordset was returned
@@ -204,7 +204,7 @@ public class clsRunSuperHirn{
 						.get(0);
 				// Build the load strings
 				errTime = new Date();
-				xmlTarget = (String) dbDataRow.get("mzXML_file_location") + (String) dbDataRow.get("SH_XML_file_name");
+				xmlTarget = (String) dbDataRow.get("mzXML_file_location") + "xtandem_output/" + (String) dbDataRow.get("SH_XML_file_name");
 				System.out.println(DateFormat.getDateTimeInstance(
 						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
 						.toString()
@@ -329,6 +329,7 @@ public class clsRunSuperHirn{
 		}
 		System.out.println( "Getting XML files ok:" + exitVal);	
 		
+	
 
 		// run feature extraction:
 		exitVal = this.runSuperHirnAlignment();
@@ -548,7 +549,7 @@ public class clsRunSuperHirn{
     	{
     		return null;
     	}
-    	// remove .gz and add .mzXML:
+    	// remove .gz:
     	fileName = fileName.substring(0, fileName.lastIndexOf("."));
     	return fileName;  
  	
@@ -565,6 +566,22 @@ public class clsRunSuperHirn{
     		String fileName = this.getXMLFile(key); 
 			if (!this.getFromAmazon(fileName.toLowerCase())) {
 				return -1;
+			}
+			else{
+								
+				/// move the downloaded xml file to the SuperHirn processing directory
+		    	fileName = fileName.substring(0, fileName.lastIndexOf("."));
+				String targetName = 
+					SuperHirnOutPutPath + fileName.substring(
+						fileName.lastIndexOf( "/" ) + 1);
+				
+		    	String mvCommand = "mv " + fileName + " " + targetName ;
+				if( this.runCommand(mvCommand) != 0 )
+				{
+					return -1;
+				}
+		    	
+				
 			}
 		}
     	
@@ -612,7 +629,7 @@ public class clsRunSuperHirn{
     		String location = "";
     		// get the storage location:
     		if( files.length > 0){
-    			location = "as3/jenny_55555/sitt/";    			
+    			location = "as3/jenny_55555/sitt/xtandem_output/";    			
     		}
     		
     	

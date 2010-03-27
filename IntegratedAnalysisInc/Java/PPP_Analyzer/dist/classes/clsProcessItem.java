@@ -665,6 +665,44 @@ public class clsProcessItem {
 	}
 
 	
+	
+
+	/*
+	 * Method for running APP_Analyzer in SuperHirn mode.
+	 * 
+	 * @author Lukas N. Mueller
+	 */
+	public void runSuperHirnList() {
+		
+		try {
+
+			Main.objDataAccess.SetDatabase(sTargetDatabase);			
+			objSearchList = new clsSearchList();
+			if (objSearchList.GetSuperHirnList() != null) {
+				this.LoadSuperHirnList();
+			}
+
+			if (objSearchList.GetSuperHirnAlignmentList() != null) {
+				this.LoadSuperHirnAlignmentList();
+			}
+			
+			
+		} catch (Exception eX) {
+			errTime = new Date();
+			Main.currErrorMessage = eX.toString();
+			System.err.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+					.toString()
+					+ " Error occured in class 'clsProcessItem': ");
+			eX.printStackTrace();
+			Main.emailError.SendEmail();
+			System.exit(1);
+		}
+		
+		
+		
+	}
+	
 	/*
 	 * Method for running APP_Analyzer in SuperHirn mode.
 	 * 

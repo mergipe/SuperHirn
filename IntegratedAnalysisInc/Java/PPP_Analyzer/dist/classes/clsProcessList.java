@@ -113,9 +113,7 @@ public class clsProcessList {
                     oProcessItem.LoadSearchList();
                 } 
                 else if (sProcess.toLowerCase().equals("generic_script_mode")) {
-                    oProcessItem.LoadSuperHirnList();
-                } else if (sProcess.toLowerCase().equals("generic_script_mode_cm")) {
-					oProcessItem.LoadSuperHirnAlignmentList();
+                    oProcessItem.runSuperHirnList();
 				} else {
 					oProcessItem.LoadSaxonSearchList();
 				}
