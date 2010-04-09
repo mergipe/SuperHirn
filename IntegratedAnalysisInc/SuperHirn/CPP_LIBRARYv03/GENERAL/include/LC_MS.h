@@ -193,13 +193,16 @@ public:
   
   // access the raw data names:
   void remove_raw_spec_name(int ID){raw_spec_names.erase( ID );};
-  void add_raw_spec_name(int ID, string name){raw_spec_names.insert( make_pair(ID, name) );};
+  void add_raw_spec_name(int ID, string name){
+    raw_spec_names.insert( make_pair(ID, name) );
+  };
   bool check_raw_spec_name_empty(){return raw_spec_names.empty();};
   map<int, string>::iterator get_raw_spec_name_start(){return raw_spec_names.begin();};
   map<int, string>::iterator get_raw_spec_name_end(){return raw_spec_names.end();};
   map<int, string> get_raw_spec_name_map(){ return raw_spec_names;};
   int get_nb_raw_specs(){ return raw_spec_names.size();};
-  string get_raw_spec_name(int ID){ map<int, string>::iterator p = raw_spec_names.find(ID); 
+  string get_raw_spec_name(int ID){ 
+    map<int, string>::iterator p = raw_spec_names.find(ID); 
     if( p == raw_spec_names.end() ){
       return "";
     }

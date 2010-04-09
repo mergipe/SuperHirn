@@ -225,7 +225,7 @@ void LCMSDataImporter::assigenLCMSIdToFeatures()
   int i = 0;
   vector<LC_MS>::iterator P = LC_MS_RUNS.begin();
   while( P != LC_MS_RUNS.end() ){
-    P->set_spectrum_ID( i );
+    P->setFeatureLCMSID();
     i++;
     P++;
   }
@@ -533,7 +533,8 @@ void LCMSDataImporter::start_peak_extraction_from_mzxml_data(){
       {
       LC_MS* run = &(*p);
       run->order_by_mass();
-      run->set_spectrum_ID( LC_MS_NAME_MAP.size() );
+        run->set_spectrum_ID( LC_MS_NAME_MAP.size() );
+        run->setFeatureLCMSID();
       
       // assigned MS/MS information:
       this->addPepXMLInfoToLCMS( run );

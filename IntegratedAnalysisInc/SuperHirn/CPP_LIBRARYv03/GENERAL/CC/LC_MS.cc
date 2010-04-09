@@ -370,13 +370,26 @@ void LC_MS::setFeatureLCMSID(){
 
 void LC_MS::set_spectrum_ID(int iID)
 {
+  
+  // check that for child IDs which need to be changed:
+  /*
+  string name = get_raw_spec_name(spectrum_id); 
+  if( name != "" )
+    {
+      add_raw_spec_name( iID, name );
+      remove_raw_spec_name( spectrum_id );
+    }
+  */
+  
   this->spectrum_id = iID;
   
+  /*
   vector<LC_MS_FEATURE>::iterator F = this->get_feature_list_begin();
   while( F != this->get_feature_list_end() )
     {
       F->set_spectrum_ID( this->get_spectrum_ID() );
     F++;
   }
+   */
   
 }
