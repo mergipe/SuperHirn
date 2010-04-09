@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.Vector;
+import java.util.Map.Entry;
 
 /**
  * The class LCMS represents a liquid chromatography coupled to mass spectrometry measurement containing detected
@@ -25,6 +28,8 @@ public class LCMS implements Cloneable, Serializable {
 	private String name;
 
 	private Vector<MS1Feature> features;
+	
+	private SortedMap<Integer, String> childLCMS = new TreeMap<Integer, String>();
 
 	// a unique specrum id to identify a spectrum:
 	private int id;
@@ -44,6 +49,14 @@ public class LCMS implements Cloneable, Serializable {
 		this.features = new Vector<MS1Feature>();
 	}
 
+	public void addChildLCMS(String iName, int iID) {
+		this.childLCMS.put(iID, iName);
+	}
+	
+	public SortedMap<Integer, String> getChildLCMS() {
+		return this.childLCMS;
+	}
+	
 	/**
 	 * Override of the clone methode to copy the name, id and features of this
 	 * LCMS instance. throws CloneNotSupportedException
@@ -102,6 +115,19 @@ public class LCMS implements Cloneable, Serializable {
 		text = String.format("#features: %d, #MS2 ids: %d", this.nbFeatures(),
 				this.identifiedFeatures());
 		System.out.println(text);
+		if( !this.childLCMS.isEmpty())
+		{
+			Iterator I = this.childLCMS.entrySet().iterator();
+			while( I.hasNext())
+			{
+				Entry<Integer, String> e = (Entry<Integer, String>) I.next();
+				text = String.format("Child Run: %s (id=%d)", e.getValue(), e.getKey());
+				System.out.println(text);
+			}		
+			
+		}
+		
+		
 	}
 
 	/**

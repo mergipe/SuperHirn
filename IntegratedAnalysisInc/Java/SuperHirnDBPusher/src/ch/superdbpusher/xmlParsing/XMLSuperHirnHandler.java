@@ -63,13 +63,15 @@ public class XMLSuperHirnHandler implements ElementHandler {
 		Iterator I = lcmsElement.elementIterator();
 
 		Element childRuns = (Element) I.next();
-		/*
-		 * Element childRuns = (Element) I.next(); Iterator K =
-		 * childRuns.elementIterator(); while (K.hasNext()) { Element childRun =
-		 * (Element) K.next(); String id = } childRun.attributeValue("ID");
-		 * this.THIS_LC_MS.add_raw_spec_name(Integer.parseInt(id),
-		 * childRun.attributeValue("name")); }
-		 */
+		
+		Iterator K = childRuns.elementIterator(); 
+		while (K.hasNext()) { 
+			Element childRun = (Element) K.next(); 
+			String cName = childRun.attributeValue("name");
+			Integer id = Integer.parseInt( childRun.attributeValue("ID") );
+			this.lcms.addChildLCMS(cName, id);
+			
+		}		 
 
 		// parse the MS1 feature elements:
 		this.parseMS1features((Element) I.next());
@@ -116,6 +118,7 @@ public class XMLSuperHirnHandler implements ElementHandler {
 					.attributeValue("Tr_Start"));
 			double endTr = Double.parseDouble(element.attributeValue("Tr_End"));
 			int id = Integer.parseInt(element.attributeValue("Feature_ID"));
+			int LCMSid = Integer.parseInt(element.attributeValue("LC_MS_ID"));
 
 			double snRatio = 10;
 			if (element.attributeValue("snRatio") != null) {
@@ -150,6 +153,7 @@ public class XMLSuperHirnHandler implements ElementHandler {
 						SCAN_START, SCAN_END, z, PEAK_AREA, APEX_INTENSITY, id);
 				FEA.setSignalToNoise(snRatio);
 				FEA.setBackgroundNoiseLevel(BGLevel);
+				FEA.setLCMSID(LCMSid);
 			}
 
 			if (FEA != null) {
