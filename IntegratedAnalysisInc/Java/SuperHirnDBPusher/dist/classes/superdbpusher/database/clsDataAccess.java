@@ -16,6 +16,12 @@ import ch.superdbpusher.Manager;
  * 
  */
 public class clsDataAccess {
+	
+	
+
+	static private Boolean DEBUG_SQL = false;
+
+
 
 	/** how we format dates for MySQL (e.g., 2005-08-30 13:01:55) */
 	private static final DateFormat dateFormat = new SimpleDateFormat(
@@ -292,6 +298,11 @@ public class clsDataAccess {
 
 	public boolean performSQLStatement(String sql)
 			throws DatabaseAccessException {
+			
+		if( DEBUG_SQL ){
+			System.out.println( sql );
+			return true;
+		}
 
 		// Declare return value
 		boolean blnStatus = false;
@@ -340,12 +351,18 @@ public class clsDataAccess {
 
 	public RowSetDynaClass getRecordSet(String sSELECTString)
 			throws DatabaseAccessException {
+			
 		// Get the data from the database table
 		Statement sSQLSelect = null;
 		ResultSet rsRecordset = null;
-
+		
 		try {
 		
+			if( DEBUG_SQL ){
+				System.out.println( sSELECTString );
+				return null;
+			}
+
 			Connection myConnection = this.getConnection();
 			if (myConnection != null) {
 		
@@ -382,6 +399,12 @@ public class clsDataAccess {
 
 	public int runUpdateStmt(String sqlStmt) {
 		int recordCount = 0;
+		
+		if( DEBUG_SQL ){
+			System.out.println( sqlStmt );
+			return 0;
+		}
+
 		try {
 			if (this.connectToMySQL()) {
 				Statement sSQLSelect = conMySQL.createStatement();

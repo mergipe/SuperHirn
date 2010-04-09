@@ -144,7 +144,7 @@ public class MS1Feature implements Cloneable, Serializable {
 
 	private double BackgroundNoiseLevel;
 
-	private SortedMap<Integer, MS1Feature> matches;
+	private SortedMap<Integer, MS1Feature> matches = new TreeMap<Integer, MS1Feature>();
 
 	private SortedMap<Double, Vector<MS2Info>> ms2Ids;
 
