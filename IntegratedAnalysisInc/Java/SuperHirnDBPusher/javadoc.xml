@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project default="javadoc">
-<target name="javadoc">
-<javadoc access="private" author="true" classpath="libs/commons-beanutils-1.8.2.jar:libs/mysql-connector-java-5.1.12-bin.jar:libs/dom4j-1.6.1.jar:libs/jdom.jar" destdir="doc" doctitle="SuperHirnDBPusher: SuperHirn Data to Database Integration" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" overview="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/SuperDbPusher/src/ch/overview.html" packagenames="ch.superdbpusher.database,ch.superdbpusher.proteomics,ch.superdbpusher,ch.superdbpusher.xmlParsing" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
-</target>
-</project>
