@@ -277,7 +277,7 @@ public class clsRunSuperHirn{
 		System.out.println( "SuperHirn processing ok: " + exitVal);	
 		
 		// import to database:
-		//exitVal = this.runSuperHirnDBPusher();
+		exitVal = this.runSuperHirnDBPusher();
 		if( exitVal == -1){
 			System.out.println( "Error in SuperHirn data import, stop this thread");	
 			return exitVal;
@@ -650,14 +650,14 @@ public class clsRunSuperHirn{
     	
     		for( int i=0; i<files.length; i++)
     		{
-        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, files[i], location, iKey) != 0 ){
+        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, files[i], location, iKey) == -1 ){
         			return -1;
         		}
     		}
     	
     	}
     	else{
-        	System.out.println( file.getAbsolutePath() + "is NOT a directory");	
+        	System.out.println( file.getAbsolutePath() + " is NOT a directory");	
     	}
     	return 0;
     }
