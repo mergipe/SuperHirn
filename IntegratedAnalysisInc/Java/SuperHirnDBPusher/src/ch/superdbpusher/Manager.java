@@ -306,16 +306,17 @@ public class Manager {
 					+ Manager.featureTableName + " LEFT JOIN (" + Manager.LCMSTableName + ") ON "
 					+ "(" + Manager.featureTableName + ".fkLC_MS_ID=" + Manager.LCMSTableName + ".idLC_MS_RUN) WHERE "
 					+ Manager.LCMSTableName + ".mzXML_Name='" + mzXMLName + "' AND "
-					+ Manager.featureTableName + ".featureID=" + iFeature.id();
+					+ Manager.featureTableName + ".z=" + iFeature.z() + " AND "
+					+ Manager.featureTableName + ".ionCurrent=" + iFeature.peakArea() + " AND "
+					+ Manager.featureTableName + ".apexScan=" + iFeature.apexScan() + " AND "
+					+ Manager.featureTableName + ".startScan=" + iFeature.startScan() + " AND "					
+					+ Manager.featureTableName + ".endScan=" + iFeature.endScan();
 
 			// get the inserted LC_MS id back:
 			RowSetDynaClass rec = this.rdsAccess.getRecordSet(select);
 			if (rec == null) {
-				return id;
-			} else if (rec.getRows().size() != 1) {
-				throw new Exception("No unique ID for MS1 feature found!");
-			}
-
+				throw new Exception("No ID for MS1 feature found!");
+			} 
 			DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
 			id = (Integer) dbDataRow.get("idMS1_FEATURE");
 
@@ -471,12 +472,12 @@ public class Manager {
 			if (rec == null) {
 				return;
 			} else if (rec.getRows().size() == 0) {
-				System.out.println("No ALIGNMENT data associated with LCMS name "
+				System.out.println("No ALIGNMENT data associated with LCMS name: "
 						+ iRun.name());
 				return;
 			} else {
 
-				System.out.println("Remove data associated with ALIGNMENT name "
+				System.out.println("Remove data associated with ALIGNMENT named: "
 						+ iRun.name());
 			}
 
