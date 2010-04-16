@@ -48,15 +48,11 @@ public class clsRunSuperHirn{
      */
     static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/";
 
-    /**
-     * Path to SuperHirn master map
-     */
-    static private String SuperHirnMasterMapOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/TestData.xml";
 
     /**
      * Path to SuperHirn MasterMap
      */
-    static private String SuperHirnMasterMap = "ANALYSIS_TestData/PROCESSED_MASTER.xml";
+    static private String SuperHirnMasterMap = "ANALYSIS_TestData/TestData.xml";
 
     /**
      * Path to SuperHirn parameter file
