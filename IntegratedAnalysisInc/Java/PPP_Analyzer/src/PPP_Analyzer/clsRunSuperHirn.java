@@ -6,6 +6,8 @@ package PPP_Analyzer;
 
 import java.io.*;
 import java.util.Date;
+import java.util.Vector;
+import java.util.zip.GZIPOutputStream;
 import java.text.*;
 
 import org.apache.commons.beanutils.DynaBean;
@@ -44,7 +46,13 @@ public class clsRunSuperHirn{
     /**
      * Path to SuperHirn output directory
      */
-    static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/ ";
+    static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/";
+
+
+    /**
+     * Path to SuperHirn MasterMap
+     */
+    static private String SuperHirnMasterMap = "ANALYSIS_TestData/TestData.xml";
 
     /**
      * Path to SuperHirn parameter file
@@ -60,6 +68,11 @@ public class clsRunSuperHirn{
      * command to start Superhirn result to database import process
      */
     static private String dbPusherCommand = "java -Xmx1g -Xms1g -jar Java/SuperDBPusher/SuperDbPusher.jar ";
+
+    /**
+     * command to start Superhirn result to database import process
+     */
+    static private String EC2UploadLocation = "SuperHirnFE_Files";
     
     /**
      * command to cleanup Superhirn results 
@@ -173,6 +186,57 @@ public class clsRunSuperHirn{
         
     }
     
+    /**
+     * Get the path to the XML file defined by it key from the database table
+     * @param iFileKey String table (primary)key of tuple containing the tandem file path
+     */
+    private String getXMLFile( String iFileKey){
+    	
+    	String xmlTarget = new String("");
+    	try
+    	{
+     
+    		// get the mzXML file path from the table:
+			RowSetDynaClass xmlFileRecord;
+			xmlFileRecord = Main.objDataAccess
+					.getRecordSet("SELECT mzXML_file_location, SH_APML_file_name, SH_XML_file_name " +
+							"from to_ms_file WHERE to_ms_file_key = "
+							+ iFileKey);
+			
+			// Check if a recordset was returned
+			if (!xmlFileRecord.getRows().isEmpty()) {
+
+				DynaBean dbDataRow = (DynaBean) xmlFileRecord.getRows()
+						.get(0);
+				// Build the load strings
+				errTime = new Date();
+				xmlTarget = (String) dbDataRow.get("mzXML_file_location") + "xtandem_output/" + (String) dbDataRow.get("SH_XML_file_name");
+				xmlTarget = (String) dbDataRow.get("SH_XML_file_name");
+
+				
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " clsRunSuperHirn: processing file " + xmlTarget);
+
+			}
+
+		} catch (NotAvailableException e) {
+			errTime = new Date();
+			System.out
+					.println(DateFormat.getDateTimeInstance(
+							DateFormat.MEDIUM, DateFormat.MEDIUM)
+							.format(errTime).toString()
+							+ " Unable to get tandem file for SuperHirn processing. Process will exit.");
+
+      
+       
+    	}
+        
+		return xmlTarget;
+        
+    }
+    
 
     /**
      * Performs a label free quantification workflow on a mzXML file which is defined by its
@@ -183,51 +247,126 @@ public class clsRunSuperHirn{
     public int labelfreeQuantificationOnMzXMLFile(String mzXMLFileKey, String tandemXMLFileKey) 
     {
 		// Initialize return value
-		int exitVal = 1;
+		int exitVal = 0;
 
-		
 		/*
 		 * copy files from amazon to the instance:
 		 */
 		String xTandem = this.downloadXTandemFile( mzXMLFileKey );
 		if( xTandem == null ){
+			System.out.println( "Error in xtandem download/unzipping, stop this thread");	
 			return -1;
 		}
-			
+		System.out.println( "Get XTandem ok:" + exitVal);	
+		
 		String mzXML = this.downloadMzXMLFile( mzXMLFileKey );
 		if( mzXML == null ){
+			System.out.println( "Error in mzXML download/unzipping, stop this thread");	
 			return -1;
 		}
+		System.out.println( "Get MZXML ok:"  + exitVal);	
 		
 		// conversion of xtandem to pepxml format:
 		String pepXML = this.convertTandemToPepXML( xTandem );
 		if( pepXML == null){
+			System.out.println( "Error in xtandem conversion, stop this thread");	
 			return -1;
 		}
+		System.out.println( "Convert PepXML ok:"  + exitVal);	
 
 		// run feature extraction:
 		exitVal = this.runSuperHirnFeatureExtraction(mzXML);
 		if( exitVal == -1){
+			System.out.println( "Error in superhirn processing, stop this thread");	
 			return exitVal;
 		}
+		System.out.println( "SuperHirn processing ok: " + exitVal);	
 		
 		// import to database:
-		exitVal = this.runSuperHirnDBPusher();
+		exitVal = this.runSuperHirnExtractionDBPusher();
+		if( exitVal == -1){
+			System.out.println( "Error in SuperHirn extraction data import, stop this thread");	
+			return exitVal;
+		}
+		System.out.println( "SuperHirn data import ok: " + exitVal);	
+		
+		
+		// clean up superhirn results:
+		exitVal = this.uploadXMLFiles(mzXMLFileKey);
 		if( exitVal == -1){
 			return exitVal;
 		}
+		System.out.println( "Upload XML SuperHirn results ok: " + exitVal);	
+		
+		
 		
 		// clean up superhirn results:
 		exitVal = this.cleanUpSuperHirnResults();
 		if( exitVal == -1){
 			return exitVal;
 		}
+		System.out.println( "Clean SuperHirn results ok: " + exitVal);	
 		
 		// clean up pepXML conversion files:
 		exitVal = this.cleanUpFile(pepXML);
+		System.out.println( "Clean PepXML results ok: " + exitVal);	
 		exitVal = this.cleanUpFile(mzXML);
+		System.out.println( "Clean mzXML results ok: " + exitVal);	
 		exitVal = this.cleanUpFile(mzXML + ".gz");
+		System.out.println( "Clean mzXML.gz results ok: " + exitVal);	
 
+		return exitVal;
+    }
+    
+    /**
+     * Performs a alignment of input file
+     * @param String[] xmlFiles array of download paths from the AMI
+     * @return int 
+     */
+    public int lcmsAlignment(Vector<Integer> xmlFiles) 
+    {
+		// Initialize return value
+		int exitVal = 0;
+
+		/*
+		 * copy XML files from amazon to the instance:
+		 */
+		exitVal = this.downloadXMLFiles( xmlFiles );
+		if( exitVal == -1 ){
+			System.out.println( "Error in xtandem download/unzipping, stop this thread");	
+			return exitVal;
+		}
+		System.out.println( "Getting XML files ok:" + exitVal);	
+		
+	
+		// run feature extraction:
+		exitVal = this.runSuperHirnAlignment();
+		if( exitVal == -1){
+			System.out.println( "Error in superhirn alignment, stop this thread");	
+			return exitVal;
+		}
+		System.out.println( "SuperHirn processing ok: " + exitVal);	
+		
+		// import to database:
+		// adopt here the database pusher:
+		exitVal = this.runSuperHirnAlignmentDBPusher();
+		if( exitVal == -1){
+			System.out.println( "Error in SuperHirn alignment data import, stop this thread");	
+			return exitVal;
+		}
+		System.out.println( "SuperHirn data import ok: " + exitVal);	
+		
+		// clean up superhirn xml results:
+		exitVal = this.cleanUpSuperHirnResults();
+		if( exitVal == -1){
+			return exitVal;
+		}
+		System.out.println( "Clean SuperHirn xml results ok: " + exitVal);	
+		
+		// clean up the MasterMap:
+		exitVal = this.cleanUpFile(SuperHirnMasterMap);
+		System.out.println( "Clean MasterMap: " + exitVal);	
+	
 		return exitVal;
     }
 
@@ -243,12 +382,32 @@ public class clsRunSuperHirn{
 		return this.runCommand(command);
     }
     
-    
     /**
-     * Runs the SuperHirn XML result parsing and importing into PASS database
+     * Runs SuperHirn alignment 
      * @return int 
      */
-    private int runSuperHirnDBPusher() 
+    private int runSuperHirnAlignment() 
+    {
+    	String command = new String(clsRunSuperHirn.SuperHirnCommand + " -BT -CM "
+    			+ clsRunSuperHirn.SuperHirnParameterFilePath);
+		return this.runCommand(command);
+    }
+    
+    /**
+     * Runs the SuperHirn XML result parsing of mastermap file and importing into PASS database
+     * @return int 
+     */
+    private int runSuperHirnAlignmentDBPusher() 
+    {
+		String command = new String(clsRunSuperHirn.dbPusherCommand + " " + clsRunSuperHirn.SuperHirnMasterMap);
+		return this.runCommand(command);
+    }
+
+    /**
+     * Runs the SuperHirn XML result parsing of feature extraction files and importing into PASS database
+     * @return int 
+     */
+    private int runSuperHirnExtractionDBPusher() 
     {
 		String command = new String(clsRunSuperHirn.dbPusherCommand + " " + clsRunSuperHirn.SuperHirnOutPutPath);
 		return this.runCommand(command);
@@ -293,7 +452,7 @@ public class clsRunSuperHirn{
     			movedPepXML.lastIndexOf( "/" ) + 1) + pepXMLFileName;
     	
     	String mvCommand = "mv " + iFile + " " + movedPepXML;
-		if( this.runCommand(mvCommand) == -1 )
+		if( this.runCommand(mvCommand) != 0 )
 		{
 			return null;
 		}
@@ -304,7 +463,7 @@ public class clsRunSuperHirn{
     	String command = new String(clsRunSuperHirn.tandemToXMLCommand 
 				+ " " + movedPepXML
 				+ " " + pepXML);
-		if( this.runCommand(command) != -1 )
+		if( this.runCommand(command) == 0 )
 		{
 			this.cleanUpFile( movedPepXML );
 			return pepXML;
@@ -326,7 +485,7 @@ public class clsRunSuperHirn{
     	if( VERBOSE )
     	{
     		System.out.println( Command );
-    		return 1;
+    		return 0;
     	}
     	
     	int exitVal = -1;
@@ -353,24 +512,24 @@ public class clsRunSuperHirn{
 			// Wait for process to complete
 			exitVal = p.waitFor();
 
-			// Wait for process to complete
-			// p.waitFor();
-			// exitVal = p.exitValue();
-
-			errTime = new Date();
-			System.out.println(DateFormat.getDateTimeInstance(
-					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
-					.toString()
-					+ " Process Exit Value : " + exitVal);
 
 			// read any errors from the attempted command
-			errTime = new Date();
-			System.out.println(DateFormat.getDateTimeInstance(
-					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
-					.toString()
-					+ " Here is the standard error of the command (if any):\n");
-			while ((s = stdError.readLine()) != null) {
-				System.out.println(s);
+			if( exitVal != 0){
+				errTime = new Date();
+
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " Process Exit abnormaly with value: " + exitVal);
+
+				System.out
+						.println(DateFormat.getDateTimeInstance(
+								DateFormat.MEDIUM, DateFormat.MEDIUM).format(
+								errTime).toString()
+								+ " Here is the standard error of the command (if any):\n");
+				while ((s = stdError.readLine()) != null) {
+					System.out.println(s);
+				}
 			}
 
 		} catch (IOException e) {
@@ -408,9 +567,56 @@ public class clsRunSuperHirn{
     	{
     		return null;
     	}
-    	// remove .gz and add .mzXML:
+    	// remove .gz:
     	fileName = fileName.substring(0, fileName.lastIndexOf("."));
     	return fileName;  
+ 	
+    }
+    
+    private int downloadXMLFiles( Vector<Integer> iKeys)
+    {
+    	
+    	for( int i=0;i<iKeys.size(); i++ )
+    	{
+    		// get file from database:
+    		String key = new String();
+    		key = key + iKeys.get(i);
+    		String fileName = this.getXMLFile(key); 
+			if (!this.getFromAmazon(fileName.toLowerCase())) {
+				return -1;
+			}
+			else{
+								
+				/// move the downloaded xml file to the SuperHirn processing directory
+		    	fileName = fileName.substring(0, fileName.lastIndexOf("."));
+				String targetName = 
+					SuperHirnOutPutPath + fileName.substring(
+						fileName.lastIndexOf( "/" ) + 1);
+				
+				
+				// check that directory exists:
+				File out = new File(SuperHirnOutPutPath );
+				if( !out.exists())
+				{			
+			    	String mkdirCommand = "mkdir " + SuperHirnOutPutPath;
+					if( this.runCommand(mkdirCommand) != 0 )
+					{
+						return -1;
+					}
+				}
+				
+				
+		    	String mvCommand = "mv " + fileName + " " + targetName ;
+				if( this.runCommand(mvCommand) != 0 )
+				{
+					return -1;
+				}
+		    	
+				
+			}
+		}
+    	
+    	return 0;
  	
     }
     
@@ -438,76 +644,161 @@ public class clsRunSuperHirn{
 		
     	this.cleanUpFile(iFile);
 		return true;
-		
-		
-		
-		
-		/*
-		oAmazonS3.SetBucket(objBuildXMLFile
-				.CurrentXMLOutputFile());
+	
+    }
+    
+    private int uploadXMLFiles(String iKey)
+    {      	
+    	
+    	File file = new File( clsRunSuperHirn.SuperHirnOutPutPath );
+    	if( file.isDirectory() )
+    	{
+    		
+        	String[] files = file.list();
+        	System.out.println( file.getAbsolutePath() + " is a directory with files: " + files.length);	
 
-		// Patrick Compress the file which will add
-		// a .gz to the filename
-		zippedFileName = objBuildXMLFile
-				.CurrentXMLOutputFile();
-		if (compressFile(
-				objBuildXMLFile
-						.SearchOutputLocation()
-						.toLowerCase()
-						+ objBuildXMLFile
-								.CurrentXMLOutputFile(),
-				objBuildXMLFile
-						.SearchOutputLocation()
-						.toLowerCase()
-						+ objBuildXMLFile
-								.CurrentXMLOutputFile()
-						+ ".gz", false) == true) {
-			zippedFileName = objBuildXMLFile
-					.CurrentXMLOutputFile()
-					+ ".gz";
+    		String location = "";
+    		// get the storage location:
+    		if( files.length > 0){
+    			location = EC2UploadLocation;    			
+    		}
+    		
+    	
+    		for( int i=0; i<files.length; i++)
+    		{
+    			String uploadfile = files[i];
+        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, uploadfile, location, iKey) == -1 ){
+        			return -1;
+        		}
+    		}
+    	
+    	}
+    	else{
+        	System.out.println( file.getAbsolutePath() + " is NOT a directory");	
+    	}
+    	return 0;
+    }
+ 
+    
+    
+    private int uploadFile(String iSourceLocation, String iFile, String iTargetLocation, String iDatabaseKey)
+    {      	
+    	
+
+    	// Amazon S3 storage
+    	clsAmazon oAmazonS3 = new clsAmazon(); // Instantiate
+												// new
+												// custom
+												// Amazon S3
+												// object
+    	oAmazonS3.ConnectToAmazon(); // Connect to
+    	oAmazonS3.SetBucket( iFile);
+
+    	String gzFile = iFile.toLowerCase() + ".gz";
+    	
+    	System.out.println( "Compressing to " + gzFile);	
+		
+    	if( this.compressFile( iSourceLocation + iFile, gzFile, false ) )
+		{
+			
+	    	System.out.println( "Uploading file '" + gzFile + "' to " + iTargetLocation);	
+
+	    	// Upload file to Bucket. If it fails, set
+			// the processing status fields accordingly
+			oAmazonS3.UploadFile(gzFile);
+			
+			
+			// update the database:
+			int i_UPDATE_Result = Main.objDataAccess
+			.WriteRecord(
+					"UPDATE to_ms_file SET SH_XML_file_name= '" + 
+					gzFile + "' WHERE to_ms_file_key = " + iDatabaseKey );
+	    	// System.out.println( "Update to_ms_file at key" + iDatabaseKey + " to " + gzFile + ":" + i_UPDATE_Result);	
+
+			// remove file locally:
+			String command = new String("rm -rf " + iFile + ".gz");
+			this.runCommand(command);	    	
+			return i_UPDATE_Result;
+
 		}
-		// Upload file to Bucket. If it fails, set
-		// the processing status fields accordingly
-		if (oAmazonS3.UploadFile(objBuildXMLFile
-				.SearchOutputLocation()
-				.toLowerCase()
-				+ zippedFileName.toLowerCase())) {
-			searchDate = new java.util.Date();
-			i_UPDATE_Result = Main.objDataAccess
-					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'SEARCHED SUCCESSFULLY',end_search_datetime = '"
-							+ dateFormat
-									.format(searchDate)
-							+ "' WHERE to_ms_file_key = "
-							+ arSearchList[0][iSearchListCount]
-							+ " AND tmx_key = "
-							+ arSearchList[1][iSearchListCount]);
-			String deletedFile = oAmazonS3
-					.delTempFile();
-			if (deletedFile.compareTo("\n") != 0) {
-				errTime = new Date();
-				System.out.println(DateFormat
-						.getDateTimeInstance(
-								DateFormat.MEDIUM,
-								DateFormat.MEDIUM)
-						.format(errTime).toString()
-						+ deletedFile);
+		return -1;
+    }
+	
+    
+	
+    /**
+	 * This procedure compresses a file to the .gz or .gzip zip format and may
+	 * retain or delete the original uncompressed file.
+	 * 
+	 * @param inputFile
+	 *            The complete path to the file we wish to decompress
+	 * @param outputFile
+	 *            The complete path to where we wish to store the uncompressed
+	 *            file
+	 * @param keepCompressed
+	 *            Whether to retain the original compressed file
+	 * @return A boolean value indicating success or failure of the
+	 *         decompression
+	 */
+	public boolean compressFile(String inputFile, String outputFile,
+			boolean keepOriginal) {
+		GZIPOutputStream outStream;
+		FileInputStream inStream;
+		byte[] buf;
+		int len;
+							boolean isZipped = false;
+		File delSource;
+
+		try {
+			isZipped = false;
+			// The file to write out.
+			outStream = new GZIPOutputStream(new FileOutputStream(outputFile));
+
+			// The original file that we shall compress;
+			inStream = new FileInputStream(inputFile);
+
+			buf = new byte[1024];
+			while ((len = inStream.read(buf)) > 0) {
+				outStream.write(buf, 0, len);
 			}
-		} else {
-			searchDate = new java.util.Date();
-			i_UPDATE_Result = Main.objDataAccess
-					.WriteRecord("UPDATE to_ms_file SET transmission_status = 'ERROR SEARCHING',end_search_datetime = '"
-							+ dateFormat
-									.format(searchDate)
-							+ "' WHERE to_ms_file_key = "
-							+ arSearchList[0][iSearchListCount]
-							+ " AND tmx_key = "
-							+ arSearchList[1][iSearchListCount]);
-			iXTandemSearchResult = 1;
-		}
+			inStream.close();
 
-		// Kill the Amazon object
-		oAmazonS3 = null;
-	*/
+			outStream.finish();
+			outStream.close();
+
+			// If keepCompressed is false delete the source file otherwise keep
+			// them both
+			if (keepOriginal == false) {
+				delSource = new File(inputFile);
+				delSource.delete();
+			}
+
+			isZipped = true;
+		} catch (SecurityException se) {
+			// Will occur if the user does not have delete rights
+			errTime = new Date();
+			System.err.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+					.toString()
+					+ " Error occured in class 'clsProcessItem': ");
+			se.printStackTrace();
+			Main.emailError.SendEmail();
+			System.exit(1);
+			return true; // Because we have unzipped ok only deletion failed
+		} catch (Exception ex) {
+			errTime = new Date();
+			Main.currErrorMessage = "Error occured in class 'clsProcessItem' while uncompressing file: "
+					+ inputFile + " " + ex.toString();
+			System.err.println(DateFormat.getDateTimeInstance(
+					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+					.toString()
+					+ " Error occured in class 'clsProcessItem': ");
+			ex.printStackTrace();
+			Main.emailError.SendEmail();
+			System.exit(1);
+			return false;
+		}
+		return isZipped;
 	}
     
 }

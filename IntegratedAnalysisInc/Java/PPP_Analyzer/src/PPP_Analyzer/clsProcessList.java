@@ -113,10 +113,10 @@ public class clsProcessList {
                     oProcessItem.LoadSearchList();
                 } 
                 else if (sProcess.toLowerCase().equals("generic_script_mode")) {
-                    oProcessItem.LoadSuperHirnList();
-                } else {
-                    oProcessItem.LoadSaxonSearchList();
-                }
+                    oProcessItem.runSuperHirnList();
+				} else {
+					oProcessItem.LoadSaxonSearchList();
+				}
                 errTime = new Date();
                 System.out.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString() + "Finished processing " + sTargetDatabase + "...");
             }

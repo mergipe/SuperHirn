@@ -7,6 +7,9 @@ package PPP_Analyzer;
 import java.text.*;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.RowSetDynaClass;
 
@@ -196,5 +199,70 @@ public class clsSearchList {
             arSearchList = null;
         }
         return arSearchList;
+    }
+    
+    public Vector<Integer> GetSuperHirnAlignmentList() {
+
+        RowSetDynaClass rsRecordset = null;
+        //SIK String to hold the instance ID
+        String ec2_Instance_ID = "";
+        Vector<String> searchList = new Vector<String>();
+        Vector<Integer> searchKeys = new Vector<Integer>();
+
+        try {
+
+            //SIK Determine the private DNS Name for the instance running this and only pick items marked to be searched using this instance
+            java.net.InetAddress i = java.net.InetAddress.getLocalHost();
+            ec2_Instance_ID = i.getHostName(); //getHostAddress();
+
+            errTime = new Date();
+            System.out.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString() + " Instance ID" + ec2_Instance_ID);
+
+            // get the list for searching
+            //SIK append InstanceID to the where clause so that we only read search items for this instance.
+            rsRecordset = 
+            	Main.objDataAccess.getRecordSet(
+            			"SELECT to_ms_file_key, mzXML_file_location, SH_APML_file_name, SH_XML_file_name " +
+            			"FROM to_ms_file " +
+            			"WHERE transmission_status ='SEARCHED SUCCESSFULLY' " +
+            			"AND SuperHirnStatus='READY_FOR_CM' "
+            			);
+
+            // Check if a recordset was returned
+            if (rsRecordset.getRows().isEmpty()) {
+                errTime = new Date();
+                System.out.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString() + " clsSearchList.GetSearchList : No records returned for searching");
+                return null;
+            }
+
+            //System.out.println("Loading Search List...");
+
+            // Reset the counter
+            Iterator iter = rsRecordset.getRows().iterator();
+
+            String keys = new String();
+            while(iter.hasNext()){
+
+                DynaBean dbDataRow = (DynaBean) iter.next();
+
+                searchKeys.add( (Integer) dbDataRow.get("to_ms_file_key") );
+                String downloadFile = (String) dbDataRow.get("mzXML_file_location");
+                downloadFile = downloadFile + (String) dbDataRow.get("SH_XML_file_name");
+                searchList.add(downloadFile);
+            }
+
+            return searchKeys;
+//            return searchList;
+
+        } catch (Exception eX) {
+            errTime = new Date();
+            Main.currErrorMessage = eX.toString();
+            System.err.println(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString() + " Error occured in class 'clsSearchList': ");
+            eX.printStackTrace();
+            rsRecordset = null;
+            Main.emailError.SendEmail();
+            System.exit(1);
+        }
+        return searchKeys;
     }
 }
