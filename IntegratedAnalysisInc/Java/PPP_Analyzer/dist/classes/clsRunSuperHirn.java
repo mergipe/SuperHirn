@@ -639,18 +639,19 @@ public class clsRunSuperHirn{
     	{
     		
         	String[] files = file.list();
-        	System.out.println( file.getAbsolutePath() + "is a directory with files:" + files.length);	
+        	System.out.println( file.getAbsolutePath() + " is a directory with files: " + files.length);	
 
     		String location = "";
     		// get the storage location:
     		if( files.length > 0){
-    			location = "as3/jenny_55555/sitt/xtandem_output/";    			
+    			location = "SuperHirnFE_Files";    			
     		}
     		
     	
     		for( int i=0; i<files.length; i++)
     		{
-        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, files[i], location, iKey) == -1 ){
+    			String uploadfile = files[i];
+        		if( this.uploadFile(clsRunSuperHirn.SuperHirnOutPutPath, uploadfile, location, iKey) == -1 ){
         			return -1;
         		}
     		}
@@ -696,9 +697,11 @@ public class clsRunSuperHirn{
 			.WriteRecord(
 					"UPDATE to_ms_file SET SH_XML_file_name= '" + 
 					gzFile + "' WHERE to_ms_file_key = " + iDatabaseKey );
+	    	// System.out.println( "Update to_ms_file at key" + iDatabaseKey + " to " + gzFile + ":" + i_UPDATE_Result);	
 
-	    	System.out.println( "Update to_ms_file at key" + iDatabaseKey + " to " + gzFile + ":" + i_UPDATE_Result);	
-
+			// remove file locally:
+			String command = new String("rm -rf " + iFile + ".gz");
+			this.runCommand(command);	    	
 			return i_UPDATE_Result;
 
 		}
