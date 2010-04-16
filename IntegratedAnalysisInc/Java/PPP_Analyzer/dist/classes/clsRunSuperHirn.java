@@ -205,6 +205,9 @@ public class clsRunSuperHirn{
 				// Build the load strings
 				errTime = new Date();
 				xmlTarget = (String) dbDataRow.get("mzXML_file_location") + "xtandem_output/" + (String) dbDataRow.get("SH_XML_file_name");
+				xmlTarget = (String) dbDataRow.get("SH_XML_file_name");
+
+				
 				System.out.println(DateFormat.getDateTimeInstance(
 						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
 						.toString()
