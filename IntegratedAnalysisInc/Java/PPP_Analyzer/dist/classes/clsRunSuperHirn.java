@@ -67,6 +67,11 @@ public class clsRunSuperHirn{
      * command to start Superhirn result to database import process
      */
     static private String dbPusherCommand = "java -Xmx1g -Xms1g -jar Java/SuperDBPusher/SuperDbPusher.jar ";
+
+    /**
+     * command to start Superhirn result to database import process
+     */
+    static private String EC2UploadLocation = "SuperHirnFE_Files";
     
     /**
      * command to cleanup Superhirn results 
@@ -644,7 +649,7 @@ public class clsRunSuperHirn{
     		String location = "";
     		// get the storage location:
     		if( files.length > 0){
-    			location = "SuperHirnFE_Files";    			
+    			location = EC2UploadLocation;    			
     		}
     		
     	
