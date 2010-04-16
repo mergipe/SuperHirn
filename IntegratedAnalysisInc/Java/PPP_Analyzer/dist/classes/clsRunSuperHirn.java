@@ -49,6 +49,11 @@ public class clsRunSuperHirn{
     static private String SuperHirnOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/";
 
     /**
+     * Path to SuperHirn master map
+     */
+    static private String SuperHirnMasterMapOutPutPath = "ANALYSIS_TestData/LC_MS_RUNS/TestData.xml";
+
+    /**
      * Path to SuperHirn MasterMap
      */
     static private String SuperHirnMasterMap = "ANALYSIS_TestData/PROCESSED_MASTER.xml";
@@ -282,9 +287,9 @@ public class clsRunSuperHirn{
 		System.out.println( "SuperHirn processing ok: " + exitVal);	
 		
 		// import to database:
-		exitVal = this.runSuperHirnDBPusher();
+		exitVal = this.runSuperHirnExtractionDBPusher();
 		if( exitVal == -1){
-			System.out.println( "Error in SuperHirn data import, stop this thread");	
+			System.out.println( "Error in SuperHirn extraction data import, stop this thread");	
 			return exitVal;
 		}
 		System.out.println( "SuperHirn data import ok: " + exitVal);	
@@ -348,9 +353,9 @@ public class clsRunSuperHirn{
 		
 		// import to database:
 		// adopt here the database pusher:
-		exitVal = this.runSuperHirnDBPusher();
+		exitVal = this.runSuperHirnAlignmentDBPusher();
 		if( exitVal == -1){
-			System.out.println( "Error in SuperHirn data import, stop this thread");	
+			System.out.println( "Error in SuperHirn alignment data import, stop this thread");	
 			return exitVal;
 		}
 		System.out.println( "SuperHirn data import ok: " + exitVal);	
@@ -393,10 +398,20 @@ public class clsRunSuperHirn{
     }
     
     /**
-     * Runs the SuperHirn XML result parsing and importing into PASS database
+     * Runs the SuperHirn XML result parsing of mastermap file and importing into PASS database
      * @return int 
      */
-    private int runSuperHirnDBPusher() 
+    private int runSuperHirnAlignmentDBPusher() 
+    {
+		String command = new String(clsRunSuperHirn.dbPusherCommand + " " + clsRunSuperHirn.SuperHirnMasterMap);
+		return this.runCommand(command);
+    }
+
+    /**
+     * Runs the SuperHirn XML result parsing of feature extraction files and importing into PASS database
+     * @return int 
+     */
+    private int runSuperHirnExtractionDBPusher() 
     {
 		String command = new String(clsRunSuperHirn.dbPusherCommand + " " + clsRunSuperHirn.SuperHirnOutPutPath);
 		return this.runCommand(command);
