@@ -333,7 +333,6 @@ public class clsRunSuperHirn{
 		System.out.println( "Getting XML files ok:" + exitVal);	
 		
 	
-
 		// run feature extraction:
 		exitVal = this.runSuperHirnAlignment();
 		if( exitVal == -1){
@@ -344,7 +343,7 @@ public class clsRunSuperHirn{
 		
 		// import to database:
 		// adopt here the database pusher:
-		// exitVal = this.runSuperHirnDBPusher();
+		exitVal = this.runSuperHirnDBPusher();
 		if( exitVal == -1){
 			System.out.println( "Error in SuperHirn data import, stop this thread");	
 			return exitVal;
@@ -577,6 +576,19 @@ public class clsRunSuperHirn{
 				String targetName = 
 					SuperHirnOutPutPath + fileName.substring(
 						fileName.lastIndexOf( "/" ) + 1);
+				
+				
+				// check that directory exists:
+				File out = new File(SuperHirnOutPutPath );
+				if( !out.exists())
+				{			
+			    	String mkdirCommand = "mkdir " + SuperHirnOutPutPath;
+					if( this.runCommand(mkdirCommand) != 0 )
+					{
+						return -1;
+					}
+				}
+				
 				
 		    	String mvCommand = "mv " + fileName + " " + targetName ;
 				if( this.runCommand(mvCommand) != 0 )
