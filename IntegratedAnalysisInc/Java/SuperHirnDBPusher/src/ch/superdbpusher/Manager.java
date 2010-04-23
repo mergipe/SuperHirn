@@ -22,8 +22,29 @@ import ch.superdbpusher.xmlParsing.XMLFilter;
 /**
  * Manager organizes the process of XML parsing and sending data to the RDS. It
  * starts from either a folder or xml file. For each file, an instance of the
- * class LCMS is generated which is then passed to the RDS class LCMSRDSFeeder
- * which imports the data of the LCMS class in the to database.
+ * class LCMS is generated which is then parsed to the RDS class LCMSRDSFeeder
+ * which imports then the data of the LCMS class in the to database. Database
+ * table names are defined by the static attributes LCMSTableName,
+ * featureTableName, ms2IdTableName and alignedFeatureTableName.
+ * <br><br>
+ * The Manager class decides after the parsing of a XML file if the file is from
+ * a single mzXML file, i.e. it is a results from a feature extraction SuperHirn
+ * process or it is an aligned map, i.e it contains features that are aligned
+ * across multiple mzXML file (MasterMap). This is done by checking if the LCMS
+ * class contains child entries, ie the aligned mzXML files. The data import is
+ * then adjusted accordingly.
+ * <br><br>
+ * If a feature extracted LCMS file is processed then MS1 Features are imported
+ * into the table 'featureTableName' and an entry for the mzXML file is created
+ * in LCMSTableName. If the MS1 features contaiens a MS/MS if, this peptide id
+ * is stored in the table ms2IdTableName.
+ * <br><br>
+ * On the other hand, if the LCMS run is an aligned one, a new entry is created
+ * in LCMSTableName where the attribute 'LCMS_Type' is set to ALIGNMENT. For
+ * each aligned MS1 Feature, a new entry is created in the table
+ * alignedFeatureTableName and the unique id of this entry 'idMS1_FEATURE'
+ * serves as a primary key to which aligned MS1 Features are associated from the
+ * table featureTabeName using the forgein key fkIDAlignedFeature
  * 
  * @author Lukas N. Mueller (Lukas.Mueller@imsb.biol.ethz.ch)
  */
@@ -33,9 +54,24 @@ public class Manager {
 	private File target;
 	public static String currErrorMessage;
 
+	/**
+	 * Table containing mzXML files processed by feature extraction or an aligned superirn result file
+	 */
 	static private String LCMSTableName = "LC_MS_RUNS_ALIGNMENT_TEST";
+
+	/**
+	 * Table storing extracted MS1 features from the feature extraction process of SuperHirn
+	 */
 	static private String featureTableName = "MS1_FEATURES_ALIGNMENT_TEST";
+
+	/**
+	 * Table storing MS/MS assignments of MS1 features
+	 */
 	static private String ms2IdTableName = "MS2_ASSIGNMENTS_ALIGNMENT_TEST";
+	
+	/**
+	 * Table storing aligned features from SuperHirn Alignment processes. MS1 Features are associated to these.
+	 */
 	static private String alignedFeatureTableName = "ALIGNED_FEATURES";
 
 	/**
