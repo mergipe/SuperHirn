@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="javadoc">
+<target name="javadoc">
+<javadoc access="private" author="true" classpath="PPP_Analyzer/libs/junit-4.1.jar:PPP_Analyzer/libs/sdbShell1.1.jar:PPP_Analyzer/libs/commons-logging-1.1.1.jar:PPP_Analyzer/dist/PPP_Analyzer.jar:PPP_Analyzer/libs/axis-ant.jar:PPP_Analyzer/libs/typica.jar:PPP_Analyzer/libs/commons-beanutils-1.8.2.jar:PPP_Analyzer/libs/jets3t-0.7.1.jar:PPP_Analyzer/libs/saxon9.jar:PPP_Analyzer/libs/mail.jar:PPP_Analyzer/libs/log4j-1.2.15.jar:PPP_Analyzer/libs/mysql-connector-java-5.1.5-bin.jar:PPP_Analyzer/libs/mysql-connector-java-5.1.6-bin.jar:PPP_Analyzer/libs/commons-httpclient-3.1.jar:PPP_Analyzer/libs/commons-codec-1.3.jar:PPP_Analyzer/libs/axis.jar" destdir="PPP_Analyzer/doc" doctitle="SuperHirnDBPusher: SuperHirn Data to Database Integration" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" overview="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/SuperDbPusher/src/ch/overview.html" packagenames="PPP_Analyzer" source="1.6" sourcepath="PPP_Analyzer/src" splitindex="true" use="true" version="true"/>
+</target>
+</project>
