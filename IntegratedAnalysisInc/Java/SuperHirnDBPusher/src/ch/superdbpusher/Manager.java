@@ -78,7 +78,7 @@ public class Manager {
 	/**
 	 * These are the database access parameters:
 	 */
-	static private String host = "poc-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
+	static private String host = "poc2-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
 	static private String user = "gsaxena";
 	static private String passwd = "polk0912888";
 	static private String database = "db_pass_gautam_tgt";
@@ -655,6 +655,7 @@ public class Manager {
 						this.rdsAccess.performSQLStatement(delete);
 					}
 
+
 					// delete all aligned features:
 					String delete = "DELETE FROM "
 							+ Manager.alignedFeatureTableName
@@ -662,12 +663,11 @@ public class Manager {
 
 					this.rdsAccess.performSQLStatement(delete);
 
+					// delete the ALIGNMENT run finally:
+					delete = "DELETE FROM " + Manager.LCMSTableName
+							+ " WHERE idLC_MS_RUN=" + LCMS_key;
+					this.rdsAccess.performSQLStatement(delete);
 				}
-
-				// delete the ALIGNMENT run finally:
-				String delete = "DELETE FROM " + Manager.LCMSTableName
-						+ " WHERE idLC_MS_RUN=" + LCMS_key;
-				this.rdsAccess.performSQLStatement(delete);
 			}
 		} catch (DatabaseAccessException e) {
 			// TODO Auto-generated catch block
