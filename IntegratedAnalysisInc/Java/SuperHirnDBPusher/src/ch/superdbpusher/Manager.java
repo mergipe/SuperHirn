@@ -426,6 +426,8 @@ public class Manager {
 					+ " AND " + "startScan=" + iFeature.startScan() 
 					+ " AND " + "endScan=" + iFeature.endScan()
 					+ " AND " + ".fkLC_MS_ID=" + lcMSID;
+			
+			System.out.println(update);
 
 			// get the inserted LC_MS id back:
 			this.rdsAccess.performSQLStatement(update);
