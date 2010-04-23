@@ -5,6 +5,7 @@ import java.io.FileFilter;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.Vector;
 import java.util.Map.Entry;
 
@@ -22,8 +23,29 @@ import ch.superdbpusher.xmlParsing.XMLFilter;
 /**
  * Manager organizes the process of XML parsing and sending data to the RDS. It
  * starts from either a folder or xml file. For each file, an instance of the
- * class LCMS is generated which is then passed to the RDS class LCMSRDSFeeder
- * which imports the data of the LCMS class in the to database.
+ * class LCMS is generated which is then parsed to the RDS class LCMSRDSFeeder
+ * which imports then the data of the LCMS class in the to database. Database
+ * table names are defined by the static attributes LCMSTableName,
+ * featureTableName, ms2IdTableName and alignedFeatureTableName.
+ * <br><br>
+ * The Manager class decides after the parsing of a XML file if the file is from
+ * a single mzXML file, i.e. it is a results from a feature extraction SuperHirn
+ * process or it is an aligned map, i.e it contains features that are aligned
+ * across multiple mzXML file (MasterMap). This is done by checking if the LCMS
+ * class contains child entries, ie the aligned mzXML files. The data import is
+ * then adjusted accordingly.
+ * <br><br>
+ * If a feature extracted LCMS file is processed then MS1 Features are imported
+ * into the table 'featureTableName' and an entry for the mzXML file is created
+ * in LCMSTableName. If the MS1 features contaiens a MS/MS if, this peptide id
+ * is stored in the table ms2IdTableName.
+ * <br><br>
+ * On the other hand, if the LCMS run is an aligned one, a new entry is created
+ * in LCMSTableName where the attribute 'LCMS_Type' is set to ALIGNMENT. For
+ * each aligned MS1 Feature, a new entry is created in the table
+ * alignedFeatureTableName and the unique id of this entry 'idMS1_FEATURE'
+ * serves as a primary key to which aligned MS1 Features are associated from the
+ * table featureTabeName using the forgein key fkIDAlignedFeature
  * 
  * @author Lukas N. Mueller (Lukas.Mueller@imsb.biol.ethz.ch)
  */
@@ -33,9 +55,24 @@ public class Manager {
 	private File target;
 	public static String currErrorMessage;
 
+	/**
+	 * Table containing mzXML files processed by feature extraction or an aligned superirn result file
+	 */
 	static private String LCMSTableName = "LC_MS_RUNS_ALIGNMENT_TEST";
+
+	/**
+	 * Table storing extracted MS1 features from the feature extraction process of SuperHirn
+	 */
 	static private String featureTableName = "MS1_FEATURES_ALIGNMENT_TEST";
+
+	/**
+	 * Table storing MS/MS assignments of MS1 features
+	 */
 	static private String ms2IdTableName = "MS2_ASSIGNMENTS_ALIGNMENT_TEST";
+	
+	/**
+	 * Table storing aligned features from SuperHirn Alignment processes. MS1 Features are associated to these.
+	 */
 	static private String alignedFeatureTableName = "ALIGNED_FEATURES";
 
 	/**
@@ -172,7 +209,7 @@ public class Manager {
 				+ " Aligned LC-MS runs");
 
 		int lcMS_ID = this.write(iRun);
-		this.writeFeature(lcMS_ID, iRun);
+		this.writeFeatures(lcMS_ID, iRun);
 
 		System.out.println("\nImporting finished.");
 
@@ -234,35 +271,103 @@ public class Manager {
 
 		return -1;
 	}
-
-	private void writeFeature(int LC_MS_ID, LCMS iRun) {
+	
+	/**
+	 * Method that takes an ordered map where the aligned mzXML files are
+	 * ordered according to an internal ID of SUperHirn. This ordering is also reflected in the way MS1 featuers
+	 * are ordered in an aligned feature. The method translates this map to a map where the superhirn internal id is mapped to
+	 * the primary keys of the LC_MS_RUN table in the database. 
+	 * 
+	 * @param SortedMap
+	 *            <Integer, String>
+	 * @return SortedMap<Integer, Integer>
+	 */
+	private SortedMap<Integer, Integer> mapMzXMLNamesToTablePrimaryKeys(  SortedMap<Integer, String> lcMsRuns)
+	{
+		SortedMap<Integer, Integer> out = new TreeMap<Integer, Integer>();
 		
-		String mode = this.checkRunType(iRun);
+		Iterator I = lcMsRuns.entrySet().iterator();
+		while( I.hasNext())
+		{
+			Entry e  = (Entry) I.next();
+			Integer lcMSID = (Integer) e.getValue();
+			String name = (String)e.getValue();
+			
+			String select = "SELECT idLC_MS_RUNS " + Manager.LCMSTableName +
+			"WHERE mzXML_Name=" + name;
 
+			RowSetDynaClass rec;
+			try {
+				rec = this.rdsAccess.getRecordSet(select);
+				if ( (rec == null) || (rec.getRows().size() != 1) ) {
+				}
+				
+				DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
+				int key = (Integer) dbDataRow.get("idLC_MS_RUNS");
+				out.put(lcMSID, key);
+				
+			} catch (DatabaseAccessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+
+		return out;
+	}
+	
+
+	private void writeFeatures(int LC_MS_ID, LCMS iRun) {
+		
 		Iterator<MS1Feature> fIt = iRun.featureIterator();
-		while (fIt.hasNext()) {
-			MS1Feature iFeature = (MS1Feature) fIt.next();
-			if (mode == "ALIGNMENT") {
+		String mode = this.checkRunType(iRun);
+		
+		/*
+		 * check the processing mode 
+		 */
+		if (mode == "ALIGNMENT") {
 
+			/*
+			 * for efficient processing, create an index array to quickly retrieved
+			 * the primary keys of a LC_MS_RUNS table entry by LC_MS id of an aligned feature:
+			 */
+			SortedMap<Integer, Integer> lcMSKeys = 
+				this.mapMzXMLNamesToTablePrimaryKeys( iRun.getChildLCMS());			
+			
+			while (fIt.hasNext()) {
+			
+				MS1Feature iFeature = (MS1Feature) fIt.next();
+				
+				/*
+				 * insert the alignment feature and get is primary key:
+				 */
 				int alignedID = this.writeAlignedFeature(LC_MS_ID, iFeature);
 
 				// set the aligned IDs if the aligned features to the primary
 				// key of the aligned feature::
-				String mzXMLName = iRun.getChildLCMS().get(iFeature.lcMSID());
-				int tableID = this.getMS1FeatureID(mzXMLName, iFeature);
-				this.setAlignedMS1FeatureID(tableID, alignedID);
+				//String mzXMLName = iRun.getChildLCMS().get(iFeature.lcMSID());
+				//int tableID = this.getMS1FeatureID(mzXMLName, iFeature);
+				//this.setAlignedMS1FeatureID(tableID, alignedID);
+
+				int lcMSID = lcMSKeys.get( iFeature.lcMSID());
+				this.setAlignmentOfMS1Feature(iFeature, lcMSID, alignedID);
+				
 				Iterator I = iFeature.alignedFeatures().entrySet().iterator();
 				while (I.hasNext()) {
 					Entry<Integer, MS1Feature> e = (Entry<Integer, MS1Feature>) I
 							.next();
 					iFeature = e.getValue();
-					mzXMLName = iRun.getChildLCMS().get(iFeature.lcMSID());
-					tableID = this.getMS1FeatureID(mzXMLName, iFeature);
-					this.setAlignedMS1FeatureID(tableID, alignedID);
+					lcMSID = lcMSKeys.get( iFeature.lcMSID());
+					this.setAlignmentOfMS1Feature(iFeature, lcMSID, alignedID);
+
+					//mzXMLName = iRun.getChildLCMS().get(iFeature.lcMSID());
+					//tableID = this.getMS1FeatureID(mzXMLName, iFeature);
+					//this.setAlignedMS1FeatureID(tableID, alignedID);
 				}
 
-			} else {
-				this.writeSingleFeature(LC_MS_ID, iFeature, -1);
+			}
+		} else {
+			while (fIt.hasNext()) {
+				this.writeSingleFeature(LC_MS_ID, (MS1Feature) fIt.next(), -1);
 			}
 		}
 	}
@@ -293,7 +398,7 @@ public class Manager {
 			}
 
 			DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
-			alignedID = (Integer) dbDataRow.get("idMS1_FEATURE");	
+			alignedID = (Integer) dbDataRow.get("idMS1_FEATURE");
 
 		} catch (DatabaseAccessException e) {
 			// TODO Auto-generated catch block
@@ -307,6 +412,35 @@ public class Manager {
 
 	}
 
+	private void setAlignmentOfMS1Feature(MS1Feature iFeature, Integer lcMSID,
+			Integer alignmentID) {
+		try {
+
+			// get the assigned primary id key back:
+			String update = "UPDATE " + Manager.featureTableName
+					+ "SET fkIDAlignedFeature=" + alignmentID +
+					" WHERE " 
+					+ "z=" + iFeature.z()
+					+ " AND " + "ionCurrent=" + iFeature.peakArea() 
+					+ " AND " + "apexScan=" + iFeature.apexScan() 
+					+ " AND " + "startScan=" + iFeature.startScan() 
+					+ " AND " + "endScan=" + iFeature.endScan()
+					+ " AND " + ".fkLC_MS_ID=" + lcMSID;
+
+			// get the inserted LC_MS id back:
+			this.rdsAccess.performSQLStatement(update);
+
+		} catch (DatabaseAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
+	
 	private int getMS1FeatureID(String mzXMLName, MS1Feature iFeature) {
 		int id = -1;
 		try {
@@ -341,6 +475,8 @@ public class Manager {
 		return id;
 
 	}
+	
+	
 
 	private void setAlignedMS1FeatureID(int MS1Id, int alignedID) {
 		int id = -1;
