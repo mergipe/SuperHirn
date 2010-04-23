@@ -58,17 +58,20 @@ public class Manager {
 	/**
 	 * Table containing mzXML files processed by feature extraction or an aligned superirn result file
 	 */
-	static private String LCMSTableName = "LC_MS_RUNS_ALIGNMENT_TEST";
+	static private String LCMSTableName = "LC_MS_RUNS";
+	//static private String LCMSTableName = "LC_MS_RUNS_ALIGNMENT_TEST";
 
 	/**
 	 * Table storing extracted MS1 features from the feature extraction process of SuperHirn
 	 */
-	static private String featureTableName = "MS1_FEATURES_ALIGNMENT_TEST";
+	static private String featureTableName = "MS1_FEATURES";
+	//static private String featureTableName = "MS1_FEATURES_ALIGNMENT_TEST";
 
 	/**
 	 * Table storing MS/MS assignments of MS1 features
 	 */
-	static private String ms2IdTableName = "MS2_ASSIGNMENTS_ALIGNMENT_TEST";
+	static private String ms2IdTableName = "MS2_ASSIGNMENTS";
+	//static private String ms2IdTableName = "MS2_ASSIGNMENTS_ALIGNMENT_TEST";
 	
 	/**
 	 * Table storing aligned features from SuperHirn Alignment processes. MS1 Features are associated to these.
