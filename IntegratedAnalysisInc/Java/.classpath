@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="PPP_Analyzer/src"/>
+	<classpathentry kind="lib" path="PPP_Analyzer/dist/PPP_Analyzer.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/axis-ant.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/axis.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/commons-beanutils-1.8.2.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/jets3t-0.7.1.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/junit-4.1.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/mail.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/mysql-connector-java-5.1.5-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/saxon9.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/sdbShell1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/PPP_Analyzer/PPP_Analyzer/libs/typica.jar"/>
+	<classpathentry kind="output" path="PPP_Analyzer/build/classes"/>
+</classpath>
