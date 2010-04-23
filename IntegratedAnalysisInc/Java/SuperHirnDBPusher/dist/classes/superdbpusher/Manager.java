@@ -335,12 +335,12 @@ public class Manager {
 			
 			while (fIt.hasNext()) {
 			
-				MS1Feature iFeature = (MS1Feature) fIt.next();
+				MS1Feature feature = (MS1Feature) fIt.next();
 				
 				/*
 				 * insert the alignment feature and get is primary key:
 				 */
-				int alignedID = this.writeAlignedFeature(LC_MS_ID, iFeature);
+				int alignedID = this.writeAlignedFeature(LC_MS_ID, feature);
 
 				// set the aligned IDs if the aligned features to the primary
 				// key of the aligned feature::
@@ -348,16 +348,16 @@ public class Manager {
 				//int tableID = this.getMS1FeatureID(mzXMLName, iFeature);
 				//this.setAlignedMS1FeatureID(tableID, alignedID);
 
-				int lcMSID = lcMSKeys.get( iFeature.lcMSID());
-				this.setAlignmentOfMS1Feature(iFeature, lcMSID, alignedID);
+				int lcMSID = lcMSKeys.get( feature.lcMSID());
+				this.setAlignmentOfMS1Feature(feature, lcMSID, alignedID);
 				
-				Iterator I = iFeature.alignedFeatures().entrySet().iterator();
+				Iterator I = feature.alignedFeatures().entrySet().iterator();
 				while (I.hasNext()) {
 					Entry<Integer, MS1Feature> e = (Entry<Integer, MS1Feature>) I
 							.next();
-					iFeature = e.getValue();
-					lcMSID = lcMSKeys.get( iFeature.lcMSID());
-					this.setAlignmentOfMS1Feature(iFeature, lcMSID, alignedID);
+					MS1Feature featureAligned  = e.getValue();
+					lcMSID = lcMSKeys.get( featureAligned.lcMSID());
+					this.setAlignmentOfMS1Feature(featureAligned, lcMSID, alignedID);
 
 					//mzXMLName = iRun.getChildLCMS().get(iFeature.lcMSID());
 					//tableID = this.getMS1FeatureID(mzXMLName, iFeature);
@@ -418,14 +418,14 @@ public class Manager {
 
 			// get the assigned primary id key back:
 			String update = "UPDATE " + Manager.featureTableName
-					+ "SET fkIDAlignedFeature=" + alignmentID +
+					+ " SET fkIDAlignedFeature=" + alignmentID +
 					" WHERE " 
 					+ "z=" + iFeature.z()
 					+ " AND " + "ionCurrent=" + iFeature.peakArea() 
 					+ " AND " + "apexScan=" + iFeature.apexScan() 
 					+ " AND " + "startScan=" + iFeature.startScan() 
 					+ " AND " + "endScan=" + iFeature.endScan()
-					+ " AND " + ".fkLC_MS_ID=" + lcMSID;
+					+ " AND " + "fkLC_MS_ID=" + lcMSID;
 			
 			System.out.println(update);
 
