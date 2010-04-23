@@ -140,8 +140,9 @@ public class clsSearchList {
             			"FROM " + "to_ms_file tms INNER JOIN to_search_details tsd " +
             			"WHERE tms.transmission_status ='SEARCHED SUCCESSFULLY' " +
             			"AND tms.SuperHirnStatus='READY_FOR_FE' " +
-            			"AND tms.to_ms_file_key = tsd.to_ms_file_key"
-            			);
+            			"AND tms.to_ms_file_key = tsd.to_ms_file_key" +
+            			"AND tsd.search_engine_type = 'XTANDEM'"
+                			);
 
             // Check if a recordset was returned
             if (rsRecordset.getRows().isEmpty()) {

@@ -55,7 +55,7 @@ public class Main {
 			password = "3terevea888";
 			port = 3306;
 			
-			host = "poc-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
+			host = "poc2-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
 			database = "db_dn_pass_dev";
 			user = "gsaxena";
 			password = "polk0912888";

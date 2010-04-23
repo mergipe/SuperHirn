@@ -473,7 +473,7 @@ public class clsRunSuperHirn{
     
     /**
      * Executes a command, prints the command output to the console and returns an integer. The integer
-     * represents the status of the command exectution (see Process)
+     * represents the status of the command execution (0: command executed correctly)
      * @return int 
      */
     private int runCommand(String Command)
@@ -499,19 +499,22 @@ public class clsRunSuperHirn{
 					p.getErrorStream()));
 
 			// read the output from the command
+			String out = new String();
 			String s = null;
-			errTime = new Date();
-			System.out.println(DateFormat.getDateTimeInstance(
-					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
-					.toString()
-					+ " Here is the standard output of the command:\n");
 			while ((s = stdInput.readLine()) != null) {
-				System.out.println(s);
+				out += s;
 			}
-
+			if( !out.isEmpty())
+			{
+				errTime = new Date();
+				System.out.println(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime)
+						.toString()
+						+ " Here is the standard output of the command:\n");
+			}
+			
 			// Wait for process to complete
 			exitVal = p.waitFor();
-
 
 			// read any errors from the attempted command
 			if( exitVal != 0){
