@@ -290,11 +290,11 @@ public class Manager {
 		while( I.hasNext())
 		{
 			Entry e  = (Entry) I.next();
-			Integer lcMSID = (Integer) e.getValue();
+			Integer lcMSID = (Integer) e.getKey();
 			String name = (String)e.getValue();
 			
-			String select = "SELECT idLC_MS_RUNS " + Manager.LCMSTableName +
-			"WHERE mzXML_Name=" + name;
+			String select = "SELECT idLC_MS_RUN FROM " + Manager.LCMSTableName +
+			" WHERE mzXML_Name='" + name + "'";
 
 			RowSetDynaClass rec;
 			try {
@@ -303,7 +303,7 @@ public class Manager {
 				}
 				
 				DynaBean dbDataRow = (DynaBean) rec.getRows().get(0);
-				int key = (Integer) dbDataRow.get("idLC_MS_RUNS");
+				int key = (Integer) dbDataRow.get("idLC_MS_RUN");
 				out.put(lcMSID, key);
 				
 			} catch (DatabaseAccessException e1) {
