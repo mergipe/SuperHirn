@@ -29,6 +29,7 @@
 
 
 	<path id="jarset">
+		<pathelement location="../../ParameterSettings/dist/ParameterSettings.jar" />
 		<pathelement location="${libDir}/commons-beanutils-1.8.2.jar" />
 		<pathelement location="${libDir}/commons-codec-1.3.jar" />
 		<pathelement location="${libDir}/commons-httpclient-3.1.jar" />
@@ -55,6 +56,11 @@
 			<fileset dir="${libDir}" excludes="**/*.svn" />
 		</copy>
 		-->
+		
+		<copy todir="${dist}">
+			<fileset file="../../ParameterSettings/dist/ParameterSettings.jar"/>	
+			<fileset file="../.Properties"/>	
+		</copy>
 
 		<javac srcdir="${targetSrc}" destdir="${binDir}">
 			<classpath refid="jarset" />
@@ -67,7 +73,7 @@
 			<manifest>
 				<attribute name="Built-By" value="Lukas N. Mueller, 2010" />
 				<attribute name="Main-Class" value="PPP_Analyzer.Main" />
-				<attribute name="Class-Path" value="${ProgramName}.jar commons-beanutils-1.8.2.jar commons-codec-1.3.jar commons-httpclient-3.1.jar commons-logging-1.1.1.jar jets3t-0.7.1.jar junit-4.1.jar mail.jar mysql-connector-java-5.1.5-bin.jar saxon9-sql.jar saxon9.jar typica.jar sdbShell1.1.jar"/>
+				<attribute name="Class-Path" value="${ProgramName}.jar ParameterSettings.jar commons-beanutils-1.8.2.jar commons-codec-1.3.jar commons-httpclient-3.1.jar commons-logging-1.1.1.jar jets3t-0.7.1.jar junit-4.1.jar mail.jar mysql-connector-java-5.1.5-bin.jar saxon9-sql.jar saxon9.jar typica.jar sdbShell1.1.jar"/>
 			</manifest>
 		</jar>
 
