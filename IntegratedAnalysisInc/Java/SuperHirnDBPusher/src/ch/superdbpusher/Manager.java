@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.RowSetDynaClass;
 
+import ch.parameterSettings.ParameterInterface;
 import ch.superdbpusher.database.clsDataAccess;
 import ch.superdbpusher.database.DatabaseAccessException;
 import ch.superdbpusher.proteomics.LCMS;
@@ -95,7 +96,8 @@ public class Manager {
 	static private int port = 3306;
 
 	private clsDataAccess rdsAccess;
-
+	
+	
 	/**
 	 * Constructor with argument path to a file or directory
 	 * 
@@ -112,6 +114,13 @@ public class Manager {
 	 * connection to the database - parses XML file - deconnects from database
 	 */
 	public void start() {
+		
+		// read in database parameters from the property file:
+		Manager.user = ParameterInterface.getStringValue("username");
+		Manager.port = Integer.parseInt( ParameterInterface.getStringValue("port") );
+		Manager.database = ParameterInterface.getStringValue("database");
+		Manager.passwd= ParameterInterface.getStringValue("password");
+		Manager.host = ParameterInterface.getStringValue("host");
 
 		// connect to the database:
 		this.rdsAccess = new clsDataAccess(host, // host

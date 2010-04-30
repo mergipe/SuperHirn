@@ -27,6 +27,7 @@
 
 
 	<path id="jarset">
+		<pathelement location="../ParameterSettings/dist/ParameterSettings.jar" />
 		<pathelement location="${libDir}/commons-beanutils-1.8.2.jar" />
 		<pathelement location="${libDir}/dom4j-1.6.1.jar" />
 		<pathelement location="${libDir}/jdom.jar" />
@@ -47,9 +48,11 @@
 		<copydir dest="${targetDoc}/" src="${sourceDoc}/" />
 
 		<copy todir="${dist}">
+			<fileset file=".Properties"/>	
 			<fileset file="${ProgamName}.jar"/>
 			<fileset dir="${libDir}" excludes="**/*.svn" />
-		</copy>
+			<fileset file="../ParameterSettings/dist/ParameterSettings.jar"/>
+			</copy>
 
 		<javac srcdir="${targetSrc}" destdir="${binDir}">
 			<classpath refid="jarset" />
@@ -62,7 +65,7 @@
 			<manifest>
 				<attribute name="Built-By" value="Lukas N. Mueller, 2010" />
 				<attribute name="Main-Class" value="ch.superdbpusher.SuperHirnDataPusher" />
-				<attribute name="Class-Path" value="${ProgramName}.jar dom4j-1.6.1.jar jdom.jar mysql-connector-java-5.1.12-bin.jar commons-beanutils-1.8.2.jar" />
+				<attribute name="Class-Path" value="${ProgramName}.jar dom4j-1.6.1.jar jdom.jar mysql-connector-java-5.1.12-bin.jar commons-beanutils-1.8.2.jar ParameterSettings.jar" />
 			</manifest>
 		</jar>
 

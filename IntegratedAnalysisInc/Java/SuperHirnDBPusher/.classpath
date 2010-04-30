@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/SuperDbPusher/libs/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/SuperDbPusher/libs/jdom.jar"/>
 	<classpathentry kind="lib" path="/Users/muellelu/Documents/IntegratedAnalysis/Coding/Java/SuperDbPusher/libs/mysql-connector-java-5.1.12-bin.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ParameterSettings"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
