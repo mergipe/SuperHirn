@@ -53,7 +53,7 @@ public class Main {
 		if (args.length == 1) {
 			
 			host = ParameterInterface.getStringValue("host");
-			database = ParameterInterface.getStringValue("database");
+			database = ParameterInterface.getStringValue("dev_database");
 			user = ParameterInterface.getStringValue("username");
 			password = ParameterInterface.getStringValue("password");
 			port = Integer.parseInt( ParameterInterface.getStringValue("port") );
