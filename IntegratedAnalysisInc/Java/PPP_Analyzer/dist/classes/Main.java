@@ -7,6 +7,8 @@ package PPP_Analyzer;
 import java.util.Date;
 import java.text.*;
 
+import ch.parameterSettings.ParameterInterface;
+
 /**
  * 
  * @author Edwin
@@ -46,21 +48,16 @@ public class Main {
 		// Connection conMySQL = null;
 		//
 		
-		/// Lukas: only for testing purpose are here database connection stuff hardcoded:
+		/// If no database connection parameters are provided then these are
+		// read from the property file .Properties
 		if (args.length == 1) {
 			
-			host = "ins-pass-uniprot.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
-			database = "db_dn_pass_dev";
-			user = "aeveret3";
-			password = "3terevea888";
-			port = 3306;
+			host = ParameterInterface.getStringValue("host");
+			database = ParameterInterface.getStringValue("database");
+			user = ParameterInterface.getStringValue("username");
+			password = ParameterInterface.getStringValue("password");
+			port = Integer.parseInt( ParameterInterface.getStringValue("port") );
 			
-			host = "poc2-instance.cwlyzzqu4y8r.us-east-1.rds.amazonaws.com";
-			database = "db_dn_pass_dev";
-			user = "gsaxena";
-			password = "polk0912888";
-			port = 3306;
-
 			errTime = new Date();
 			System.err.println(DateFormat.getDateTimeInstance(
 					DateFormat.MEDIUM, DateFormat.MEDIUM).format(errTime).toString()
