@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		580893AA11BCEDA6006366DD /* LibraryViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893A911BCEDA6006366DD /* LibraryViewController.mm */; };
+		580893AC11BCEDB9006366DD /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893AB11BCEDB9006366DD /* LibraryView.xib */; };
+		580893AE11BCEDCA006366DD /* LibraryView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893AD11BCEDCA006366DD /* LibraryView_iPad.xib */; };
+		580893DE11BCF321006366DD /* LibraryPageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893DD11BCF321006366DD /* LibraryPageViewController.mm */; };
+		580893E111BCF33A006366DD /* LibraryItemView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893E011BCF33A006366DD /* LibraryItemView.mm */; };
+		580893EA11BCF56A006366DD /* LibraryPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893E911BCF56A006366DD /* LibraryPageView.xib */; };
+		580893EC11BCF578006366DD /* LibraryPageView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893EB11BCF578006366DD /* LibraryPageView_iPad.xib */; };
+		580893FD11BCF8BE006366DD /* LibraryModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893FC11BCF8BE006366DD /* LibraryModel.mm */; };
+		580D3AB61182F0E60048057B /* ArticleNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580D3AB41182F0E60048057B /* ArticleNavigationViewController.xib */; };
+		580D3AC81182F2E90048057B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580D3AC61182F2E90048057B /* MainViewController.xib */; };
+		582C2D4111859227002CFEA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582C2D4011859227002CFEA1 /* QuartzCore.framework */; };
+		5837C58B11B50F8D00BFD023 /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 5837C56A11B50F8C00BFD023 /* Content */; };
+		5846DA8F11A599E30042C637 /* AkiliPadAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5846DA8D11A599E30042C637 /* AkiliPadAppDelegate.mm */; };
+		5846DA9011A599E30042C637 /* ArticleNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5846DA8E11A599E30042C637 /* ArticleNavigationViewController.mm */; };
+		585EB87A11B7D9E300BDDD2E /* ContentWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 585EB87911B7D9E300BDDD2E /* ContentWebView.m */; };
+		5861C58B11A29651005C9AAA /* ArticleNavigationLeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861C58A11A29651005C9AAA /* ArticleNavigationLeftItem.m */; };
+		5861C59011A2990A005C9AAA /* btn_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861C58E11A2990A005C9AAA /* btn_back.png */; };
+		5861C59111A2990A005C9AAA /* btn_toc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861C58F11A2990A005C9AAA /* btn_toc.png */; };
+		5861C5A811A29FFC005C9AAA /* ArticleViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5861C5A611A29FFC005C9AAA /* ArticleViewController_iPad.xib */; };
+		5861C5A911A29FFC005C9AAA /* ArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5861C5A711A29FFC005C9AAA /* ArticleViewController.xib */; };
+		5861C5AC11A2A006005C9AAA /* ArticleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5861C5AB11A2A006005C9AAA /* ArticleViewController.mm */; };
+		5861C5F311A2A5BB005C9AAA /* ArticleSelectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5861C5F211A2A5BB005C9AAA /* ArticleSelectorViewController.mm */; };
+		586365E411A141D30045773E /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586365E311A141D30045773E /* MainWindow_iPad.xib */; };
+		5863663611A148460045773E /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5863663511A148460045773E /* MainViewController_iPad.xib */; };
+		5863664611A149610045773E /* ArticleNavigationViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5863664511A149610045773E /* ArticleNavigationViewController_iPad.xib */; };
+		586369D311A169D40045773E /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 586369D211A169D40045773E /* MainViewController.mm */; };
+		586A418111C24D2700FB2DC4 /* ImageBrowserView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586A418011C24D2700FB2DC4 /* ImageBrowserView_iPad.xib */; };
+		586A418D11C2518700FB2DC4 /* AkiliImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 586A418C11C2518700FB2DC4 /* AkiliImageView.mm */; };
+		586A421E11C26D8F00FB2DC4 /* ImageBrowserViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 586A421D11C26D8F00FB2DC4 /* ImageBrowserViewController.mm */; };
+		58709F3B1206C725009091A3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58709F3A1206C725009091A3 /* StoreKit.framework */; };
+		58709F3F1206C72C009091A3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58709F3E1206C72C009091A3 /* MobileCoreServices.framework */; };
+		58709F461206C750009091A3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58709F451206C750009091A3 /* CFNetwork.framework */; };
+		58709FEF1206CCB2009091A3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58709FEE1206CCB2009091A3 /* SystemConfiguration.framework */; };
+		587C0ED511AD47AF004BA812 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 587C0ED411AD47AF004BA812 /* Window.m */; };
+		5888EE1611B91A38000F8910 /* BottomNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5888EE1511B91A38000F8910 /* BottomNavigationView.xib */; };
+		58ACD5EA11C1025000E3F14A /* ImageHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 58ACD5E911C1025000E3F14A /* ImageHandler.mm */; };
+		58DB130311A6B07B0078D4D0 /* SubTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DB130211A6B07B0078D4D0 /* SubTitleLabel.m */; };
+		58F152FF11C8F2CC000F161F /* AkiliLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 58F152FE11C8F2CC000F161F /* AkiliLabel.mm */; };
+		C136D4BB11CF9FC900AF241C /* ImageLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = C136D4BA11CF9FC900AF241C /* ImageLegendView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* AkiliPadAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AkiliPadAppDelegate.h; sourceTree = "<group>"; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		580893A811BCEDA6006366DD /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
+		580893A911BCEDA6006366DD /* LibraryViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryViewController.mm; sourceTree = "<group>"; };
+		580893AB11BCEDB9006366DD /* LibraryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
+		580893AD11BCEDCA006366DD /* LibraryView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryView_iPad.xib; sourceTree = "<group>"; };
+		580893DC11BCF321006366DD /* LibraryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryPageViewController.h; sourceTree = "<group>"; };
+		580893DD11BCF321006366DD /* LibraryPageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryPageViewController.mm; sourceTree = "<group>"; };
+		580893DF11BCF33A006366DD /* LibraryItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryItemView.h; sourceTree = "<group>"; };
+		580893E011BCF33A006366DD /* LibraryItemView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryItemView.mm; sourceTree = "<group>"; };
+		580893E911BCF56A006366DD /* LibraryPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryPageView.xib; sourceTree = "<group>"; };
+		580893EB11BCF578006366DD /* LibraryPageView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryPageView_iPad.xib; sourceTree = "<group>"; };
+		580893FB11BCF8BE006366DD /* LibraryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryModel.h; sourceTree = "<group>"; };
+		580893FC11BCF8BE006366DD /* LibraryModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryModel.mm; sourceTree = "<group>"; };
+		580D3AB21182F0E60048057B /* ArticleNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleNavigationViewController.h; sourceTree = "<group>"; };
+		580D3AB41182F0E60048057B /* ArticleNavigationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleNavigationViewController.xib; path = Classes/ArticleNavigationViewController.xib; sourceTree = "<group>"; };
+		580D3AC41182F2E90048057B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		580D3AC61182F2E90048057B /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
+		582C2D4011859227002CFEA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5837C56A11B50F8C00BFD023 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = "<group>"; };
+		583E3A2111D0B93B007A4DD4 /* ImageLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLegendView.h; sourceTree = "<group>"; };
+		583E3A2211D0B93B007A4DD4 /* ImageLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLegendView.m; sourceTree = "<group>"; };
+		5846DA8D11A599E30042C637 /* AkiliPadAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AkiliPadAppDelegate.mm; sourceTree = "<group>"; };
+		5846DA8E11A599E30042C637 /* ArticleNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArticleNavigationViewController.mm; sourceTree = "<group>"; };
+		585EB87811B7D9E300BDDD2E /* ContentWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentWebView.h; sourceTree = "<group>"; };
+		585EB87911B7D9E300BDDD2E /* ContentWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentWebView.m; sourceTree = "<group>"; };
+		5861C58911A29651005C9AAA /* ArticleNavigationLeftItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleNavigationLeftItem.h; sourceTree = "<group>"; };
+		5861C58A11A29651005C9AAA /* ArticleNavigationLeftItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleNavigationLeftItem.m; sourceTree = "<group>"; };
+		5861C58E11A2990A005C9AAA /* btn_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_back.png; path = Images/btn_back.png; sourceTree = "<group>"; };
+		5861C58F11A2990A005C9AAA /* btn_toc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_toc.png; path = Images/btn_toc.png; sourceTree = "<group>"; };
+		5861C5A611A29FFC005C9AAA /* ArticleViewController_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleViewController_iPad.xib; path = Classes/ArticleViewController_iPad.xib; sourceTree = "<group>"; };
+		5861C5A711A29FFC005C9AAA /* ArticleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleViewController.xib; path = Classes/ArticleViewController.xib; sourceTree = "<group>"; };
+		5861C5AA11A2A006005C9AAA /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		5861C5AB11A2A006005C9AAA /* ArticleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArticleViewController.mm; sourceTree = "<group>"; };
+		5861C5F111A2A5BB005C9AAA /* ArticleSelectorViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = ArticleSelectorViewController.h; sourceTree = "<group>"; };
+		5861C5F211A2A5BB005C9AAA /* ArticleSelectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArticleSelectorViewController.mm; sourceTree = "<group>"; };
+		586365E311A141D30045773E /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
+		5863663511A148460045773E /* MainViewController_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController_iPad.xib; path = Classes/MainViewController_iPad.xib; sourceTree = "<group>"; };
+		5863664511A149610045773E /* ArticleNavigationViewController_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleNavigationViewController_iPad.xib; path = Classes/ArticleNavigationViewController_iPad.xib; sourceTree = "<group>"; };
+		586369D211A169D40045773E /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
+		586A418011C24D2700FB2DC4 /* ImageBrowserView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageBrowserView_iPad.xib; sourceTree = "<group>"; };
+		586A418B11C2518700FB2DC4 /* AkiliImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AkiliImageView.h; sourceTree = "<group>"; };
+		586A418C11C2518700FB2DC4 /* AkiliImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AkiliImageView.mm; sourceTree = "<group>"; };
+		586A421C11C26D8F00FB2DC4 /* ImageBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBrowserViewController.h; sourceTree = "<group>"; };
+		586A421D11C26D8F00FB2DC4 /* ImageBrowserViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageBrowserViewController.mm; sourceTree = "<group>"; };
+		58709F3A1206C725009091A3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		58709F3E1206C72C009091A3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		58709F451206C750009091A3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		58709FEE1206CCB2009091A3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		587C0ED311AD47AF004BA812 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		587C0ED411AD47AF004BA812 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
+		5888EE1511B91A38000F8910 /* BottomNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomNavigationView.xib; sourceTree = "<group>"; };
+		58ACD5E811C1025000E3F14A /* ImageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHandler.h; sourceTree = "<group>"; };
+		58ACD5E911C1025000E3F14A /* ImageHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHandler.mm; sourceTree = "<group>"; };
+		58DB130111A6B07B0078D4D0 /* SubTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTitleLabel.h; sourceTree = "<group>"; };
+		58DB130211A6B07B0078D4D0 /* SubTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTitleLabel.m; sourceTree = "<group>"; };
+		58F152FD11C8F2CC000F161F /* AkiliLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AkiliLabel.h; sourceTree = "<group>"; };
+		58F152FE11C8F2CC000F161F /* AkiliLabel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AkiliLabel.mm; sourceTree = "<group>"; };
+		C136D4B911CF9FC900AF241C /* ImageLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLegendView.h; sourceTree = "<group>"; };
+		C136D4BA11CF9FC900AF241C /* ImageLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLegendView.m; sourceTree = "<group>"; };
+		C1AF056C1209E8ED00BADB3A /* WorkShop1_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkShop1_Prefix.pch; sourceTree = "<group>"; };
+		C1D68B381209E742001C7EF1 /* WorkShop1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkShop1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1D68B471209E7E2001C7EF1 /* WorkShop1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WorkShop1-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				582C2D4111859227002CFEA1 /* QuartzCore.framework in Frameworks */,
+				58709F3B1206C725009091A3 /* StoreKit.framework in Frameworks */,
+				58709F3F1206C72C009091A3 /* MobileCoreServices.framework in Frameworks */,
+				58709F461206C750009091A3 /* CFNetwork.framework in Frameworks */,
+				58709FEF1206CCB2009091A3 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5846DA8D11A599E30042C637 /* AkiliPadAppDelegate.mm */,
+				1D3623240D0F684500981E51 /* AkiliPadAppDelegate.h */,
+				5861C5DA11A2A1F1005C9AAA /* Model */,
+				580D3E8F118333E90048057B /* ViewControllers */,
+				5861C5D611A2A1AA005C9AAA /* Custom Views */,
+				58ACD5E811C1025000E3F14A /* ImageHandler.h */,
+				58ACD5E911C1025000E3F14A /* ImageHandler.mm */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1D68B381209E742001C7EF1 /* WorkShop1.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				5837C56A11B50F8C00BFD023 /* Content */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C1AF056C1209E8ED00BADB3A /* WorkShop1_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1D68B471209E7E2001C7EF1 /* WorkShop1-Info.plist */,
+				586369BB11A168E20045773E /* Images */,
+				586369BC11A168EB0045773E /* XIB */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				582C2D4011859227002CFEA1 /* QuartzCore.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				58709F3A1206C725009091A3 /* StoreKit.framework */,
+				58709F3E1206C72C009091A3 /* MobileCoreServices.framework */,
+				58709F451206C750009091A3 /* CFNetwork.framework */,
+				58709FEE1206CCB2009091A3 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		580D3E8F118333E90048057B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				580D3AC41182F2E90048057B /* MainViewController.h */,
+				586369D211A169D40045773E /* MainViewController.mm */,
+				580D3AB21182F0E60048057B /* ArticleNavigationViewController.h */,
+				5846DA8E11A599E30042C637 /* ArticleNavigationViewController.mm */,
+				5861C5AA11A2A006005C9AAA /* ArticleViewController.h */,
+				5861C5AB11A2A006005C9AAA /* ArticleViewController.mm */,
+				5861C5F111A2A5BB005C9AAA /* ArticleSelectorViewController.h */,
+				5861C5F211A2A5BB005C9AAA /* ArticleSelectorViewController.mm */,
+				580893A811BCEDA6006366DD /* LibraryViewController.h */,
+				580893A911BCEDA6006366DD /* LibraryViewController.mm */,
+				580893DC11BCF321006366DD /* LibraryPageViewController.h */,
+				580893DD11BCF321006366DD /* LibraryPageViewController.mm */,
+				586A421C11C26D8F00FB2DC4 /* ImageBrowserViewController.h */,
+				586A421D11C26D8F00FB2DC4 /* ImageBrowserViewController.mm */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5861C5D611A2A1AA005C9AAA /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				583E3A2111D0B93B007A4DD4 /* ImageLegendView.h */,
+				583E3A2211D0B93B007A4DD4 /* ImageLegendView.m */,
+				585EB87811B7D9E300BDDD2E /* ContentWebView.h */,
+				585EB87911B7D9E300BDDD2E /* ContentWebView.m */,
+				5861C58911A29651005C9AAA /* ArticleNavigationLeftItem.h */,
+				5861C58A11A29651005C9AAA /* ArticleNavigationLeftItem.m */,
+				58DB130111A6B07B0078D4D0 /* SubTitleLabel.h */,
+				58DB130211A6B07B0078D4D0 /* SubTitleLabel.m */,
+				587C0ED311AD47AF004BA812 /* Window.h */,
+				587C0ED411AD47AF004BA812 /* Window.m */,
+				580893DF11BCF33A006366DD /* LibraryItemView.h */,
+				580893E011BCF33A006366DD /* LibraryItemView.mm */,
+				586A418B11C2518700FB2DC4 /* AkiliImageView.h */,
+				586A418C11C2518700FB2DC4 /* AkiliImageView.mm */,
+				58F152FD11C8F2CC000F161F /* AkiliLabel.h */,
+				58F152FE11C8F2CC000F161F /* AkiliLabel.mm */,
+				C136D4B911CF9FC900AF241C /* ImageLegendView.h */,
+				C136D4BA11CF9FC900AF241C /* ImageLegendView.m */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		5861C5DA11A2A1F1005C9AAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				580893FB11BCF8BE006366DD /* LibraryModel.h */,
+				580893FC11BCF8BE006366DD /* LibraryModel.mm */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		586369BB11A168E20045773E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5861C58E11A2990A005C9AAA /* btn_back.png */,
+				5861C58F11A2990A005C9AAA /* btn_toc.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		586369BC11A168EB0045773E /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				5861C5A611A29FFC005C9AAA /* ArticleViewController_iPad.xib */,
+				5861C5A711A29FFC005C9AAA /* ArticleViewController.xib */,
+				5863664511A149610045773E /* ArticleNavigationViewController_iPad.xib */,
+				5863663511A148460045773E /* MainViewController_iPad.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				586365E311A141D30045773E /* MainWindow_iPad.xib */,
+				580D3AC61182F2E90048057B /* MainViewController.xib */,
+				580D3AB41182F0E60048057B /* ArticleNavigationViewController.xib */,
+				5888EE1511B91A38000F8910 /* BottomNavigationView.xib */,
+				580893AB11BCEDB9006366DD /* LibraryView.xib */,
+				580893AD11BCEDCA006366DD /* LibraryView_iPad.xib */,
+				580893E911BCF56A006366DD /* LibraryPageView.xib */,
+				580893EB11BCF578006366DD /* LibraryPageView_iPad.xib */,
+				586A418011C24D2700FB2DC4 /* ImageBrowserView_iPad.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* WorkShop1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WorkShop1" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WorkShop1;
+			productName = AkiliPad;
+			productReference = C1D68B381209E742001C7EF1 /* WorkShop1.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WorkShop1" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* WorkShop1 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				580D3AB61182F0E60048057B /* ArticleNavigationViewController.xib in Resources */,
+				580D3AC81182F2E90048057B /* MainViewController.xib in Resources */,
+				586365E411A141D30045773E /* MainWindow_iPad.xib in Resources */,
+				5863663611A148460045773E /* MainViewController_iPad.xib in Resources */,
+				5863664611A149610045773E /* ArticleNavigationViewController_iPad.xib in Resources */,
+				5861C59011A2990A005C9AAA /* btn_back.png in Resources */,
+				5861C59111A2990A005C9AAA /* btn_toc.png in Resources */,
+				5861C5A811A29FFC005C9AAA /* ArticleViewController_iPad.xib in Resources */,
+				5861C5A911A29FFC005C9AAA /* ArticleViewController.xib in Resources */,
+				5837C58B11B50F8D00BFD023 /* Content in Resources */,
+				5888EE1611B91A38000F8910 /* BottomNavigationView.xib in Resources */,
+				580893AC11BCEDB9006366DD /* LibraryView.xib in Resources */,
+				580893AE11BCEDCA006366DD /* LibraryView_iPad.xib in Resources */,
+				580893EA11BCF56A006366DD /* LibraryPageView.xib in Resources */,
+				580893EC11BCF578006366DD /* LibraryPageView_iPad.xib in Resources */,
+				586A418111C24D2700FB2DC4 /* ImageBrowserView_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				586369D311A169D40045773E /* MainViewController.mm in Sources */,
+				5861C58B11A29651005C9AAA /* ArticleNavigationLeftItem.m in Sources */,
+				5861C5AC11A2A006005C9AAA /* ArticleViewController.mm in Sources */,
+				5861C5F311A2A5BB005C9AAA /* ArticleSelectorViewController.mm in Sources */,
+				5846DA8F11A599E30042C637 /* AkiliPadAppDelegate.mm in Sources */,
+				5846DA9011A599E30042C637 /* ArticleNavigationViewController.mm in Sources */,
+				58DB130311A6B07B0078D4D0 /* SubTitleLabel.m in Sources */,
+				587C0ED511AD47AF004BA812 /* Window.m in Sources */,
+				585EB87A11B7D9E300BDDD2E /* ContentWebView.m in Sources */,
+				580893AA11BCEDA6006366DD /* LibraryViewController.mm in Sources */,
+				580893DE11BCF321006366DD /* LibraryPageViewController.mm in Sources */,
+				580893E111BCF33A006366DD /* LibraryItemView.mm in Sources */,
+				580893FD11BCF8BE006366DD /* LibraryModel.mm in Sources */,
+				58ACD5EA11C1025000E3F14A /* ImageHandler.mm in Sources */,
+				586A418D11C2518700FB2DC4 /* AkiliImageView.mm in Sources */,
+				586A421E11C26D8F00FB2DC4 /* ImageBrowserViewController.mm in Sources */,
+				58F152FF11C8F2CC000F161F /* AkiliLabel.mm in Sources */,
+				C136D4BB11CF9FC900AF241C /* ImageLegendView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WorkShop1_Prefix.pch;
+				GCC_THUMB_SUPPORT = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "WorkShop1-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				"New Setting" = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = WorkShop1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WorkShop1_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "WorkShop1-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				"New Setting" = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = WorkShop1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58A0E28C120976F5009C8D4C /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Distribution;
+		};
+		58A0E28D120976F5009C8D4C /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WorkShop1_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "WorkShop1-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				"New Setting" = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = WorkShop1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WorkShop1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				58A0E28D120976F5009C8D4C /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WorkShop1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				58A0E28C120976F5009C8D4C /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
