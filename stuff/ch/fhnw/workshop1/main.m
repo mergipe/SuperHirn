@@ -1,9 +1,8 @@
 //
 //  main.m
-//  AkiliPad
+//  iCompetence
 //
-//  Created by Mithin on 21/04/10.
-//  Copyright Techtinium Corporation 2010. All rights reserved.
+//  Authors: SH/LM on 21/04/10.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,7 +10,7 @@
 int main(int argc, char *argv[]) {
     
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, nil);
+    int retVal = UIApplicationMain(argc, argv, nil, @"MainPadAppDelegate");
     [pool release];
     return retVal;
 }

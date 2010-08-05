@@ -1,6 +1,6 @@
 //
 //  ImageBrowserViewController.h
-//  AkiliPad
+//  iCompetence
 //
 
 #import <UIKit/UIKit.h>

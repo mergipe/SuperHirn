@@ -44,7 +44,7 @@
 	[userDefaults setObject:self.latestIssuePath forKey:@"LatestIssuePath"];
 }
 
-- (void)copySampleContentToDocuments {
+- (void)copySampleRecordToDocuments {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -52,51 +52,51 @@
 	NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDir = [documentPaths objectAtIndex:0];
 	//Set the books path
-	NSString *contentPathInDoc = [documentsDir stringByAppendingPathComponent:@"Content"];
-	//NSLog(@"Content Path In Documents = %@", contentPathInDoc);
+	NSString *RecordPathInDoc = [documentsDir stringByAppendingPathComponent:@"Record"];
+	//NSLog(@"Record Path In Documents = %@", RecordPathInDoc);
 	BOOL isDir;
-	if ([fileManager fileExistsAtPath:contentPathInDoc isDirectory:&isDir] && isDir) {
-		//Content already eixists.
+	if ([fileManager fileExistsAtPath:RecordPathInDoc isDirectory:&isDir] && isDir) {
+		//Record already eixists.
 		//Check if latest path exists or not
 		if(self.latestIssuePath == nil || [self.latestIssuePath length] == 0) {
-			NSArray *arr = [fileManager directoryContentsAtPath:contentPathInDoc];
-			self.latestIssuePath = [contentPathInDoc stringByAppendingPathComponent:[arr objectAtIndex:0]];
+			NSArray *arr = [fileManager directoryRecordsAtPath:RecordPathInDoc];
+			self.latestIssuePath = [RecordPathInDoc stringByAppendingPathComponent:[arr objectAtIndex:0]];
 		}
 		return;
 	}
 	
 	NSError *error = nil;
-	NSString *contentPathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Content"];
+	NSString *RecordPathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Record"];
 	
-	if([fileManager fileExistsAtPath:contentPathFromApp isDirectory:&isDir] && isDir) {
-		NSLog(@"Content Path exists in app");
+	if([fileManager fileExistsAtPath:RecordPathFromApp isDirectory:&isDir] && isDir) {
+		NSLog(@"Record Path exists in app");
 	}
 	
-	if (![fileManager copyItemAtPath:contentPathFromApp toPath:contentPathInDoc error:&error]) {
-		NSLog(@"Error while moving content = ", [error localizedDescription]);
+	if (![fileManager copyItemAtPath:RecordPathFromApp toPath:RecordPathInDoc error:&error]) {
+		NSLog(@"Error while moving Record = ", [error localizedDescription]);
 	}
-	//The sample content is copied. We now have to save the latest cover page path
-	NSArray *arr = [fileManager directoryContentsAtPath:contentPathInDoc];
-	self.latestIssuePath = [contentPathInDoc stringByAppendingPathComponent:[arr objectAtIndex:0]];
+	//The sample Record is copied. We now have to save the latest cover page path
+	NSArray *arr = [fileManager directoryRecordsAtPath:RecordPathInDoc];
+	self.latestIssuePath = [RecordPathInDoc stringByAppendingPathComponent:[arr objectAtIndex:0]];
 	NSLog(@"Latest Issue Path = %@", latestIssuePath);
 	[pool release];
 }
 
-- (NSString *)contentBasePath {
+- (NSString *)RecordBasePath {
 	NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDir = [documentPaths objectAtIndex:0];
 	NSString *fPath;
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		fPath = [documentsDir stringByAppendingPathComponent:@"Content"];
+		fPath = [documentsDir stringByAppendingPathComponent:@"Record"];
 	}
 	else {
-		fPath = [documentsDir stringByAppendingPathComponent:@"Content_iPhone"];
+		fPath = [documentsDir stringByAppendingPathComponent:@"Record_iPhone"];
 	}
 	return fPath;
 }
 
-- (BOOL)displayArticleCovers {
-	return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"DISPLAY_ARTICLE_COVERS"] boolValue];
+- (BOOL)displayRecordCovers {
+	return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"DISPLAY_Record_COVERS"] boolValue];
 }
 
 @end

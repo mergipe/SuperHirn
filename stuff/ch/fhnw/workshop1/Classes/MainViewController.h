@@ -1,9 +1,9 @@
 //
 //  MainViewController.h
-//  AkiliPad
+//  iCompetence
 //
-//  Created by Mithin on 24/04/10.
-//  Copyright 2010 Techtinium Corporation. All rights reserved.
+//  Authors: SH/LM on 24/04/10.
+//  
 //
 
 #import <UIKit/UIKit.h>

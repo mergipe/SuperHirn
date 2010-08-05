@@ -35,7 +35,7 @@
 	<string>MainWindow</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow_iPad</string>
-	<key>DISPLAY_ARTICLE_COVERS</key>
+	<key>DISPLAY_Record_COVERS</key>
 	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

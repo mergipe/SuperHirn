@@ -12,27 +12,27 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		580893AA11BCEDA6006366DD /* LibraryViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893A911BCEDA6006366DD /* LibraryViewController.mm */; };
+		580893AA11BCEDA6006366DD /* OverviewViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893A911BCEDA6006366DD /* OverviewViewController.mm */; };
 		580893AC11BCEDB9006366DD /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893AB11BCEDB9006366DD /* LibraryView.xib */; };
 		580893AE11BCEDCA006366DD /* LibraryView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893AD11BCEDCA006366DD /* LibraryView_iPad.xib */; };
-		580893DE11BCF321006366DD /* LibraryPageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893DD11BCF321006366DD /* LibraryPageViewController.mm */; };
-		580893E111BCF33A006366DD /* LibraryItemView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893E011BCF33A006366DD /* LibraryItemView.mm */; };
+		580893DE11BCF321006366DD /* OverviewPageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893DD11BCF321006366DD /* OverviewPageViewController.mm */; };
+		580893E111BCF33A006366DD /* OverviewItemView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893E011BCF33A006366DD /* OverviewItemView.mm */; };
 		580893EA11BCF56A006366DD /* LibraryPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893E911BCF56A006366DD /* LibraryPageView.xib */; };
 		580893EC11BCF578006366DD /* LibraryPageView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580893EB11BCF578006366DD /* LibraryPageView_iPad.xib */; };
-		580893FD11BCF8BE006366DD /* LibraryModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893FC11BCF8BE006366DD /* LibraryModel.mm */; };
+		580893FD11BCF8BE006366DD /* RecordModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 580893FC11BCF8BE006366DD /* RecordModel.mm */; };
 		580D3AB61182F0E60048057B /* ArticleNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580D3AB41182F0E60048057B /* ArticleNavigationViewController.xib */; };
 		580D3AC81182F2E90048057B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580D3AC61182F2E90048057B /* MainViewController.xib */; };
 		582C2D4111859227002CFEA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582C2D4011859227002CFEA1 /* QuartzCore.framework */; };
 		5837C58B11B50F8D00BFD023 /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 5837C56A11B50F8C00BFD023 /* Content */; };
-		5846DA9011A599E30042C637 /* ArticleNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5846DA8E11A599E30042C637 /* ArticleNavigationViewController.mm */; };
-		585EB87A11B7D9E300BDDD2E /* ContentWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 585EB87911B7D9E300BDDD2E /* ContentWebView.m */; };
-		5861C58B11A29651005C9AAA /* ArticleNavigationLeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861C58A11A29651005C9AAA /* ArticleNavigationLeftItem.m */; };
+		5846DA9011A599E30042C637 /* RecordNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5846DA8E11A599E30042C637 /* RecordNavigationViewController.mm */; };
+		585EB87A11B7D9E300BDDD2E /* RecordWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 585EB87911B7D9E300BDDD2E /* RecordWebView.m */; };
+		5861C58B11A29651005C9AAA /* RecordNavigationLeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861C58A11A29651005C9AAA /* RecordNavigationLeftItem.m */; };
 		5861C59011A2990A005C9AAA /* btn_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861C58E11A2990A005C9AAA /* btn_back.png */; };
 		5861C59111A2990A005C9AAA /* btn_toc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861C58F11A2990A005C9AAA /* btn_toc.png */; };
 		5861C5A811A29FFC005C9AAA /* ArticleViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5861C5A611A29FFC005C9AAA /* ArticleViewController_iPad.xib */; };
 		5861C5A911A29FFC005C9AAA /* ArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5861C5A711A29FFC005C9AAA /* ArticleViewController.xib */; };
-		5861C5AC11A2A006005C9AAA /* ArticleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5861C5AB11A2A006005C9AAA /* ArticleViewController.mm */; };
-		5861C5F311A2A5BB005C9AAA /* ArticleSelectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5861C5F211A2A5BB005C9AAA /* ArticleSelectorViewController.mm */; };
+		5861C5AC11A2A006005C9AAA /* RecordViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5861C5AB11A2A006005C9AAA /* RecordViewController.mm */; };
+		5861C5F311A2A5BB005C9AAA /* RecordSelectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5861C5F211A2A5BB005C9AAA /* RecordSelectorViewController.mm */; };
 		586365E411A141D30045773E /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586365E311A141D30045773E /* MainWindow_iPad.xib */; };
 		5863663611A148460045773E /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5863663511A148460045773E /* MainViewController_iPad.xib */; };
 		5863664611A149610045773E /* ArticleNavigationViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5863664511A149610045773E /* ArticleNavigationViewController_iPad.xib */; };
@@ -54,37 +54,37 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WorkshopOne_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopOne_Prefix.pch; sourceTree = "<group>"; };
-		580893A811BCEDA6006366DD /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
-		580893A911BCEDA6006366DD /* LibraryViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryViewController.mm; sourceTree = "<group>"; };
+		580893A811BCEDA6006366DD /* OverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewViewController.h; sourceTree = "<group>"; };
+		580893A911BCEDA6006366DD /* OverviewViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OverviewViewController.mm; sourceTree = "<group>"; };
 		580893AB11BCEDB9006366DD /* LibraryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
 		580893AD11BCEDCA006366DD /* LibraryView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryView_iPad.xib; sourceTree = "<group>"; };
-		580893DC11BCF321006366DD /* LibraryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryPageViewController.h; sourceTree = "<group>"; };
-		580893DD11BCF321006366DD /* LibraryPageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryPageViewController.mm; sourceTree = "<group>"; };
-		580893DF11BCF33A006366DD /* LibraryItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryItemView.h; sourceTree = "<group>"; };
-		580893E011BCF33A006366DD /* LibraryItemView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryItemView.mm; sourceTree = "<group>"; };
+		580893DC11BCF321006366DD /* OverviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewPageViewController.h; sourceTree = "<group>"; };
+		580893DD11BCF321006366DD /* OverviewPageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OverviewPageViewController.mm; sourceTree = "<group>"; };
+		580893DF11BCF33A006366DD /* OverviewItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewItemView.h; sourceTree = "<group>"; };
+		580893E011BCF33A006366DD /* OverviewItemView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OverviewItemView.mm; sourceTree = "<group>"; };
 		580893E911BCF56A006366DD /* LibraryPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryPageView.xib; sourceTree = "<group>"; };
 		580893EB11BCF578006366DD /* LibraryPageView_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryPageView_iPad.xib; sourceTree = "<group>"; };
-		580893FB11BCF8BE006366DD /* LibraryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryModel.h; sourceTree = "<group>"; };
-		580893FC11BCF8BE006366DD /* LibraryModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryModel.mm; sourceTree = "<group>"; };
-		580D3AB21182F0E60048057B /* ArticleNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleNavigationViewController.h; sourceTree = "<group>"; };
+		580893FB11BCF8BE006366DD /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
+		580893FC11BCF8BE006366DD /* RecordModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RecordModel.mm; sourceTree = "<group>"; };
+		580D3AB21182F0E60048057B /* RecordNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordNavigationViewController.h; sourceTree = "<group>"; };
 		580D3AB41182F0E60048057B /* ArticleNavigationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleNavigationViewController.xib; path = Classes/ArticleNavigationViewController.xib; sourceTree = "<group>"; };
 		580D3AC41182F2E90048057B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		580D3AC61182F2E90048057B /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
 		582C2D4011859227002CFEA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5837C56A11B50F8C00BFD023 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = "<group>"; };
-		5846DA8E11A599E30042C637 /* ArticleNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArticleNavigationViewController.mm; sourceTree = "<group>"; };
-		585EB87811B7D9E300BDDD2E /* ContentWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentWebView.h; sourceTree = "<group>"; };
-		585EB87911B7D9E300BDDD2E /* ContentWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentWebView.m; sourceTree = "<group>"; };
-		5861C58911A29651005C9AAA /* ArticleNavigationLeftItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleNavigationLeftItem.h; sourceTree = "<group>"; };
-		5861C58A11A29651005C9AAA /* ArticleNavigationLeftItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleNavigationLeftItem.m; sourceTree = "<group>"; };
+		5846DA8E11A599E30042C637 /* RecordNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RecordNavigationViewController.mm; sourceTree = "<group>"; };
+		585EB87811B7D9E300BDDD2E /* RecordWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordWebView.h; sourceTree = "<group>"; };
+		585EB87911B7D9E300BDDD2E /* RecordWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordWebView.m; sourceTree = "<group>"; };
+		5861C58911A29651005C9AAA /* RecordNavigationLeftItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordNavigationLeftItem.h; sourceTree = "<group>"; };
+		5861C58A11A29651005C9AAA /* RecordNavigationLeftItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordNavigationLeftItem.m; sourceTree = "<group>"; };
 		5861C58E11A2990A005C9AAA /* btn_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_back.png; path = Images/btn_back.png; sourceTree = "<group>"; };
 		5861C58F11A2990A005C9AAA /* btn_toc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_toc.png; path = Images/btn_toc.png; sourceTree = "<group>"; };
 		5861C5A611A29FFC005C9AAA /* ArticleViewController_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleViewController_iPad.xib; path = Classes/ArticleViewController_iPad.xib; sourceTree = "<group>"; };
 		5861C5A711A29FFC005C9AAA /* ArticleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleViewController.xib; path = Classes/ArticleViewController.xib; sourceTree = "<group>"; };
-		5861C5AA11A2A006005C9AAA /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
-		5861C5AB11A2A006005C9AAA /* ArticleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArticleViewController.mm; sourceTree = "<group>"; };
-		5861C5F111A2A5BB005C9AAA /* ArticleSelectorViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = ArticleSelectorViewController.h; sourceTree = "<group>"; };
-		5861C5F211A2A5BB005C9AAA /* ArticleSelectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArticleSelectorViewController.mm; sourceTree = "<group>"; };
+		5861C5AA11A2A006005C9AAA /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		5861C5AB11A2A006005C9AAA /* RecordViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RecordViewController.mm; sourceTree = "<group>"; };
+		5861C5F111A2A5BB005C9AAA /* RecordSelectorViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = RecordSelectorViewController.h; sourceTree = "<group>"; };
+		5861C5F211A2A5BB005C9AAA /* RecordSelectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RecordSelectorViewController.mm; sourceTree = "<group>"; };
 		586365E311A141D30045773E /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
 		5863663511A148460045773E /* MainViewController_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController_iPad.xib; path = Classes/MainViewController_iPad.xib; sourceTree = "<group>"; };
 		5863664511A149610045773E /* ArticleNavigationViewController_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArticleNavigationViewController_iPad.xib; path = Classes/ArticleNavigationViewController_iPad.xib; sourceTree = "<group>"; };
@@ -188,16 +188,16 @@
 			children = (
 				580D3AC41182F2E90048057B /* MainViewController.h */,
 				586369D211A169D40045773E /* MainViewController.mm */,
-				580D3AB21182F0E60048057B /* ArticleNavigationViewController.h */,
-				5846DA8E11A599E30042C637 /* ArticleNavigationViewController.mm */,
-				5861C5F111A2A5BB005C9AAA /* ArticleSelectorViewController.h */,
-				5861C5AA11A2A006005C9AAA /* ArticleViewController.h */,
-				5861C5AB11A2A006005C9AAA /* ArticleViewController.mm */,
-				5861C5F211A2A5BB005C9AAA /* ArticleSelectorViewController.mm */,
-				580893A811BCEDA6006366DD /* LibraryViewController.h */,
-				580893A911BCEDA6006366DD /* LibraryViewController.mm */,
-				580893DC11BCF321006366DD /* LibraryPageViewController.h */,
-				580893DD11BCF321006366DD /* LibraryPageViewController.mm */,
+				580D3AB21182F0E60048057B /* RecordNavigationViewController.h */,
+				5846DA8E11A599E30042C637 /* RecordNavigationViewController.mm */,
+				5861C5F111A2A5BB005C9AAA /* RecordSelectorViewController.h */,
+				5861C5AA11A2A006005C9AAA /* RecordViewController.h */,
+				5861C5AB11A2A006005C9AAA /* RecordViewController.mm */,
+				5861C5F211A2A5BB005C9AAA /* RecordSelectorViewController.mm */,
+				580893A811BCEDA6006366DD /* OverviewViewController.h */,
+				580893A911BCEDA6006366DD /* OverviewViewController.mm */,
+				580893DC11BCF321006366DD /* OverviewPageViewController.h */,
+				580893DD11BCF321006366DD /* OverviewPageViewController.mm */,
 				586A421C11C26D8F00FB2DC4 /* ImageBrowserViewController.h */,
 				586A421D11C26D8F00FB2DC4 /* ImageBrowserViewController.mm */,
 			);
@@ -208,14 +208,14 @@
 			isa = PBXGroup;
 			children = (
 				C1D75648120A0BBA0099810A /* ImageView */,
-				585EB87811B7D9E300BDDD2E /* ContentWebView.h */,
-				585EB87911B7D9E300BDDD2E /* ContentWebView.m */,
-				5861C58911A29651005C9AAA /* ArticleNavigationLeftItem.h */,
-				5861C58A11A29651005C9AAA /* ArticleNavigationLeftItem.m */,
+				585EB87811B7D9E300BDDD2E /* RecordWebView.h */,
+				585EB87911B7D9E300BDDD2E /* RecordWebView.m */,
+				5861C58911A29651005C9AAA /* RecordNavigationLeftItem.h */,
+				5861C58A11A29651005C9AAA /* RecordNavigationLeftItem.m */,
 				587C0ED311AD47AF004BA812 /* Window.h */,
 				587C0ED411AD47AF004BA812 /* Window.m */,
-				580893DF11BCF33A006366DD /* LibraryItemView.h */,
-				580893E011BCF33A006366DD /* LibraryItemView.mm */,
+				580893DF11BCF33A006366DD /* OverviewItemView.h */,
+				580893E011BCF33A006366DD /* OverviewItemView.mm */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -223,8 +223,8 @@
 		5861C5DA11A2A1F1005C9AAA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				580893FB11BCF8BE006366DD /* LibraryModel.h */,
-				580893FC11BCF8BE006366DD /* LibraryModel.mm */,
+				580893FB11BCF8BE006366DD /* RecordModel.h */,
+				580893FC11BCF8BE006366DD /* RecordModel.mm */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -339,16 +339,16 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				586369D311A169D40045773E /* MainViewController.mm in Sources */,
-				5861C58B11A29651005C9AAA /* ArticleNavigationLeftItem.m in Sources */,
-				5861C5AC11A2A006005C9AAA /* ArticleViewController.mm in Sources */,
-				5861C5F311A2A5BB005C9AAA /* ArticleSelectorViewController.mm in Sources */,
-				5846DA9011A599E30042C637 /* ArticleNavigationViewController.mm in Sources */,
+				5861C58B11A29651005C9AAA /* RecordNavigationLeftItem.m in Sources */,
+				5861C5AC11A2A006005C9AAA /* RecordViewController.mm in Sources */,
+				5861C5F311A2A5BB005C9AAA /* RecordSelectorViewController.mm in Sources */,
+				5846DA9011A599E30042C637 /* RecordNavigationViewController.mm in Sources */,
 				587C0ED511AD47AF004BA812 /* Window.m in Sources */,
-				585EB87A11B7D9E300BDDD2E /* ContentWebView.m in Sources */,
-				580893AA11BCEDA6006366DD /* LibraryViewController.mm in Sources */,
-				580893DE11BCF321006366DD /* LibraryPageViewController.mm in Sources */,
-				580893E111BCF33A006366DD /* LibraryItemView.mm in Sources */,
-				580893FD11BCF8BE006366DD /* LibraryModel.mm in Sources */,
+				585EB87A11B7D9E300BDDD2E /* RecordWebView.m in Sources */,
+				580893AA11BCEDA6006366DD /* OverviewViewController.mm in Sources */,
+				580893DE11BCF321006366DD /* OverviewPageViewController.mm in Sources */,
+				580893E111BCF33A006366DD /* OverviewItemView.mm in Sources */,
+				580893FD11BCF8BE006366DD /* RecordModel.mm in Sources */,
 				586A421E11C26D8F00FB2DC4 /* ImageBrowserViewController.mm in Sources */,
 				C1D75643120A0B900099810A /* MainPadAppDelegate.mm in Sources */,
 				C1D7564B120A0BBA0099810A /* ImageView.mm in Sources */,

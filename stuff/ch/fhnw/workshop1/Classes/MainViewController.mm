@@ -1,26 +1,26 @@
 //
 //  MainViewController.m
-//  AkiliPad
+//  iCompetence
 //
-//  Created by Mithin on 24/04/10.
-//  Copyright 2010 Techtinium Corporation. All rights reserved.
+//  Authors: SH/LM on 24/04/10.
+//  
 //
 
 #import "MainViewController.h"
-#import "ArticleNavigationViewController.h"
-#import "ArticleViewController.h"
-#import "LibraryViewController.h"
+#import "RecordNavigationViewController.h"
+#import "RecordViewController.h"
+#import "OverviewViewController.h"
 
 #import "MainPadAppDelegate.h"
 
 @interface MainViewController()
 
-- (void)showMyLibrary;
-- (void)loadContentModelFrom:(NSString *)path;
+- (void)showMyOverview;
+- (void)loadRecordModelFrom:(NSString *)path;
 - (void)loadMagazineAtPath:(NSNotification *)notification;
-- (void)contentModelLoaded;
+- (void)RecordModelLoaded;
 
-- (void)showArticleView;
+- (void)showRecordView;
 - (void)showFirstNavPointAsCoverPage;
 
 @end
@@ -34,7 +34,7 @@
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
 		MainPadAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-		[appDelegate copySampleContentToDocuments];
+		[appDelegate copySampleRecordToDocuments];
 		viewPushed = NO;
     }
     return self;
@@ -45,13 +45,13 @@
 	[super viewDidLoad];
 		
 	// set navigation label and libarary buttom
-	//UILabel * label = [ AkiliPadEnvironment e5Label];
+	//UILabel * label = [ iCompetenceEnvironment e5Label];
 	//label.text = @"Aktuelle Ausgabe";
 	//self.navigationItem.titleView = label;
 	
-		//Setup My Library button
+		//Setup My Overview button
 	UIBarButtonItem *libItem = [[UIBarButtonItem alloc] initWithTitle:@"Ausgaben - Das Magazin" style:UIBarButtonItemStyleBordered 
-															   target:self action:@selector(showMyLibrary)];
+															   target:self action:@selector(showMyOverview)];
 	self.navigationItem.leftBarButtonItem = libItem;
 	[libItem release];
 	
@@ -60,7 +60,7 @@
 	MainPadAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
 	NSString *basePath = appDelegate.latestIssuePath;
 	//Read the ncx and opf files
-	[NSThread detachNewThreadSelector:@selector(loadContentModelFrom:) toTarget:self withObject:basePath];
+	[NSThread detachNewThreadSelector:@selector(loadRecordModelFrom:) toTarget:self withObject:basePath];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,7 +71,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	if(viewPushed)
-		[self contentModelLoaded];
+		[self RecordModelLoaded];
 	viewPushed = NO;
 }
 
@@ -97,7 +97,7 @@
 	f.size.height = self.view.frame.size.height;
 	mWebView.frame = f;
 	
-	[self contentModelLoaded];
+	[self RecordModelLoaded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -130,8 +130,8 @@
 	return @"";
 }
 
-- (void)contentModelLoaded {
-	NSLog(@"Inside contentModelLoaded");
+- (void)RecordModelLoaded {
+	NSLog(@"Inside RecordModelLoaded");
 	MainPadAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
 	NSString *basePath = appDelegate.latestIssuePath;
 	NSString *relativePath = [self coverFileName];
@@ -139,7 +139,7 @@
 		//The cover page is the 1st nav point.
 		[self showFirstNavPointAsCoverPage];
 		//if(!viewPushed) {
-		//	[self showArticleView];
+		//	[self showRecordView];
 		//}
 		return;
 	}
@@ -154,18 +154,18 @@
 	[mLoadingView removeFromSuperview];
 }
 
-- (void)loadContentModelFrom:(NSString *)path {
+- (void)loadRecordModelFrom:(NSString *)path {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	NSLog(@"Inside loadContentModelFrom:%@", path);
-	[self performSelectorOnMainThread:@selector(contentModelLoaded) withObject:nil waitUntilDone:NO];
+	NSLog(@"Inside loadRecordModelFrom:%@", path);
+	[self performSelectorOnMainThread:@selector(RecordModelLoaded) withObject:nil waitUntilDone:NO];
 	
 	[pool release];
 }
 
-- (void)showArticleNavigationView {
+- (void)showRecordNavigationView {
 	MainPadAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-	ArticleNavigationViewController *vc = [[ArticleNavigationViewController alloc] initWithMagazinePath:appDelegate.latestIssuePath];
+	RecordNavigationViewController *vc = [[RecordNavigationViewController alloc] initWithMagazinePath:appDelegate.latestIssuePath];
 	
 	[self.navigationController pushViewController:vc animated:YES];
 	[vc release];
@@ -181,26 +181,26 @@
 	[mLoadingView removeFromSuperview];
 }
 
-- (void)showArticleView {
+- (void)showRecordView {
 	//Show magazine view
-	ArticleViewController *mViewController;
+	RecordViewController *mViewController;
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		mViewController = [[ArticleViewController alloc] initWithNibName:@"ArticleViewController_iPad" bundle:nil];
+		mViewController = [[RecordViewController alloc] initWithNibName:@"RecordViewController_iPad" bundle:nil];
 	}
 	else {
-		mViewController = [[ArticleViewController alloc] initWithNibName:@"ArticleViewController" bundle:nil];
+		mViewController = [[RecordViewController alloc] initWithNibName:@"RecordViewController" bundle:nil];
 	}
 		
-	//We also have to set the page count of this article
-	mViewController.pageCount = 1;//[navModel pageCountForArticleWithPath:pathStr];
+	//We also have to set the page count of this Record
+	mViewController.pageCount = 1;//[navModel pageCountForRecordWithPath:pathStr];
 	
 	[self.navigationController pushViewController:mViewController animated:YES];
 	[mViewController release];
 	viewPushed = YES;
 }
 
-- (void)showMyLibrary {
-	LibraryViewController *libVC = [[LibraryViewController alloc] initWithNibName:@"LibraryView_iPad" bundle:nil];
+- (void)showMyOverview {
+	OverviewViewController *libVC = [[OverviewViewController alloc] initWithNibName:@"OverviewView_iPad" bundle:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMagazineAtPath:) 
 												 name:@"LoadMagazineAtPath" object:nil];
 	 
@@ -216,7 +216,7 @@
 	MainPadAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
 	appDelegate.latestIssuePath = path;
 	//Now load this magazine.
-	[NSThread detachNewThreadSelector:@selector(loadContentModelFrom:) toTarget:self withObject:path];
+	[NSThread detachNewThreadSelector:@selector(loadRecordModelFrom:) toTarget:self withObject:path];
 	//Show loading view
 	[self.view addSubview:mLoadingView];
 	//Remove the notification observer
@@ -250,14 +250,14 @@
 	if(![[[view superview] superview] isKindOfClass:[UIWebView class]])
 		return;
 	
-	//First, figure out if we have to show article cover pages or directly the article
+	//First, figure out if we have to show Record cover pages or directly the Record
 	MainPadAppDelegate *delegate = [UIApplication sharedApplication].delegate;
-	if([delegate displayArticleCovers]) {
-		//User has clicked on the magazine, show article lists
-		[self showArticleNavigationView];
+	if([delegate displayRecordCovers]) {
+		//User has clicked on the magazine, show Record lists
+		[self showRecordNavigationView];
 	}
 	else {
-		[self showArticleView];
+		[self showRecordView];
 	}
 }
 

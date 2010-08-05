@@ -1,9 +1,9 @@
     //
 	//  ImageBrowserViewController.mm
-	//  AkiliPad
+	//  iCompetence
 	//
-	//  Created by Mithin on 11/06/10.
-	//  Copyright 2010 Techtinium Corporation. All rights reserved.
+	//  Authors: SH/LM on 11/06/10.
+	//  
 	//
 
 #import "ImageBrowserViewController.h"
@@ -11,7 +11,7 @@
 
 @interface ImageBrowserViewController(PrivateMethods)
 
-//- (void)loadContentAtIndex:(int)index inImageView:(AkiliImageView *)imageView;
+//- (void)loadRecordAtIndex:(int)index inImageView:(AkiliImageView *)imageView;
 - (void)setTextForTitle;
 - (void)dismissImageBrowser;
 
@@ -74,7 +74,7 @@
 	
 	if(m_pImageView == nil) {
 		m_pImageView = [[ImageView alloc] init];
-			//set contentMode to scale aspect to fit
+			//set RecordMode to scale aspect to fit
 		m_pImageView.contentMode = UIViewContentModeScaleAspectFit;
 	}
 	m_pImageView.frame = CGRectMake(0.0, 0.0, mScrollView.frame.size.width, mScrollView.frame.size.height);
@@ -84,8 +84,8 @@
 	[self applyNewIndex:currentPageIndex toImageView:currentImageView];
 	[self applyNewIndex:currentPageIndex+1 toImageView:nextImageView];
 	
-	[self loadContentAtIndex:currentPageIndex inImageView:currentImageView];
-	[self loadContentAtIndex:currentPageIndex+1 inImageView:nextImageView];
+	[self loadRecordAtIndex:currentPageIndex inImageView:currentImageView];
+	[self loadRecordAtIndex:currentPageIndex+1 inImageView:nextImageView];
 	
 	 */
 	
@@ -95,7 +95,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	// [mScrollView setContentOffset:CGPointMake(mScrollView.frame.size.width * currentPageIndex, 0)];
+	// [mScrollView setRecordOffset:CGPointMake(mScrollView.frame.size.width * currentPageIndex, 0)];
 	//self.navigationItem.title = [NSString stringWithFormat:@"%d von %d", currentPageIndex+1, [mImageHandler.imageInfoDict count]];
 	
 }
@@ -166,7 +166,7 @@
 	 */
 }
 
-- (void)loadContentAtIndex:(int)index inImageView:(ImageView *)imageView {
+- (void)loadRecordAtIndex:(int)index inImageView:(ImageView *)imageView {
 	/*
 	int pageCount = [mImageHandler.imageInfoDict count];
 	if(index >= pageCount)
@@ -179,7 +179,7 @@
 		return;
 	
 	NSURL *url = [NSURL URLWithString:filePath];
-	NSData *data = [NSData dataWithContentsOfURL:url];
+	NSData *data = [NSData dataWithRecordsOfURL:url];
 	[imageView setImage:[UIImage imageWithData:data]];
 	 */
 }
@@ -206,29 +206,29 @@
 	if (lowerNumber == currentImageView.pageIndex) {//User scrolling forward
 		if (upperNumber != nextImageView.pageIndex && upperNumber < pageCount) {
 			[self applyNewIndex:upperNumber toImageView:nextImageView];
-			[self loadContentAtIndex:upperNumber inImageView:nextImageView];
+			[self loadRecordAtIndex:upperNumber inImageView:nextImageView];
 		}
 	}
 	else if (upperNumber == currentImageView.pageIndex) {//User scrolling backward
 		if (lowerNumber != nextImageView.pageIndex && lowerNumber >= 0) {
 			[self applyNewIndex:lowerNumber toImageView:nextImageView];
-			[self loadContentAtIndex:lowerNumber inImageView:nextImageView];
+			[self loadRecordAtIndex:lowerNumber inImageView:nextImageView];
 		}
 	}
 	else {
 		if(lowerNumber == nextImageView.pageIndex) {
 			[self applyNewIndex:upperNumber toImageView:currentImageView];
-			[self loadContentAtIndex:upperNumber inImageView:currentImageView];
+			[self loadRecordAtIndex:upperNumber inImageView:currentImageView];
 		}
 		else if(upperNumber == nextImageView.pageIndex) {
 			[self applyNewIndex:lowerNumber toImageView:currentImageView];
-			[self loadContentAtIndex:lowerNumber inImageView:currentImageView];
+			[self loadRecordAtIndex:lowerNumber inImageView:currentImageView];
 		}
 		else {
 			[self applyNewIndex:lowerNumber toImageView:currentImageView];
 			[self applyNewIndex:upperNumber toImageView:nextImageView];
-			[self loadContentAtIndex:upperNumber inImageView:nextImageView];
-			[self loadContentAtIndex:lowerNumber inImageView:currentImageView];
+			[self loadRecordAtIndex:upperNumber inImageView:nextImageView];
+			[self loadRecordAtIndex:lowerNumber inImageView:currentImageView];
 		}
 	}
 	 */

@@ -20,10 +20,10 @@
 @property(nonatomic, retain) IBOutlet UIWindow *window;
 @property(nonatomic, retain) NSString *latestIssuePath;
 
-- (void)copySampleContentToDocuments;
-- (NSString *)contentBasePath;
+- (void)copySampleRecordToDocuments;
+- (NSString *)RecordBasePath;
 
-- (BOOL)displayArticleCovers;
+- (BOOL)displayRecordCovers;
 
 @end
 

@@ -1,9 +1,9 @@
 //
 //  untitled.m
-//  AkiliPad
+//  iCompetence
 //
-//  Created by Mithin on 26/05/10.
-//  Copyright 2010 Techtinium Corporation. All rights reserved.
+//  Authors: SH/LM on 26/05/10.
+//  
 //
 
 #import "Window.h"
