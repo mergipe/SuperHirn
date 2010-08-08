@@ -1,0 +1,295 @@
+TWorkshopOne2
+v7
+r0
+t302976870.341162
+cCheck dependencies
+cProcessInfoPlistFile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/Info.plist WorkshopOne2-Info.plist
+cCompileXIB /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/MainWindow.xib
+cCompileXIB /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/DetailView.xib
+cProcessPCH /var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch.gch WorkshopOne2_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/main.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/WorkshopOne2AppDelegate.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/RootViewController.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/DetailViewController.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2 normal i386
+cGenerateDSYMFile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app.dSYM /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2
+cTouch /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk
+c000000004BD236930000000000000110
+t1272067731
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004BD1CD90000000000026F020
+t1272040848
+s2551840
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004BD1FFC200000000002A96A0
+t1272053698
+s2791072
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004BD1FF9E0000000000001355
+t1272053662
+s4949
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004BD20412000000000000098F
+t1272054802
+s2447
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004BD20471000000000222E640
+t1272054897
+s35841600
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/Availability.h
+c000000004BD1CFC10000000000001A1A
+t1272041409
+s6682
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.h
+c000000004C5ED7CB0000000000000256
+t1281284043
+s598
+i<UIKit/UIKit.h>
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.m
+c000000004C5ED7CB0000000000000DB7
+t1281284043
+s3511
+i"DetailViewController.h"
+i"RootViewController.h"
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.h
+c000000004C5ED7CB0000000000000184
+t1281284043
+s388
+i<UIKit/UIKit.h>
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.m
+c000000004C5ED7CB00000000000010BA
+t1281284043
+s4282
+i"RootViewController.h"
+i"DetailViewController.h"
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.h
+c000000004C5ED7CB0000000000000312
+t1281284043
+s786
+i<UIKit/UIKit.h>
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.m
+c000000004C5ED7CB00000000000007C7
+t1281284043
+s1991
+i"WorkshopOne2AppDelegate.h"
+i"RootViewController.h"
+i"DetailViewController.h"
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/DetailView.xib
+c000000004C5ED7CB0000000000005007
+t1281284043
+s20487
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/MainWindow.xib
+c000000004C5ED7CB00000000000069DC
+t1281284043
+s27100
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/WorkshopOne2_Prefix.pch
+c000000004C5ED7CB000000000000014A
+t1281284043
+s330
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app
+t1281284070
+s238
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app.dSYM
+t1281284070
+s102
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/DetailView.nib
+t1281284069
+s1421
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/Info.plist
+t1281284069
+s818
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/MainWindow.nib
+t1281284069
+s1939
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/PkgInfo
+t1281284069
+s8
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2
+t1281284070
+s27856
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/DetailViewController.o
+t1281284070
+s46484
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/RootViewController.o
+t1281284070
+s42740
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/WorkshopOne2.LinkFileList
+c000000004C5ED7E500000000000002E9
+t1281284069
+s745
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/WorkshopOne2AppDelegate.o
+t1281284070
+s49536
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/main.o
+t1281284070
+s6388
+
+N/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/main.m
+c000000004C5ED7CB0000000000000160
+t1281284043
+s352
+i<UIKit/UIKit.h>
+
+N/var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch.gch
+t1281284070
+s13825936
+
+NWorkshopOne2-Info.plist
+c000000004C5ED7CB00000000000004D6
+t1281284043
+s1238
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies302976869#302976869#0(0"0(0#1#0"27866456492998768#0"0#
+
+CCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/DetailViewController.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s302976870.204953
+e302976870.296527
+r1
+xCompileC
+xbuild/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/DetailViewController.o
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@119"Compile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.m302976870#302976870#0(0"0(0#0#111"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.m8602447232#2503"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-generated-files.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-own-target-headers.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-all-target-headers.hmap -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-project-headers.hmap -F/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/include -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources/i386 -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources -include /var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch -c /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/DetailViewController.m -o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/DetailViewController.o0#
+
+CCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/RootViewController.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s302976870.203610
+e302976870.292097
+r1
+xCompileC
+xbuild/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/RootViewController.o
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@117"Compile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.m302976870#302976870#0(0"0(0#0#109"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.m8602629280#2499"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-generated-files.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-own-target-headers.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-all-target-headers.hmap -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-project-headers.hmap -F/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/include -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources/i386 -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources -include /var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch -c /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/RootViewController.m -o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/RootViewController.o0#
+
+CCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/WorkshopOne2AppDelegate.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s302976870.202556
+e302976870.293479
+r1
+xCompileC
+xbuild/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/WorkshopOne2AppDelegate.o
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@122"Compile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.m302976870#302976870#0(0"0(0#0#114"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.m8602872416#2509"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-generated-files.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-own-target-headers.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-all-target-headers.hmap -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-project-headers.hmap -F/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/include -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources/i386 -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources -include /var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch -c /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/Classes/WorkshopOne2AppDelegate.m -o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/WorkshopOne2AppDelegate.o0#
+
+CCompileC build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/main.o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s302976870.201057
+e302976870.263905
+r1
+xCompileC
+xbuild/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/main.o
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/main.m302976870#302976870#0(0"0(0#0#87"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/main.m8603149760#2463"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-generated-files.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-own-target-headers.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-all-target-headers.hmap -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-project-headers.hmap -F/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/include -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources/i386 -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources -include /var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch -c /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/main.m -o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/DetailView.xib
+s302976869.295979
+e302976869.675547
+r1
+xCompileXIB
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/DetailView.xib
+lSLF07#2@25"CompileXIB DetailView.xib302976869#302976869#0(0"0(0#0#95"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/DetailView.xib8603078880#701"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/DetailView.nib /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/DetailView.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk0#
+
+CCompileXIB /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/MainWindow.xib
+s302976869.295317
+e302976869.672409
+r1
+xCompileXIB
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib302976869#302976869#0(0"0(0#0#95"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/MainWindow.xib8602516480#701"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/MainWindow.nib /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk0#
+
+CGenerateDSYMFile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app.dSYM /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2
+s302976870.319864
+e302976870.336582
+r1
+xGenerateDSYMFile
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app.dSYM
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2
+lSLF07#2@124"GenerateDSYMFile build/Debug-iphonesimulator/WorkshopOne2.app.dSYM build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2302976870#302976870#0(0"0(0#0#138"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne28602312416#524"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2 -o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app.dSYM0#
+
+CLd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2 normal i386
+s302976870.296643
+e302976870.319743
+r1
+xLd
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2
+xnormal
+xi386
+lSLF07#2@143"Link /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne2302976870#302976870#0(0"0(0#0#0"8603530496#1135"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -L/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator -F/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator -filelist /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/Objects-normal/i386/WorkshopOne2.LinkFileList -mmacosx-version-min=10.5 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/WorkshopOne20#
+
+CProcessInfoPlistFile /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/Info.plist WorkshopOne2-Info.plist
+s302976869.289295
+e302976869.295119
+r1
+xProcessInfoPlistFile
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/Info.plist
+xWorkshopOne2-Info.plist
+lSLF07#2@31"Process WorkshopOne2-Info.plist302976869#302976869#0(0"0(0#0#104"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/WorkshopOne2-Info.plist20547875170680944#620"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility WorkshopOne2-Info.plist -genpkginfo /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app/Info.plist0#
+
+CProcessPCH /var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch.gch WorkshopOne2_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s302976869.675677
+e302976870.200901
+r1
+xProcessPCH
+x/var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch.gch
+xWorkshopOne2_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@34"Precompile WorkshopOne2_Prefix.pch302976869#302976870#0(0"0(0#0#104"/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/WorkshopOne2_Prefix.pch8603491424#2308"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-generated-files.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-own-target-headers.hmap -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-all-target-headers.hmap -iquote /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/WorkshopOne2-project-headers.hmap -F/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/include -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources/i386 -I/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/WorkshopOne2.build/Debug-iphonesimulator/WorkshopOne2.build/DerivedSources -c /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/WorkshopOne2_Prefix.pch -o /var/folders/zT/zTQi-4XlGayhb4hc1QmWzk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WorkshopOne2_Prefix-gmydlxyrrbupeshbjwbzpimpdchn/WorkshopOne2_Prefix.pch.gch0#
+
+CTouch /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app
+s302976870.336668
+e302976870.341108
+r1
+xTouch
+x/Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app
+lSLF07#2@131"Touch /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app302976870#302976870#0(0"0(0#0#0"8603259232#367"    cd /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/lermont/Documents/fhnw/Dozentin/Workshop1/Source/Source_w1_2/WorkshopOne2/build/Debug-iphonesimulator/WorkshopOne2.app0#
+
