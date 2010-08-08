@@ -7,9 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
-int main(int argc, char *argv[]) {
-    
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+int main(int argc, char *argv[]) 
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     int retVal = UIApplicationMain(argc, argv, nil, @"MainPadAppDelegate");
     [pool release];
     return retVal;

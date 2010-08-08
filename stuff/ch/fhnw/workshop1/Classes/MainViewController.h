@@ -10,13 +10,12 @@
 
 #import "Window.h"
 
-@interface MainViewController : UIViewController<UIWebViewDelegate, WindowDelegate> {
+@interface MainViewController : UIViewController<UIWebViewDelegate, WindowDelegate> 
+{
 	IBOutlet UIWebView *mWebView;
-	IBOutlet UIView *mLoadingView;
-	
+	//IBOutlet UIView *mLoadingView;
+
 	Window *mWindow;
-	
-	BOOL viewPushed;
 }
 
 @end

@@ -18,12 +18,6 @@
 }
 
 @property(nonatomic, retain) IBOutlet UIWindow *window;
-@property(nonatomic, retain) NSString *latestIssuePath;
-
-- (void)copySampleRecordToDocuments;
-- (NSString *)RecordBasePath;
-
-- (BOOL)displayRecordCovers;
 
 @end
 
