@@ -11,24 +11,40 @@
 
 #import "RootViewController.h"
 #import "DetailViewController.h"
+#import "SwipeViewController.h"
+#import "FullScreenViewController.h"
 
 
 @implementation WorkshopOne2AppDelegate
 
-@synthesize window, splitViewController, rootViewController, detailViewController;
-
+@synthesize window;
+@synthesize _swipeView;
+@synthesize _fullView;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-    // Override point for customization after app launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{    
     
     // Add the split view controller's view to the window and display.
-    [window addSubview:splitViewController.view];
-    [window makeKeyAndVisible];
-    
+	// [window addSubview:splitViewController.view];
+	
+	 //self._swipeViewController = a;
+	//_NavigationController  = [[UINavigationController alloc] initWithRootViewController:_swipeViewController];
+
+	//[self setSwipeViewController:];
+	
+	//[window addSubview:_NavigationController.view];
+
+
+	self._swipeView = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+	[window addSubview: [self._swipeView view]];
+
+	self._fullView = [[FullScreenViewController alloc] initWithNibName:@"FullScreenViewController" bundle:nil];
+	//[window addSubview: [self._fullView view]];
+	
+	[window makeKeyAndVisible];
     return YES;
 }
 
@@ -58,15 +74,18 @@
 #pragma mark -
 #pragma mark Memory management
 
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application 
+{
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
 }
 
 
-- (void)dealloc {
-    [splitViewController release];
+- (void)dealloc 
+{
+	[_fullView release];
+	[_swipeView release];
     [window release];
     [super dealloc];
 }
