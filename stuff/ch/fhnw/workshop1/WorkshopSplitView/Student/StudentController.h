@@ -15,5 +15,5 @@
 
 +(NSMutableArray*) getPictures;
 +(NSString *) getNavigationTitle;
-
++(NSString*) getPicture:(int)iIndex; 
 @end

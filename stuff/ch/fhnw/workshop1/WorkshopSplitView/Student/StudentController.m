@@ -16,12 +16,18 @@
 +(NSMutableArray*) getPictures {
 	
 	NSMutableArray *pictures = [[NSMutableArray alloc] init];
-	[pictures addObject:@"Eisenbahn_Modell"];
-	[pictures addObject:@"Software_Engineering"];
+	[pictures addObject:@"Eisenbahn_Modell.jpg"];
+	[pictures addObject:@"Software_Engineering.jpg"];
 	[pictures addObject:@"This is shit"];
 	return pictures;
 	
 }
+
++(NSString*) getPicture:(int)iIndex 
+{
+	return @"Eisenbahn_Modell.jpg";
+}
+
 
 +(NSString *) getNavigationTitle {
 	
