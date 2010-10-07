@@ -15,9 +15,16 @@
 		2804200C108E984D000629CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804200A108E984D000629CD /* DetailViewController.m */; };
 		2804203C108E9BAB000629CD /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2804203B108E9BAB000629CD /* DetailView.xib */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
-		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
-		F75C969B1240AB6D0058EBE4 /* Eisenbahn_Modell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F75C96991240AB6D0058EBE4 /* Eisenbahn_Modell.jpg */; };
-		F75C969C1240AB6D0058EBE4 /* Software_Engineering.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F75C969A1240AB6D0058EBE4 /* Software_Engineering.jpg */; };
+		C16F6E321251028C000C3C71 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C16F6E311251028C000C3C71 /* icon.jpg */; };
+		C16F7250125103F6000C3C71 /* Eisenbahn_Modell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C16F724E125103F6000C3C71 /* Eisenbahn_Modell.jpg */; };
+		C16F7251125103F6000C3C71 /* Software_Engineering.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C16F724F125103F6000C3C71 /* Software_Engineering.jpg */; };
+		C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C16F72571251044F000C3C71 /* SwipeViewController.mm */; };
+		C16F725A1251044F000C3C71 /* SwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16F72581251044F000C3C71 /* SwipeViewController.xib */; };
+		C16F729A12510724000C3C71 /* PictureView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C16F729912510724000C3C71 /* PictureView.mm */; };
+		C16F744712513422000C3C71 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16F744612513422000C3C71 /* MainWindow_iPad.xib */; };
+		C1A4BA7E125CE8B0001144E1 /* FullScreenViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */; };
+		C1A4BA7F125CE8B0001144E1 /* FullScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A4BA7D125CE8B0001144E1 /* FullScreenViewController.xib */; };
+		C1A4BB56125CF067001144E1 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A4BB55125CF067001144E1 /* shadow.png */; };
 		F7DA26C31240EE4A0016C7BB /* StudentController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA26C21240EE4A0016C7BB /* StudentController.m */; };
 /* End PBXBuildFile section */
 
@@ -34,11 +41,21 @@
 		2804203B108E9BAB000629CD /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* WorkshopOne2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkshopOne2_Prefix.pch; sourceTree = "<group>"; };
-		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WorkshopOne2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WorkshopOne2-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		F75C96991240AB6D0058EBE4 /* Eisenbahn_Modell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Eisenbahn_Modell.jpg; path = pictures/Eisenbahn_Modell.jpg; sourceTree = "<group>"; };
-		F75C969A1240AB6D0058EBE4 /* Software_Engineering.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Software_Engineering.jpg; path = pictures/Software_Engineering.jpg; sourceTree = "<group>"; };
+		C16F6E311251028C000C3C71 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon.jpg; path = Resources/icon.jpg; sourceTree = "<group>"; };
+		C16F724E125103F6000C3C71 /* Eisenbahn_Modell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Eisenbahn_Modell.jpg; path = Resources/Pictures/Eisenbahn_Modell.jpg; sourceTree = "<group>"; };
+		C16F724F125103F6000C3C71 /* Software_Engineering.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Software_Engineering.jpg; path = Resources/Pictures/Software_Engineering.jpg; sourceTree = "<group>"; };
+		C16F72561251044F000C3C71 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
+		C16F72571251044F000C3C71 /* SwipeViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SwipeViewController.mm; sourceTree = "<group>"; };
+		C16F72581251044F000C3C71 /* SwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwipeViewController.xib; path = Classes/SwipeViewController.xib; sourceTree = "<group>"; };
+		C16F729812510724000C3C71 /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
+		C16F729912510724000C3C71 /* PictureView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PictureView.mm; sourceTree = "<group>"; };
+		C16F744612513422000C3C71 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
+		C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenViewController.h; sourceTree = "<group>"; };
+		C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FullScreenViewController.mm; sourceTree = "<group>"; };
+		C1A4BA7D125CE8B0001144E1 /* FullScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FullScreenViewController.xib; path = Classes/FullScreenViewController.xib; sourceTree = "<group>"; };
+		C1A4BB55125CF067001144E1 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Resources/shadow.png; sourceTree = "<group>"; };
 		F7DA26C11240EE4A0016C7BB /* StudentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentController.h; sourceTree = "<group>"; };
 		F7DA26C21240EE4A0016C7BB /* StudentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +77,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */,
+				C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */,
+				C16F72AB12510820000C3C71 /* SwipeView */,
 				1D3623240D0F684500981E51 /* WorkshopOne2AppDelegate.h */,
 				1D3623250D0F684500981E51 /* WorkshopOne2AppDelegate.m */,
 				28042007108E984D000629CD /* RootViewController.h */,
@@ -103,10 +123,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F75C96991240AB6D0058EBE4 /* Eisenbahn_Modell.jpg */,
-				F75C969A1240AB6D0058EBE4 /* Software_Engineering.jpg */,
-				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				2804203B108E9BAB000629CD /* DetailView.xib */,
+				C1A4BB55125CF067001144E1 /* shadow.png */,
+				C16F72861251064E000C3C71 /* XIB */,
+				C16F724E125103F6000C3C71 /* Eisenbahn_Modell.jpg */,
+				C16F724F125103F6000C3C71 /* Software_Engineering.jpg */,
+				C16F6E311251028C000C3C71 /* icon.jpg */,
 				8D1107310486CEB800E47090 /* WorkshopOne2-Info.plist */,
 			);
 			name = Resources;
@@ -120,6 +141,28 @@
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C16F72861251064E000C3C71 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				C1A4BA7D125CE8B0001144E1 /* FullScreenViewController.xib */,
+				C16F744612513422000C3C71 /* MainWindow_iPad.xib */,
+				2804203B108E9BAB000629CD /* DetailView.xib */,
+				C16F72581251044F000C3C71 /* SwipeViewController.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+		C16F72AB12510820000C3C71 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				C16F729812510724000C3C71 /* PictureView.h */,
+				C16F729912510724000C3C71 /* PictureView.mm */,
+				C16F72561251044F000C3C71 /* SwipeViewController.h */,
+				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
+			);
+			name = SwipeView;
 			sourceTree = "<group>";
 		};
 		F75C96AF1240ADDB0058EBE4 /* Student */ = {
@@ -180,10 +223,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2804203C108E9BAB000629CD /* DetailView.xib in Resources */,
-				F75C969B1240AB6D0058EBE4 /* Eisenbahn_Modell.jpg in Resources */,
-				F75C969C1240AB6D0058EBE4 /* Software_Engineering.jpg in Resources */,
+				C16F6E321251028C000C3C71 /* icon.jpg in Resources */,
+				C16F7250125103F6000C3C71 /* Eisenbahn_Modell.jpg in Resources */,
+				C16F7251125103F6000C3C71 /* Software_Engineering.jpg in Resources */,
+				C16F725A1251044F000C3C71 /* SwipeViewController.xib in Resources */,
+				C16F744712513422000C3C71 /* MainWindow_iPad.xib in Resources */,
+				C1A4BA7F125CE8B0001144E1 /* FullScreenViewController.xib in Resources */,
+				C1A4BB56125CF067001144E1 /* shadow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +246,9 @@
 				2804200B108E984D000629CD /* RootViewController.m in Sources */,
 				2804200C108E984D000629CD /* DetailViewController.m in Sources */,
 				F7DA26C31240EE4A0016C7BB /* StudentController.m in Sources */,
+				C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */,
+				C16F729A12510724000C3C71 /* PictureView.mm in Sources */,
+				C1A4BA7E125CE8B0001144E1 /* FullScreenViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
