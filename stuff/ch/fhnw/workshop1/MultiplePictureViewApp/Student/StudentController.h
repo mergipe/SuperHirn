@@ -14,7 +14,6 @@
 
 }
 
-+ (NSMutableArray *) pictures;
 
 /**
  * Get a list of available pictures
