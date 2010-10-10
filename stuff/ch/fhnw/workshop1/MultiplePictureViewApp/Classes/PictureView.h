@@ -5,18 +5,20 @@
 @protocol PictureViewDelegate <NSObject>
 
 @optional
-- (void)tappedOnPicture:(UIView *)view;
+- (void)tappedOnPicture:(int)onPictureIndex;
 
 @end
 
 
 @interface PictureView : UIView 
 {
-	
+	id <PictureViewDelegate> delegate;
 	
 	
 @private
 	
+	BOOL fullScreenMode;
+	int pictureIndex;
 	CGRect imageArea;
 	float scaleFactor;
 	
@@ -24,12 +26,14 @@
 	UILabel *title;
 	UIImageView *background;
 		
-	id <PictureViewDelegate> delegate;
 }
 @end
 
 
 @interface PictureView()
+
+@property(nonatomic, assign) id<PictureViewDelegate> delegate;
+
 
 /*
  * Set the title of the picture.
@@ -37,6 +41,20 @@
  * @author Lukas Mueller
  */
 - (void) setTitle:(NSString*) iTitle;
+
+/*
+ * Set full screen mode or not of picture.
+ * @param iFullScreen BOOL
+ * @author Lukas Mueller
+ */
+- (void) setFullScreen:(BOOL) iFullScreen;
+
+/*
+ * Set the index of this picture.
+ * @param iIndex int
+ * @author Lukas Mueller
+ */
+- (void)setPictureIndex:(int)iIndex;
 
 /*
  * Set the image.

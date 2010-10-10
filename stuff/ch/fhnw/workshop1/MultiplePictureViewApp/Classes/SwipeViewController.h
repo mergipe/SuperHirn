@@ -8,10 +8,10 @@
 
 
 #import <UIKit/UIKit.h>
+#import "PictureView.h"
 
 
-
-@interface SwipeViewController : UIViewController<UIScrollViewDelegate> 
+@interface SwipeViewController : UIViewController<UIScrollViewDelegate, PictureViewDelegate> 
 {
 	NSMutableArray* listOfPictures;
 	IBOutlet UIScrollView *mScrollView;	

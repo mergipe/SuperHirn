@@ -10,6 +10,7 @@
 #import "StudentController.h"
 #import "PictureView.h"
 
+#import <QuartzCore/QuartzCore.h>
 
 @implementation FullScreenViewController
 
@@ -17,8 +18,19 @@
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
 	{
+		// make a gradient background
+		/*
+		CAGradientLayer *gradient = [CAGradientLayer layer];
+		gradient.frame = self.view.frame;
+		UIColor *startColor = [UIColor colorWithWhite: 0.5 alpha: 1.0];
+		UIColor *endColor = [UIColor blackColor];
+		gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id) [endColor CGColor], nil];
+		[self.view.layer insertSublayer:gradient atIndex:1];
+		*/
+		
+		self.view.backgroundColor = [UIColor blackColor]; 
 		imagePositionX = 0;
-		imagePositionY = 100;
+		imagePositionY = 0;
 		imageWidth = 768;
 		imageHeight = 800;
 		
@@ -47,15 +59,13 @@
 		mPicture = [[PictureView alloc] initWithFrame:CGRectMake(
 																 imagePositionX, imagePositionY, 
 																 imageWidth, imageHeight)];
+		[mPicture setFullScreen: YES ];
 		[self.view addSubview: mPicture ];
 
 	}
 	
 	NSString* imageName = [StudentController getPicture:iIndex];	
-	UIImage* _image = [UIImage imageNamed:imageName];
-	
-	[ mPicture setImage:_image ];
-	[ mPicture setTitle: imageName ];
+	[ mPicture setImage:imageName ];
 	
 	
 }

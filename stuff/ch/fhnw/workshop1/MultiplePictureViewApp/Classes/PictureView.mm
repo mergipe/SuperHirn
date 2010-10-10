@@ -6,9 +6,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-
 @implementation PictureView
 
+@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame 
 {
@@ -17,7 +17,18 @@
 		        
 		// initialize all parameters:
 		scaleFactor = 1.0;
-		self.backgroundColor = [UIColor greenColor];
+		fullScreenMode = NO;
+		
+		
+		/*
+		CAGradientLayer *gradient = [CAGradientLayer layer];
+		gradient.frame = self.frame;
+		UIColor *startColor = [UIColor colorWithWhite: 0.5 alpha: 1.0];
+		UIColor *endColor = [UIColor blackColor];
+		gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id) [endColor CGColor], nil];
+		[self.layer insertSublayer:gradient atIndex:1];
+		*/
+		self.backgroundColor = [UIColor clearColor];
 		imageArea.size.width = 0;
 		imageArea.size.height = 0;
 		imageArea.origin.x = 0;
@@ -34,6 +45,7 @@
 	
 		
 		// finally init the image legend:
+		/*
 		CGRect f = CGRectMake(
 					   imageArea.origin.x, imageArea.origin.y, imageArea.size.width, 45.0
 					   );
@@ -42,8 +54,8 @@
 		title.textColor = [UIColor whiteColor];
 		title.numberOfLines = 0;
 		title.textAlignment = UITextAlignmentCenter;
-		
-		[self addSubview:title];
+		*/
+		//[self addSubview:title];
 
     }
     return self;
@@ -53,7 +65,6 @@
 
 - (void) setTitle:(NSString*) iTitle
 {
-	
 	title.frame.origin.x = 0;
 	title.frame.origin.y = 100;
 	title.frame.size.width = 100;
@@ -61,6 +72,17 @@
 	title.text = @"where is my text";
 
 }
+
+- (void) setFullScreen:(BOOL) iFullScreen
+{
+	fullScreenMode = iFullScreen;
+}
+
+- (void)setPictureIndex:(int)iIndex
+{
+	pictureIndex = iIndex;
+}
+
 
 - (void) setImage:(NSString*) iImageName
 {
@@ -80,6 +102,15 @@
 		imageArea.size.height = self.frame.size.height;
 	}
 	
+	if( fullScreenMode) 
+	{
+		scaleFactor = self.frame.size.width / imageArea.size.width;
+	}
+	else 
+	{
+		scaleFactor = 1;
+	}
+
 	imageArea.size.width *= scaleFactor;
 	imageArea.size.height *= scaleFactor;
 	
@@ -88,7 +119,7 @@
 	
 	picture.frame = imageArea;
 	
-	int offset = 50;
+	int offset = 0;
 	CGRect bgArea = imageArea;
 	bgArea.size.width += 2 * offset;
 	bgArea.size.height += 2 * offset;
@@ -111,8 +142,8 @@
 	UITouch *touch = [touches anyObject]; //assume just 1 touch
 	if(touch.tapCount == 1) {
 		//single tap occurred
-		if(delegate && [delegate respondsToSelector:@selector(tappedOnItem:)]) {
-			[delegate tappedOnPicture:self];
+		if(delegate && [delegate respondsToSelector:@selector(tappedOnPicture:)]) {
+			[delegate tappedOnPicture:pictureIndex];
 		}
 	}
 }

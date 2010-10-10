@@ -14,6 +14,8 @@
 #import "SwipeViewController.h"
 #import "FullScreenViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 
 @implementation WorkshopOne2AppDelegate
 
@@ -26,16 +28,41 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
+	
+	_tabBarController = [[UITabBarController alloc] init];
     
 	self._swipeView = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-	[window addSubview: [self._swipeView view]];
-
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showPictureSwipeView:) 
+												 name:@"showPictureSwipeView" object:nil];
+	
 	self._fullView = [[FullScreenViewController alloc] initWithNibName:@"FullScreenViewController" bundle:nil];
-	//[window addSubview: [self._fullView view]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFullScreenPictureView:) 
+												 name:@"showFullScreenPictureView" object:nil];
+	
+	//self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:nil];
+	
+	_tabBarController.viewControllers = [NSArray arrayWithObjects: _swipeView, _fullView, nil];
+	[window addSubview: [_tabBarController view]];
+	
+	
 	
 	
 	[window makeKeyAndVisible];
     return YES;
+}
+
+
+- (void) showFullScreenPictureView:(NSNotification *)notification
+{
+	NSDictionary *dict = [notification userInfo];
+	int index = [[dict valueForKey:@"imageIndex"] intValue];
+	[_fullView showPicture:index];
+	_tabBarController.selectedIndex = 1;
+}
+
+- (void) showPictureSwipeView:(NSNotification *)notification
+{
+	_tabBarController.selectedIndex = 0;
 }
 
 
