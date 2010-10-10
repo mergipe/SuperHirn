@@ -33,6 +33,16 @@ static NSMutableArray* pictures = nil;
 	return nil;
 }
 
++(int) numberOfPictures
+{
+	if( pictures != nil )
+	{
+		return [pictures count];
+	}
+	
+	return 0;
+}
+
 
 +(NSString *) getNavigationTitle {
 	

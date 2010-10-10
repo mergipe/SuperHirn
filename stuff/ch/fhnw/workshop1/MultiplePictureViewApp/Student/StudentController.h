@@ -37,7 +37,11 @@
  */
 +(NSString*) getPicture:(int)iIndex; 
 
-
+/**
+ * Get the number of a pictures
+ * @return Number of the picture.
+ */
++(int) numberOfPictures;
 
 /**
  * Extracts all images from the Picture folder in the application resource folder
