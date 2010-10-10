@@ -9,8 +9,6 @@
 #import "WorkshopOne2AppDelegate.h"
 
 
-#import "RootViewController.h"
-#import "DetailViewController.h"
 #import "ItemViewController.h"
 #import "SwipeViewController.h"
 #import "FullScreenViewController.h"
@@ -24,6 +22,8 @@
 @synthesize _swipeView;
 @synthesize _fullView;
 @synthesize _itemView;
+@synthesize _navigationController;
+@synthesize _tabBarController;
 
 #pragma mark -
 #pragma mark Application lifecycle

@@ -1,14 +1,9 @@
-
 #import "PictureView.h"
-
-
 #import "StudentController.h"
 
-#import <QuartzCore/QuartzCore.h>
 
 @implementation PictureView
 
-@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame 
 {
@@ -19,15 +14,6 @@
 		scaleFactor = 1.0;
 		fullScreenMode = NO;
 		
-		
-		/*
-		CAGradientLayer *gradient = [CAGradientLayer layer];
-		gradient.frame = self.frame;
-		UIColor *startColor = [UIColor colorWithWhite: 0.5 alpha: 1.0];
-		UIColor *endColor = [UIColor blackColor];
-		gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id) [endColor CGColor], nil];
-		[self.layer insertSublayer:gradient atIndex:1];
-		*/
 		self.backgroundColor = [UIColor clearColor];
 		imageArea.size.width = 0;
 		imageArea.size.height = 0;
@@ -141,10 +127,9 @@
 {
 	UITouch *touch = [touches anyObject]; //assume just 1 touch
 	if(touch.tapCount == 1) {
-		//single tap occurred
-		if(delegate && [delegate respondsToSelector:@selector(tappedOnPicture:)]) {
-			[delegate tappedOnPicture:pictureIndex];
-		}
+		NSLog(@"Tapped on picture at %d", pictureIndex);
+		NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:pictureIndex] forKey:@"imageIndex"];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"showFullScreenPictureView" object:self userInfo:dict];
 	}
 }
 

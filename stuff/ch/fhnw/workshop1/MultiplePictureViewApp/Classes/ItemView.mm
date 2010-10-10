@@ -2,25 +2,15 @@
 
 
 #import "StudentController.h"
-#import <QuartzCore/QuartzCore.h>
 
 @implementation ItemView
 
-@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame 
 {
     if ((self = [super initWithFrame:frame])) 
 	{
 		        
-		/*
-		CAGradientLayer *gradient = [CAGradientLayer layer];
-		gradient.frame = self.frame;
-		UIColor *startColor = [UIColor colorWithWhite: 0.5 alpha: 1.0];
-		UIColor *endColor = [UIColor blackColor];
-		gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id) [endColor CGColor], nil];
-		[self.layer insertSublayer:gradient atIndex:1];
-		*/
 		self.backgroundColor = [UIColor clearColor];
 		imageArea.size.width = 0;
 		imageArea.size.height = 0;
@@ -110,12 +100,6 @@
 		NSLog(@"Tapped on item at %d", itemIndex);
 		NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:itemIndex] forKey:@"imageIndex"];
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"showFullScreenPictureView" object:self userInfo:dict];
-/*		
-		//single tap occurred
-		if(delegate && [delegate respondsToSelector:@selector(tappedOnItem:)]) {
-			[delegate tappedOnItem:itemIndex];
-		}
- */
 	}
 }
 

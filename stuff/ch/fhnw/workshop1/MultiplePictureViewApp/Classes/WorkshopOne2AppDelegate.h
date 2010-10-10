@@ -11,8 +11,6 @@
 @class FullScreenViewController;
 @class SwipeViewController;
 @class ItemViewController;
-@class RootViewController;
-@class DetailViewController;
 
 @class UITabBarController;
 @class UINavigationController;
@@ -25,25 +23,18 @@
 	
     UIWindow *window;
 	
-	
     SwipeViewController *_swipeView;
     FullScreenViewController *_fullView;
 	ItemViewController *_itemView;
 	
-	DetailViewController *detailViewController;
-
-	/*
-	 UISplitViewController *splitViewController;
-    RootViewController *rootViewController;
-    	 */
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet ItemViewController* _itemView;
 @property (nonatomic, retain) IBOutlet SwipeViewController* _swipeView;
 @property (nonatomic, retain) IBOutlet FullScreenViewController* _fullView;
-@property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 @property (nonatomic, retain) IBOutlet UINavigationController* _navigationController;
+@property (nonatomic, retain) IBOutlet UITabBarController* _tabBarController;
 
 /**
  * Show the full screen picture view
@@ -69,10 +60,4 @@
  * Set up of a hirarchical navigation controller
  */
 - (void) setUpNavigationController;
-
-/*
-
-@property (nonatomic, retain) IBOutlet UISplitViewController* splitViewController;
-@property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
-*/
 @end

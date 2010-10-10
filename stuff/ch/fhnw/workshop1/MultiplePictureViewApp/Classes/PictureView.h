@@ -2,19 +2,8 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol PictureViewDelegate <NSObject>
-
-@optional
-- (void)tappedOnPicture:(int)onPictureIndex;
-
-@end
-
-
 @interface PictureView : UIView 
 {
-	id <PictureViewDelegate> delegate;
-	
-	
 @private
 	
 	BOOL fullScreenMode;
@@ -31,8 +20,6 @@
 
 
 @interface PictureView()
-
-@property(nonatomic, assign) id<PictureViewDelegate> delegate;
 
 
 /*

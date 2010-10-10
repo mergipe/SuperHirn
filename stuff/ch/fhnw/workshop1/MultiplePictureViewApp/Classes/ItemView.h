@@ -2,18 +2,8 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol ItemViewDelegate <NSObject>
-
-@optional
-- (void)tappedOnItem:(int)itemIndex;
-
-@end
-
-
 @interface ItemView : UIView 
 {
-	id <ItemViewDelegate> delegate;
-	
 	
 @private
 	
@@ -29,8 +19,6 @@
 
 
 @interface ItemView()
-
-@property(nonatomic, assign) id<ItemViewDelegate> delegate;
 
 
 /*

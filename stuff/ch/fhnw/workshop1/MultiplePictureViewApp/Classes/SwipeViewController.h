@@ -11,7 +11,7 @@
 #import "PictureView.h"
 
 
-@interface SwipeViewController : UIViewController<UIScrollViewDelegate, PictureViewDelegate> 
+@interface SwipeViewController : UIViewController 
 {
 	NSMutableArray* listOfPictures;
 	IBOutlet UIScrollView *mScrollView;	
@@ -20,24 +20,6 @@
 @end
 
 @interface SwipeViewController()
-
-/**
- * Hide navigation bar
- * @author Lukas Mueller
- */
-- (void) hideNavigationBar;
-
-/**
- * Show navigation bar
- * @author Lukas Mueller
- */
-- (void) showNavigationBar;
-
-/**
- * Overlay the background image over the default splash screen to smooth the transition
- * @author Lukas Mueller
- */
-- (void)showThommenBackgroundImageOnStart;
 
 
 /**
