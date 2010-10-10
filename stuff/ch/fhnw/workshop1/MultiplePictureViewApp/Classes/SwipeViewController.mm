@@ -27,7 +27,6 @@
 		// initialize the scroll view with the dimension of the iPad screen
 		CGSize iPadScreenSize = self.view.frame.size;
 		mScrollView = [[UIScrollView alloc] initWithFrame:imageArea];
-					   //CGRectMake(0.0, 0.0, iPadScreenSize.width, iPadScreenSize.height)];
 
 		// allow paging
 		mScrollView.pagingEnabled = YES;
@@ -45,6 +44,7 @@
 	
 		// start initialization of the scroll view:
 		[self initImageSwipeViews];
+		
     }
     return self;
 }
@@ -53,7 +53,21 @@
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];
-	//self.navigationController.navigationBar.hidden = YES;	
+	/*
+
+	// set navigation label and libarary buttom
+	self.navigationItem.title = @"Aktuelle Ausgabe";
+	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:70.0/255.0 green:78.0/255.0 blue:90.0/255.0 alpha:0.15];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+	//Update the frame
+	CGRect frame = self.navigationController.navigationBar.frame;
+	frame.origin = CGPointMake(0.0, 20.0);//height of the status bar.
+	self.navigationController.navigationBar.frame = frame;
+	
+	//Set the navigation bar style to translucent if there is something that you want to show through.
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+	[[self navigationController] setNavigationBarHidden:YES animated:YES];
+	*/
 	/*
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.4];
@@ -68,6 +82,8 @@
 	*/
 	
 }
+
+
 
 
 - (void)dealloc 
@@ -89,11 +105,9 @@
 	{
 		NSString* imageName = [listOfPictures objectAtIndex:i];
 		PictureView* item = [[PictureView alloc] initWithFrame:f];
+		[ item setImage:imageName];
 		//item.delegate = self;		
-		UIImage* _image = [UIImage imageNamed:imageName];
-		[ item setImage:_image];
-		[ item setTitle: imageName];
-		
+			
 		[mScrollView addSubview:item];		
 		
 		f.origin.x += f.size.width;
@@ -206,6 +220,10 @@
 {
 }
 
+- (void)viewWillAppear:(BOOL)animated 
+{
+	[super viewWillAppear:animated];
+}
 
 
 
@@ -226,10 +244,6 @@
  {
  }
  
- - (void)viewWillAppear:(BOOL)animated 
- {
- [super viewWillAppear:animated];
- }
  
  - (void)viewDidAppear:(BOOL)animated 
  {

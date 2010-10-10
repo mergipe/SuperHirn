@@ -40,10 +40,10 @@
 
 /*
  * Set the image.
- * @param iImage UIImageView*
+ * @param iImage NSString*
  * @author Lukas Mueller
  */
-- (void) setImage:(UIImage*) iImage;
+- (void) setImage:(NSString*) iImage;
 
 
 

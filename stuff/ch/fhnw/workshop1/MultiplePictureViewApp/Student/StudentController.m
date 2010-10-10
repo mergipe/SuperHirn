@@ -11,21 +11,26 @@
 
 @implementation StudentController
 
-//input for split view
+static NSMutableArray* pictures = nil;
 
-+(NSMutableArray*) getPictures {
++(NSMutableArray*) getPictures 
+{
+	if( pictures == nil )
+	{
+		[self extractPicturesNames];
+	}
 	
-	NSMutableArray *pictures = [[NSMutableArray alloc] init];
-	[pictures addObject:@"Eisenbahn_Modell.jpg"];
-	[pictures addObject:@"Software_Engineering.jpg"];
-	[pictures addObject:@"This is shit"];
-	return pictures;
-	
+	return pictures;	
 }
 
 +(NSString*) getPicture:(int)iIndex 
 {
-	return @"Eisenbahn_Modell.jpg";
+	if( ( iIndex >= 0 ) && ( iIndex < [pictures count]) )
+	{
+		return [pictures objectAtIndex:iIndex];
+	}
+	
+	return nil;
 }
 
 
@@ -33,5 +38,29 @@
 	
 	return @"Pictures";	
 }
+
+
++(void) extractPicturesNames
+{
+	NSArray *pics = [[NSFileManager defaultManager] directoryContentsAtPath: [StudentController getPictureFolderPath] ];	
+	if( pictures == nil )
+	{
+		pictures = [[NSMutableArray alloc] init];
+	}
+	
+	for( int i=0; i < [pics count]; i++)
+	{
+		NSString* myImage = [pics objectAtIndex:i];
+		NSLog(@"Image found in Pictures folder: %@ ", myImage);
+		[pictures addObject:myImage];
+	}
+
+}
+
++(NSString*) getPictureFolderPath
+{
+	return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Pictures/"];
+}
+
 
 @end

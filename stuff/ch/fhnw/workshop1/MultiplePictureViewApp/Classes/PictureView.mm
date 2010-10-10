@@ -2,6 +2,8 @@
 #import "PictureView.h"
 
 
+#import "StudentController.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -60,11 +62,15 @@
 
 }
 
-- (void) setImage:(UIImage*) iImage
+- (void) setImage:(NSString*) iImageName
 {
-	picture.image = iImage;
+	
+	NSString* picturePath  = [[StudentController getPictureFolderPath] stringByAppendingPathComponent:iImageName];
+	picture.image = [UIImage imageWithContentsOfFile:picturePath];	
 	imageArea.size = picture.image.size;
 
+	[self setTitle:iImageName];
+	
 	if( imageArea.size.width > self.frame.size.width )
 	{
 		imageArea.size.width = self.frame.size.width;
