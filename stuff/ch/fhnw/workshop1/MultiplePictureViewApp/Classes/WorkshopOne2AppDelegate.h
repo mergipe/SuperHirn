@@ -11,7 +11,7 @@
 @class FullScreenViewController;
 @class SwipeViewController;
 @class ItemViewController;
-
+@class ListViewController;
 @class UITabBarController;
 @class UINavigationController;
 @interface WorkshopOne2AppDelegate : NSObject <UIApplicationDelegate> 
@@ -25,11 +25,13 @@
 	
     SwipeViewController *_swipeView;
     FullScreenViewController *_fullView;
+    ListViewController *_listView;
 	ItemViewController *_itemView;
 	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet ListViewController* _listView;
 @property (nonatomic, retain) IBOutlet ItemViewController* _itemView;
 @property (nonatomic, retain) IBOutlet SwipeViewController* _swipeView;
 @property (nonatomic, retain) IBOutlet FullScreenViewController* _fullView;

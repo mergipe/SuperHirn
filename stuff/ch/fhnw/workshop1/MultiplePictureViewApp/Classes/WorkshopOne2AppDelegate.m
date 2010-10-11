@@ -12,6 +12,7 @@
 #import "ItemViewController.h"
 #import "SwipeViewController.h"
 #import "FullScreenViewController.h"
+#import "ListViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -22,6 +23,7 @@
 @synthesize _swipeView;
 @synthesize _fullView;
 @synthesize _itemView;
+@synthesize _listView;
 @synthesize _navigationController;
 @synthesize _tabBarController;
 
@@ -34,8 +36,8 @@
 	
 	[self initControllers];
 	
-	[self setUpTabBarController];
-	//[self setUpNavigationController];
+	//[self setUpTabBarController];
+	[self setUpNavigationController];
 	
 	
 	[window makeKeyAndVisible];
@@ -50,6 +52,9 @@
 	self._itemView = [[ItemViewController alloc] initWithNibName:@"ItemViewController" bundle:nil];
 	self._itemView.tabBarItem.title = @"ITEM";
 
+	self._listView = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];
+	self._listView.tabBarItem.title = @"LIST";
+
 	self._fullView = [[FullScreenViewController alloc] initWithNibName:@"FullScreenViewController" bundle:nil];
 	self._fullView.tabBarItem.title = @"FULL";
 
@@ -63,13 +68,13 @@
 - (void) setUpTabBarController
 {
 	_tabBarController = [[UITabBarController alloc] init];
-	_tabBarController.viewControllers = [NSArray arrayWithObjects: _swipeView, _itemView, _fullView, nil];
+	_tabBarController.viewControllers = [NSArray arrayWithObjects: _swipeView, _itemView, _fullView, _listView, nil];
 	[window addSubview: [_tabBarController view]];
 }
 
 - (void) setUpNavigationController
 {
-	_navigationController = [[UINavigationController alloc] initWithRootViewController:_swipeView];
+	_navigationController = [[UINavigationController alloc] initWithRootViewController:_listView];
 	_navigationController.navigationBar.tintColor = [UIColor blackColor];
 	[window addSubview: [_navigationController view]];
 }

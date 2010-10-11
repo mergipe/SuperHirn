@@ -95,8 +95,6 @@
 		
 		f.origin.x += f.size.width;
 	}
-	
-	self.tabBarItem;
 
 }
 
