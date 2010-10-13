@@ -5,14 +5,13 @@
 @interface ItemView : UIView 
 {
 	
-@private
+@protected
 	
+	BOOL fullScreenMode;
 	int itemIndex;
-	CGRect imageArea;
-	
-	UIImageView *picture;
+	CGRect itemArea;	
 	UILabel *title;
-	UIImageView *background;
+	NSString* fileName; 
 		
 }
 @end
@@ -37,11 +36,11 @@
 - (void)setItemIndex:(int)iIndex;
 
 /*
- * Set the image.
- * @param iImage NSString*
+ * Set full screen mode or not of the item.
+ * @param iFullScreen BOOL
  * @author Lukas Mueller
  */
-- (void) setImage:(NSString*) iImage;
+- (void) setFullScreen:(BOOL) iFullScreen;
 
 
 

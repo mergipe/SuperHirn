@@ -15,7 +15,7 @@
 {
 	NSMutableArray* listOfPictures;
 	IBOutlet UIScrollView *mScrollView;	
-	CGRect imageArea;
+	CGRect itemArea;
 }
 @end
 

@@ -8,8 +8,6 @@
 
 
 #import "SwipeViewController.h"
-
-
 #import "StudentController.h"
 #import "PictureView.h"
 
@@ -30,15 +28,14 @@
 		gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id) [endColor CGColor], nil];
 		[self.view.layer insertSublayer:gradient atIndex:1];
 		
-		
-		imageArea.origin.x = 0;
-		imageArea.origin.y = 0;
-		imageArea.size.width = 768;
-		imageArea.size.height = 800;
+		// defines the position and size of each item displayed  
+		itemArea.origin.x = 0;
+		itemArea.origin.y = 0;
+		itemArea.size.width = 768;
+		itemArea.size.height = 800;
 		
 		// initialize the scroll view with the dimension of the iPad screen
-		CGSize iPadScreenSize = self.view.frame.size;
-		mScrollView = [[UIScrollView alloc] initWithFrame:imageArea];
+		mScrollView = [[UIScrollView alloc] initWithFrame:itemArea];
 		
 		// allow paging
 		mScrollView.pagingEnabled = YES;
@@ -59,36 +56,20 @@
     return self;
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad 
-{
-	[super viewDidLoad];
-}
-
-
-
-
-- (void)dealloc 
-{
-	[mScrollView release];
-	[super dealloc];
-}
 
 - (void)initImageSwipeViews 
 {
-	
-	
 	// initialize the slide with the number of pics:
 	listOfPictures = [StudentController getFiles];
-	mScrollView.contentSize = CGSizeMake([listOfPictures count] * imageArea.size.width, mScrollView.frame.size.height);
+	mScrollView.contentSize = CGSizeMake([listOfPictures count] * itemArea.size.width, mScrollView.frame.size.height);
 	mScrollView.contentOffset = CGPointMake(0.0, 0.0);
 	
-	CGRect f = imageArea;
+	CGRect f = itemArea;
 	for( int i=0; i < [listOfPictures count ];i++)
 	{
 		NSString* imageName = [listOfPictures objectAtIndex:i];
 		PictureView* item = [[PictureView alloc] initWithFrame:f];
-		[ item setPictureIndex:i];
+		[ item setItemIndex:i];
 		[ item setImage:imageName];
 		
 		[mScrollView addSubview:item];		
@@ -99,6 +80,17 @@
 }
 
 
+- (void)viewDidLoad 
+{
+	[super viewDidLoad];
+}
+
+
+- (void)dealloc 
+{
+	[mScrollView release];
+	[super dealloc];
+}
 
 
 @end

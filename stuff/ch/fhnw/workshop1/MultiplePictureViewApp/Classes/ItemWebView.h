@@ -1,16 +1,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ItemView.h"
+
 @class UIWebView;
-@interface ItemWebView : UIView 
+@interface ItemWebView : ItemView 
 {
 	
 @private
 	
-	int itemIndex;
-	CGRect webArea;
 	UIWebView *webItem;
-	UILabel *title;
 	
 }
 @end
@@ -18,20 +17,6 @@
 
 @interface ItemWebView()
 
-
-/*
- * Set the title of the item.
- * @param iTitle NSString*
- * @author Lukas Mueller
- */
-- (void) setTitle:(NSString*) iTitle;
-
-/*
- * Set the index of this item.
- * @param iIndex int
- * @author Lukas Mueller
- */
-- (void)setItemIndex:(int)iIndex;
 
 /*
  * Set the url of the webview.

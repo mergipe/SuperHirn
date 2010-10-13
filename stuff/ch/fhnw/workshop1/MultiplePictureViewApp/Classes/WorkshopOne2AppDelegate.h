@@ -39,14 +39,14 @@
 @property (nonatomic, retain) IBOutlet UITabBarController* _tabBarController;
 
 /**
- * Show the full screen picture view
+ * Show the full screen item view
  */
-- (void) showFullScreenPictureView:(NSNotification *)notification;
+- (void) showFullScreenItemView:(NSNotification *)notification;
 
 /**
- * Show the swipe picture view
+ * Show the swipe view
  */
-- (void) showPictureSwipeView:(NSNotification *)notification;
+- (void) showSwipeView:(NSNotification *)notification;
 
 /**
  * Initialization function for all view controllers

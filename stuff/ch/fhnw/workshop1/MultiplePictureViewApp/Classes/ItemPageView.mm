@@ -1,6 +1,6 @@
 
 #import "ItemPageView.h"
-#import "ItemView.h"
+#import "PictureView.h"
 
 #import "StudentController.h"
 
@@ -40,9 +40,9 @@
 		}
 		
 		NSString* itemName = [StudentController getFile:iStartIndex];
-		ItemView* item = [[ItemView alloc] initWithFrame:f];
+		PictureView* item = [[PictureView alloc] initWithFrame:f];
 		//item.delegate = self;		
-		[ item setItemIndex:iStartIndex];
+		[item setItemIndex:iStartIndex];
 		[item  setImage:itemName];
 		[self addSubview:item];
 		

@@ -8,11 +8,11 @@
 
 #import "WorkshopOne2AppDelegate.h"
 
-
 #import "ItemViewController.h"
 #import "SwipeViewController.h"
 #import "FullScreenViewController.h"
 #import "ListViewController.h"
+
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -32,17 +32,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
-	
-	
 	[self initControllers];
 	
 	[self setUpTabBarController];
 	//[self setUpNavigationController];
 	
-	
 	[window makeKeyAndVisible];
     return YES;
 }
+
 
 - (void) initControllers
 {
@@ -59,10 +57,10 @@
 	self._fullView.tabBarItem.title = @"FULL";
 
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showPictureSwipeView:) 
-												 name:@"showPictureSwipeView" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFullScreenPictureView:) 
-												 name:@"showFullScreenPictureView" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSwipeView:) 
+												 name:@"showSwipeView" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFullScreenItemView:) 
+												 name:@"showFullScreenItemView" object:nil];
 }	
 
 - (void) setUpTabBarController
@@ -80,10 +78,10 @@
 }
 
 
-- (void) showFullScreenPictureView:(NSNotification *)notification
+- (void) showFullScreenItemView:(NSNotification *)notification
 {
 	NSDictionary *dict = [notification userInfo];
-	int index = [[dict valueForKey:@"imageIndex"] intValue];
+	int index = [[dict valueForKey:@"itemIndex"] intValue];
 	[_fullView showPicture:index];
 	
 	
@@ -98,7 +96,7 @@
 	
 }
 
-- (void) showPictureSwipeView:(NSNotification *)notification
+- (void) showSwipeView:(NSNotification *)notification
 {
 	if( _tabBarController != nil )
 	{
@@ -107,37 +105,8 @@
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
-}
 
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive.
-     */
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    /*
-     Called when the application is about to terminate.
-     */
-}
-
-
-#pragma mark -
-#pragma mark Memory management
-
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application 
-{
-    /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
-     */
-}
 
 
 - (void)dealloc 

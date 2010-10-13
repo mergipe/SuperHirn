@@ -1,19 +1,13 @@
 
 #import <UIKit/UIKit.h>
+#import "ItemView.h"
 
-
-@interface PictureView : UIView 
+@interface PictureView : ItemView 
 {
 @private
 	
-	BOOL fullScreenMode;
-	int pictureIndex;
-	CGRect imageArea;
-	float scaleFactor;
-	
+	float scaleFactor;	
 	UIImageView *picture;
-	UILabel *title;
-	UIImageView *background;
 		
 }
 @end
@@ -22,29 +16,9 @@
 @interface PictureView()
 
 
-/*
- * Set the title of the picture.
- * @param iTitle NSString*
- * @author Lukas Mueller
- */
-- (void) setTitle:(NSString*) iTitle;
 
 /*
- * Set full screen mode or not of picture.
- * @param iFullScreen BOOL
- * @author Lukas Mueller
- */
-- (void) setFullScreen:(BOOL) iFullScreen;
-
-/*
- * Set the index of this picture.
- * @param iIndex int
- * @author Lukas Mueller
- */
-- (void)setPictureIndex:(int)iIndex;
-
-/*
- * Set the image.
+ * Set the image path.
  * @param iImage NSString*
  * @author Lukas Mueller
  */
