@@ -12,7 +12,7 @@
 
 @interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> 
 {
-	NSMutableArray* listOfPictures;
+	NSMutableArray* listOfFiles;
 }
 @end
 

@@ -13,21 +13,10 @@
 
 @implementation ListViewController
 
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
-{
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
-	{
-	}
-    return self;
-}
- */
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];
-	listOfPictures = [StudentController getFiles];
+	listOfFiles = [StudentController getFiles];
 }
 
 
@@ -35,7 +24,7 @@
 
 - (void)dealloc 
 {
-	[listOfPictures release];
+	[listOfFiles release];
 	[super dealloc];
 }
 
@@ -44,15 +33,15 @@
 {
 	int index = [indexPath indexAtPosition:1];
 	NSLog(@"Tapped on list item at %d", index);
-	NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:index] forKey:@"imageIndex"];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"showFullScreenPictureView" object:self userInfo:dict];
+	NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:index] forKey:@"itemIndex"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"showFullScreenItemView" object:self userInfo:dict];
 	
 	
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return [listOfPictures count];
+	return [listOfFiles count];
 }
 
 
@@ -60,7 +49,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	// Identifier for retrieving reusable cells.
-	static NSString *cellIdentifier = @"Picture";
+	static NSString *cellIdentifier = @"File";
 	
 	// Attempt to request the reusable cell.
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -72,7 +61,7 @@
 	}
 	
 	// Set the text of the cell to the row index.
-	cell.textLabel.text = [listOfPictures objectAtIndex:indexPath.row];
+	cell.textLabel.text = [listOfFiles objectAtIndex:indexPath.row];
 	return cell;
 }
 

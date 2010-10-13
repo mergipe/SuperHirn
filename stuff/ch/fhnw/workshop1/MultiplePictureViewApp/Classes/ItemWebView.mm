@@ -1,6 +1,5 @@
 #import "ItemWebView.h"
 
-
 #import "StudentController.h"
 
 @implementation ItemWebView
@@ -32,13 +31,31 @@
 		webItem = [[UIWebView alloc] init];
 		//webItem.delegate = self;
 		webItem.backgroundColor = [UIColor clearColor];
-		webItem.frame = itemArea;
 		[self addSubview:webItem];
 	}
 	
+	// check that the webview isnt bigger than super view itself:
+	if( itemArea.size.width > self.frame.size.width )
+	{
+		itemArea.size.width = self.frame.size.width;
+	}
+	if( itemArea.size.height > self.frame.size.height )
+	{
+		itemArea.size.height = self.frame.size.height;
+	}
+	
+	// place the image in the center of the view
+	itemArea.origin.x = (self.frame.size.width - itemArea.size.width) / 2;
+	itemArea.origin.y = (self.frame.size.height - itemArea.size.height) / 2;
+		
+	webItem.frame = itemArea;
+	
+	
+	// load the ur:
 	NSURL *url = [NSURL fileURLWithPath:path];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
 	[webItem loadRequest:request];
+	
 	[self setTitle:iUrl];
 	
 }

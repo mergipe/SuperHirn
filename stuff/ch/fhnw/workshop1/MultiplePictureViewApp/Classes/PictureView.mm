@@ -30,7 +30,7 @@
 	picture.image = [UIImage imageWithContentsOfFile:picturePath];	
 	itemArea.size = picture.image.size;
 
-	
+	// check that the picture isnt bigger than super view itself:
 	if( itemArea.size.width > self.frame.size.width )
 	{
 		itemArea.size.width = self.frame.size.width;
@@ -40,6 +40,12 @@
 		itemArea.size.height = self.frame.size.height;
 	}
 	
+	// place the image in the center of the view
+	itemArea.origin.x = (self.frame.size.width - itemArea.size.width) / 2;
+	itemArea.origin.y = (self.frame.size.height - itemArea.size.height) / 2;
+
+
+	// if full screen, then adjust to full size:
 	if( fullScreenMode) 
 	{
 		scaleFactor = self.frame.size.width / itemArea.size.width;
@@ -52,11 +58,8 @@
 	itemArea.size.width *= scaleFactor;
 	itemArea.size.height *= scaleFactor;
 	
-	itemArea.origin.x = (self.frame.size.width - itemArea.size.width) / 2;
-	itemArea.origin.y = (self.frame.size.height - itemArea.size.height) / 2;
 	
 	picture.frame = itemArea;
-
 	[self setTitle:iImageName];
 	
 }

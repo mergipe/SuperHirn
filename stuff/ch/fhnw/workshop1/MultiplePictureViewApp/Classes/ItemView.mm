@@ -18,6 +18,21 @@
 		itemArea.origin.y = 0;
 		fullScreenMode = NO;
 		
+		
+		CGRect rect = CGRectMake(10 , 10, 120.0f, 45.0f);
+		title.textColor = [UIColor whiteColor];
+		self.title = [[[UILabel alloc] initWithFrame:rect] autorelease];
+		[title setTextAlignment:UITextAlignmentCenter];
+		[title setText:@"TTTEEEST"];
+		title.font = [UIFont boldSystemFontOfSize:30];
+		/*
+		title.frame.origin.x = 0;
+		title.frame.origin.y = 100;
+		title.frame.size.width = 100;
+		title.frame.size.height = 45;
+		 */
+		[self addSubview:title];
+		
     }
     return self;
 }
@@ -30,11 +45,7 @@
 
 - (void) setTitle:(NSString*) iTitle
 {
-	title.frame.origin.x = 0;
-	title.frame.origin.y = 100;
-	title.frame.size.width = 100;
-	title.frame.size.height = 45;
-	title.text = @"where is my text";
+	[title setText:@"where is my text"];
 
 }
 
