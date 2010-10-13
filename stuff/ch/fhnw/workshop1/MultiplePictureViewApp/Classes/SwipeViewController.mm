@@ -79,7 +79,7 @@
 	
 	
 	// initialize the slide with the number of pics:
-	listOfPictures = [StudentController getPictures];
+	listOfPictures = [StudentController getFiles];
 	mScrollView.contentSize = CGSizeMake([listOfPictures count] * imageArea.size.width, mScrollView.frame.size.height);
 	mScrollView.contentOffset = CGPointMake(0.0, 0.0);
 	

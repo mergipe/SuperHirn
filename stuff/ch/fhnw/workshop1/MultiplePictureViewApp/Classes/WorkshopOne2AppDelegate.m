@@ -36,8 +36,8 @@
 	
 	[self initControllers];
 	
-	//[self setUpTabBarController];
-	[self setUpNavigationController];
+	[self setUpTabBarController];
+	//[self setUpNavigationController];
 	
 	
 	[window makeKeyAndVisible];

@@ -34,12 +34,12 @@
 	int colCount = 0;
 	while( iStartIndex < iEndIndex + 1)
 	{
-		if( iStartIndex >= [StudentController numberOfPictures] )
+		if( iStartIndex >= [StudentController numberOfFiles] )
 		{
 			break;
 		}
 		
-		NSString* itemName = [StudentController getPicture:iStartIndex];
+		NSString* itemName = [StudentController getFile:iStartIndex];
 		ItemView* item = [[ItemView alloc] initWithFrame:f];
 		//item.delegate = self;		
 		[ item setItemIndex:iStartIndex];

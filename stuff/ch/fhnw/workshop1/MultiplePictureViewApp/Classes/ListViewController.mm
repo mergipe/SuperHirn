@@ -27,7 +27,7 @@
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];
-	listOfPictures = [StudentController getPictures];
+	listOfPictures = [StudentController getFiles];
 }
 
 

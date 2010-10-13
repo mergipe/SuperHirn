@@ -53,7 +53,7 @@
 - (void) setImage:(NSString*) iImageName
 {
 	
-	NSString* picturePath  = [[StudentController getPictureFolderPath] stringByAppendingPathComponent:iImageName];
+	NSString* picturePath  = [[StudentController getDataFolderPath] stringByAppendingPathComponent:iImageName];
 	picture.image = [UIImage imageWithContentsOfFile:picturePath];	
 	imageArea.size = picture.image.size;
 

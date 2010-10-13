@@ -9,7 +9,7 @@
 #import "FullScreenViewController.h"
 #import "StudentController.h"
 #import "PictureView.h"
-
+#import "ItemWebView.h"
 
 @implementation FullScreenViewController
 
@@ -23,7 +23,8 @@
 		imageWidth = 768;
 		imageHeight = 800;
 		
-		[self showPicture:0];
+		[self showWebItem];
+		//[self showPicture:0];
     }
     return self;
 }
@@ -53,9 +54,26 @@
 
 	}
 	
-	NSString* imageName = [StudentController getPicture:iIndex];	
+	NSString* imageName = [StudentController getFile:iIndex];	
 	[ mPicture setImage:imageName ];
 	
+	
+}
+
+- (void)showWebItem 
+{
+	ItemWebView* mWebItem = nil;
+	if( mWebItem == nil )
+	{
+		mWebItem = [[ItemWebView alloc] initWithFrame:CGRectMake(
+																 imagePositionX, imagePositionY, 
+																 imageWidth, imageHeight)];
+		//[mPicture setFullScreen: YES ];
+		[self.view addSubview: mWebItem ];
+		
+	}
+
+	[mWebItem setUrl:@"test.pdf"];	
 	
 }
 
