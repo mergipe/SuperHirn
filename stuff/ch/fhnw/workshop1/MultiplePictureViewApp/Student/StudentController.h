@@ -16,40 +16,34 @@
 
 
 /**
- * Get a list of available pictures
- * @return Pointer to NSMutableArray which contains all available pictures.
+ * Get a list of detected files
+ * @return Pointer to NSMutableArray which contains all available files.
  */
-+(NSMutableArray*) getPictures;
++(NSMutableArray*) getFiles;
+
 
 
 /**
- * Get a list of available pictures
- * @return Pointer to NSMutableArray which contains all available pictures.
- */
-+(NSString *) getNavigationTitle;
-
-
-/**
- * Get the name of a picture at certaimn index
+ * Get the name of a file at certain index
  * @param iIndex int 
- * @return Name of the picture, nil if the index exceeds the list size.
+ * @return Name of the file, nil if the index exceeds the list size.
  */
-+(NSString*) getPicture:(int)iIndex; 
++(NSString*) getFile:(int)iIndex; 
 
 /**
- * Get the number of a pictures
- * @return Number of the picture.
+ * Get the number of a files
+ * @return Number of the files.
  */
-+(int) numberOfPictures;
++(int) numberOfFiles;
 
 /**
- * Extracts all images from the Picture folder in the application resource folder
+ * Extracts all files from the data folder in the application resource folder
  */
-+(void) extractPicturesNames;
++(void) extractFileNames;
 
 /**
- * Get the path of the picture folder in the application resource folder
+ * Get the path of the data folder in the application resource folder
  */
-+(NSString*) getPictureFolderPath;
++(NSString*) getDataFolderPath;
 
 @end

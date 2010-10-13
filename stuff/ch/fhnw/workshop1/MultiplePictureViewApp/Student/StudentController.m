@@ -11,65 +11,60 @@
 
 @implementation StudentController
 
-static NSMutableArray* pictures = nil;
+static NSMutableArray* detectedFiles = nil;
 
-+(NSMutableArray*) getPictures 
++(NSMutableArray*) getFiles 
 {
-	if( pictures == nil )
+	if( detectedFiles == nil )
 	{
-		[self extractPicturesNames];
+		[self extractFileNames];
 	}
 	
-	return pictures;	
+	return detectedFiles;	
 }
 
-+(NSString*) getPicture:(int)iIndex 
++(NSString*) getFile:(int)iIndex 
 {
-	if( ( iIndex >= 0 ) && ( iIndex < [pictures count]) )
+	if( ( iIndex >= 0 ) && ( iIndex < [detectedFiles count]) )
 	{
-		return [pictures objectAtIndex:iIndex];
+		return [detectedFiles objectAtIndex:iIndex];
 	}
 	
 	return nil;
 }
 
-+(int) numberOfPictures
++(int) numberOfFiles
 {
-	if( pictures != nil )
+	if( detectedFiles != nil )
 	{
-		return [pictures count];
+		return [detectedFiles count];
 	}
 	
 	return 0;
 }
 
 
-+(NSString *) getNavigationTitle {
-	
-	return @"Pictures";	
-}
 
-
-+(void) extractPicturesNames
++(void) extractFileNames
 {
-	NSArray *pics = [[NSFileManager defaultManager] directoryContentsAtPath: [StudentController getPictureFolderPath] ];	
-	if( pictures == nil )
+	NSArray *entries = [[NSFileManager defaultManager] directoryContentsAtPath: [StudentController getDataFolderPath] ];	
+	if( detectedFiles == nil )
 	{
-		pictures = [[NSMutableArray alloc] init];
+		detectedFiles = [[NSMutableArray alloc] init];
 	}
 	
-	for( int i=0; i < [pics count]; i++)
+	for( int i=0; i < [entries count]; i++)
 	{
-		NSString* myImage = [pics objectAtIndex:i];
-		NSLog(@"Image found in Pictures folder: %@ ", myImage);
-		[pictures addObject:myImage];
+		NSString* myFile = [entries objectAtIndex:i];
+		NSLog(@"File found in data folder: %@ ", myFile);
+		[detectedFiles addObject:myFile];
 	}
 
 }
 
-+(NSString*) getPictureFolderPath
++(NSString*) getDataFolderPath
 {
-	return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Pictures/"];
+	return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Data/"];
 }
 
 
