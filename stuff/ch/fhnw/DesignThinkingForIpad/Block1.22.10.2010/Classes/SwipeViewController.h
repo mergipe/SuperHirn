@@ -1,9 +1,9 @@
 //
-//  StudentController.h
-//  WorkshopOne2
+//  SwipeViewController.h
+//  iPad Block 1-4 
 //
-//  Created by Sarah Hauser on 9/15/10.
-//  Copyright 2010 FHNW. All rights reserved.
+//  Created by Lukas Mueller.
+//  Copyright by FHNW 2010. All rights reserved.
 //
 
 

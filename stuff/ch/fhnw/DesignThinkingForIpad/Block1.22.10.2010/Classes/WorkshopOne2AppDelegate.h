@@ -1,42 +1,42 @@
 //
 //  WorkshopOne2AppDelegate.h
-//  WorkshopOne2
+//  iPad Block 1-4 
 //
-//  Created by Sarah Hauser on 8/8/10.
-//  Copyright FHNW 2010. All rights reserved.
+//  Created by Lukas Mueller.
+//  Copyright by FHNW 2010. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
+
 @class FullScreenViewController;
 @class SwipeViewController;
 @class ItemViewController;
-@class ListViewController;
 @class UITabBarController;
-@class UINavigationController;
+//@class UINavigationController;
+
 @interface WorkshopOne2AppDelegate : NSObject <UIApplicationDelegate> 
 {
 	
-	UITabBarController* _tabBarController;
-    UINavigationController* _navigationController;
-	
-	
     UIWindow *window;
+	UITabBarController* _tabBarController;
+	// UINavigationController* _navigationController;
 	
+
+	// controllers for the different app views:
     SwipeViewController *_swipeView;
     FullScreenViewController *_fullView;
-    ListViewController *_listView;
 	ItemViewController *_itemView;
 	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet ListViewController* _listView;
 @property (nonatomic, retain) IBOutlet ItemViewController* _itemView;
 @property (nonatomic, retain) IBOutlet SwipeViewController* _swipeView;
 @property (nonatomic, retain) IBOutlet FullScreenViewController* _fullView;
-@property (nonatomic, retain) IBOutlet UINavigationController* _navigationController;
 @property (nonatomic, retain) IBOutlet UITabBarController* _tabBarController;
+
+// @property (nonatomic, retain) IBOutlet UINavigationController* _navigationController;
 
 /**
  * Show the full screen item view
@@ -61,5 +61,6 @@
 /**
  * Set up of a hirarchical navigation controller
  */
-- (void) setUpNavigationController;
+//- (void) setUpNavigationController;
+
 @end

@@ -1,9 +1,9 @@
 //
 //  WorkshopOne2AppDelegate.m
-//  WorkshopOne2
+//  iPad Block 1-4 
 //
-//  Created by Sarah Hauser on 8/8/10.
-//  Copyright FHNW 2010. All rights reserved.
+//  Created by Lukas Mueller.
+//  Copyright by FHNW 2010. All rights reserved.
 //
 
 #import "WorkshopOne2AppDelegate.h"
@@ -11,7 +11,6 @@
 #import "ItemViewController.h"
 #import "SwipeViewController.h"
 #import "FullScreenViewController.h"
-#import "ListViewController.h"
 
 
 #import <QuartzCore/QuartzCore.h>
@@ -23,9 +22,9 @@
 @synthesize _swipeView;
 @synthesize _fullView;
 @synthesize _itemView;
-@synthesize _listView;
-@synthesize _navigationController;
 @synthesize _tabBarController;
+
+//@synthesize _navigationController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -33,10 +32,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
 	[self initControllers];
-	
 	[self setUpTabBarController];
-	//[self setUpNavigationController];
-	
 	[window makeKeyAndVisible];
     return YES;
 }
@@ -49,9 +45,6 @@
 	
 	self._itemView = [[ItemViewController alloc] initWithNibName:@"ItemViewController" bundle:nil];
 	self._itemView.tabBarItem.title = @"ITEM";
-
-	self._listView = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];
-	self._listView.tabBarItem.title = @"LIST";
 
 	self._fullView = [[FullScreenViewController alloc] initWithNibName:@"FullScreenViewController" bundle:nil];
 	self._fullView.tabBarItem.title = @"FULL";
@@ -66,16 +59,10 @@
 - (void) setUpTabBarController
 {
 	_tabBarController = [[UITabBarController alloc] init];
-	_tabBarController.viewControllers = [NSArray arrayWithObjects: _swipeView, _itemView, _fullView, _listView, nil];
+	_tabBarController.viewControllers = [NSArray arrayWithObjects: _swipeView, _itemView, _fullView, nil];
 	[window addSubview: [_tabBarController view]];
 }
 
-- (void) setUpNavigationController
-{
-	_navigationController = [[UINavigationController alloc] initWithRootViewController:_listView];
-	_navigationController.navigationBar.tintColor = [UIColor blackColor];
-	[window addSubview: [_navigationController view]];
-}
 
 
 - (void) showFullScreenItemView:(NSNotification *)notification
@@ -89,10 +76,12 @@
 	{
 		_tabBarController.selectedIndex = 2;
 	}
+	/*
 	else 
 	{
 		[ _navigationController pushViewController:_fullView animated:YES ];
 	}
+	 */
 	
 }
 
@@ -117,6 +106,16 @@
     [super dealloc];
 }
 
+
+
+/*
+ - (void) setUpNavigationController
+ {
+ _navigationController = [[UINavigationController alloc] initWithRootViewController:_listView];
+ _navigationController.navigationBar.tintColor = [UIColor blackColor];
+ [window addSubview: [_navigationController view]];
+ }
+ */
 
 @end
 
