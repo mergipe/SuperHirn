@@ -9,9 +9,14 @@
 {
     if ((self = [super initWithFrame:frame])) 
 	{
+		
+		// change here to adjust the border width and color:
+		borderSize = 0;
+		borderColor = [UIColor clearColor];
+		
 		// initialize all parameters:
-		scaleFactor = 1.0;
-	
+		scaleFactor = 1.0;		
+		
 		// add foreground image:
 		picture = [[UIImageView alloc] initWithFrame:itemArea];
 		[self addSubview:picture];
@@ -62,6 +67,9 @@
 	picture.frame = itemArea;
 	[self setTitle:iImageName];
 	
+	
+	// adjust the border of the image:
+	[self addBorder:borderSize andColor: borderColor];
 }
 
 

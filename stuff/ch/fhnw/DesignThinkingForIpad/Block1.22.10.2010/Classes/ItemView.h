@@ -12,6 +12,8 @@
 	CGRect itemArea;	
 	UILabel *title;
 	NSString* fileName; 
+	
+	UIView* borderRectangle;
 		
 }
 @end
@@ -42,6 +44,12 @@
  */
 - (void) setFullScreen:(BOOL) iFullScreen;
 
-
+/*
+ * Add a border with a given size (pixel)  and color to surround the displayed item.
+ * @param iSize int
+ * @param iColor UIColor*
+ * @author Lukas Mueller
+ */
+- (void) addBorder:(int)iSize andColor:(UIColor*)iColor;
 
 @end

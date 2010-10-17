@@ -18,13 +18,20 @@
 		itemArea.origin.y = 0;
 		fullScreenMode = NO;
 		
-		
+
 		CGRect rect = CGRectMake(10 , 10, 120.0f, 45.0f);
 		title.textColor = [UIColor whiteColor];
 		self.title = [[[UILabel alloc] initWithFrame:rect] autorelease];
 		[title setTextAlignment:UITextAlignmentCenter];
 		[title setText:@"TTTEEEST"];
 		title.font = [UIFont boldSystemFontOfSize:30];
+
+
+		// add an invisible border rectangle:
+		borderRectangle = [[UIView alloc ] initWithFrame:  CGRectMake( 0,0,0,0 )];
+		[ self addSubview:borderRectangle ];
+		
+		
 		/*
 		title.frame.origin.x = 0;
 		title.frame.origin.y = 100;
@@ -35,6 +42,14 @@
 		
     }
     return self;
+}
+
+- (void) addBorder:(int)iSize andColor:(UIColor*)iColor
+{
+	CGRect bgArea = CGRectMake( itemArea.origin.x - iSize, itemArea.origin.y - iSize , 
+							   itemArea.size.width + 2*iSize, itemArea.size.height + 2*iSize );
+	borderRectangle.frame = bgArea;
+	borderRectangle.backgroundColor = iColor;
 }
 
 
