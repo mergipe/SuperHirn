@@ -31,6 +31,12 @@
     return self;
 }
 
+
+/**
+ * Adds a fix sized border of 20 pixels with green color to surround the displayed item.
+ * @author Lukas Mueller
+ */
+
 - (void) addBorder
 {
 	int borderSize = 10;
@@ -42,6 +48,14 @@
 	borderRectangle.backgroundColor = color;
 }
 
+
+/**
+ * Add a border with a given size (pixel) and color to surround the displayed item.
+ * @param iSize CGFloat
+ * @param iColor UIColor*
+ * @author Lukas Mueller
+ */
+
 - (void) addBorder:(CGFloat)iSize andColor:(UIColor*)iColor
 {
 	CGRect bgArea = CGRectMake( itemArea.origin.x - iSize, itemArea.origin.y - iSize , 
@@ -49,6 +63,7 @@
 	borderRectangle.frame = bgArea;
 	borderRectangle.backgroundColor = iColor;
 }
+
 
 
 - (void)setItemIndex:(int)iIndex

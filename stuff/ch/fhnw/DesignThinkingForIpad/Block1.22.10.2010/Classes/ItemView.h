@@ -26,20 +26,20 @@
 @interface ItemView()
 
 
-/*
+/**
  * Set the index of this item.
  * @param iIndex int
  * @author Lukas Mueller
  */
 - (void)setItemIndex:(int)iIndex;
 
-/*
+/**
  * Adds a fix border of 20 pixels with green color to surround the displayed item.
  * @author Lukas Mueller
  */
 - (void) addBorder;
 
-/*
+/**
  * Add a border with a given size (pixel)  and color to surround the displayed item.
  * @param iSize CGFloat
  * @param iColor UIColor*

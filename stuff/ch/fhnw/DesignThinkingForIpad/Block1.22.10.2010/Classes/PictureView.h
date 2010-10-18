@@ -17,7 +17,7 @@
 	UIImageView *picture;
 }
 
-/*
+/**
  * Set the image path.
  * @param iImage NSString*
  * @author Lukas Mueller
