@@ -8,69 +8,46 @@
 
 
 #import "ItemView.h"
-
-
 #import "StudentController.h"
 
-@implementation ItemView
 
+@implementation ItemView
 
 - (id)initWithFrame:(CGRect)frame 
 {
     if ((self = [super initWithFrame:frame])) 
 	{
-		        
 		self.backgroundColor = [UIColor clearColor];
-		itemArea.size.width = 0;
-		itemArea.size.height = 0;
 		itemArea.origin.x = 0;
 		itemArea.origin.y = 0;
-		fullScreenMode = NO;
+		itemArea.size.width = 0;
+		itemArea.size.height = 0;
 		
-
-		CGRect rect = CGRectMake(10 , 10, 120.0f, 45.0f);
-		title.textColor = [UIColor whiteColor];
-		self.title = [[[UILabel alloc] initWithFrame:rect] autorelease];
-		[title setTextAlignment:UITextAlignmentCenter];
-		[title setText:@"TTTEEEST"];
-		title.font = [UIFont boldSystemFontOfSize:30];
-
-
 		// add an invisible border rectangle:
 		borderRectangle = [[UIView alloc ] initWithFrame:  CGRectMake( 0,0,0,0 )];
 		[ self addSubview:borderRectangle ];
-		
-		
-		/*
-		title.frame.origin.x = 0;
-		title.frame.origin.y = 100;
-		title.frame.size.width = 100;
-		title.frame.size.height = 45;
-		 */
-		[self addSubview:title];
 		
     }
     return self;
 }
 
-- (void) addBorder:(int)iSize andColor:(UIColor*)iColor
+- (void) addBorder
+{
+	int borderSize = 10;
+	UIColor* color = [UIColor blueColor];
+	
+	CGRect bgArea = CGRectMake( itemArea.origin.x - borderSize, itemArea.origin.y - borderSize , 
+							   itemArea.size.width + 2 * borderSize, itemArea.size.height + 2 * borderSize );
+	borderRectangle.frame = bgArea;
+	borderRectangle.backgroundColor = color;
+}
+
+- (void) addBorder:(CGFloat)iSize andColor:(UIColor*)iColor
 {
 	CGRect bgArea = CGRectMake( itemArea.origin.x - iSize, itemArea.origin.y - iSize , 
 							   itemArea.size.width + 2*iSize, itemArea.size.height + 2*iSize );
 	borderRectangle.frame = bgArea;
 	borderRectangle.backgroundColor = iColor;
-}
-
-
-- (void) setFullScreen:(BOOL) iFullScreen
-{
-	fullScreenMode = iFullScreen;
-}
-
-- (void) setTitle:(NSString*) iTitle
-{
-	[title setText:@"where is my text"];
-
 }
 
 
@@ -82,7 +59,7 @@
 
 - (void)dealloc
 {
-	[title release];
+	[borderRectangle release];
 	[super dealloc];
 }
 

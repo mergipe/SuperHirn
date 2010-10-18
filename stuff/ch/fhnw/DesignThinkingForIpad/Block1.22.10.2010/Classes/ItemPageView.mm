@@ -51,7 +51,8 @@
 		PictureView* item = [[PictureView alloc] initWithFrame:f];
 		//item.delegate = self;		
 		[item setItemIndex:iStartIndex];
-		[item  setImage:itemName];
+		[item setImage:itemName];
+		[item addBorder ];
 		[self addSubview:item];
 		
 		if( colCount == 2 )

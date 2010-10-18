@@ -15,12 +15,8 @@
 	
 @protected
 	
-	BOOL fullScreenMode;
 	int itemIndex;
 	CGRect itemArea;	
-	UILabel *title;
-	NSString* fileName; 
-	
 	UIView* borderRectangle;
 		
 }
@@ -31,14 +27,6 @@
 
 
 /*
- * Set the title of the item.
- * @param iTitle NSString*
- * @author Lukas Mueller
- */
-- (void) setTitle:(NSString*) iTitle;
-
-
-/*
  * Set the index of this item.
  * @param iIndex int
  * @author Lukas Mueller
@@ -46,18 +34,17 @@
 - (void)setItemIndex:(int)iIndex;
 
 /*
- * Set full screen mode or not of the item.
- * @param iFullScreen BOOL
+ * Adds a fix border of 20 pixels with green color to surround the displayed item.
  * @author Lukas Mueller
  */
-- (void) setFullScreen:(BOOL) iFullScreen;
+- (void) addBorder;
 
 /*
  * Add a border with a given size (pixel)  and color to surround the displayed item.
- * @param iSize int
+ * @param iSize CGFloat
  * @param iColor UIColor*
  * @author Lukas Mueller
  */
-- (void) addBorder:(int)iSize andColor:(UIColor*)iColor;
+- (void) addBorder:(CGFloat)iSize andColor:(UIColor*)iColor;
 
 @end

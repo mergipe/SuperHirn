@@ -55,9 +55,7 @@
 	NSURL *url = [NSURL fileURLWithPath:path];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
 	[webItem loadRequest:request];
-	
-	[self setTitle:iUrl];
-	
+
 }
 
 

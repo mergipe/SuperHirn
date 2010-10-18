@@ -21,25 +21,10 @@
 		imagePositionX = 0;
 		imagePositionY = 0;
 		imageWidth = 768;
-		imageHeight = 800;
+		imageHeight = 1024;
 		
-		[self showWebItem];
-		//[self showPicture:0];
     }
     return self;
-}
-
-- (void)viewDidLoad 
-{
-	[super viewDidLoad];
-	
-}
-
-
-- (void)dealloc 
-{
-	[mPicture release];
-	[super dealloc];
 }
 
 - (void)showPicture:(int) iIndex 
@@ -49,17 +34,21 @@
 		mPicture = [[PictureView alloc] initWithFrame:CGRectMake(
 																 imagePositionX, imagePositionY, 
 																 imageWidth, imageHeight)];
-		[mPicture setFullScreen: YES ];
 		[self.view addSubview: mPicture ];
 
 	}
 	
+
 	NSString* imageName = [StudentController getFile:iIndex];	
 	[ mPicture setImage:imageName ];
+	[ mPicture addBorder ];
 	
+	
+
 	
 }
 
+/*
 - (void)showWebItem 
 {
 	ItemWebView* mWebItem = nil;
@@ -75,6 +64,20 @@
 
 	[mWebItem setUrl:@"test.pdf"];	
 	
+}
+ */
+
+- (void)viewDidLoad 
+{
+	[super viewDidLoad];
+	
+}
+
+
+- (void)dealloc 
+{
+	[mPicture release];
+	[super dealloc];
 }
 
 

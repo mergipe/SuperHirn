@@ -14,19 +14,8 @@
 {
 @private
 	
-	float scaleFactor;	
 	UIImageView *picture;
-
-	// variables describing the border of the displayed image:
-	int borderSize;
-	UIColor* borderColor;
 }
-@end
-
-
-@interface PictureView()
-
-
 
 /*
  * Set the image path.

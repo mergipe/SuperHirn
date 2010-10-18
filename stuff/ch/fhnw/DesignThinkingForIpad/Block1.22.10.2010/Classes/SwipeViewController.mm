@@ -71,9 +71,9 @@
 		PictureView* item = [[PictureView alloc] initWithFrame:f];
 		[ item setItemIndex:i];
 		[ item setImage:imageName];
+		[ item addBorder];
 		
 		[mScrollView addSubview:item];		
-		
 		f.origin.x += f.size.width;
 	}
 
@@ -88,6 +88,7 @@
 
 - (void)dealloc 
 {
+	[listOfPictures release];
 	[mScrollView release];
 	[super dealloc];
 }
