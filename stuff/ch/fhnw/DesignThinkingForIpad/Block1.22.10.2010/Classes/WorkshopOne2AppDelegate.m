@@ -52,6 +52,8 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSwipeView:) 
 												 name:@"showSwipeView" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showItemView:) 
+												 name:@"showItemView" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFullScreenItemView:) 
 												 name:@"showFullScreenItemView" object:nil];
 }	
@@ -76,13 +78,6 @@
 	{
 		_tabBarController.selectedIndex = 2;
 	}
-	/*
-	else 
-	{
-		[ _navigationController pushViewController:_fullView animated:YES ];
-	}
-	 */
-	
 }
 
 - (void) showSwipeView:(NSNotification *)notification
@@ -93,6 +88,13 @@
 	}
 }
 
+- (void) showItemView:(NSNotification *)notification
+{
+	if( _tabBarController != nil )
+	{
+		_tabBarController.selectedIndex = 1;
+	}
+}
 
 
 

@@ -46,7 +46,12 @@
 /**
  * Show the swipe view
  */
-- (void) showSwipeView:(NSNotification *)notification;
+- (void) showItemView:(NSNotification *)notification;
+
+/**
+ * Show the swipe view
+ */
+- (void) showItemView:(NSNotification *)notification;
 
 /**
  * Initialization function for all view controllers
