@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* WorkshopOne2AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WorkshopOne2AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -19,6 +18,8 @@
 		C16F729A12510724000C3C71 /* PictureView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C16F729912510724000C3C71 /* PictureView.mm */; };
 		C16F744712513422000C3C71 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16F744612513422000C3C71 /* MainWindow_iPad.xib */; };
 		C1760DAA126F8C9500C52DC2 /* Block1.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1760DA9126F8C9500C52DC2 /* Block1.plist */; };
+		C1760DC5126F8D4F00C52DC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */; };
+		C1760DDE126F8E5600C52DC2 /* StudentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1760DDD126F8E5600C52DC2 /* StudentController.m */; };
 		C17B4FA512623893004525F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17B4FA412623893004525F2 /* QuartzCore.framework */; };
 		C17B51E51262583F004525F2 /* ItemViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C17B51E31262583F004525F2 /* ItemViewController.mm */; };
 		C17B51E61262583F004525F2 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17B51E41262583F004525F2 /* ItemViewController.xib */; };
@@ -29,13 +30,10 @@
 		C1A9A8CD1260C265001385CA /* Data in Resources */ = {isa = PBXBuildFile; fileRef = C1A9A8C91260C265001385CA /* Data */; };
 		C1D9E74F1263ABC800983B65 /* ListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1D9E74D1263ABC800983B65 /* ListViewController.mm */; };
 		C1D9E7501263ABC800983B65 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D9E74E1263ABC800983B65 /* ListViewController.xib */; };
-		F7DA26C31240EE4A0016C7BB /* StudentController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA26C21240EE4A0016C7BB /* StudentController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* WorkshopOne2AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkshopOne2AppDelegate.h; path = ../Classes/WorkshopOne2AppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* WorkshopOne2AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkshopOne2AppDelegate.m; path = ../Classes/WorkshopOne2AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* iCompetence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCompetence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,28 +44,30 @@
 		C16F72561251044F000C3C71 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
 		C16F72571251044F000C3C71 /* SwipeViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SwipeViewController.mm; sourceTree = "<group>"; };
 		C16F72581251044F000C3C71 /* SwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwipeViewController.xib; path = Classes/SwipeViewController.xib; sourceTree = "<group>"; };
-		C16F729812510724000C3C71 /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureView.h; path = ../Classes/PictureView.h; sourceTree = "<group>"; };
-		C16F729912510724000C3C71 /* PictureView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PictureView.mm; path = ../Classes/PictureView.mm; sourceTree = "<group>"; };
+		C16F729812510724000C3C71 /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
+		C16F729912510724000C3C71 /* PictureView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PictureView.mm; sourceTree = "<group>"; };
 		C16F744612513422000C3C71 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
 		C1760DA8126F8C8C00C52DC2 /* Block1_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block1_Prefix.pch; sourceTree = "<group>"; };
 		C1760DA9126F8C9500C52DC2 /* Block1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Block1.plist; sourceTree = "<group>"; };
+		C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C1760DDC126F8E5600C52DC2 /* StudentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentController.h; sourceTree = "<group>"; };
+		C1760DDD126F8E5600C52DC2 /* StudentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentController.m; sourceTree = "<group>"; };
 		C17B4FA412623893004525F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C17B51E21262583F004525F2 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		C17B51E31262583F004525F2 /* ItemViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemViewController.mm; sourceTree = "<group>"; };
 		C17B51E41262583F004525F2 /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ItemViewController.xib; path = Classes/ItemViewController.xib; sourceTree = "<group>"; };
 		C17B51ED126258DD004525F2 /* ItemPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPageView.h; sourceTree = "<group>"; };
 		C17B51EE126258DD004525F2 /* ItemPageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemPageView.mm; sourceTree = "<group>"; };
-		C17B51EF126258DD004525F2 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemView.h; path = ../Classes/ItemView.h; sourceTree = "<group>"; };
-		C17B51F0126258DD004525F2 /* ItemView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ItemView.mm; path = ../Classes/ItemView.mm; sourceTree = "<group>"; };
-		C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullScreenViewController.h; path = ../Classes/FullScreenViewController.h; sourceTree = "<group>"; };
-		C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FullScreenViewController.mm; path = ../Classes/FullScreenViewController.mm; sourceTree = "<group>"; };
+		C17B51EF126258DD004525F2 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
+		C17B51F0126258DD004525F2 /* ItemView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemView.mm; sourceTree = "<group>"; };
+		C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenViewController.h; sourceTree = "<group>"; };
+		C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FullScreenViewController.mm; sourceTree = "<group>"; };
 		C1A4BA7D125CE8B0001144E1 /* FullScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FullScreenViewController.xib; path = Classes/FullScreenViewController.xib; sourceTree = "<group>"; };
 		C1A9A8C91260C265001385CA /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
 		C1D9E74C1263ABC800983B65 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		C1D9E74D1263ABC800983B65 /* ListViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListViewController.mm; sourceTree = "<group>"; };
 		C1D9E74E1263ABC800983B65 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
-		F7DA26C11240EE4A0016C7BB /* StudentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentController.h; path = ../Student/StudentController.h; sourceTree = "<group>"; };
-		F7DA26C21240EE4A0016C7BB /* StudentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentController.m; path = ../Student/StudentController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +109,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C1760DE0126F8E6200C52DC2 /* Student */,
 				C1A9A8C91260C265001385CA /* Data */,
-				F75C96AF1240ADDB0058EBE4 /* StudentClasses */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -170,9 +170,25 @@
 			name = SwipeView;
 			sourceTree = "<group>";
 		};
+		C1760DE0126F8E6200C52DC2 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				C1760DDC126F8E5600C52DC2 /* StudentController.h */,
+				C1760DDD126F8E5600C52DC2 /* StudentController.m */,
+				C17B51EF126258DD004525F2 /* ItemView.h */,
+				C17B51F0126258DD004525F2 /* ItemView.mm */,
+				C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */,
+				C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */,
+			);
+			name = Student;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		C17B51E112625836004525F2 /* ItemView */ = {
 			isa = PBXGroup;
 			children = (
+				C16F729812510724000C3C71 /* PictureView.h */,
+				C16F729912510724000C3C71 /* PictureView.mm */,
 				C17B51E21262583F004525F2 /* ItemViewController.h */,
 				C17B51E31262583F004525F2 /* ItemViewController.mm */,
 			);
@@ -198,8 +214,8 @@
 		C1B184DF126CC92C0097C362 /* others */ = {
 			isa = PBXGroup;
 			children = (
-				F7DA26C11240EE4A0016C7BB /* StudentController.h */,
-				F7DA26C21240EE4A0016C7BB /* StudentController.m */,
+				C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */,
+				C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */,
 			);
 			name = others;
 			sourceTree = "<group>";
@@ -222,22 +238,6 @@
 				C10A772412663D6600F9F4EA /* ItemWebView.mm */,
 			);
 			name = notUsedViews;
-			sourceTree = "<group>";
-		};
-		F75C96AF1240ADDB0058EBE4 /* StudentClasses */ = {
-			isa = PBXGroup;
-			children = (
-				1D3623240D0F684500981E51 /* WorkshopOne2AppDelegate.h */,
-				1D3623250D0F684500981E51 /* WorkshopOne2AppDelegate.m */,
-				C17B51EF126258DD004525F2 /* ItemView.h */,
-				C17B51F0126258DD004525F2 /* ItemView.mm */,
-				C16F729812510724000C3C71 /* PictureView.h */,
-				C16F729912510724000C3C71 /* PictureView.mm */,
-				C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */,
-				C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */,
-			);
-			name = StudentClasses;
-			path = Student;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,8 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* WorkshopOne2AppDelegate.m in Sources */,
-				F7DA26C31240EE4A0016C7BB /* StudentController.m in Sources */,
 				C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */,
 				C16F729A12510724000C3C71 /* PictureView.mm in Sources */,
 				C1A4BA7E125CE8B0001144E1 /* FullScreenViewController.mm in Sources */,
@@ -319,6 +317,8 @@
 				C17B51F2126258DD004525F2 /* ItemView.mm in Sources */,
 				C1D9E74F1263ABC800983B65 /* ListViewController.mm in Sources */,
 				C10A772512663D6600F9F4EA /* ItemWebView.mm in Sources */,
+				C1760DC5126F8D4F00C52DC2 /* AppDelegate.m in Sources */,
+				C1760DDE126F8E5600C52DC2 /* StudentController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
