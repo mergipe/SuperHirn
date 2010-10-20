@@ -1,10 +1,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ItemView.h"
+#import "Item.h"
 
 @class UIWebView;
-@interface ItemWebView : ItemView 
+@interface ItemWebView : Item 
 {
 	
 @private

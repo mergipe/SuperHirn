@@ -8,9 +8,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import "ItemView.h"
+#import "Item.h"
 
-@interface PictureView : ItemView 
+@interface PictureView : Item 
 {
 @private
 	

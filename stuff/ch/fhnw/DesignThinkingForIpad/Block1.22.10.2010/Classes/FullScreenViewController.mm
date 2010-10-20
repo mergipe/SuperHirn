@@ -20,8 +20,13 @@
 		self.view.backgroundColor = [UIColor blackColor]; 
 		imagePositionX = 0;
 		imagePositionY = 0;
-		imageWidth = 768;
-		imageHeight = 1024;
+		imageWidth = 400;
+		imageHeight = 400;
+		
+		mPicture = [[PictureView alloc] initWithFrame:CGRectMake(
+																 imagePositionX, imagePositionY, 
+																 imageWidth, imageHeight)];
+		[self.view addSubview: mPicture ];
 		
     }
     return self;
@@ -29,49 +34,11 @@
 
 - (void)showPicture:(int) iIndex 
 {
-	if( mPicture == nil )
-	{
-		mPicture = [[PictureView alloc] initWithFrame:CGRectMake(
-																 imagePositionX, imagePositionY, 
-																 imageWidth, imageHeight)];
-		[self.view addSubview: mPicture ];
-
-	}
 	
-
 	// Get the file name of the image, set the image in Pictures and add a border:
 	NSString* imageName = [StudentController getFile:iIndex];	
 	[ mPicture setImage:imageName ];
 	[ mPicture addBorder ];
-	
-	
-
-	
-}
-
-/*
-- (void)showWebItem 
-{
-	ItemWebView* mWebItem = nil;
-	if( mWebItem == nil )
-	{
-		mWebItem = [[ItemWebView alloc] initWithFrame:CGRectMake(
-																 imagePositionX, imagePositionY, 
-																 imageWidth, imageHeight)];
-		//[mPicture setFullScreen: YES ];
-		[self.view addSubview: mWebItem ];
-		
-	}
-
-	[mWebItem setUrl:@"test.pdf"];	
-	
-}
- */
-
-- (void)viewDidLoad 
-{
-	[super viewDidLoad];
-	
 }
 
 
@@ -83,4 +50,23 @@
 
 
 
+
+/*
+ - (void)showWebItem 
+ {
+ ItemWebView* mWebItem = nil;
+ if( mWebItem == nil )
+ {
+ mWebItem = [[ItemWebView alloc] initWithFrame:CGRectMake(
+ imagePositionX, imagePositionY, 
+ imageWidth, imageHeight)];
+ //[mPicture setFullScreen: YES ];
+ [self.view addSubview: mWebItem ];
+ 
+ }
+ 
+ [mWebItem setUrl:@"test.pdf"];	
+ 
+ }
+ */
 @end
