@@ -1,5 +1,5 @@
 //
-//  WorkshopOne2AppDelegate.h
+//  AppDelegate.h
 //  iPad Block 1-4 
 //
 //  Created by Lukas Mueller.
@@ -13,16 +13,13 @@
 @class SwipeViewController;
 @class ItemViewController;
 @class UITabBarController;
-//@class UINavigationController;
 
-@interface WorkshopOne2AppDelegate : NSObject <UIApplicationDelegate> 
+@interface AppDelegate : NSObject <UIApplicationDelegate> 
 {
 	
     UIWindow *window;
 	UITabBarController* _tabBarController;
-	// UINavigationController* _navigationController;
 	
-
 	// controllers for the different app views:
     SwipeViewController *_swipeView;
     FullScreenViewController *_fullView;
@@ -35,6 +32,7 @@
 @property (nonatomic, retain) IBOutlet SwipeViewController* _swipeView;
 @property (nonatomic, retain) IBOutlet FullScreenViewController* _fullView;
 @property (nonatomic, retain) IBOutlet UITabBarController* _tabBarController;
+
 
 // @property (nonatomic, retain) IBOutlet UINavigationController* _navigationController;
 

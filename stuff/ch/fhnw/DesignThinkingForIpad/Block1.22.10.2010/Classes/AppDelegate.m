@@ -1,12 +1,12 @@
 //
-//  WorkshopOne2AppDelegate.m
+//  AppDelegate.m
 //  iPad Block 1-4 
 //
 //  Created by Lukas Mueller.
 //  Copyright by FHNW 2010. All rights reserved.
 //
 
-#import "WorkshopOne2AppDelegate.h"
+#import "AppDelegate.h"
 
 #import "ItemViewController.h"
 #import "SwipeViewController.h"
@@ -16,15 +16,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-@implementation WorkshopOne2AppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 @synthesize _swipeView;
 @synthesize _fullView;
 @synthesize _itemView;
 @synthesize _tabBarController;
-
-//@synthesize _navigationController;
 
 #pragma mark -
 #pragma mark Application lifecycle

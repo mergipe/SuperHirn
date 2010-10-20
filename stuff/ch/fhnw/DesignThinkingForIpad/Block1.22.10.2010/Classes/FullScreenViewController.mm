@@ -39,6 +39,7 @@
 	}
 	
 
+	// Get the file name of the image, set the image in Pictures and add a border:
 	NSString* imageName = [StudentController getFile:iIndex];	
 	[ mPicture setImage:imageName ];
 	[ mPicture addBorder ];
