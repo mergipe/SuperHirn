@@ -40,11 +40,6 @@
 	[ mPicture setImage:imageName ];
 	[ mPicture addBorder ];
 	
-	// adjust image position:
-	CGFloat newX = [mPicture getWidth];
-	CGFloat newY = [mPicture getHeight];
-	mPicture.frame.origin.x = 200;
-	mPicture.frame.origin.y = 200;
 }
 
 
