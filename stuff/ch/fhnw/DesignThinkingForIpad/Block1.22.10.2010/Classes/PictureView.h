@@ -24,6 +24,19 @@
  */
 - (void) setImage:(NSString*) iImage;
 
+/**
+ * Get the height of the image.
+ * @return height
+ * @author Lukas Mueller
+ */
+- (CGFloat) getHeight;
+
+/**
+ * Get the width of the image.
+ * @return width
+ * @author Lukas Mueller
+ */
+- (CGFloat) getWidth;
 
 
 @end

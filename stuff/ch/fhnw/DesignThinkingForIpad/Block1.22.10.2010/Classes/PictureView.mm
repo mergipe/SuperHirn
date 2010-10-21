@@ -26,6 +26,14 @@
 }
 
 
+- (CGFloat) getHeight
+{
+	return picture.frame.size.height;
+}
+- (CGFloat) getWidth
+{
+	return picture.frame.size.width;
+}
 
 
 
@@ -37,6 +45,7 @@
 	itemArea.size = picture.image.size;
 
 	// check that the picture isnt bigger than super view itself:
+	
 	if( itemArea.size.width > self.frame.size.width )
 	{
 		itemArea.size.width = self.frame.size.width;

@@ -18,8 +18,8 @@
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
 	{
 		self.view.backgroundColor = [UIColor blackColor]; 
-		imagePositionX = 0;
-		imagePositionY = 0;
+		imagePositionX = 200;
+		imagePositionY = 200;
 		imageWidth = 400;
 		imageHeight = 400;
 		
@@ -39,6 +39,12 @@
 	NSString* imageName = [StudentController getFile:iIndex];	
 	[ mPicture setImage:imageName ];
 	[ mPicture addBorder ];
+	
+	// adjust image position:
+	CGFloat newX = [mPicture getWidth];
+	CGFloat newY = [mPicture getHeight];
+	mPicture.frame.origin.x = 200;
+	mPicture.frame.origin.y = 200;
 }
 
 
