@@ -8,9 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import "ItemViewController.h"
 #import "SwipeViewController.h"
-#import "FullScreenViewController.h"
+#import "ListViewController.h"
 
 
 #import <QuartzCore/QuartzCore.h>
@@ -18,11 +17,11 @@
 
 @implementation AppDelegate
 
+
 @synthesize window;
 @synthesize _swipeView;
-@synthesize _fullView;
-@synthesize _itemView;
-@synthesize _tabBarController;
+@synthesize _listView;
+@synthesize _navigationController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -30,7 +29,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
 	[self initControllers];
-	[self setUpTabBarController];
 	[window makeKeyAndVisible];
     return YES;
 }
@@ -38,84 +36,51 @@
 
 - (void) initControllers
 {
+	
+	// initialization of the pointers to the controllers
 	self._swipeView = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-	self._swipeView.tabBarItem.title = @"SWIPE";
+	self._listView = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];
+	_listView.delegate = self;
 	
-	self._itemView = [[ItemViewController alloc] initWithNibName:@"ItemViewController" bundle:nil];
-	self._itemView.tabBarItem.title = @"ITEM";
-
-	self._fullView = [[FullScreenViewController alloc] initWithNibName:@"FullScreenViewController" bundle:nil];
-	self._fullView.tabBarItem.title = @"FULL";
-
+	// initialization of the pointers to the main navigation controller
+	_navigationController = [[UINavigationController alloc] initWithRootViewController:_listView];
+	_navigationController.navigationBar.tintColor = [UIColor blackColor];
+	[window addSubview: [_navigationController view]];
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSwipeView:) 
-												 name:@"showSwipeView" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showItemView:) 
-												 name:@"showItemView" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFullScreenItemView:) 
-												 name:@"showFullScreenItemView" object:nil];
 }	
 
-- (void) setUpTabBarController
+
+
+- (void) showSwipeView:(int) iItemIndexToShow
 {
-	_tabBarController = [[UITabBarController alloc] init];
-	_tabBarController.viewControllers = [NSArray arrayWithObjects: _swipeView, _itemView, _fullView, nil];
-	[window addSubview: [_tabBarController view]];
-}
+	NSLog(@"AppDelegate: Show swipe view at item %d.", iItemIndexToShow);
 
-
-
-- (void) showFullScreenItemView:(NSNotification *)notification
-{
-	NSDictionary *dict = [notification userInfo];
-	int index = [[dict valueForKey:@"itemIndex"] intValue];
-	[_fullView showPicture:index];
+	// first, center the swipe view to the taped item
+	[ _swipeView centerAtItem: iItemIndexToShow ];
 	
-	
-	if( _tabBarController != nil )
-	{
-		_tabBarController.selectedIndex = 2;
-	}
+	// now push the swipe view in front:
+	[_navigationController pushViewController:_swipeView animated:YES];
 }
 
-- (void) showSwipeView:(NSNotification *)notification
+
+
+-(void) didSelectItem:(int)iItemIndex
 {
-	if( _tabBarController != nil )
-	{
-		_tabBarController.selectedIndex = 0;
-	}
+	NSLog(@"Delegate received tap event from ListViewController: item %d", iItemIndex);
+	[self showSwipeView:iItemIndex];
 }
-
-- (void) showItemView:(NSNotification *)notification
-{
-	if( _tabBarController != nil )
-	{
-		_tabBarController.selectedIndex = 1;
-	}
-}
-
-
-
 
 
 - (void)dealloc 
 {
-	[_fullView release];
+	[_navigationController release];
+	[_listView release];
 	[_swipeView release];
     [window release];
     [super dealloc];
 }
 
 
-
-/*
- - (void) setUpNavigationController
- {
- _navigationController = [[UINavigationController alloc] initWithRootViewController:_listView];
- _navigationController.navigationBar.tintColor = [UIColor blackColor];
- [window addSubview: [_navigationController view]];
- }
- */
 
 @end
 

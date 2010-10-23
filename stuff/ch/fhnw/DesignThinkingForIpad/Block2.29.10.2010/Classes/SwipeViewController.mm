@@ -32,7 +32,7 @@
 		itemArea.origin.x = 0;
 		itemArea.origin.y = 0;
 		itemArea.size.width = 768;
-		itemArea.size.height = 800;
+		itemArea.size.height = 1024;
 		
 		// initialize the scroll view with the dimension of the iPad screen
 		mScrollView = [[UIScrollView alloc] initWithFrame:itemArea];
@@ -46,6 +46,9 @@
 		// allow bouncing of scoll view in all directions:
 		mScrollView.alwaysBounceVertical = NO;
 		
+		// set self as the delegated for the scroll view
+		mScrollView.delegate = self;
+		
 		[self.view addSubview:mScrollView];
 		
 		
@@ -54,6 +57,24 @@
 		
     }
     return self;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration 
+{
+	
+	CGSize newSize = CGSizeMake( itemArea.size.height, itemArea.size.width);
+	mScrollView.frame = CGRectMake(0, 0, newSize.width, newSize.height);
+	mScrollView.contentSize = CGSizeMake( [StudentController numberOfFiles] * newSize.width, newSize.height);
+	
+	[self centerAtItem:3];
+		
+	itemArea.size.width = mScrollView.frame.size.height;
+	itemArea.size.height = mScrollView.frame.size.width;
 }
 
 
@@ -76,9 +97,23 @@
 		[mScrollView addSubview:item];		
 		f.origin.x += f.size.width;
 	}
-
 }
 
+
+-(void) centerAtItem:(int)iItemIndex
+{
+	[ mScrollView setContentOffset:CGPointMake(iItemIndex * mScrollView.frame.size.width, 0.0) animated:YES];
+}
+
+
+#pragma mark UIScrollView delegate methods
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)newScrollView 
+{
+	CGFloat pageWidth = mScrollView.frame.size.width;
+	int pageNumber = floor((mScrollView.contentOffset.x - pageWidth/2) / pageWidth) + 1;
+	NSLog(@"ScrollView swiped to page %d", pageNumber );
+}
 
 - (void)viewDidLoad 
 {

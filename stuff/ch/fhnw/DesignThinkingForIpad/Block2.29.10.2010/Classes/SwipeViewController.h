@@ -11,7 +11,7 @@
 #import "PictureView.h"
 
 
-@interface SwipeViewController : UIViewController 
+@interface SwipeViewController : UIViewController<UIScrollViewDelegate> 
 {
 	NSMutableArray* listOfPictures;
 	IBOutlet UIScrollView *mScrollView;	
@@ -21,6 +21,13 @@
 
 @interface SwipeViewController()
 
+
+/**
+ * Centers the swipe view at this index
+ * @param iItemIndex int
+ * @author Lukas Mueller
+ */
+-(void) centerAtItem:(int)iItemIndex;
 
 /**
  * Initialization function to load the images into the swipe view

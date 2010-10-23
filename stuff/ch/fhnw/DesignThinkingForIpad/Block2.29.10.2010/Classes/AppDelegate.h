@@ -7,63 +7,50 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListViewController.h";
 
 
-@class FullScreenViewController;
 @class SwipeViewController;
-@class ItemViewController;
-@class UITabBarController;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate> 
+@class UINavigationController;
+
+@interface AppDelegate : NSObject <UIApplicationDelegate, ListViewControllerDelegate> 
 {
 	
     UIWindow *window;
-	UITabBarController* _tabBarController;
+	UINavigationController* _navigationController;
 	
-	// controllers for the different app views:
-    SwipeViewController *_swipeView;
-    FullScreenViewController *_fullView;
-	ItemViewController *_itemView;
+	// controllers for the different views:
+    SwipeViewController* _swipeView;
+	ListViewController* _listView;
 	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet ItemViewController* _itemView;
 @property (nonatomic, retain) IBOutlet SwipeViewController* _swipeView;
-@property (nonatomic, retain) IBOutlet FullScreenViewController* _fullView;
-@property (nonatomic, retain) IBOutlet UITabBarController* _tabBarController;
+@property (nonatomic, retain) IBOutlet ListViewController* _listView;
+@property (nonatomic, retain) IBOutlet UINavigationController* _navigationController;
 
-
-// @property (nonatomic, retain) IBOutlet UINavigationController* _navigationController;
 
 /**
- * Show the full screen item view
+ * Show the swipe view at the given item index
+ * @param iItemIndexToShow int
  */
-- (void) showFullScreenItemView:(NSNotification *)notification;
+- (void) showSwipeView:(int) iItemIndexToShow;
 
-/**
- * Show the swipe view
- */
-- (void) showItemView:(NSNotification *)notification;
-
-/**
- * Show the swipe view
- */
-- (void) showItemView:(NSNotification *)notification;
 
 /**
  * Initialization function for all view controllers
  */
 - (void) initControllers;
 
-/**
- * Set up of a tab bar navigation controller
- */
-- (void) setUpTabBarController;
 
 /**
- * Set up of a hirarchical navigation controller
+ * Implementation of ListViewcontrollerDelegate method for taping on a list item
+ * @param iItemIndex int
+ * @author Lukas N Mueller
  */
-//- (void) setUpNavigationController;
+-(void) didSelectItem:(int)iItemIndex;
+
 
 @end

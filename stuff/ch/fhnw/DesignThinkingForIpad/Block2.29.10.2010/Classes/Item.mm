@@ -40,7 +40,7 @@
 - (void) addBorder
 {
 	int borderSize = 10;
-	UIColor* color = [UIColor blueColor];
+	UIColor* color = [UIColor clearColor];
 	
 	CGRect bgArea = CGRectMake( itemArea.origin.x - borderSize, itemArea.origin.y - borderSize , 
 							   itemArea.size.width + 2 * borderSize, itemArea.size.height + 2 * borderSize );
