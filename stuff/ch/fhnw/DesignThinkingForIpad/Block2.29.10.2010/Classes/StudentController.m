@@ -29,6 +29,11 @@ static NSMutableArray* detectedFiles = nil;
 
 +(NSString*) getFile:(int)iIndex 
 {
+	if( detectedFiles == nil )
+	{
+		[self extractFileNames];
+	}
+	
 	if( ( iIndex >= 0 ) && ( iIndex < [detectedFiles count]) )
 	{
 		return [detectedFiles objectAtIndex:iIndex];
@@ -39,6 +44,11 @@ static NSMutableArray* detectedFiles = nil;
 
 +(int) numberOfFiles
 {
+	if( detectedFiles == nil )
+	{
+		[self extractFileNames];
+	}
+	
 	if( detectedFiles != nil )
 	{
 		return [detectedFiles count];
@@ -50,7 +60,10 @@ static NSMutableArray* detectedFiles = nil;
 
 +(Item*) getItem:(int) iIndex :(CGRect) iItemArea
 {
-	
+	if( detectedFiles == nil )
+	{
+		[self extractFileNames];
+	}
 	
 	Item* item = nil;
 	NSString* itemPath = [self getFile: iIndex];

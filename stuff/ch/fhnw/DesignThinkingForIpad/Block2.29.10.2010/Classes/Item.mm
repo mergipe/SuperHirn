@@ -13,6 +13,8 @@
 
 @implementation Item
 
+@synthesize delegate;
+
 - (id)initWithFrame:(CGRect)frame 
 {
     if ((self = [super initWithFrame:frame])) 
@@ -32,31 +34,8 @@
 }
 
 
-/**
- * Adds a fix sized border of 20 pixels with green color to surround the displayed item.
- * @author Lukas Mueller
- */
 
-- (void) addBorder
-{
-	int borderSize = 10;
-	UIColor* color = [UIColor clearColor];
-	
-	CGRect bgArea = CGRectMake( itemArea.origin.x - borderSize, itemArea.origin.y - borderSize , 
-							   itemArea.size.width + 2 * borderSize, itemArea.size.height + 2 * borderSize );
-	borderRectangle.frame = bgArea;
-	borderRectangle.backgroundColor = color;
-}
-
-
-/**
- * Add a border with a given size (pixel) and color to surround the displayed item.
- * @param iSize CGFloat
- * @param iColor UIColor*
- * @author Lukas Mueller
- */
-
-- (void) addBorder:(CGFloat)iSize andColor:(UIColor*)iColor
+- (void) addBorder:(CGFloat)iSize :(UIColor*)iColor
 {
 	CGRect bgArea = CGRectMake( itemArea.origin.x - iSize, itemArea.origin.y - iSize , 
 							   itemArea.size.width + 2*iSize, itemArea.size.height + 2*iSize );
@@ -64,6 +43,16 @@
 	borderRectangle.backgroundColor = iColor;
 }
 
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	UITouch *touch = [touches anyObject]; //assume just 1 touch
+	if(touch.tapCount == 1) 
+	{
+		NSLog(@"Tapped on item at %d", itemIndex);
+		// notify the registered delegate:
+		[delegate tapOnItem:itemIndex];
+	}
+}
 
 
 - (void)setItemIndex:(int)iIndex
@@ -78,15 +67,5 @@
 	[super dealloc];
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	UITouch *touch = [touches anyObject]; //assume just 1 touch
-	if(touch.tapCount == 1) 
-	{
-		NSLog(@"Tapped on item at %d", itemIndex);
-		NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:itemIndex] forKey:@"itemIndex"];
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"showFullScreenItemView" object:self userInfo:dict];
-	}
-}
 
 @end

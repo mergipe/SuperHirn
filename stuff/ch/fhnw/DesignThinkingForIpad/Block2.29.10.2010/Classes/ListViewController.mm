@@ -56,13 +56,6 @@
 
 
 
-- (void)dealloc 
-{
-	[listOfFiles release];
-	[super dealloc];
-}
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	int index = [indexPath indexAtPosition:1];
@@ -101,5 +94,13 @@
 	
 	return cell;
 }
+
+- (void)dealloc 
+{
+	[_fontImage release];
+	[listOfFiles release];
+	[super dealloc];
+}
+
 
 @end

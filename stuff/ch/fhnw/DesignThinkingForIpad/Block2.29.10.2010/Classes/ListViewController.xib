@@ -50,6 +50,7 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC42NjMwNDM0NzgzIDAuNjYzMDQzNDc4MyAwLjY2MzA0MzQ3ODMAA</bytes>
 						</object>
+						<bool key="IBUIAutoresizesSubviews">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
@@ -248,11 +249,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>_frontImage</string>
 							<string>_table</string>
+							<string>delegate</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIImageView</string>
 							<string>UITableView</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -261,6 +264,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>_frontImage</string>
 							<string>_table</string>
+							<string>delegate</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -271,6 +275,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">_table</string>
 								<string key="candidateClassName">UITableView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">delegate</string>
+								<string key="candidateClassName">id</string>
 							</object>
 						</object>
 					</object>

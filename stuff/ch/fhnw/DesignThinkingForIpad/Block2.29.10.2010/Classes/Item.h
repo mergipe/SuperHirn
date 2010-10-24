@@ -10,21 +10,35 @@
 #import <UIKit/UIKit.h>
 
 
+@class ItemDelegate;
+
+@protocol ItemDelegate <NSObject>;
+
+/**
+ * Upon selection/taping on an item defined by its index
+ * @param iItemIndex int
+ * @author Lukas N Mueller
+ */
+-(void)tapOnItem:(int)iItemIndex;
+
+@end
+
+
+
 @interface Item : UIView 
 {
+	
+	id<ItemDelegate> delegate;
 	
 @protected
 	
 	int itemIndex;
 	CGRect itemArea;	
 	UIView* borderRectangle;
-		
+	
 }
-@end
 
-
-@interface Item()
-
+@property(nonatomic, assign) id<ItemDelegate> delegate;
 
 /**
  * Set the index of this item.
@@ -33,11 +47,6 @@
  */
 - (void)setItemIndex:(int)iIndex;
 
-/**
- * Adds a fix border of 20 pixels with green color to surround the displayed item.
- * @author Lukas Mueller
- */
-- (void) addBorder;
 
 /**
  * Add a border with a given size (pixel)  and color to surround the displayed item.
@@ -45,6 +54,6 @@
  * @param iColor UIColor*
  * @author Lukas Mueller
  */
-- (void) addBorder:(CGFloat)iSize andColor:(UIColor*)iColor;
+- (void) addBorder:(CGFloat)iSize :(UIColor*)iColor;
 
 @end

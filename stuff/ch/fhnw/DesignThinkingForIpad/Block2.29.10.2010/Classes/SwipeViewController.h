@@ -13,13 +13,10 @@
 
 @interface SwipeViewController : UIViewController<UIScrollViewDelegate> 
 {
-	NSMutableArray* listOfPictures;
 	IBOutlet UIScrollView *mScrollView;	
-	CGRect itemArea;
+	NSMutableArray* allSwipeItems;
+	int currentItemInView;
 }
-@end
-
-@interface SwipeViewController()
 
 
 /**
@@ -35,5 +32,11 @@
  */
 -(void)initImageSwipeViews;
 
+
+/**
+ * Adjust alls items in the swipe view to the device orientation
+ * @author Lukas N Mueller
+ */
+-(void)adjustSwipeItemsToOrientation;
 
 @end

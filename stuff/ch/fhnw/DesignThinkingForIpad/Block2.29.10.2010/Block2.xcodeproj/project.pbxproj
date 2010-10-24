@@ -20,10 +20,7 @@
 		C1760DC5126F8D4F00C52DC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */; };
 		C1760DDE126F8E5600C52DC2 /* StudentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1760DDD126F8E5600C52DC2 /* StudentController.m */; };
 		C17B4FA512623893004525F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17B4FA412623893004525F2 /* QuartzCore.framework */; };
-		C17B51E51262583F004525F2 /* ItemViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C17B51E31262583F004525F2 /* ItemViewController.mm */; };
-		C17B51F1126258DD004525F2 /* ItemPageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C17B51EE126258DD004525F2 /* ItemPageView.mm */; };
 		C17B51F2126258DD004525F2 /* Item.mm in Sources */ = {isa = PBXBuildFile; fileRef = C17B51F0126258DD004525F2 /* Item.mm */; };
-		C1A4BA7E125CE8B0001144E1 /* FullScreenViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */; };
 		C1A9A8CD1260C265001385CA /* Data in Resources */ = {isa = PBXBuildFile; fileRef = C1A9A8C91260C265001385CA /* Data */; };
 		C1B2AD8E127334740035DF19 /* Block2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1B2AD8D127334740035DF19 /* Block2.plist */; };
 		C1B2ADB6127337A30035DF19 /* Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B2ADB5127337A30035DF19 /* Logo.jpg */; };
@@ -51,14 +48,8 @@
 		C1760DDC126F8E5600C52DC2 /* StudentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentController.h; sourceTree = "<group>"; };
 		C1760DDD126F8E5600C52DC2 /* StudentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentController.m; sourceTree = "<group>"; };
 		C17B4FA412623893004525F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C17B51E21262583F004525F2 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
-		C17B51E31262583F004525F2 /* ItemViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemViewController.mm; sourceTree = "<group>"; };
-		C17B51ED126258DD004525F2 /* ItemPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPageView.h; sourceTree = "<group>"; };
-		C17B51EE126258DD004525F2 /* ItemPageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemPageView.mm; sourceTree = "<group>"; };
 		C17B51EF126258DD004525F2 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		C17B51F0126258DD004525F2 /* Item.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Item.mm; sourceTree = "<group>"; };
-		C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenViewController.h; sourceTree = "<group>"; };
-		C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FullScreenViewController.mm; sourceTree = "<group>"; };
 		C1A9A8C91260C265001385CA /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
 		C1B2AD8C1273346B0035DF19 /* Block2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block2_Prefix.pch; sourceTree = "<group>"; };
 		C1B2AD8D127334740035DF19 /* Block2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Block2.plist; sourceTree = "<group>"; };
@@ -87,10 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				C1B184DF126CC92C0097C362 /* others */,
-				C1A9912C1260B882001385CA /* FullScreenView */,
-				C17B51E112625836004525F2 /* ItemView */,
-				C1A9912D1260B895001385CA /* GeneralViews */,
-				C1F1D103126B2095000E5D7F /* notUsedViews */,
+				C1A9912D1260B895001385CA /* SubItemViews */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -181,31 +169,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		C17B51E112625836004525F2 /* ItemView */ = {
+		C1A9912D1260B895001385CA /* SubItemViews */ = {
 			isa = PBXGroup;
 			children = (
-				C17B51E21262583F004525F2 /* ItemViewController.h */,
-				C17B51E31262583F004525F2 /* ItemViewController.mm */,
-			);
-			name = ItemView;
-			sourceTree = "<group>";
-		};
-		C1A9912C1260B882001385CA /* FullScreenView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = FullScreenView;
-			sourceTree = "<group>";
-		};
-		C1A9912D1260B895001385CA /* GeneralViews */ = {
-			isa = PBXGroup;
-			children = (
+				C10A772312663D6600F9F4EA /* ItemWebView.h */,
+				C10A772412663D6600F9F4EA /* ItemWebView.mm */,
 				C16F729812510724000C3C71 /* PictureView.h */,
 				C16F729912510724000C3C71 /* PictureView.mm */,
-				C17B51ED126258DD004525F2 /* ItemPageView.h */,
-				C17B51EE126258DD004525F2 /* ItemPageView.mm */,
 			);
-			name = GeneralViews;
+			name = SubItemViews;
 			sourceTree = "<group>";
 		};
 		C1B184DF126CC92C0097C362 /* others */ = {
@@ -224,17 +196,6 @@
 				C1D9E74D1263ABC800983B65 /* ListViewController.mm */,
 			);
 			name = ListView;
-			sourceTree = "<group>";
-		};
-		C1F1D103126B2095000E5D7F /* notUsedViews */ = {
-			isa = PBXGroup;
-			children = (
-				C1A4BA7B125CE8B0001144E1 /* FullScreenViewController.h */,
-				C1A4BA7C125CE8B0001144E1 /* FullScreenViewController.mm */,
-				C10A772312663D6600F9F4EA /* ItemWebView.h */,
-				C10A772412663D6600F9F4EA /* ItemWebView.mm */,
-			);
-			name = notUsedViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,9 +268,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */,
 				C16F729A12510724000C3C71 /* PictureView.mm in Sources */,
-				C1A4BA7E125CE8B0001144E1 /* FullScreenViewController.mm in Sources */,
-				C17B51E51262583F004525F2 /* ItemViewController.mm in Sources */,
-				C17B51F1126258DD004525F2 /* ItemPageView.mm in Sources */,
 				C17B51F2126258DD004525F2 /* Item.mm in Sources */,
 				C1D9E74F1263ABC800983B65 /* ListViewController.mm in Sources */,
 				C10A772512663D6600F9F4EA /* ItemWebView.mm in Sources */,
