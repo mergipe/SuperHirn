@@ -88,16 +88,15 @@
 	CGRect f = itemArea;
 	for( int i=0; i < [listOfPictures count ];i++)
 	{
-		NSString* imageName = [listOfPictures objectAtIndex:i];
-		PictureView* item = [[PictureView alloc] initWithFrame:f];
-		[ item setItemIndex:i];
-		[ item setImage:imageName];
-		[ item addBorder];
 		
-		[mScrollView addSubview:item];		
+		Item* newItem = [StudentController getItem:i:f];
+		[ newItem addBorder];
+		
+		[mScrollView addSubview:newItem];		
 		f.origin.x += f.size.width;
 	}
 }
+
 
 
 -(void) centerAtItem:(int)iItemIndex

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+@class Item;
 @interface StudentController : NSObject 
 {
 
@@ -22,6 +22,13 @@
 +(NSMutableArray*) getFiles;
 
 
+/**
+ * Get the item that displays the image or pdf at this index with the give rectangle size
+ * @param iIndex int 
+ * @param iItemArea CGRect 
+ * @return Name of the item, nil if the index exceeds the list size.
+ */
++(Item*) getItem:(int) iIndex :(CGRect) iItemArea;
 
 /**
  * Get the name of a file at certain index

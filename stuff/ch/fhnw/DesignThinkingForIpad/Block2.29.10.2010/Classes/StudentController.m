@@ -9,6 +9,9 @@
 
 #import "StudentController.h"
 
+#import "PictureView.h"
+#import "ItemWebView.h"
+
 
 @implementation StudentController
 
@@ -42,6 +45,36 @@ static NSMutableArray* detectedFiles = nil;
 	}
 	
 	return 0;
+}
+
+
++(Item*) getItem:(int) iIndex :(CGRect) iItemArea
+{
+	
+	
+	Item* item = nil;
+	NSString* itemPath = [self getFile: iIndex];
+	
+	// check extension for which subitem shoudl be generated:
+	NSString* ext = [itemPath pathExtension];
+	if( [ext isEqualToString:@"jpg"]  || [ext isEqualToString:@"png"] || [ext isEqualToString:@"tif"] || [ext isEqualToString:@"gif"] )
+	{
+		PictureView* picItem = [[PictureView alloc] initWithFrame:iItemArea];
+		[ picItem setItemIndex:iIndex];
+		[ picItem setImage:itemPath];
+		item = picItem;
+
+	}
+	else if( [ext isEqualToString:@"pdf"]  || [ext isEqualToString:@"html"] )
+	{
+		ItemWebView* webItem = [[ItemWebView alloc] initWithFrame:iItemArea];
+		[ webItem setItemIndex:iIndex];
+		[ webItem setUrl:itemPath];
+		item = webItem;
+		
+	}
+	
+	return item;
 }
 
 
