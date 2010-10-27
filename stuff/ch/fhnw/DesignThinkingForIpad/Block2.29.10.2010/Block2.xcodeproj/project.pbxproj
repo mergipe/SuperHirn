@@ -146,20 +146,13 @@
 			name = XIB;
 			sourceTree = "<group>";
 		};
-		C16F72AB12510820000C3C71 /* SwipeView */ = {
-			isa = PBXGroup;
-			children = (
-				C16F72561251044F000C3C71 /* SwipeViewController.h */,
-				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
-			);
-			name = SwipeView;
-			sourceTree = "<group>";
-		};
 		C1760DE0126F8E6200C52DC2 /* Student */ = {
 			isa = PBXGroup;
 			children = (
-				C16F72AB12510820000C3C71 /* SwipeView */,
-				C1D9E74B1263ABBF00983B65 /* ListView */,
+				C1D9E74C1263ABC800983B65 /* ListViewController.h */,
+				C1D9E74D1263ABC800983B65 /* ListViewController.mm */,
+				C16F72561251044F000C3C71 /* SwipeViewController.h */,
+				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
 				C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */,
 				C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */,
 				C17B51EF126258DD004525F2 /* Item.h */,
@@ -187,15 +180,6 @@
 				C1760DDD126F8E5600C52DC2 /* StudentController.m */,
 			);
 			name = others;
-			sourceTree = "<group>";
-		};
-		C1D9E74B1263ABBF00983B65 /* ListView */ = {
-			isa = PBXGroup;
-			children = (
-				C1D9E74C1263ABC800983B65 /* ListViewController.h */,
-				C1D9E74D1263ABC800983B65 /* ListViewController.mm */,
-			);
-			name = ListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
