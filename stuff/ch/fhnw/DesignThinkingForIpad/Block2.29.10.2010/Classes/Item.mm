@@ -28,7 +28,6 @@
 		// add an invisible border rectangle:
 		borderRectangle = [[UIView alloc ] initWithFrame:  CGRectMake( 0,0,0,0 )];
 		[ self addSubview:borderRectangle ];
-		
     }
     return self;
 }
@@ -45,13 +44,9 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	UITouch *touch = [touches anyObject]; //assume just 1 touch
-	if(touch.tapCount == 1) 
-	{
-		NSLog(@"Tapped on item at %d", itemIndex);
-		// notify the registered delegate:
-		[delegate tapOnItem:itemIndex];
-	}
+
+	NSLog(@" Tap on item: %d", itemIndex );
+
 }
 
 

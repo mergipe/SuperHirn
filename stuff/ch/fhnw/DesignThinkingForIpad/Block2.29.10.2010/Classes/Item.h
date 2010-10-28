@@ -34,8 +34,7 @@
 	
 	int itemIndex;
 	CGRect itemArea;	
-	UIView* borderRectangle;
-	
+	UIView* borderRectangle;	
 }
 
 @property(nonatomic, assign) id<ItemDelegate> delegate;

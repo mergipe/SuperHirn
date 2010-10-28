@@ -24,7 +24,7 @@
 	listOfFiles = [StudentController getFiles];
 	
 	// define which image is used for the front image
-	_frontImage.image = [UIImage imageNamed:@"icon.jpg"];
+	_frontImage.image = [UIImage imageNamed:@"Logo.jpg"];
 		
 	//_table.separatorStyle = UITableViewCellSeparatorStyleNone;
     _table.rowHeight = 50;
