@@ -24,6 +24,9 @@
 		C1A9A8CD1260C265001385CA /* Data in Resources */ = {isa = PBXBuildFile; fileRef = C1A9A8C91260C265001385CA /* Data */; };
 		C1B2AD8E127334740035DF19 /* Block2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1B2AD8D127334740035DF19 /* Block2.plist */; };
 		C1B2ADB6127337A30035DF19 /* Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B2ADB5127337A30035DF19 /* Logo.jpg */; };
+		C1CF236012874E51002465AA /* ItemViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1CF235E12874E51002465AA /* ItemViewController.mm */; };
+		C1CF236112874E51002465AA /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1CF235F12874E51002465AA /* ItemViewController.xib */; };
+		C1CF239312875046002465AA /* TapIcon.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1CF239212875046002465AA /* TapIcon.mm */; };
 		C1D9E74F1263ABC800983B65 /* ListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1D9E74D1263ABC800983B65 /* ListViewController.mm */; };
 		C1D9E7501263ABC800983B65 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D9E74E1263ABC800983B65 /* ListViewController.xib */; };
 /* End PBXBuildFile section */
@@ -54,6 +57,11 @@
 		C1B2AD8C1273346B0035DF19 /* Block2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block2_Prefix.pch; sourceTree = "<group>"; };
 		C1B2AD8D127334740035DF19 /* Block2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Block2.plist; sourceTree = "<group>"; };
 		C1B2ADB5127337A30035DF19 /* Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Logo.jpg; path = Resources/Logo.jpg; sourceTree = "<group>"; };
+		C1CF235D12874E51002465AA /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		C1CF235E12874E51002465AA /* ItemViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemViewController.mm; sourceTree = "<group>"; };
+		C1CF235F12874E51002465AA /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
+		C1CF239112875046002465AA /* TapIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapIcon.h; sourceTree = "<group>"; };
+		C1CF239212875046002465AA /* TapIcon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TapIcon.mm; sourceTree = "<group>"; };
 		C1D9E74C1263ABC800983B65 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		C1D9E74D1263ABC800983B65 /* ListViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListViewController.mm; sourceTree = "<group>"; };
 		C1D9E74E1263ABC800983B65 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListViewController.xib; path = Classes/ListViewController.xib; sourceTree = "<group>"; };
@@ -149,14 +157,13 @@
 		C1760DE0126F8E6200C52DC2 /* Student */ = {
 			isa = PBXGroup;
 			children = (
-				C1D9E74C1263ABC800983B65 /* ListViewController.h */,
-				C1D9E74D1263ABC800983B65 /* ListViewController.mm */,
+				C1CF235D12874E51002465AA /* ItemViewController.h */,
+				C1CF235E12874E51002465AA /* ItemViewController.mm */,
+				C1CF235F12874E51002465AA /* ItemViewController.xib */,
 				C16F72561251044F000C3C71 /* SwipeViewController.h */,
 				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
 				C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */,
 				C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */,
-				C17B51EF126258DD004525F2 /* Item.h */,
-				C17B51F0126258DD004525F2 /* Item.mm */,
 			);
 			name = Student;
 			path = Classes;
@@ -165,6 +172,10 @@
 		C1A9912D1260B895001385CA /* SubItemViews */ = {
 			isa = PBXGroup;
 			children = (
+				C1CF239112875046002465AA /* TapIcon.h */,
+				C1CF239212875046002465AA /* TapIcon.mm */,
+				C17B51EF126258DD004525F2 /* Item.h */,
+				C17B51F0126258DD004525F2 /* Item.mm */,
 				C10A772312663D6600F9F4EA /* ItemWebView.h */,
 				C10A772412663D6600F9F4EA /* ItemWebView.mm */,
 				C16F729812510724000C3C71 /* PictureView.h */,
@@ -176,6 +187,8 @@
 		C1B184DF126CC92C0097C362 /* others */ = {
 			isa = PBXGroup;
 			children = (
+				C1D9E74C1263ABC800983B65 /* ListViewController.h */,
+				C1D9E74D1263ABC800983B65 /* ListViewController.mm */,
 				C1760DDC126F8E5600C52DC2 /* StudentController.h */,
 				C1760DDD126F8E5600C52DC2 /* StudentController.m */,
 			);
@@ -239,6 +252,7 @@
 				C1D9E7501263ABC800983B65 /* ListViewController.xib in Resources */,
 				C1B2AD8E127334740035DF19 /* Block2.plist in Resources */,
 				C1B2ADB6127337A30035DF19 /* Logo.jpg in Resources */,
+				C1CF236112874E51002465AA /* ItemViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +271,8 @@
 				C10A772512663D6600F9F4EA /* ItemWebView.mm in Sources */,
 				C1760DC5126F8D4F00C52DC2 /* AppDelegate.m in Sources */,
 				C1760DDE126F8E5600C52DC2 /* StudentController.m in Sources */,
+				C1CF236012874E51002465AA /* ItemViewController.mm in Sources */,
+				C1CF239312875046002465AA /* TapIcon.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
