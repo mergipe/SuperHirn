@@ -19,14 +19,12 @@
 {
     if ((self = [super initWithFrame:frame])) 
 	{
-		self.backgroundColor = [UIColor clearColor];
-		itemArea.origin.x = 0;
-		itemArea.origin.y = 0;
-		itemArea.size.width = 0;
-		itemArea.size.height = 0;
+		itemArea = frame;
+
+		self.backgroundColor = [UIColor blueColor];
 		
 		// add an invisible border rectangle:
-		borderRectangle = [[UIView alloc ] initWithFrame:  CGRectMake( 0,0,0,0 )];
+		borderRectangle = [[UIView alloc ] initWithFrame:  itemArea];
 		[ self addSubview:borderRectangle ];
     }
     return self;
@@ -46,6 +44,7 @@
 {
 
 	NSLog(@" Tap on item: %d", itemIndex );
+	[self.delegate tapOnItem:itemIndex ];
 
 }
 

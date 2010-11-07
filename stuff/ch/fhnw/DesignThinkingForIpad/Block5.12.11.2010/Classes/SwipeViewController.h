@@ -30,7 +30,14 @@
  * Initialization function to load the images into the swipe view
  * @author Lukas Mueller
  */
--(void)initImageSwipeViews;
+-(void)setUpSwipeView;
+
+/**
+ * Add a new view to the swipe view
+ * @param iView UIView*
+ * @author Lukas Mueller
+ */
+-(void)addSwipeItem:(UIView*)iView;
 
 
 /**

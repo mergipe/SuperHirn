@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ListViewController.h";
+#import "ItemViewController.h";
 
 
 @class SwipeViewController;
 
 @class UINavigationController;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, ListViewControllerDelegate> 
+@interface AppDelegate : NSObject <UIApplicationDelegate> 
 {
 	
     UIWindow *window;
@@ -22,13 +22,13 @@
 	
 	// controllers for the different views:
     SwipeViewController* _swipeView;
-	ListViewController* _listView;
+	ItemViewController* _itemView;
 	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet SwipeViewController* _swipeView;
-@property (nonatomic, retain) IBOutlet ListViewController* _listView;
+@property (nonatomic, retain) IBOutlet ItemViewController* _itemView;
 @property (nonatomic, retain) IBOutlet UINavigationController* _navigationController;
 
 

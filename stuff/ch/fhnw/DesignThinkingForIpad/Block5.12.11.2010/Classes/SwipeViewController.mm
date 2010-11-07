@@ -8,8 +8,6 @@
 
 
 #import "SwipeViewController.h"
-#import "StudentController.h"
-#import "PictureView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -49,7 +47,7 @@
 	CGRect f = mScrollView.frame;	
 	for( int i=0; i < [allSwipeItems count];i++)
 	{
-		Item* newItem = [ allSwipeItems objectAtIndex:i];
+		UIView* newItem = [ allSwipeItems objectAtIndex:i];
 		newItem.frame = f;
 		f.origin.x += f.size.width;
 	}
@@ -57,26 +55,32 @@
 
 
 
-- (void)initImageSwipeViews 
+- (void)setUpSwipeView 
 {
-	allSwipeItems = [[NSMutableArray alloc] init];
-	int nbItems = [StudentController numberOfFiles];
+	int nbItems = [allSwipeItems count];
 	mScrollView.contentSize = CGSizeMake(nbItems * mScrollView.frame.size.width, mScrollView.frame.size.height);
 	
 	CGRect itemFrame = mScrollView.frame;
 	for( int i=0; i < nbItems;i++)
 	{
-		Item* newItem = [StudentController getItem:i :itemFrame];
-		[ newItem addBorder: 1 :[UIColor clearColor]];
-		
+		UIView* newItem = [allSwipeItems objectAtIndex:i];		
 		[ mScrollView addSubview:newItem];		
-		[ allSwipeItems addObject:newItem ];
-
 		itemFrame.origin.x += itemFrame.size.width;
 	}
 	
 	mScrollView.contentOffset = CGPointMake(0.0, 0.0);
 	currentItemInView = 0;
+}
+
+-(void)addSwipeItem:(UIView*)iView
+{
+	if( allSwipeItems == nil )
+	{
+		allSwipeItems = [[NSMutableArray alloc] init];
+	}
+	
+	NSLog(@"New Swipe View Item added");
+	[allSwipeItems addObject:iView];
 }
 
 
@@ -120,9 +124,6 @@
 	
 	// add the scroll view as a subview
 	[self.view addSubview:mScrollView];
-
-	// initialization of the scroll view:
-	[self initImageSwipeViews];
 
 }
 

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "SwipeViewController.h"
-#import "ListViewController.h"
+#import "ItemViewController.h"
 
 
 #import <QuartzCore/QuartzCore.h>
@@ -20,7 +20,7 @@
 
 @synthesize window;
 @synthesize _swipeView;
-@synthesize _listView;
+@synthesize _itemView;
 @synthesize _navigationController;
 
 #pragma mark -
@@ -39,11 +39,11 @@
 	
 	// initialization of the pointers to the controllers
 	self._swipeView = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-	self._listView = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];
-	_listView.delegate = self;
+	self._itemView = [[ItemViewController alloc] initWithNibName:@"ItemViewController" bundle:nil];
+	//_itemView.delegate = self;
 	
 	// initialization of the pointers to the main navigation controller
-	_navigationController = [[UINavigationController alloc] initWithRootViewController:_listView];
+	_navigationController = [[UINavigationController alloc] initWithRootViewController:_itemView];
 	_navigationController.navigationBar.tintColor = [UIColor blackColor];
 	[window addSubview: [_navigationController view]];
 	
@@ -74,7 +74,7 @@
 - (void)dealloc 
 {
 	[_navigationController release];
-	[_listView release];
+	[_itemView release];
 	[_swipeView release];
     [window release];
     [super dealloc];
