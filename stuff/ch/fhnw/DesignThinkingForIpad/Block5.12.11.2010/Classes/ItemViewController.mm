@@ -28,29 +28,42 @@
 		UIColor *endColor = [UIColor blackColor];
 		gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id) [endColor CGColor], nil];
 		[self.view.layer insertSublayer:gradient atIndex:1];
+		
+		col = 0;
+		row = 0;
 					
     }
     return self;
 }
 
 
-- (void)addTapItem 
+- (void)addTapItem:(int)iIndex 
 {
 	
 	int x = 30;
 	int y = 30;
-	int index = 0;
 	CGRect area = CGRectMake(x, y, 300, 300 );
-	
+
 	TapIcon* item = [[TapIcon alloc] initWithFrame:area];
-	[ item setItemIndex: index ];
+	[ item setItemIndex: iIndex ];
+	
+	UIImage* image = [UIImage imageNamed:@"icon.jpg"];
+	[ item setIcon: image];
+	[ item setTitle:@"MyNewIcon"];
 	item.delegate = self;
+
 	
-	int tmp = index / 2.0;
+	area.origin.x += col * (area.size.width + 30);
+	area.origin.y += row * (area.size.height + 30);
 	
-	area.origin.x += x + area.size.width + 30;
-	area.origin.y += y + area.size.height + 30;
-	area.origin.x = 30;	
+	col++;
+	if( col == 2 )
+	{
+		col = 0;
+		row++;
+	}
+
+	item.frame = area;
 	
 	[self.view addSubview: item ];
 	

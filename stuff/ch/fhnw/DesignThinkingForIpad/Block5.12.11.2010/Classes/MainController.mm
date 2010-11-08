@@ -25,7 +25,13 @@
 
 		SwipeViewController* swipe = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe];
+		SwipeViewController* swipe2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[self addController:swipe2];
 	
+		SwipeViewController* swipe3 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[self addController:swipe3];
+		SwipeViewController* swipe4 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[self addController:swipe4];
 	}
 	return self;
 }
@@ -37,9 +43,8 @@
 	{
 		controllers = [[NSMutableArray alloc] init];
 	}
-	
 	[controllers addObject:iController];
-	[rootController addTapItem];
+	[rootController addTapItem: [controllers count] - 1 ];
 }
 
 
@@ -49,7 +54,7 @@
 	NSLog(@"ItemViewShows: show swipe view at item %d.", iIndex);
 	
 	SwipeViewController* con = [controllers objectAtIndex:iIndex];
-		
+	
 	// now push the swipe view in front:
 	[self pushViewController:con animated:YES];
 }

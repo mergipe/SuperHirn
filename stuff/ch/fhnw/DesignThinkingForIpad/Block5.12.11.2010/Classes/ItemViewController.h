@@ -30,6 +30,8 @@
 	CGRect itemArea;
 	
 	id<ItemViewControllerDelegate> delegate;
+	int row;
+	int col;
 
 }
 
@@ -43,7 +45,13 @@
 -(void)initItemView;
 
 
-- (void)addTapItem;
+/**
+ * Add a tap item with an associated index
+ * @param iIndex int
+ * @author Lukas Mueller
+ */
+- (void)addTapItem:(int)iIndex;
+
 
 -(void)tapOnItem:(int)iItemIndex;
 

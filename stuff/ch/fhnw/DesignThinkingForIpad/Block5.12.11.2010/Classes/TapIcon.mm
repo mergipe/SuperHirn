@@ -24,7 +24,23 @@
 }
 
 
+-(void)setTitle:(NSString*)iTitle
+{
+	CGRect rect = CGRectMake(0,0, self.frame.size.width, 20);
+	UILabel* label = [[[UILabel alloc] initWithFrame:rect] autorelease];
+	[label setText:iTitle];
+	[label setTextAlignment:UITextAlignmentCenter];
+	[self addSubview:label];
+}
 
 
+-(void)setIcon:(UIImage*)iImage
+{
+	CGRect rect = CGRectMake(0,0, self.frame.size.width, self.frame.size.height);
+	UIImageView* picture = [[UIImageView alloc] initWithFrame:rect];
+	picture.image = iImage;
+	[self addSubview:picture];
+
+}
 
 @end
