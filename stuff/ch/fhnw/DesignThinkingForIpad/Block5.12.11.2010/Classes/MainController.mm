@@ -9,6 +9,7 @@
 #import "MainController.h"
 #import "SwipeViewController.h"
 #import "ItemViewController.h"
+#import "StudentController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -30,8 +31,27 @@
 	
 		SwipeViewController* swipe3 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe3];
+		
+		
+		
+		////////////////////
+		// initialize the a swipe view controller with all images:		
 		SwipeViewController* swipe4 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe4];
+		NSMutableArray* listOfPictures = [StudentController getFiles];
+		CGRect f = CGRectMake(0,0,768,1000);
+		for( int i=0; i < [listOfPictures count ];i++)
+		{
+			NSString* imageName = [listOfPictures objectAtIndex:i];
+			PictureView* item = [[PictureView alloc] initWithFrame:f];
+			[ item setItemIndex:i];
+			[ item setImage:imageName];
+			[swipe4 addSwipeItem:item];
+			f.origin.x += f.size.width;
+		}
+		[swipe4 setUpSwipeView];
+		
+		
 	}
 	return self;
 }

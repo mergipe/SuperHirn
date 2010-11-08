@@ -62,7 +62,7 @@
 		C1BC97BA128893680083BD5D /* MainController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainController.mm; sourceTree = "<group>"; };
 		C1CF235D12874E51002465AA /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		C1CF235E12874E51002465AA /* ItemViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemViewController.mm; sourceTree = "<group>"; };
-		C1CF235F12874E51002465AA /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
+		C1CF235F12874E51002465AA /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ItemViewController.xib; path = Classes/ItemViewController.xib; sourceTree = "<group>"; };
 		C1CF239112875046002465AA /* TapIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapIcon.h; sourceTree = "<group>"; };
 		C1CF239212875046002465AA /* TapIcon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TapIcon.mm; sourceTree = "<group>"; };
 		C1D9E74C1263ABC800983B65 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C1BC99701288A7A90083BD5D /* Controllers */,
 				C1B184DF126CC92C0097C362 /* others */,
 				C1A9912D1260B895001385CA /* SubItemViews */,
 			);
@@ -150,6 +151,7 @@
 		C16F72861251064E000C3C71 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				C1CF235F12874E51002465AA /* ItemViewController.xib */,
 				C1D9E74E1263ABC800983B65 /* ListViewController.xib */,
 				C16F744612513422000C3C71 /* MainWindow_iPad.xib */,
 				C16F72581251044F000C3C71 /* SwipeViewController.xib */,
@@ -162,11 +164,6 @@
 			children = (
 				C1BC97B9128893680083BD5D /* MainController.h */,
 				C1BC97BA128893680083BD5D /* MainController.mm */,
-				C1CF235D12874E51002465AA /* ItemViewController.h */,
-				C1CF235E12874E51002465AA /* ItemViewController.mm */,
-				C1CF235F12874E51002465AA /* ItemViewController.xib */,
-				C16F72561251044F000C3C71 /* SwipeViewController.h */,
-				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
 				C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */,
 				C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */,
 			);
@@ -198,6 +195,17 @@
 				C1760DDD126F8E5600C52DC2 /* StudentController.m */,
 			);
 			name = others;
+			sourceTree = "<group>";
+		};
+		C1BC99701288A7A90083BD5D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1CF235D12874E51002465AA /* ItemViewController.h */,
+				C1CF235E12874E51002465AA /* ItemViewController.mm */,
+				C16F72561251044F000C3C71 /* SwipeViewController.h */,
+				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
