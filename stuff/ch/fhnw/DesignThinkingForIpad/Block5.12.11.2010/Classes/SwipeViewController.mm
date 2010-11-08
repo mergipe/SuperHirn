@@ -19,6 +19,7 @@
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
 	{
 		self.view.backgroundColor = [UIColor blackColor];
+		[self setUpSwipeView];
 					
     }
     return self;

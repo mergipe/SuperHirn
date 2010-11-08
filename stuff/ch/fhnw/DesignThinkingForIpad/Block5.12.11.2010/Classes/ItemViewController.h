@@ -11,15 +11,30 @@
 #import <UIKit/UIKit.h>
 #import "PictureView.h"
 
+@class ItemViewControllerDelegate;
+
+@protocol ItemViewControllerDelegate <NSObject>;
+
+/**
+ * Upon selection/taping on a list item defined by its index
+ * @param iItemIndex int
+ * @author Lukas N Mueller
+ */
+-(void) didSelectItem:(int)iItemIndex;
+
+@end
 
 
 @interface ItemViewController : UIViewController<UIScrollViewDelegate, ItemDelegate> 
 {
 	CGRect itemArea;
-}
-@end
+	
+	id<ItemViewControllerDelegate> delegate;
 
-@interface ItemViewController()
+}
+
+@property(nonatomic, assign) id<ItemViewControllerDelegate> delegate;
+
 
 /**
  * Initialization function to load the images into the swipe view
@@ -28,5 +43,8 @@
 -(void)initItemView;
 
 
+- (void)addTapItem;
+
 -(void)tapOnItem:(int)iItemIndex;
+
 @end

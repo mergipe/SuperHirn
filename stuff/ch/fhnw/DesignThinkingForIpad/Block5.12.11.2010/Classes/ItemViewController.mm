@@ -15,6 +15,8 @@
 
 @implementation ItemViewController
 
+@synthesize delegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
@@ -27,11 +29,31 @@
 		gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id) [endColor CGColor], nil];
 		[self.view.layer insertSublayer:gradient atIndex:1];
 					
-		// start initialization of the scroll view:
-		[self initItemView];
-		
     }
     return self;
+}
+
+
+- (void)addTapItem 
+{
+	
+	int x = 30;
+	int y = 30;
+	int index = 0;
+	CGRect area = CGRectMake(x, y, 300, 300 );
+	
+	TapIcon* item = [[TapIcon alloc] initWithFrame:area];
+	[ item setItemIndex: index ];
+	item.delegate = self;
+	
+	int tmp = index / 2.0;
+	
+	area.origin.x += x + area.size.width + 30;
+	area.origin.y += y + area.size.height + 30;
+	area.origin.x = 30;	
+	
+	[self.view addSubview: item ];
+	
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -46,42 +68,11 @@
 	[super dealloc];
 }
 
-- (void)initItemView 
-{
-
-	int x = 30;
-	int y = 30;
-	CGRect area = CGRectMake(x, y, 300, 300 );
-
-	TapIcon* item1 = [[TapIcon alloc] initWithFrame:area];
-	[item1 setItemIndex:0];
-	item1.delegate = self;
-	[self.view addSubview: item1 ];
-
-	area.origin.x += x + area.size.width + 30;
-	TapIcon* item2 = [[TapIcon alloc] initWithFrame:area];
-	[item2 setItemIndex:1];
-	item2.delegate = self;
-	[self.view addSubview: item2 ];
-
-	area.origin.y += y + area.size.height + 30;
-	area.origin.x = 30;
-	TapIcon* item3 = [[TapIcon alloc] initWithFrame:area];
-	[item3 setItemIndex:2];
-	item3.delegate = self;
-	[self.view addSubview: item3 ];
-
-	area.origin.x += x + area.size.width + 30;
-	TapIcon* item4 = [[TapIcon alloc] initWithFrame:area];
-	[item4 setItemIndex:3];
-	item4.delegate = self;
-	[self.view addSubview: item4 ];
-	
-}
 
 -(void)tapOnItem:(int)iItemIndex
 {
 	NSLog(@"Tapped on TapItem: %d", iItemIndex );
+	[ delegate didSelectItem:iItemIndex];
 }
 
 
