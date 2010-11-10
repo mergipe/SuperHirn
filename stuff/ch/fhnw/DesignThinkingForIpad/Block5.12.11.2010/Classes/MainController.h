@@ -10,11 +10,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class ListViewController;
 @class SwipeViewController;
 @interface MainController : UINavigationController<ItemViewControllerDelegate> 
 {
 	NSMutableArray* controllers;
 	ItemViewController* rootController;
+
+	ListViewController* list;
 }
 @end
 

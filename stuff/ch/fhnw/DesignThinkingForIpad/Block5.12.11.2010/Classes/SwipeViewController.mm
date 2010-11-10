@@ -11,15 +11,19 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-
 @implementation SwipeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
 	{
+		bottomNavViewController = [[BottomNavigationViewController alloc] initWithNibName:@"BottomNavigationView" bundle:nil];
+		bottomNavViewController.delegate = self;
+
 		self.view.backgroundColor = [UIColor blackColor];
 		[self setUpSwipeView];
+		[self setupBottomNavigationView];
+
 					
     }
     return self;
@@ -82,8 +86,24 @@
 	
 	NSLog(@"New Swipe View Item added");
 	[allSwipeItems addObject:iView];
+	[bottomNavViewController addNavItem:@"Test Item"];
 }
 
+- (void)setupBottomNavigationView 
+{
+	//Setup bottom navigation
+	CGRect frame = bottomNavViewController.view.frame;
+	frame.size.width = self.view.frame.size.width;
+	frame.origin.y = self.view.frame.size.height;
+	//frame.origin.y = 0;
+	bottomNavViewController.view.frame = frame;
+	[self.view addSubview:bottomNavViewController.view];
+	bottomNavViewController.view.hidden = YES;
+	
+	
+	[self toggleNavigationBar];
+
+}
 
 
 -(void) centerAtItem:(int)iItemIndex
@@ -125,9 +145,38 @@
 	
 	// add the scroll view as a subview
 	[self.view addSubview:mScrollView];
+	
 
 }
 
+#pragma mark BottomNavigationDelegate methods
+- (void)tappedOnBottomNavigation:(BottomNavigationViewController *)viewController onItemAtIndex:(int)index 
+{
+	[mScrollView setContentOffset:CGPointMake(index * mScrollView.frame.size.width, 0.0) animated:YES];
+
+}
+
+- (void)toggleNavigationBar 
+{
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	
+	CGRect f = bottomNavViewController.view.frame;
+	f.size.width = self.view.frame.size.width;
+	bottomNavViewController.view.frame = f;
+	if(bottomNavViewController.view.hidden) {
+		bottomNavViewController.view.center = CGPointMake(f.size.width/2, self.view.frame.size.height - f.size.height/2);
+		bottomNavViewController.view.hidden = NO;
+	}
+	else {
+		bottomNavViewController.view.center = CGPointMake(f.size.width/2, self.view.frame.size.height + f.size.height/2);
+		bottomNavViewController.view.hidden = YES;
+
+	}
+	[UIView commitAnimations];
+}
 
 - (void)dealloc 
 {

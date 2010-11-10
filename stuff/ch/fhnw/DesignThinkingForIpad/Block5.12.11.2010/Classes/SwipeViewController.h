@@ -9,13 +9,15 @@
 
 #import <UIKit/UIKit.h>
 #import "PictureView.h"
+#import "BottomNavigationViewController.h"
 
-
-@interface SwipeViewController : UIViewController<UIScrollViewDelegate> 
+@interface SwipeViewController : UIViewController<UIScrollViewDelegate, BottomNavigationDelegate> 
 {
 	IBOutlet UIScrollView *mScrollView;	
 	NSMutableArray* allSwipeItems;
 	int currentItemInView;
+	BottomNavigationViewController *bottomNavViewController;
+
 }
 
 

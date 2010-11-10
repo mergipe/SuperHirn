@@ -8,39 +8,21 @@
 
 
 #import <UIKit/UIKit.h>
-
-@class ListViewControllerDelegate;
-
-@protocol ListViewControllerDelegate <NSObject>;
-
-/**
- * Upon selection/taping on a list item defined by its index
- * @param iItemIndex int
- * @author Lukas N Mueller
- */
--(void) didSelectItem:(int)iItemIndex;
-
-@end
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> 
+
+@interface ListViewController : UIViewController <MFMailComposeViewControllerDelegate,UITableViewDataSource, UITableViewDelegate> 
 {
 	
 @public
 	UITableView* _table;
-	UIImageView* _fontImage;
-	id<ListViewControllerDelegate> delegate;
 	
-@private
-	
-	NSMutableArray* listOfFiles;	
-	
-	
+		
 }
 
-@property(nonatomic, assign) id<ListViewControllerDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UITableView* _table;
-@property (nonatomic, retain) IBOutlet UIImageView* _frontImage;
 
 
 @end

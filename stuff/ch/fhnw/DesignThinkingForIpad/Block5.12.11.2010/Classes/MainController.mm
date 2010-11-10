@@ -10,6 +10,7 @@
 #import "SwipeViewController.h"
 #import "ItemViewController.h"
 #import "StudentController.h"
+#import "ListViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -29,8 +30,14 @@
 		SwipeViewController* swipe2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe2];
 	
+		
 		SwipeViewController* swipe3 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe3];
+		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		
+		CGRect f1 = CGRectMake(0,0,768,1000);
+		list.view.frame = f1;
+		[swipe3 addSwipeItem:list.view];
+		[swipe3 setUpSwipeView];
 		
 		
 		

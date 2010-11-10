@@ -8,23 +8,16 @@
 
 
 #import "ListViewController.h"
-#import "StudentController.h"
 
 
 @implementation ListViewController
 
 
 @synthesize _table;
-@synthesize _frontImage;
-@synthesize delegate;
 
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];
-	listOfFiles = [StudentController getFiles];
-	
-	// define which image is used for the front image
-	_frontImage.image = [UIImage imageNamed:@"Logo.jpg"];
 		
 	//_table.separatorStyle = UITableViewCellSeparatorStyleNone;
     _table.rowHeight = 50;
@@ -55,17 +48,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	UITableViewCell* cell =  [_table cellForRowAtIndexPath:indexPath];
 	int index = [indexPath indexAtPosition:1];
-	NSLog(@"ListViewController: tapped on list item at %d", index);
+	NSString* cellText = cell.textLabel.text;
+		
+	MFMailComposeViewController *mailComposeController = [[MFMailComposeViewController alloc] init];
+	mailComposeController.mailComposeDelegate = self;
 	
-	// notify the registered delegate:
-	[delegate didSelectItem:index];
+	NSString* header = @"Sending Email to ";
+	header = [header stringByAppendingString:cellText];
+	[mailComposeController setSubject: header];
+	[mailComposeController setMessageBody:@"Here is my Email signature" isHTML:YES];
+	
+	[self presentModalViewController:mailComposeController animated:YES];
+	[mailComposeController release];
+	
+	
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return [listOfFiles count];
+	
+	return 2;
 }
 
 
@@ -76,15 +81,21 @@
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
 									  reuseIdentifier:@""];
 	// Set the text of the cell to the row index.
-	cell.textLabel.text = [listOfFiles objectAtIndex:indexPath.row];
+	cell.textLabel.text = @"Max Max";
 	cell.textLabel.font = [UIFont boldSystemFontOfSize:50];
 	return cell;
 }
 
+
+#pragma mark MFMailComposeViewController delegate methods
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result 
+						error:(NSError*)error {
+	
+	[self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)dealloc 
 {
-	[_fontImage release];
-	[listOfFiles release];
 	[super dealloc];
 }
 
