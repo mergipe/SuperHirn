@@ -12,6 +12,15 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		C10A772512663D6600F9F4EA /* ItemWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C10A772412663D6600F9F4EA /* ItemWebView.mm */; };
+		C14689C1128B236D002E0544 /* BottomNavigationItemView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C14689BE128B236D002E0544 /* BottomNavigationItemView.mm */; };
+		C14689C2128B236D002E0544 /* BottomNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C14689C0128B236D002E0544 /* BottomNavigationViewController.mm */; };
+		C14689F6128B2729002E0544 /* BottomNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C14689F5128B2729002E0544 /* BottomNavigationView.xib */; };
+		C1468ADB128B329B002E0544 /* ListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1468AD9128B329B002E0544 /* ListViewController.mm */; };
+		C1468ADC128B329B002E0544 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1468ADA128B329B002E0544 /* ListViewController.xib */; };
+		C1468B8E128B366B002E0544 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1468B8D128B366B002E0544 /* MessageUI.framework */; };
+		C1468C10128B3ADF002E0544 /* file-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1468C0F128B3ADF002E0544 /* file-icon.png */; };
+		C1468C5A128B3E03002E0544 /* ModuleInfoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1468C59128B3E03002E0544 /* ModuleInfoView.mm */; };
+		C1468C8C128B4044002E0544 /* Modulbeschreibung_geschichte.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1468C8B128B4044002E0544 /* Modulbeschreibung_geschichte.jpg */; };
 		C16F6E321251028C000C3C71 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C16F6E311251028C000C3C71 /* icon.jpg */; };
 		C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C16F72571251044F000C3C71 /* SwipeViewController.mm */; };
 		C16F725A1251044F000C3C71 /* SwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16F72581251044F000C3C71 /* SwipeViewController.xib */; };
@@ -28,8 +37,6 @@
 		C1CF236012874E51002465AA /* ItemViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1CF235E12874E51002465AA /* ItemViewController.mm */; };
 		C1CF236112874E51002465AA /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1CF235F12874E51002465AA /* ItemViewController.xib */; };
 		C1CF239312875046002465AA /* TapIcon.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1CF239212875046002465AA /* TapIcon.mm */; };
-		C1D9E74F1263ABC800983B65 /* ListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1D9E74D1263ABC800983B65 /* ListViewController.mm */; };
-		C1D9E7501263ABC800983B65 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D9E74E1263ABC800983B65 /* ListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +47,19 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C10A772312663D6600F9F4EA /* ItemWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemWebView.h; sourceTree = "<group>"; };
 		C10A772412663D6600F9F4EA /* ItemWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemWebView.mm; sourceTree = "<group>"; };
+		C14689BD128B236D002E0544 /* BottomNavigationItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomNavigationItemView.h; sourceTree = "<group>"; };
+		C14689BE128B236D002E0544 /* BottomNavigationItemView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BottomNavigationItemView.mm; sourceTree = "<group>"; };
+		C14689BF128B236D002E0544 /* BottomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomNavigationViewController.h; sourceTree = "<group>"; };
+		C14689C0128B236D002E0544 /* BottomNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BottomNavigationViewController.mm; sourceTree = "<group>"; };
+		C14689F5128B2729002E0544 /* BottomNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BottomNavigationView.xib; path = Classes/BottomNavigationView.xib; sourceTree = "<group>"; };
+		C1468AD8128B329B002E0544 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		C1468AD9128B329B002E0544 /* ListViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListViewController.mm; sourceTree = "<group>"; };
+		C1468ADA128B329B002E0544 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListViewController.xib; path = Classes/ListViewController.xib; sourceTree = "<group>"; };
+		C1468B8D128B366B002E0544 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C1468C0F128B3ADF002E0544 /* file-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "file-icon.png"; path = "Resources/file-icon.png"; sourceTree = "<group>"; };
+		C1468C58128B3E03002E0544 /* ModuleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleInfoView.h; sourceTree = "<group>"; };
+		C1468C59128B3E03002E0544 /* ModuleInfoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModuleInfoView.mm; sourceTree = "<group>"; };
+		C1468C8B128B4044002E0544 /* Modulbeschreibung_geschichte.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Modulbeschreibung_geschichte.jpg; path = Resources/Modulbeschreibung_geschichte.jpg; sourceTree = "<group>"; };
 		C16F6E311251028C000C3C71 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon.jpg; path = Resources/icon.jpg; sourceTree = "<group>"; };
 		C16F72561251044F000C3C71 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
 		C16F72571251044F000C3C71 /* SwipeViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SwipeViewController.mm; sourceTree = "<group>"; };
@@ -65,9 +85,6 @@
 		C1CF235F12874E51002465AA /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ItemViewController.xib; path = Classes/ItemViewController.xib; sourceTree = "<group>"; };
 		C1CF239112875046002465AA /* TapIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapIcon.h; sourceTree = "<group>"; };
 		C1CF239212875046002465AA /* TapIcon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TapIcon.mm; sourceTree = "<group>"; };
-		C1D9E74C1263ABC800983B65 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		C1D9E74D1263ABC800983B65 /* ListViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListViewController.mm; sourceTree = "<group>"; };
-		C1D9E74E1263ABC800983B65 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListViewController.xib; path = Classes/ListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +96,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				C17B4FA512623893004525F2 /* QuartzCore.framework in Frameworks */,
+				C1468B8E128B366B002E0544 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +124,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				C1760DE0126F8E6200C52DC2 /* Student */,
+				C1760DE0126F8E6200C52DC2 /* Uebungen */,
 				C1A9A8C91260C265001385CA /* Data */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -129,6 +147,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C1468C8B128B4044002E0544 /* Modulbeschreibung_geschichte.jpg */,
+				C1468C0F128B3ADF002E0544 /* file-icon.png */,
 				C1B2ADB5127337A30035DF19 /* Logo.jpg */,
 				C1B2AD8D127334740035DF19 /* Block2.plist */,
 				C16F72861251064E000C3C71 /* XIB */,
@@ -144,6 +164,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 				C17B4FA412623893004525F2 /* QuartzCore.framework */,
+				C1468B8D128B366B002E0544 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,29 +172,42 @@
 		C16F72861251064E000C3C71 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				C1468ADA128B329B002E0544 /* ListViewController.xib */,
+				C14689F5128B2729002E0544 /* BottomNavigationView.xib */,
 				C1CF235F12874E51002465AA /* ItemViewController.xib */,
-				C1D9E74E1263ABC800983B65 /* ListViewController.xib */,
 				C16F744612513422000C3C71 /* MainWindow_iPad.xib */,
 				C16F72581251044F000C3C71 /* SwipeViewController.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
 		};
-		C1760DE0126F8E6200C52DC2 /* Student */ = {
+		C1760DE0126F8E6200C52DC2 /* Uebungen */ = {
 			isa = PBXGroup;
 			children = (
+				C1468AD8128B329B002E0544 /* ListViewController.h */,
+				C1468AD9128B329B002E0544 /* ListViewController.mm */,
+				C14689BD128B236D002E0544 /* BottomNavigationItemView.h */,
+				C14689BE128B236D002E0544 /* BottomNavigationItemView.mm */,
+				C14689BF128B236D002E0544 /* BottomNavigationViewController.h */,
+				C14689C0128B236D002E0544 /* BottomNavigationViewController.mm */,
 				C1BC97B9128893680083BD5D /* MainController.h */,
 				C1BC97BA128893680083BD5D /* MainController.mm */,
 				C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */,
 				C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */,
+				C1CF235D12874E51002465AA /* ItemViewController.h */,
+				C1CF235E12874E51002465AA /* ItemViewController.mm */,
+				C16F72561251044F000C3C71 /* SwipeViewController.h */,
+				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
 			);
-			name = Student;
+			name = Uebungen;
 			path = Classes;
 			sourceTree = "<group>";
 		};
 		C1A9912D1260B895001385CA /* SubItemViews */ = {
 			isa = PBXGroup;
 			children = (
+				C1468C58128B3E03002E0544 /* ModuleInfoView.h */,
+				C1468C59128B3E03002E0544 /* ModuleInfoView.mm */,
 				C1CF239112875046002465AA /* TapIcon.h */,
 				C1CF239212875046002465AA /* TapIcon.mm */,
 				C17B51EF126258DD004525F2 /* Item.h */,
@@ -189,8 +223,6 @@
 		C1B184DF126CC92C0097C362 /* others */ = {
 			isa = PBXGroup;
 			children = (
-				C1D9E74C1263ABC800983B65 /* ListViewController.h */,
-				C1D9E74D1263ABC800983B65 /* ListViewController.mm */,
 				C1760DDC126F8E5600C52DC2 /* StudentController.h */,
 				C1760DDD126F8E5600C52DC2 /* StudentController.m */,
 			);
@@ -200,10 +232,6 @@
 		C1BC99701288A7A90083BD5D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C1CF235D12874E51002465AA /* ItemViewController.h */,
-				C1CF235E12874E51002465AA /* ItemViewController.mm */,
-				C16F72561251044F000C3C71 /* SwipeViewController.h */,
-				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -262,10 +290,13 @@
 				C16F725A1251044F000C3C71 /* SwipeViewController.xib in Resources */,
 				C16F744712513422000C3C71 /* MainWindow_iPad.xib in Resources */,
 				C1A9A8CD1260C265001385CA /* Data in Resources */,
-				C1D9E7501263ABC800983B65 /* ListViewController.xib in Resources */,
 				C1B2AD8E127334740035DF19 /* Block2.plist in Resources */,
 				C1B2ADB6127337A30035DF19 /* Logo.jpg in Resources */,
 				C1CF236112874E51002465AA /* ItemViewController.xib in Resources */,
+				C14689F6128B2729002E0544 /* BottomNavigationView.xib in Resources */,
+				C1468ADC128B329B002E0544 /* ListViewController.xib in Resources */,
+				C1468C10128B3ADF002E0544 /* file-icon.png in Resources */,
+				C1468C8C128B4044002E0544 /* Modulbeschreibung_geschichte.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,13 +311,16 @@
 				C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */,
 				C16F729A12510724000C3C71 /* PictureView.mm in Sources */,
 				C17B51F2126258DD004525F2 /* Item.mm in Sources */,
-				C1D9E74F1263ABC800983B65 /* ListViewController.mm in Sources */,
 				C10A772512663D6600F9F4EA /* ItemWebView.mm in Sources */,
 				C1760DC5126F8D4F00C52DC2 /* AppDelegate.m in Sources */,
 				C1760DDE126F8E5600C52DC2 /* StudentController.m in Sources */,
 				C1CF236012874E51002465AA /* ItemViewController.mm in Sources */,
 				C1CF239312875046002465AA /* TapIcon.mm in Sources */,
 				C1BC97BB128893680083BD5D /* MainController.mm in Sources */,
+				C14689C1128B236D002E0544 /* BottomNavigationItemView.mm in Sources */,
+				C14689C2128B236D002E0544 /* BottomNavigationViewController.mm in Sources */,
+				C1468ADB128B329B002E0544 /* ListViewController.mm in Sources */,
+				C1468C5A128B3E03002E0544 /* ModuleInfoView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
