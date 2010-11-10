@@ -19,7 +19,8 @@
 @interface BottomNavigationViewController : UIViewController<BottomNavItemDelegate> {
 	IBOutlet UIScrollView *mScrollView;
 	
-	int ArticleItemSpacing;
+	int ItemSpacing;
+	int ScrollViewHeight;
 	CGFloat fScrollWidth;	
 	NSMutableArray *navItems;
 

@@ -18,7 +18,8 @@
 	{
         // Custom initialization
 		navItems = [[NSMutableArray alloc] init];
-		ArticleItemSpacing = 194;
+		ItemSpacing = 194;
+		ScrollViewHeight = 194;
 
     }
     return self;
@@ -33,7 +34,7 @@
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];
-	self.view.backgroundColor = [UIColor greenColor];
+	self.view.backgroundColor = [UIColor clearColor];
 }
 
 
@@ -41,17 +42,17 @@
 {
 	
 	int count = [navItems count];
-	mScrollView.contentSize = CGSizeMake(ArticleItemSpacing * (count + 1), 300.0);
+	mScrollView.contentSize = CGSizeMake(ItemSpacing * (count + 1), ScrollViewHeight);
 	
-	int x = ArticleItemSpacing * count;
-	BottomNavigationItemView *v = [[BottomNavigationItemView alloc] initWithFrame:CGRectMake(x, 0.0, ArticleItemSpacing, 300.0)];
+	int x = ItemSpacing * count;
+	BottomNavigationItemView *v = [[BottomNavigationItemView alloc] initWithFrame:CGRectMake(x, 0.0, ItemSpacing, ScrollViewHeight)];
 	v.delegate = self;
 	v.titleLabel.text = iTitle;
 	//v.iconView.image = [UIImage imageWithContentsOfFile:iconPath];	
 	
 	
 	[mScrollView addSubview:v];
-	fScrollWidth = (x + ArticleItemSpacing);	
+	fScrollWidth = (x + ItemSpacing);	
 	[navItems addObject:v];
 	[v release];
 }
@@ -68,11 +69,11 @@
 	}
 	else if( iIndex == ([navItems count] - 1) )
 	{
-		xOffset = [navItems count] * ArticleItemSpacing - ArticleItemSpacing/2.0;
+		xOffset = [navItems count] * ItemSpacing - ItemSpacing/2.0;
 	}
 	else
 	{
-		xOffset = ArticleItemSpacing * (iIndex + 1) - ArticleItemSpacing/2.0 - width/2.0;
+		xOffset = ItemSpacing * (iIndex + 1) - ItemSpacing/2.0 - width/2.0;
 	}
 
 	if( iIndex >= 0  )

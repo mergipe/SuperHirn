@@ -22,6 +22,16 @@
 
 
 /**
+ * Hide the bottom navigation view
+ */
+- (void)hideBottomNavigation;
+
+/**
+ * Show the bottom navigation view
+ */
+- (void)showBottomNavigation;
+
+/**
  * Centers the swipe view at this index
  * @param iItemIndex int
  * @author Lukas Mueller
@@ -35,17 +45,16 @@
 -(void)setUpSwipeView;
 
 /**
+ * Set up of the bottom navigation view
+ * @author Lukas Mueller
+ */
+- (void)setupBottomNavigationView;
+
+/**
  * Add a new view to the swipe view
  * @param iView UIView*
  * @author Lukas Mueller
  */
 -(void)addSwipeItem:(UIView*)iView;
-
-
-/**
- * Adjust alls items in the swipe view to the device orientation
- * @author Lukas N Mueller
- */
--(void)adjustSwipeItemsToOrientation;
 
 @end

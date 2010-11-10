@@ -22,21 +22,21 @@
 {
     if ((self = [super initWithFrame:frame])) {
 		        
-		self.backgroundColor = [UIColor redColor];
+		self.backgroundColor = [UIColor clearColor];
 		
-		CGRect f = CGRectMake(7.0, 21.0, 180.0, 240.0);
+		CGRect f = CGRectMake(7.0, 21.0, 180.0, 180.0);
 		iconView = [[UIImageView alloc] initWithFrame:f];
 		
-		CGRect fBG = CGRectMake(0.0, 0.0, 194.0, 304.0);
+		CGRect fBG = CGRectMake(0.0, 0.0, 180.0, 180.0);
 		backgroundIconImageView = [[UIImageView alloc] initWithFrame:fBG];
-		backgroundIconImageView.image = [UIImage imageNamed:@"ArticleIconBackground.png"];
+		backgroundIconImageView.image = [UIImage imageNamed:@"file-icon.png"];
 		[backgroundIconImageView addSubview:iconView];
 		[self addSubview:backgroundIconImageView];
 		
-		f = CGRectMake(0.0, 255.0, self.frame.size.width, 45.0);
+		f = CGRectMake(0.0, 200.0, self.frame.size.width, 20.0);
 		titleLabel = [[UILabel alloc] initWithFrame:f];
 		titleLabel.backgroundColor = [UIColor clearColor];
-		titleLabel.textColor = [UIColor whiteColor];
+		titleLabel.textColor = [UIColor blackColor];
 		titleLabel.numberOfLines = 0;
 		titleLabel.textAlignment = UITextAlignmentCenter;
 		

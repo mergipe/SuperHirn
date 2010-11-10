@@ -51,7 +51,7 @@
 	UITableViewCell* cell =  [_table cellForRowAtIndexPath:indexPath];
 	int index = [indexPath indexAtPosition:1];
 	NSString* cellText = cell.textLabel.text;
-		
+	
 	MFMailComposeViewController *mailComposeController = [[MFMailComposeViewController alloc] init];
 	mailComposeController.mailComposeDelegate = self;
 	

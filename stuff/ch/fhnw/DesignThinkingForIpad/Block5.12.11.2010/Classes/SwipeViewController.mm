@@ -23,40 +23,18 @@
 		self.view.backgroundColor = [UIColor blackColor];
 		[self setUpSwipeView];
 		[self setupBottomNavigationView];
+		
+		UIBarButtonItem *currentIssueItem = [[UIBarButtonItem alloc] initWithTitle:@"Show Navigation" style:UIBarButtonItemStyleBordered 
+																			target:self action:@selector(hideBottomNavigation)];
+		self.navigationItem.rightBarButtonItem = currentIssueItem;
+		[currentIssueItem release];
+		
 
 					
     }
     return self;
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
-{
-    return YES;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration 
-{
-	CGSize newSize = CGSizeMake( self.view.frame.size.height, self.view.frame.size.width);
-	mScrollView.frame = CGRectMake(0, 0, newSize.width, newSize.height);
-	mScrollView.contentSize = CGSizeMake( [allSwipeItems count] * newSize.width, newSize.height);
-	
-	[self adjustSwipeItemsToOrientation ];
-	[self centerAtItem: currentItemInView];
-}
-
-
-- (void)adjustSwipeItemsToOrientation 
-{
-	// initialize the slide with the number of pics:
-	CGRect f = mScrollView.frame;	
-	for( int i=0; i < [allSwipeItems count];i++)
-	{
-		UIView* newItem = [ allSwipeItems objectAtIndex:i];
-		newItem.frame = f;
-		f.origin.x += f.size.width;
-	}
-}
 
 
 
@@ -68,7 +46,8 @@
 	CGRect itemFrame = mScrollView.frame;
 	for( int i=0; i < nbItems;i++)
 	{
-		UIView* newItem = [allSwipeItems objectAtIndex:i];		
+		UIView* newItem = [allSwipeItems objectAtIndex:i];	
+		newItem.frame = itemFrame;
 		[ mScrollView addSubview:newItem];		
 		itemFrame.origin.x += itemFrame.size.width;
 	}
@@ -82,9 +61,7 @@
 	if( allSwipeItems == nil )
 	{
 		allSwipeItems = [[NSMutableArray alloc] init];
-	}
-	
-	NSLog(@"New Swipe View Item added");
+	}	
 	[allSwipeItems addObject:iView];
 	[bottomNavViewController addNavItem:@"Test Item"];
 }
@@ -99,10 +76,6 @@
 	bottomNavViewController.view.frame = frame;
 	[self.view addSubview:bottomNavViewController.view];
 	bottomNavViewController.view.hidden = YES;
-	
-	
-	[self toggleNavigationBar];
-
 }
 
 
@@ -156,9 +129,8 @@
 
 }
 
-- (void)toggleNavigationBar 
+- (void)showBottomNavigation 
 {
-	
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -166,16 +138,33 @@
 	CGRect f = bottomNavViewController.view.frame;
 	f.size.width = self.view.frame.size.width;
 	bottomNavViewController.view.frame = f;
-	if(bottomNavViewController.view.hidden) {
-		bottomNavViewController.view.center = CGPointMake(f.size.width/2, self.view.frame.size.height - f.size.height/2);
-		bottomNavViewController.view.hidden = NO;
-	}
-	else {
-		bottomNavViewController.view.center = CGPointMake(f.size.width/2, self.view.frame.size.height + f.size.height/2);
-		bottomNavViewController.view.hidden = YES;
-
-	}
+	bottomNavViewController.view.center = CGPointMake(f.size.width/2, self.view.frame.size.height - f.size.height/2);
+	bottomNavViewController.view.hidden = NO;
 	[UIView commitAnimations];
+	
+	self.navigationItem.rightBarButtonItem.title = @"Hide Navigation";
+	self.navigationItem.rightBarButtonItem.action = @selector(hideBottomNavigation);
+
+}
+
+- (void)hideBottomNavigation 
+{
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	
+	CGRect f = bottomNavViewController.view.frame;
+	f.size.width = self.view.frame.size.width;
+	bottomNavViewController.view.frame = f;
+	bottomNavViewController.view.center = CGPointMake(f.size.width/2, self.view.frame.size.height + f.size.height/2);
+	bottomNavViewController.view.hidden = NO;
+	
+	[UIView commitAnimations];
+	
+	
+	self.navigationItem.rightBarButtonItem.title = @"Show Navigation";
+	self.navigationItem.rightBarButtonItem.action = @selector(showBottomNavigation);
+	
 }
 
 - (void)dealloc 

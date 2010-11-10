@@ -12,6 +12,9 @@
 #import "StudentController.h"
 #import "ListViewController.h"
 
+#import "ModuleInfoView.h"
+#import "ItemWebView.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -25,11 +28,28 @@
 
 		rootController.delegate = self;
 
+		
 		SwipeViewController* swipe = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe];
+		ItemWebView* item = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
+		[item setUrl:@"Modulbeschreibung_analysis.pdf"];
+		[swipe addSwipeItem:item];
+		ItemWebView* item2 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
+		[item2 setUrl:@"Modulbeschreibung_design.pdf"];
+		[swipe addSwipeItem:item2];
+		[swipe setUpSwipeView];
+		[swipe showBottomNavigation];
+		
 		SwipeViewController* swipe2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe2];
-	
+		ModuleInfoView* module1 = [ [ModuleInfoView alloc] initWithFrame: CGRectMake(0,0, 768, 1024)];
+		UIImage* img = [UIImage imageNamed:@"Modulbeschreibung_geschichte.jpg"];
+		[module1 setImage:img];
+		//[module1 setText:@"Modulbeschreibung Analysis 1 Modulkürzel: an1C"];
+		[swipe2 addSwipeItem:module1];
+		[swipe2 setUpSwipeView];
+		[swipe2 showBottomNavigation];
+		
 		
 		SwipeViewController* swipe3 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[self addController:swipe3];
@@ -38,7 +58,7 @@
 		list.view.frame = f1;
 		[swipe3 addSwipeItem:list.view];
 		[swipe3 setUpSwipeView];
-		
+		[swipe3 hideBottomNavigation];
 		
 		
 		////////////////////
@@ -53,10 +73,10 @@
 			PictureView* item = [[PictureView alloc] initWithFrame:f];
 			[ item setItemIndex:i];
 			[ item setImage:imageName];
-			[swipe4 addSwipeItem:item];
-			f.origin.x += f.size.width;
+			[ swipe4 addSwipeItem:item];
 		}
 		[swipe4 setUpSwipeView];
+		[swipe4 showBottomNavigation];
 		
 		
 	}
