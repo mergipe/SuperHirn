@@ -30,11 +30,18 @@
 	}
 	
 	
-	// load the ur:
-	NSURL *url = [NSURL fileURLWithPath:path];
-	NSURLRequest *request = [NSURLRequest requestWithURL:url];
-	[webItem loadRequest:request];
-
+	NSString* ext = [iUrl pathExtension];
+	if( [ext isEqualToString:@"pdf"] )
+	{
+		NSData* data = [NSData dataWithContentsOfFile:path];
+		[webItem loadData:data MIMEType:@"application/pdf" textEncodingName:@"UTF-8" baseURL:nil];
+	}
+	else
+	{
+		NSURL *url = [NSURL fileURLWithPath:path];
+		NSURLRequest *request = [NSURLRequest requestWithURL:url];
+		[webItem loadRequest:request];
+	}
 }
 
 

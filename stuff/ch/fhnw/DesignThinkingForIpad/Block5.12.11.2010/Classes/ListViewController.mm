@@ -29,7 +29,7 @@
    
 	// create a lable for the table header:
 	UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 20, 768, 40)] autorelease];
-    headerLabel.text = @"My iCompetence Files";
+    headerLabel.text = @"My Contacts";
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.shadowColor = [UIColor blackColor];
 	headerLabel.textAlignment =  UITextAlignmentCenter;
