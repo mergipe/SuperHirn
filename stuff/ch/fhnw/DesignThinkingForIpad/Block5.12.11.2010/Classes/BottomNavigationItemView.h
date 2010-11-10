@@ -1,10 +1,10 @@
 //
-//  BottomNavigationItemView.h
-//  AkiliPad
+//  iPad Block 1-4 
 //
-//  Created by Mithin on 04/06/10.
-//  Copyright 2010 Techtinium Corporation. All rights reserved.
+//  Created by Lukas Mueller.
+//  Copyright by FHNW 2010. All rights reserved.
 //
+
 
 #import <UIKit/UIKit.h>
 
@@ -16,10 +16,10 @@
 
 @end
 
-@interface BottomNavigationItemView : UIView {
-	UIImageView *iconView;
+@interface BottomNavigationItemView : UIView 
+{
 	UIImageView *backgroundIconImageView;
-	
+	UILabel* titleLabel;
 	id <BottomNavItemDelegate> delegate;
 }
 

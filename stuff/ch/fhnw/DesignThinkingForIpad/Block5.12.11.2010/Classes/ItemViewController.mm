@@ -36,22 +36,21 @@
     return self;
 }
 
-
-- (void)addTapItem:(int)iIndex 
+- (void)addTapItem:(int)iIndex withTitle:(NSString*) iTitle
 {
 	
 	int x = 30;
 	int y = 30;
 	CGRect area = CGRectMake(x, y, 300, 300 );
-
+	
 	TapIcon* item = [[TapIcon alloc] initWithFrame:area];
 	[ item setItemIndex: iIndex ];
 	
 	UIImage* image = [UIImage imageNamed:@"icon.jpg"];
 	[ item setIcon: image];
-	[ item setTitle:@"MyNewIcon"];
+	[ item setTitle:iTitle];
 	item.delegate = self;
-
+	
 	
 	area.origin.x += col * (area.size.width + 30);
 	area.origin.y += row * (area.size.height + 30);
@@ -62,14 +61,19 @@
 		col = 0;
 		row++;
 	}
-
+	
 	item.frame = area;
 	
 	[self.view addSubview: item ];
 	
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)addTapItem:(int)iIndex 
+{
+	[self addTapItem:iIndex withTitle:@"No title Set"];
+}
+
+
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];

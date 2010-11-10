@@ -1,10 +1,10 @@
 //
-//  BottomNavigationItemView.mm
-//  AkiliPad
+//  iPad Block 1-4 
 //
-//  Created by Mithin on 04/06/10.
-//  Copyright 2010 Techtinium Corporation. All rights reserved.
+//  Created by Lukas Mueller.
+//  Copyright by FHNW 2010. All rights reserved.
 //
+
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -24,11 +24,8 @@
 		        
 		self.backgroundColor = [UIColor clearColor];
 		
-		CGRect f = CGRectMake(7.0, 21.0, 180.0, 180.0);
-		iconView = [[UIImageView alloc] initWithFrame:f];
-		
-		CGRect fBG = CGRectMake(0.0, 0.0, 180.0, 180.0);
-		backgroundIconImageView = [[UIImageView alloc] initWithFrame:fBG];
+		CGRect f = CGRectMake(0.0, 0.0, 180.0, 180.0);
+		backgroundIconImageView = [[UIImageView alloc] initWithFrame:f];
 		backgroundIconImageView.image = [UIImage imageNamed:@"file-icon.png"];
 		[backgroundIconImageView addSubview:iconView];
 		[self addSubview:backgroundIconImageView];
@@ -48,7 +45,7 @@
 
 
 - (void)dealloc {
-	[iconView release];
+	[backgroundIconImageView release];
 	[titleLabel release];
 	[super dealloc];
 }

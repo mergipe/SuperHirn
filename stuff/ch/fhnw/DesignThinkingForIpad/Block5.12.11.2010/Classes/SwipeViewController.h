@@ -17,8 +17,20 @@
 	NSMutableArray* allSwipeItems;
 	int currentItemInView;
 	BottomNavigationViewController *bottomNavViewController;
-
+	NSString* title;
 }
+
+/**
+ * Set the title of this swipe view
+ * @param iTitle NSString*
+ */
+- (void)setTitle:(NSString*) iTitle;
+
+/**
+ * Get the title of this swipe view
+ * @return NSString*
+ */
+- (NSString*)title;
 
 
 /**

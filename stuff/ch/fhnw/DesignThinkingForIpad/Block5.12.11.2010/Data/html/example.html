@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset=utf-8 />
+		<title>Canvas Gradient</title>
+		<script type="text/javascript" src="Clock.js"></script>
+	</head>
+	<body>
+		
+		
+		
+		<canvas id="myClock" width="300" height="300">[No canvas support]</canvas>
+		<script type="text/javascript">
+			window.onload = function ()
+			{
+				var clock = new Clock('myClock');
+				
+				// All these default to true anyway
+				clock.Set('clock.digital', true);
+				clock.Set('clock.numbers', true);
+				clock.Set('clock.background', true);
+				
+				DrawClock = function ()
+				{
+					clock.Draw();
+					
+					// The timer which redraws the clock ten times per second,
+					// (doing so helps prevent slight timing oddities)
+					setTimeout(DrawClock, 100);
+				}
+				
+				DrawClock();
+			}
+			</script>
+	</body>
+</html>

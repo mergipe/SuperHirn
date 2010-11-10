@@ -52,7 +52,19 @@
  */
 - (void)addTapItem:(int)iIndex;
 
+/**
+ * Add a tap item with an associated index
+ * @param iIndex int
+ * @param iTitle NSString*
+ * @author Lukas Mueller
+ */
+- (void)addTapItem:(int)iIndex withTitle:(NSString*) iTitle;
 
+/**
+ * Method called when tapped on an item with this index
+ * @param iIndexIndex int
+ * @author Lukas Mueller
+ */
 -(void)tapOnItem:(int)iItemIndex;
 
 @end

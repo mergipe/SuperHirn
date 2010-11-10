@@ -66,6 +66,16 @@
 	[bottomNavViewController addNavItem:@"Test Item"];
 }
 
+- (void)setTitle:(NSString*) iTitle
+{
+	title = iTitle;
+}
+
+- (NSString*)title
+{
+	return title;
+}
+
 - (void)setupBottomNavigationView 
 {
 	//Setup bottom navigation

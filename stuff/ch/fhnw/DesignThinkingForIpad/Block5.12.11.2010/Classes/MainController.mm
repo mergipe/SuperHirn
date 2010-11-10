@@ -30,6 +30,7 @@
 
 		
 		SwipeViewController* swipe = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[swipe setTitle:@"Module Info"];
 		[self addController:swipe];
 		ItemWebView* item = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
 		[item setUrl:@"Modulbeschreibung_analysis.pdf"];
@@ -41,17 +42,17 @@
 		[swipe showBottomNavigation];
 		
 		SwipeViewController* swipe2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[swipe2 setTitle:@"Time Schedule"];
+		ItemWebView* item3 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
+		[item3 setUrl:@"html/example.html"];
+		[swipe2 addSwipeItem:item3];
 		[self addController:swipe2];
-		ModuleInfoView* module1 = [ [ModuleInfoView alloc] initWithFrame: CGRectMake(0,0, 768, 1024)];
-		UIImage* img = [UIImage imageNamed:@"Modulbeschreibung_geschichte.jpg"];
-		[module1 setImage:img];
-		//[module1 setText:@"Modulbeschreibung Analysis 1 Modulkürzel: an1C"];
-		[swipe2 addSwipeItem:module1];
 		[swipe2 setUpSwipeView];
 		[swipe2 showBottomNavigation];
 		
 		
 		SwipeViewController* swipe3 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[swipe3 setTitle:@"Contacts"];
 		[self addController:swipe3];
 		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		
 		CGRect f1 = CGRectMake(0,0,768,1000);
@@ -64,6 +65,7 @@
 		////////////////////
 		// initialize the a swipe view controller with all images:		
 		SwipeViewController* swipe4 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[swipe4 setTitle:@"Gallery"];
 		[self addController:swipe4];
 		NSMutableArray* listOfPictures = [StudentController getFiles];
 		CGRect f = CGRectMake(0,0,768,1000);
@@ -91,7 +93,7 @@
 		controllers = [[NSMutableArray alloc] init];
 	}
 	[controllers addObject:iController];
-	[rootController addTapItem: [controllers count] - 1 ];
+	[rootController addTapItem: ([controllers count] - 1) withTitle: [iController title] ];
 }
 
 
