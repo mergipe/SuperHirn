@@ -96,13 +96,12 @@
 						error:(NSError*)error {
 	
 	[self dismissModalViewControllerAnimated:YES];
-	[mailComposeController release];
 }
 
 - (void)dealloc 
 {
 
-	[super _table];
+	[_table dealloc];
 	[super dealloc];
 }
 

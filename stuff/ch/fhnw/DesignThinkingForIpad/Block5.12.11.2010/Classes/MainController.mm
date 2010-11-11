@@ -29,56 +29,51 @@
 		rootController.delegate = self;
 
 		
-		SwipeViewController* swipe = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-		[swipe setTitle:@"Module Info"];
-		[self addController:swipe];
+		SwipeViewController* moduleInfo = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[moduleInfo setTitle:@"Module Info"];
+		[self addController:moduleInfo];
 		ItemWebView* item = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
 		[item setUrl:@"Modulbeschreibung_analysis.pdf"];
-		[swipe addSwipeItem:item];
+		[moduleInfo addSwipeItem:item];
 		ItemWebView* item2 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
 		[item2 setUrl:@"Modulbeschreibung_design.pdf"];
-		[swipe addSwipeItem:item2];
-		[swipe setUpSwipeView];
-		[swipe showBottomNavigation];
+		[moduleInfo addSwipeItem:item2];
+		[moduleInfo setUpSwipeView];
+		[moduleInfo showBottomNavigation];
 		
 		
 		
 		
 		
-		SwipeViewController* swipe2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-		[swipe2 setTitle:@"Time Schedule"];
-		[self addController:swipe2];
+		SwipeViewController* timeSchedule = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[timeSchedule setTitle:@"Time Schedule"];
+		[self addController:timeSchedule];
 		ItemWebView* item3 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
-		[item3 setUrl:@"Modulbeschreibung_design.pdf"];
 		[item3 setUrl:@"html/example.html"];
-		[swipe2 addSwipeItem:item3];
+		[timeSchedule addSwipeItem:item3];
 		
-		[swipe2 setUpSwipeView];
-		[swipe2 showBottomNavigation];
-		[swipe2 hideBottomNavigation];
+		[timeSchedule setUpSwipeView];
+		[timeSchedule showBottomNavigation];
+		[timeSchedule hideBottomNavigation];
 		
 		
 		
 	
-		SwipeViewController* swipe3 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-		[swipe3 setTitle:@"Contacts"];
-		[self addController:swipe3];
+		SwipeViewController* contacts = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[contacts setTitle:@"Contacts"];
+		[self addController:contacts];
 		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		
 		CGRect f1 = CGRectMake(0,0,768,1000);
 		list.view.frame = f1;
-		[swipe3 addSwipeItem:list.view];
-		[swipe3 setUpSwipeView];
-		[swipe3 hideBottomNavigation];
+		[contacts addSwipeItem:list.view];
+		[contacts setUpSwipeView];
+		[contacts hideBottomNavigation];
 		
 		
 		
-		
-		
-		////////////////////
-		// initialize the a swipe view controller with all images:		
-		SwipeViewController* swipe4 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-		[swipe4 setTitle:@"Gallery"];
-		[self addController:swipe4];
+		SwipeViewController* gallery = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
+		[gallery setTitle:@"Gallery"];
+		[self addController:gallery];
 		NSMutableArray* listOfPictures = [StudentController getFiles];
 		CGRect f = CGRectMake(0,0,768,1000);
 		for( int i=0; i < [listOfPictures count ];i++)
@@ -87,10 +82,10 @@
 			PictureView* item = [[PictureView alloc] initWithFrame:f];
 			[ item setItemIndex:i];
 			[ item setImage:imageName];
-			[ swipe4 addSwipeItem:item];
+			[ gallery addSwipeItem:item];
 		}
-		[swipe4 setUpSwipeView];
-		[swipe4 showBottomNavigation];
+		[gallery setUpSwipeView];
+		[gallery showBottomNavigation];
 		
 	}
 	return self;
