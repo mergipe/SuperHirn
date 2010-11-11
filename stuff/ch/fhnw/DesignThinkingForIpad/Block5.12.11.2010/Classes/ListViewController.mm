@@ -41,6 +41,9 @@
 
 	// set the header view in the tabl
     _table.tableHeaderView = containerView;
+	
+	
+
 }
 
 
@@ -52,7 +55,9 @@
 	int index = [indexPath indexAtPosition:1];
 	NSString* cellText = cell.textLabel.text;
 	
-	MFMailComposeViewController *mailComposeController = [[MFMailComposeViewController alloc] init];
+	
+	
+	mailComposeController = [[MFMailComposeViewController alloc] init];
 	mailComposeController.mailComposeDelegate = self;
 	
 	NSString* header = @"Sending Email to ";
@@ -61,7 +66,6 @@
 	[mailComposeController setMessageBody:@"Here is my Email signature" isHTML:YES];
 	
 	[self presentModalViewController:mailComposeController animated:YES];
-	[mailComposeController release];
 	
 	
 }
@@ -92,10 +96,13 @@
 						error:(NSError*)error {
 	
 	[self dismissModalViewControllerAnimated:YES];
+	[mailComposeController release];
 }
 
 - (void)dealloc 
 {
+
+	[super _table];
 	[super dealloc];
 }
 

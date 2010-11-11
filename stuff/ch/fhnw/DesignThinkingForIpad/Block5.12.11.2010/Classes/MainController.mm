@@ -41,16 +41,25 @@
 		[swipe setUpSwipeView];
 		[swipe showBottomNavigation];
 		
+		
+		
+		
+		
 		SwipeViewController* swipe2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[swipe2 setTitle:@"Time Schedule"];
+		[self addController:swipe2];
 		ItemWebView* item3 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
+		[item3 setUrl:@"Modulbeschreibung_design.pdf"];
 		[item3 setUrl:@"html/example.html"];
 		[swipe2 addSwipeItem:item3];
-		[self addController:swipe2];
+		
 		[swipe2 setUpSwipeView];
 		[swipe2 showBottomNavigation];
+		[swipe2 hideBottomNavigation];
 		
 		
+		
+	
 		SwipeViewController* swipe3 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[swipe3 setTitle:@"Contacts"];
 		[self addController:swipe3];
@@ -60,6 +69,9 @@
 		[swipe3 addSwipeItem:list.view];
 		[swipe3 setUpSwipeView];
 		[swipe3 hideBottomNavigation];
+		
+		
+		
 		
 		
 		////////////////////
@@ -79,7 +91,6 @@
 		}
 		[swipe4 setUpSwipeView];
 		[swipe4 showBottomNavigation];
-		
 		
 	}
 	return self;

@@ -12,12 +12,14 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 
-
+@class MFMailComposeViewController;
 @interface ListViewController : UIViewController <MFMailComposeViewControllerDelegate,UITableViewDataSource, UITableViewDelegate> 
 {
 	
 @public
 	UITableView* _table;
+	MFMailComposeViewController* mailComposeController;
+
 	
 		
 }
