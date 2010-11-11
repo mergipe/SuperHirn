@@ -36,7 +36,7 @@
 		[item setUrl:@"Modulbeschreibung_analysis.pdf"];
 		[moduleInfo addSwipeItem:item];
 		ItemWebView* item2 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
-		[item2 setUrl:@"Modulbeschreibung_design.pdf"];
+		[item2 setUrl:@"pdf/test 14.pdf"];
 		[moduleInfo addSwipeItem:item2];
 		[moduleInfo setUpSwipeView];
 		[moduleInfo showBottomNavigation];

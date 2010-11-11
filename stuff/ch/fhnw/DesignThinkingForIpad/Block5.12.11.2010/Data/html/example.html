@@ -1,37 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset=utf-8 />
-		<title>Canvas Gradient</title>
-		<script type="text/javascript" src="Clock.js"></script>
-	</head>
-	<body bgcolor="#A9A9A9">
+<!DOCTYPE html>  
+<html>  
+	<head>  
+		<title>HTML5 Canvas Tag Example</title>  
+		<link href="/stylesheets/default.css?1255763233" media="screen" rel="stylesheet" type="text/css">  
+			<link type="text/css" rel="stylesheet" href="/syntax-highlighter/Styles/SyntaxHighlighter.css">  
+	</head><body>  
 		
-		<h1> Hello </h1>
-		<!--
-		<canvas id="myClock" width="500" height="500">[No canvas support]</canvas>
-		<script type="text/javascript">
-			window.onload = function ()
-			{
-				var clock = new Clock('myClock');
-				
-				// All these default to true anyway
-				clock.Set('clock.digital', true);
-				clock.Set('clock.numbers', true);
-				clock.Set('clock.background', true);
-				
-				DrawClock = function ()
-				{
-					clock.Draw();
+		<header>  
+			<h1>HTML5 Canvas Tag Example</h1>  
+		</header>  
+		
+		<nav>  
+			<ul>  
+				<li><a href="/">intro to (x)html</a></li>  
+				<li><a href="/examples/html-xhtml">html vs xhtml cage match</a></li>  
+				<li><a href="/examples/new-tags"><code>header</code>, <code>footer</code> and friends</a></li>  
+				<li><a href="/examples/audio-video"><code>audio</code> & <code>video</code></a></li>  
+					<li><a href="/examples/simple-canvas"><code>canvas</code> tag simple</a></li>  
+					<li><a href="/examples/animated-canvas"><code>canvas</code> tag animated</a></li>  
+					<li><a href="/examples/form-validations"><code>form</code> validations</a></li>  
+					<li><a href="/examples/local-storage">web dbs and local storage</a></li>  
+					<li><a href="/examples/contenteditable"><code>contenteditable</code></a></li>  
+					<li><a href="/examples/geolocation-api">Geolocation API</a></li>  
+					<li><a href="/examples/drag-drop">drag and drop</a></li>  
+					<li><a href="/examples/capabilities">You can do what now?</a></li>  
+					<li><a href="/examples/html5-now">HTML 5 Now!</a></li>  
+					<li><a href="/examples/html-shiv">Shiv IE with HTML</a></li>  
+					<li><a href="/examples/font-face"><code>@font-face {}</code></a></li>  
+					<li><a href="/examples/resources">Resources</a></li>  
+					</ul>  
+					</nav>  
 					
-					// The timer which redraws the clock ten times per second,
-					// (doing so helps prevent slight timing oddities)
-					setTimeout(DrawClock, 100);
-				}
-				
-				DrawClock();
-			}
-			</script>
-			-->
-	</body>
-</html>
+					<section id="main">  
+					
+					<article id="canvas">  
+					<h3>Kindergarden Drawings*</h3>  
+					<canvas id="canvas-1" width="300" height="150">Uh Oh, you don't support the canvas tag!</canvas>  
+					<br>  
+					<canvas id="canvas-2" width="300" height="150">Uh Oh, you don't support the canvas tag!</canvas>  
+					<br>  
+					<canvas id="canvas-3" width="300" height="150">Uh Oh, you don't support the canvas tag!</canvas>  
+					<br>  
+					<canvas id="canvas-4" width="300" height="150">Uh Oh, you don't support the canvas tag!</canvas>  
+					</article>  
+					
+					</section>  
+					
+					<section id="source">  
+					<a href="#" class="show">Show Page Source</a>  
+					<div class="container"><pre name="code" class="html"></pre></div>  
+					</section>  
+					
+					<section id="notes">  
+					<a href="#" class="show">Show Notes</a>  
+					<div class="container">  canvas examples from:   
+					<a href="http://dev.opera.com/articles/view/html-5-canvas-the-basics/" target="_blank">  
+					http://dev.opera.com/articles/view/html-5-canvas-the-basics/</a>  
+					<br>  
+					*Actually maybe preschool.   
+					</div>  
+					</section>  
+					
+					<footer>  
+					Made by Adam Hunter (<a href="http://twitter.com/_ah" target="_blank">@_ah</a>)   
+					with help from Bermon Painter (<a href="http://twitter.com/killermoo" target="_blank">@killermoo</a>)  
+					</footer>  
+					
+					<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+					<script src="/javascripts/app.js?1255763233" type="text/javascript"></script>  
+					<script src="/syntax-highlighter/Scripts/shCore.js"></script>  
+					<script src="/syntax-highlighter/Scripts/shBrushCss.js"></script>  
+					<script src="/syntax-highlighter/Scripts/shBrushJScript.js"></script>  
+					<script src="/syntax-highlighter/Scripts/shBrushXml.js"></script>  
+					<script>  
+					(function(){  
+					var elem = document.getElementById('canvas-1');  
+					if (!elem || !elem.getContext) { return; }  
+					var context = elem.getContext('2d');  
+					if (!context) { return; }  
+					
+					context.fillRect(0, 0, 150, 100);  
+					})();  
+					
+					(function(){  
+					var elem = document.getElementById('canvas-2');  
+					if (!elem || !elem.getContext) { return; }  
+					var context = elem.getContext('2d');  
+					if (!context) { return; }  
+					
+					context.fillStyle   = '#00f'; // blue  
+					context.strokeStyle = '#f00'; // red  
+					context.lineWidth   = 4;  
+					context.fillRect  (0,   0, 150, 50);  
+					context.strokeRect(0,  60, 150, 50);  
+					context.clearRect (30, 25,  90, 60);  
+					context.strokeRect(30, 25,  90, 60);  
+					})();  
+					
+					(function(){  
+					var elem = document.getElementById('canvas-3');  
+					if (!elem || !elem.getContext) { return; }  
+					var context = elem.getContext('2d');  
+					if (!context) { return; }  
+					
+					context.fillStyle   = '#00f';  
+					context.strokeStyle = '#f00';  
+					context.lineWidth   = 4;  
+					context.beginPath();  
+					// Start from the top-left point.  
+					context.moveTo(10, 10); // give the (x,y) coordinates  
+					context.lineTo(100, 10);  
+					context.lineTo(10, 100);  
+					context.lineTo(10, 10);  
+					// Note: your shape will not be visible until you call any of the two methods.  
+					context.fill();  
+					context.stroke();  
+					context.closePath();  
+					})();  
+					
+					(function(){  
+					var elem = document.getElementById('canvas-4');  
+					if (!elem || !elem.getContext) { return; }  
+					var context = elem.getContext('2d');  
+					if (!context) { return; }  
+					
+					context.fillStyle    = '#00f';  
+					context.font         = 'italic 30px sans-serif';  
+					context.textBaseline = 'top';  
+					context.fillText  ('Hello world!', 0, 0);  
+					context.font         = 'bold 30px sans-serif';  
+					context.strokeText('Hello world!', 0, 50);  
+					})();  
+					
+					</script>  
+					
+	</body>  
+</html>  

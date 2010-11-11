@@ -38,11 +38,6 @@
 @property(nonatomic, assign) id<ItemViewControllerDelegate> delegate;
 
 
-/**
- * Initialization function to load the images into the swipe view
- * @author Lukas Mueller
- */
--(void)initItemView;
 
 
 /**
