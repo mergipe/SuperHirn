@@ -33,10 +33,10 @@
 		[moduleInfo setTitle:@"Module Info"];
 		[self addController:moduleInfo];
 		ItemWebView* item = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
-		[item setUrl:@"Modulbeschreibung_analysis.pdf"];
+		[item setUrl:@"pdf/Sammelmappe_Modulplakate 1.pdf"];
 		[moduleInfo addSwipeItem:item];
 		ItemWebView* item2 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
-		[item2 setUrl:@"pdf/test 14.pdf"];
+		[item2 setUrl:@"pdf/Sammelmappe_Modulplakate 2.pdf"];
 		[moduleInfo addSwipeItem:item2];
 		[moduleInfo setUpSwipeView];
 		[moduleInfo showBottomNavigation];
