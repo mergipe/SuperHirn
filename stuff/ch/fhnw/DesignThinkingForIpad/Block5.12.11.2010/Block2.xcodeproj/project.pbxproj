@@ -194,6 +194,8 @@
 				C10A772412663D6600F9F4EA /* ItemWebView.mm */,
 				C16F729812510724000C3C71 /* PictureView.h */,
 				C16F729912510724000C3C71 /* PictureView.mm */,
+				C17B51EF126258DD004525F2 /* Item.h */,
+				C17B51F0126258DD004525F2 /* Item.mm */,
 			);
 			name = Uebungen;
 			path = Classes;
@@ -206,8 +208,6 @@
 				C1468C59128B3E03002E0544 /* ModuleInfoView.mm */,
 				C1CF239112875046002465AA /* TapIcon.h */,
 				C1CF239212875046002465AA /* TapIcon.mm */,
-				C17B51EF126258DD004525F2 /* Item.h */,
-				C17B51F0126258DD004525F2 /* Item.mm */,
 			);
 			name = SubItemViews;
 			sourceTree = "<group>";
