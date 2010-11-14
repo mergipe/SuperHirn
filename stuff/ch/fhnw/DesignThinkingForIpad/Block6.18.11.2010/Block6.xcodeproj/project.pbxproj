@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		C105C04E12908342000264D0 /* Block6.plist in Resources */ = {isa = PBXBuildFile; fileRef = C105C04D12908342000264D0 /* Block6.plist */; };
+		C105C0B3129086BE000264D0 /* GalleryController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C105C0B2129086BE000264D0 /* GalleryController.mm */; };
+		C105C11912908A06000264D0 /* ModuleController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C105C11812908A06000264D0 /* ModuleController.mm */; };
+		C105C16312908BA8000264D0 /* ModuleBottomNavController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C105C16112908BA8000264D0 /* ModuleBottomNavController.mm */; };
+		C105C16412908BA8000264D0 /* ModuleBottomNavController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C105C16212908BA8000264D0 /* ModuleBottomNavController.xib */; };
+		C105C1C712908EC3000264D0 /* ModuleNavItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = C105C1C612908EC3000264D0 /* ModuleNavItem.mm */; };
+		C105C278129093D7000264D0 /* analysis1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C105C277129093D7000264D0 /* analysis1.jpg */; };
+		C105C27E12909454000264D0 /* designProzesse1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C105C27D12909454000264D0 /* designProzesse1.jpg */; };
+		C105C2B1129094F0000264D0 /* ContactDetail.mm in Sources */ = {isa = PBXBuildFile; fileRef = C105C2B0129094F0000264D0 /* ContactDetail.mm */; };
+		C10A772512663D6600F9F4EA /* ItemWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C10A772412663D6600F9F4EA /* ItemWebView.mm */; };
+		C14689C1128B236D002E0544 /* BottomNavigationItemView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C14689BE128B236D002E0544 /* BottomNavigationItemView.mm */; };
+		C14689C2128B236D002E0544 /* BottomNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C14689C0128B236D002E0544 /* BottomNavigationViewController.mm */; };
+		C14689F6128B2729002E0544 /* BottomNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C14689F5128B2729002E0544 /* BottomNavigationView.xib */; };
+		C1468ADB128B329B002E0544 /* ListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1468AD9128B329B002E0544 /* ListViewController.mm */; };
+		C1468ADC128B329B002E0544 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1468ADA128B329B002E0544 /* ListViewController.xib */; };
+		C1468B8E128B366B002E0544 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1468B8D128B366B002E0544 /* MessageUI.framework */; };
+		C1468C10128B3ADF002E0544 /* file-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1468C0F128B3ADF002E0544 /* file-icon.png */; };
+		C1468C5A128B3E03002E0544 /* ModuleInfoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1468C59128B3E03002E0544 /* ModuleInfoView.mm */; };
+		C16F6E321251028C000C3C71 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C16F6E311251028C000C3C71 /* icon.jpg */; };
+		C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C16F72571251044F000C3C71 /* SwipeViewController.mm */; };
+		C16F725A1251044F000C3C71 /* SwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16F72581251044F000C3C71 /* SwipeViewController.xib */; };
+		C16F729A12510724000C3C71 /* PictureView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C16F729912510724000C3C71 /* PictureView.mm */; };
+		C16F744712513422000C3C71 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16F744612513422000C3C71 /* MainWindow_iPad.xib */; };
+		C1760DC5126F8D4F00C52DC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */; };
+		C1760DDE126F8E5600C52DC2 /* StudentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1760DDD126F8E5600C52DC2 /* StudentController.m */; };
+		C17B4FA512623893004525F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17B4FA412623893004525F2 /* QuartzCore.framework */; };
+		C17B51F2126258DD004525F2 /* Item.mm in Sources */ = {isa = PBXBuildFile; fileRef = C17B51F0126258DD004525F2 /* Item.mm */; };
+		C1A9A8CD1260C265001385CA /* Data in Resources */ = {isa = PBXBuildFile; fileRef = C1A9A8C91260C265001385CA /* Data */; };
+		C1BC97BB128893680083BD5D /* MainController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1BC97BA128893680083BD5D /* MainController.mm */; };
+		C1CF236012874E51002465AA /* ItemViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1CF235E12874E51002465AA /* ItemViewController.mm */; };
+		C1CF236112874E51002465AA /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1CF235F12874E51002465AA /* ItemViewController.xib */; };
+		C1CF239312875046002465AA /* TapIcon.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1CF239212875046002465AA /* TapIcon.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* iCompetence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCompetence.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C105C04D12908342000264D0 /* Block6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Block6.plist; sourceTree = "<group>"; };
+		C105C04F1290834B000264D0 /* Block6_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block6_Prefix.pch; sourceTree = "<group>"; };
+		C105C0B1129086BE000264D0 /* GalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryController.h; sourceTree = "<group>"; };
+		C105C0B2129086BE000264D0 /* GalleryController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GalleryController.mm; sourceTree = "<group>"; };
+		C105C11712908A06000264D0 /* ModuleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleController.h; sourceTree = "<group>"; };
+		C105C11812908A06000264D0 /* ModuleController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModuleController.mm; sourceTree = "<group>"; };
+		C105C16012908BA8000264D0 /* ModuleBottomNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleBottomNavController.h; sourceTree = "<group>"; };
+		C105C16112908BA8000264D0 /* ModuleBottomNavController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModuleBottomNavController.mm; sourceTree = "<group>"; };
+		C105C16212908BA8000264D0 /* ModuleBottomNavController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModuleBottomNavController.xib; sourceTree = "<group>"; };
+		C105C1C512908EC3000264D0 /* ModuleNavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleNavItem.h; sourceTree = "<group>"; };
+		C105C1C612908EC3000264D0 /* ModuleNavItem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModuleNavItem.mm; sourceTree = "<group>"; };
+		C105C277129093D7000264D0 /* analysis1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = analysis1.jpg; path = Data/pdf/analysis1.jpg; sourceTree = "<group>"; };
+		C105C27D12909454000264D0 /* designProzesse1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = designProzesse1.jpg; path = Data/pdf/designProzesse1.jpg; sourceTree = "<group>"; };
+		C105C2AF129094F0000264D0 /* ContactDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetail.h; sourceTree = "<group>"; };
+		C105C2B0129094F0000264D0 /* ContactDetail.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactDetail.mm; sourceTree = "<group>"; };
+		C10A772312663D6600F9F4EA /* ItemWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemWebView.h; sourceTree = "<group>"; };
+		C10A772412663D6600F9F4EA /* ItemWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemWebView.mm; sourceTree = "<group>"; };
+		C14689BD128B236D002E0544 /* BottomNavigationItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomNavigationItemView.h; sourceTree = "<group>"; };
+		C14689BE128B236D002E0544 /* BottomNavigationItemView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BottomNavigationItemView.mm; sourceTree = "<group>"; };
+		C14689BF128B236D002E0544 /* BottomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomNavigationViewController.h; sourceTree = "<group>"; };
+		C14689C0128B236D002E0544 /* BottomNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BottomNavigationViewController.mm; sourceTree = "<group>"; };
+		C14689F5128B2729002E0544 /* BottomNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BottomNavigationView.xib; path = Classes/BottomNavigationView.xib; sourceTree = "<group>"; };
+		C1468AD8128B329B002E0544 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		C1468AD9128B329B002E0544 /* ListViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListViewController.mm; sourceTree = "<group>"; };
+		C1468ADA128B329B002E0544 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListViewController.xib; path = Classes/ListViewController.xib; sourceTree = "<group>"; };
+		C1468B8D128B366B002E0544 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C1468C0F128B3ADF002E0544 /* file-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "file-icon.png"; path = "Resources/file-icon.png"; sourceTree = "<group>"; };
+		C1468C58128B3E03002E0544 /* ModuleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleInfoView.h; sourceTree = "<group>"; };
+		C1468C59128B3E03002E0544 /* ModuleInfoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModuleInfoView.mm; sourceTree = "<group>"; };
+		C16F6E311251028C000C3C71 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon.jpg; path = Resources/icon.jpg; sourceTree = "<group>"; };
+		C16F72561251044F000C3C71 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
+		C16F72571251044F000C3C71 /* SwipeViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SwipeViewController.mm; sourceTree = "<group>"; };
+		C16F72581251044F000C3C71 /* SwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SwipeViewController.xib; path = Classes/SwipeViewController.xib; sourceTree = "<group>"; };
+		C16F729812510724000C3C71 /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
+		C16F729912510724000C3C71 /* PictureView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PictureView.mm; sourceTree = "<group>"; };
+		C16F744612513422000C3C71 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
+		C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C1760DDC126F8E5600C52DC2 /* StudentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentController.h; sourceTree = "<group>"; };
+		C1760DDD126F8E5600C52DC2 /* StudentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentController.m; sourceTree = "<group>"; };
+		C17B4FA412623893004525F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C17B51EF126258DD004525F2 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		C17B51F0126258DD004525F2 /* Item.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Item.mm; sourceTree = "<group>"; };
+		C1A9A8C91260C265001385CA /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
+		C1BC97B9128893680083BD5D /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
+		C1BC97BA128893680083BD5D /* MainController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainController.mm; sourceTree = "<group>"; };
+		C1CF235D12874E51002465AA /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		C1CF235E12874E51002465AA /* ItemViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ItemViewController.mm; sourceTree = "<group>"; };
+		C1CF235F12874E51002465AA /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ItemViewController.xib; path = Classes/ItemViewController.xib; sourceTree = "<group>"; };
+		C1CF239112875046002465AA /* TapIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapIcon.h; sourceTree = "<group>"; };
+		C1CF239212875046002465AA /* TapIcon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TapIcon.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				C17B4FA512623893004525F2 /* QuartzCore.framework in Frameworks */,
+				C1468B8E128B366B002E0544 /* MessageUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C1BC99701288A7A90083BD5D /* Controllers */,
+				C1B184DF126CC92C0097C362 /* others */,
+				C1A9912D1260B895001385CA /* SubItemViews */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* iCompetence.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				C1760DE0126F8E6200C52DC2 /* Uebungen */,
+				C1A9A8C91260C265001385CA /* Data */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C105C04F1290834B000264D0 /* Block6_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C105C27D12909454000264D0 /* designProzesse1.jpg */,
+				C105C277129093D7000264D0 /* analysis1.jpg */,
+				C105C04D12908342000264D0 /* Block6.plist */,
+				C1468C0F128B3ADF002E0544 /* file-icon.png */,
+				C16F72861251064E000C3C71 /* XIB */,
+				C16F6E311251028C000C3C71 /* icon.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				C17B4FA412623893004525F2 /* QuartzCore.framework */,
+				C1468B8D128B366B002E0544 /* MessageUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C16F72861251064E000C3C71 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				C1468ADA128B329B002E0544 /* ListViewController.xib */,
+				C14689F5128B2729002E0544 /* BottomNavigationView.xib */,
+				C1CF235F12874E51002465AA /* ItemViewController.xib */,
+				C16F744612513422000C3C71 /* MainWindow_iPad.xib */,
+				C16F72581251044F000C3C71 /* SwipeViewController.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+		C1760DE0126F8E6200C52DC2 /* Uebungen */ = {
+			isa = PBXGroup;
+			children = (
+				C105C2AF129094F0000264D0 /* ContactDetail.h */,
+				C105C2B0129094F0000264D0 /* ContactDetail.mm */,
+				C105C1C512908EC3000264D0 /* ModuleNavItem.h */,
+				C105C1C612908EC3000264D0 /* ModuleNavItem.mm */,
+				C105C16012908BA8000264D0 /* ModuleBottomNavController.h */,
+				C105C16112908BA8000264D0 /* ModuleBottomNavController.mm */,
+				C105C16212908BA8000264D0 /* ModuleBottomNavController.xib */,
+				C105C11712908A06000264D0 /* ModuleController.h */,
+				C105C11812908A06000264D0 /* ModuleController.mm */,
+				C105C0B1129086BE000264D0 /* GalleryController.h */,
+				C105C0B2129086BE000264D0 /* GalleryController.mm */,
+				C1468AD8128B329B002E0544 /* ListViewController.h */,
+				C1468AD9128B329B002E0544 /* ListViewController.mm */,
+				C14689BD128B236D002E0544 /* BottomNavigationItemView.h */,
+				C14689BE128B236D002E0544 /* BottomNavigationItemView.mm */,
+				C14689BF128B236D002E0544 /* BottomNavigationViewController.h */,
+				C14689C0128B236D002E0544 /* BottomNavigationViewController.mm */,
+				C1BC97B9128893680083BD5D /* MainController.h */,
+				C1BC97BA128893680083BD5D /* MainController.mm */,
+				C1CF235D12874E51002465AA /* ItemViewController.h */,
+				C1CF235E12874E51002465AA /* ItemViewController.mm */,
+				C16F72561251044F000C3C71 /* SwipeViewController.h */,
+				C16F72571251044F000C3C71 /* SwipeViewController.mm */,
+				C10A772312663D6600F9F4EA /* ItemWebView.h */,
+				C10A772412663D6600F9F4EA /* ItemWebView.mm */,
+				C16F729812510724000C3C71 /* PictureView.h */,
+				C16F729912510724000C3C71 /* PictureView.mm */,
+				C17B51EF126258DD004525F2 /* Item.h */,
+				C17B51F0126258DD004525F2 /* Item.mm */,
+				C1760DDC126F8E5600C52DC2 /* StudentController.h */,
+				C1760DDD126F8E5600C52DC2 /* StudentController.m */,
+			);
+			name = Uebungen;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C1A9912D1260B895001385CA /* SubItemViews */ = {
+			isa = PBXGroup;
+			children = (
+				C1468C58128B3E03002E0544 /* ModuleInfoView.h */,
+				C1468C59128B3E03002E0544 /* ModuleInfoView.mm */,
+				C1CF239112875046002465AA /* TapIcon.h */,
+				C1CF239212875046002465AA /* TapIcon.mm */,
+			);
+			name = SubItemViews;
+			sourceTree = "<group>";
+		};
+		C1B184DF126CC92C0097C362 /* others */ = {
+			isa = PBXGroup;
+			children = (
+				C1760DC3126F8D4F00C52DC2 /* AppDelegate.h */,
+				C1760DC4126F8D4F00C52DC2 /* AppDelegate.m */,
+			);
+			name = others;
+			sourceTree = "<group>";
+		};
+		C1BC99701288A7A90083BD5D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* iCompetence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iCompetence" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iCompetence;
+			productName = WorkshopOne2;
+			productReference = 1D6058910D05DD3D006BFB54 /* iCompetence.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Block6" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* iCompetence */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C16F6E321251028C000C3C71 /* icon.jpg in Resources */,
+				C16F725A1251044F000C3C71 /* SwipeViewController.xib in Resources */,
+				C16F744712513422000C3C71 /* MainWindow_iPad.xib in Resources */,
+				C1A9A8CD1260C265001385CA /* Data in Resources */,
+				C1CF236112874E51002465AA /* ItemViewController.xib in Resources */,
+				C14689F6128B2729002E0544 /* BottomNavigationView.xib in Resources */,
+				C1468ADC128B329B002E0544 /* ListViewController.xib in Resources */,
+				C1468C10128B3ADF002E0544 /* file-icon.png in Resources */,
+				C105C04E12908342000264D0 /* Block6.plist in Resources */,
+				C105C16412908BA8000264D0 /* ModuleBottomNavController.xib in Resources */,
+				C105C278129093D7000264D0 /* analysis1.jpg in Resources */,
+				C105C27E12909454000264D0 /* designProzesse1.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				C16F72591251044F000C3C71 /* SwipeViewController.mm in Sources */,
+				C16F729A12510724000C3C71 /* PictureView.mm in Sources */,
+				C17B51F2126258DD004525F2 /* Item.mm in Sources */,
+				C10A772512663D6600F9F4EA /* ItemWebView.mm in Sources */,
+				C1760DC5126F8D4F00C52DC2 /* AppDelegate.m in Sources */,
+				C1760DDE126F8E5600C52DC2 /* StudentController.m in Sources */,
+				C1CF236012874E51002465AA /* ItemViewController.mm in Sources */,
+				C1CF239312875046002465AA /* TapIcon.mm in Sources */,
+				C1BC97BB128893680083BD5D /* MainController.mm in Sources */,
+				C14689C1128B236D002E0544 /* BottomNavigationItemView.mm in Sources */,
+				C14689C2128B236D002E0544 /* BottomNavigationViewController.mm in Sources */,
+				C1468ADB128B329B002E0544 /* ListViewController.mm in Sources */,
+				C1468C5A128B3E03002E0544 /* ModuleInfoView.mm in Sources */,
+				C105C0B3129086BE000264D0 /* GalleryController.mm in Sources */,
+				C105C11912908A06000264D0 /* ModuleController.mm in Sources */,
+				C105C16312908BA8000264D0 /* ModuleBottomNavController.mm in Sources */,
+				C105C1C712908EC3000264D0 /* ModuleNavItem.mm in Sources */,
+				C105C2B1129094F0000264D0 /* ContactDetail.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Block6_Prefix.pch;
+				INFOPLIST_FILE = Block6.plist;
+				PRODUCT_NAME = iCompetence;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Block6_Prefix.pch;
+				INFOPLIST_FILE = Block6.plist;
+				PRODUCT_NAME = iCompetence;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iCompetence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Block6" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
