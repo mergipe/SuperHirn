@@ -106,25 +106,11 @@
 		[Muster1 setTitle:@"more coming soon"];
 		[Muster1 setImagename:@"Wizard.png"];
 		[self addController:Muster1];
-		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		
-		CGRect fm1 = CGRectMake(0,0,768,1000);
-		list.view.frame = fm1;
-		[Muster1 addSwipeItem:list.view];
-		[Muster1 setUpSwipeView];
-		[Muster1 hideBottomNavigation];
-		
-		
+				
 		SwipeViewController* Muster2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[Muster2 setTitle:@"more coming soon"];
 		[Muster2 setImagename:@"Wizard.png"];
 		[self addController:Muster2];
-		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		
-		CGRect fm2 = CGRectMake(0,0,768,1000);
-		list.view.frame = fm2;
-		[Muster2 addSwipeItem:list.view];
-		[Muster2 setUpSwipeView];
-		[Muster2 hideBottomNavigation];
-		
 		
 	}
 	return self;

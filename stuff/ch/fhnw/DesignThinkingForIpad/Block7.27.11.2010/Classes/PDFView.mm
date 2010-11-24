@@ -55,8 +55,8 @@
 	CGContextFillRect(context, self.frame);
 	CGContextStrokePath(context);
 	
-	CGContextTranslateCTM(context, -200, 1000);
-	CGContextScaleCTM(context, 1.5, -1.25);
+	CGContextTranslateCTM(context, -120, 535);
+	CGContextScaleCTM(context, 1.3, -0.6);
 	CGPDFPageRef page = CGPDFDocumentGetPage(myPageRef, pageNumber);
 	CGContextSaveGState(context);
 	CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(page, kCGPDFCropBox, self.bounds, 0, true);
