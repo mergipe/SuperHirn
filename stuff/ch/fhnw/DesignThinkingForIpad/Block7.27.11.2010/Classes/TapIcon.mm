@@ -26,11 +26,13 @@
 
 -(void)setTitle:(NSString*)iTitle
 {
-	CGRect rect = CGRectMake(0,0, self.frame.size.width, 40);
+	CGRect rect = CGRectMake(0,self.frame.size.height, self.frame.size.width, 40);
 	UILabel* label = [[[UILabel alloc] initWithFrame:rect] autorelease];
 	[label setText:iTitle];
 	[label setTextAlignment:UITextAlignmentCenter];
 	label.font = [UIFont boldSystemFontOfSize:22];
+	
+	self.frame.size.height += label.frame.size.height;
 	[self addSubview:label];
 }
 
@@ -41,6 +43,7 @@
 	UIImageView* picture = [[UIImageView alloc] initWithFrame:rect];
 	picture.image = iImage;
 	[self addSubview:picture];
+	
 
 }
 

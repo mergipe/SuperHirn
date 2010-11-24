@@ -9,7 +9,7 @@
 {
     if ((self = [super initWithFrame:frame])) 
 	{
-		self.backgroundColor = [UIColor whiteColor];
+		self.backgroundColor = [UIColor grayColor];
 		NSArray *viewsToRemove = [self subviews];
 		for (UIView *v in viewsToRemove) {
 			[v removeFromSuperview];
@@ -46,22 +46,24 @@
 -(void)drawPDFinContext:(CGContextRef)context
 {
 	// draw the pdf
-	CGContextTranslateCTM(context, 0, 1024);
-	CGContextScaleCTM(context, 1.0, -1.0);
+	//draw a black rectangle around the pdf:
+	CGContextSetLineWidth(context, 100); 
+	CGContextScaleCTM(context, 1,2);
+	CGContextBeginPath(context);
+	CGFloat c[4] = {1,1,1,0.5};
+	CGContextSetFillColor(context, c);
+	CGContextFillRect(context, self.frame);
+	CGContextStrokePath(context);
+	
+	CGContextTranslateCTM(context, -200, 1000);
+	CGContextScaleCTM(context, 1.5, -1.25);
 	CGPDFPageRef page = CGPDFDocumentGetPage(myPageRef, pageNumber);
 	CGContextSaveGState(context);
 	CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(page, kCGPDFCropBox, self.bounds, 0, true);
 	CGContextConcatCTM(context, pdfTransform);
 	CGContextDrawPDFPage(context, page);
 	
-	// draw a black rectangle around the pdf:
-	/*
-	CGContextSetLineWidth(context, 100); 
-	CGContextScaleCTM(context, 1,2);
-	CGContextBeginPath(context);
-	CGContextAddRect(context, self.frame);
-	CGContextStrokePath(context);
-	*/
+	
 	CGContextRestoreGState(context);
 
 }

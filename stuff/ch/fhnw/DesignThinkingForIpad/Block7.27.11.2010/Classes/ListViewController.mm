@@ -54,10 +54,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	UITableViewCell* cell =  [_table cellForRowAtIndexPath:indexPath];
-	int index = [indexPath indexAtPosition:1];
-	NSString* cellText = cell.textLabel.text;
-	
 	ContactDetail* myItem = [[[ContactDetail alloc] initWithFrame:CGRectMake(0, 0, 770, 960)] autorelease];
 	myItem.emailDelegate = self;
 	[self.view addSubview:myItem];
@@ -81,8 +77,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	
-	return 4;
+	return 10;
 }
 
 
@@ -93,7 +88,7 @@
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
 												   reuseIdentifier:@""];
 	// Set the text of the cell to the row index.
-	cell.textLabel.text = @"Max Max";
+	cell.textLabel.text = @"Max Haueter";
 	cell.textLabel.font = [UIFont boldSystemFontOfSize:50];
 	return cell;
 }
@@ -120,7 +115,6 @@
 
 - (void)dealloc 
 {
-	
 	[_table dealloc];
 	[super dealloc];
 }

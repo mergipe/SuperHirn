@@ -33,7 +33,7 @@
 		
 		ModuleController* moduleInfo = [[ModuleController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[moduleInfo setTitle:@"Module Info"];
-		[moduleInfo setImagename:@"mail.png"];
+		[moduleInfo setImagename:@"module.png"];
 
 		[self addController:moduleInfo];
 		
@@ -42,33 +42,12 @@
 		
 		for( int i=0; i < [listOfPdf count ];i++)
 		{
-			NSString* pdfName = [listOfPdf objectAtIndex:i];
-			NSString* path  = [[StudentController getDataFolderPath] stringByAppendingPathComponent:pdfName];
-			
-			// Zugehöriges Icon zum PDF laden. pdfName = iconName
-			
-			//for( int i=0; i < [listOfIcons count ];j++)
-			//{
-			//	NSString* iconNameTmp = [listOfIcons objectAtIndex:j];
-			//	if (iconNameTmp==pdfName)
-			//	{
-			//		iconName=iconNameTmp;
-			//	}
-			//}
-			
-			//NSLog(@"%@", [[pdfName lastPathComponent] stringByDeletingPathExtension]);
-			
-			PDFView* item = [[PDFView alloc] initWithFrame: CGRectMake(0,0,768,1024)];
+			NSString* pdfName = [listOfPdf objectAtIndex:i];			
+			PDFView* item = [[PDFView alloc] initWithFrame: CGRectMake(0,0,768,800)];
 			[ item setItemIndex:i];
 			[ item setPdf: pdfName];
-			[moduleInfo addSwipeItem:item :@"Data/icon/Analysis.jpg" :i];
-			
-			// ausgelesenes Icon mitgeben
-			//[moduleInfo addSwipeItem:item :iconName :i];
-			
+			[moduleInfo addSwipeItem:item: @"Data/icon/Analysis.jpg" :i];
 		}
-		
-		
 		
 		[moduleInfo setUpSwipeView];
 		[moduleInfo showBottomNavigation];
@@ -77,7 +56,7 @@
 		
 		SwipeViewController* timeSchedule = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[timeSchedule setTitle:@"Time Schedule"];
-		[timeSchedule setImagename:@"icon.jpg"];
+		[timeSchedule setImagename:@"schedule4.png"];
 		[self addController:timeSchedule];
 		ItemWebView* item4 = [[ItemWebView alloc] initWithFrame: CGRectMake(0,0,768,1024) ];
 		[item4 setUrl:@"html/example.html"];
@@ -92,7 +71,7 @@
 	
 		SwipeViewController* contacts = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[contacts setTitle:@"Contacts"];
-		[contacts setImagename:@"icon.jpg"];
+		[contacts setImagename:@"contacts.png"];
 		[self addController:contacts];
 		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		
 		CGRect f1 = CGRectMake(0,0,768,1000);
@@ -106,7 +85,7 @@
 		
 		GalleryController* gallery = [[GalleryController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
 		[gallery setTitle:@"Gallery"];
-		[gallery setImagename:@"icon.jpg"];
+		[gallery setImagename:@"photos_icon.png"];
 		[self addController:gallery];
 		NSMutableArray* listOfPictures = [StudentController getImageFiles];
 		CGRect f = CGRectMake(0,0,768,1000);
@@ -117,7 +96,6 @@
 			[ item setItemIndex:i];
 			[ item setImage:imageName];
 			[ gallery addSwipeItemX:item ItemIndex:i];
-			//[ BottomNavigationItemView addSwipeItemX:item :i];
 		}
 		[gallery setUpSwipeView];
 		[gallery showBottomNavigation];
@@ -125,7 +103,7 @@
 		
 		
 		SwipeViewController* Muster1 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-		[Muster1 setTitle:@""];
+		[Muster1 setTitle:@"more coming soon"];
 		[Muster1 setImagename:@"Wizard.png"];
 		[self addController:Muster1];
 		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		
@@ -137,7 +115,7 @@
 		
 		
 		SwipeViewController* Muster2 = [[SwipeViewController alloc] initWithNibName:@"SwipeViewController" bundle:nil];
-		[Muster2 setTitle:@""];
+		[Muster2 setTitle:@"more coming soon"];
 		[Muster2 setImagename:@"Wizard.png"];
 		[self addController:Muster2];
 		list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];		

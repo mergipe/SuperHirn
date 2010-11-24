@@ -68,7 +68,6 @@
 	BottomNavigationItemView *v = [[BottomNavigationItemView alloc] initWithFrameX:CGRectMake(x, 0.0, ItemSpacing, ScrollViewHeight): i];
 	v.delegate = self;
 	v.titleLabel.text = iTitle;
-	//v.iconView.image = [UIImage imageWithContentsOfFile:iconPath];	
 	
 	
 	[mScrollView addSubview:v];

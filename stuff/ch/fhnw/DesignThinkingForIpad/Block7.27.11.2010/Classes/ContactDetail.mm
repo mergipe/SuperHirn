@@ -42,28 +42,26 @@
 		//containerView3.layer.edgeAntialiasingMask = 1000;
 		containerView3.layer.cornerRadius = 10;			// Ecken abrunden
 		
-		
-		
-		
 		UILabel *contactName = [[[UILabel alloc] initWithFrame:CGRectMake(10, 20, 480, 100)] autorelease];
-		contactName.text = @"Max Max";
+		contactName.text = @"Max Haueter";
 		contactName.textColor = [UIColor blackColor];
 		contactName.font = [UIFont systemFontOfSize:64];
 		contactName.backgroundColor = [UIColor clearColor];
 		[containerView3 addSubview:contactName];
 		[self addSubview:containerView3];
 		
+		PictureView* person = [[PictureView alloc] initWithFrame:CGRectMake(200, 300, 360, 360)];
+		[person setResourceImage:@"person2.gif"];
+		[ self addSubview:person];
+		
+		
 		//Send e-mail button----------------
-		
-		
-		
 		PictureView* emailPicNew = [[PictureView alloc] initWithFrame:CGRectMake(550, 780, 100, 100)];
 		[emailPicNew setResourceImage:@"sendEmail.png"];
 		emailPicNew.delegate = self;
 		[ self addSubview:emailPicNew];
 		
-		
-		
+
 		//----------------------------------
 		
 		

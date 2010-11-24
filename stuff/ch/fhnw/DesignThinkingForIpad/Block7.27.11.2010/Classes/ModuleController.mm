@@ -65,10 +65,11 @@
 		allSwipeItems = [[NSMutableArray alloc] init];
 	}	
 	[allSwipeItems addObject:iView];
-	NSString* title = [StudentController getPdf:i];
-	title = [[title lastPathComponent] stringByDeletingPathExtension];
-	[bottomNavViewController addNavItem:title :iconPath];
+	NSString* titleN = [StudentController getPdf:i];
+	titleN = [[titleN lastPathComponent] stringByDeletingPathExtension];
+	[bottomNavViewController addNavItem:titleN :iconPath];
 }
+
 
 - (void)setTitle:(NSString*) iTitle
 {

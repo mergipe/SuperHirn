@@ -50,7 +50,6 @@
 		CGRect f = CGRectMake(0.0, 0.0, 180.0, 180.0);
 		backgroundIconImageView = [[UIImageView alloc] initWithFrame:f];
 		backgroundIconImageView.image = [UIImage imageWithContentsOfFile: [[StudentController getImageDataFolderPath] stringByAppendingPathComponent:[StudentController getFile:i]]];
-		// backgroundIconImageView.image = [UIImage imageNamed:@"Model.jpg"];  // alt
 		[self addSubview:backgroundIconImageView];
 		
 		f = CGRectMake(0.0, 200.0, self.frame.size.width, 20.0);

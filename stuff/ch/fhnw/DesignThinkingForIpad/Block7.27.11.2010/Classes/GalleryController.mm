@@ -21,8 +21,9 @@
 		allSwipeItems = [[NSMutableArray alloc] init];
 	}	
 	[allSwipeItems addObject:iView];
-	
-	[bottomNavViewController addNavItemX:[StudentController getFile:i ] :i];
+	NSString* titleN = [[[StudentController getFile:i ] lastPathComponent] stringByDeletingPathExtension];
+
+	[bottomNavViewController addNavItemX:titleN :i];
 	
 }
 

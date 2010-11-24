@@ -183,7 +183,6 @@ static NSMutableArray* detectedFiles = nil;
 
 +(void) extractImageNames: (NSString*) folder
 {
-	NSString* pdfDir = [StudentController getPdfFolderPath:folder];
 	NSArray *entries = [[NSFileManager defaultManager] directoryContentsAtPath: [StudentController getPdfFolderPath:folder] ];	
 	if( detectedFiles == nil )
 	{

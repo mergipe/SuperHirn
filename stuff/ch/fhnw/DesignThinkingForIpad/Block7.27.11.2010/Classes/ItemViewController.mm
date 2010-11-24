@@ -39,9 +39,9 @@
 - (void)addTapItem:(int)iIndex withTitle:(NSString*) iTitle :(NSString*) imagename
 {
 	
-	int x = 96;
-	int y = 36;
-	CGRect area = CGRectMake(x, y, 270, 270 );
+	int x = 100;
+	int y = 30;
+	CGRect area = CGRectMake(x, y, 220, 220 );
 	
 	TapIcon* item = [[TapIcon alloc] initWithFrame:area];
 	item.backgroundColor = [UIColor clearColor];
@@ -53,8 +53,8 @@
 	item.delegate = self;
 	
 	
-	area.origin.x += col * (area.size.width + 36);
-	area.origin.y += row * (area.size.height + 36);
+	area.origin.x += col * (area.size.width + 90);
+	area.origin.y += row * (area.size.height + 90);
 	
 	col++;
 	if( col == 2 )
