@@ -104,12 +104,16 @@
 
 -(void)sendEmail
 {
+	
+	
 	mailComposeController = [[MFMailComposeViewController alloc] init];
 	mailComposeController.mailComposeDelegate = self;
 	
-	NSString* header = @"Sending Email";
+	NSString* header = @"Sending Email from iCompetence App";
+	NSString *content = @"<br/><br/>iCompetence App empowered by year 2010";
+
 	[mailComposeController setSubject: header];
-	[mailComposeController setMessageBody:@"Here is my Email signature" isHTML:YES];
+	[mailComposeController setMessageBody:content isHTML:YES];
 	
 	[self presentModalViewController:mailComposeController animated:YES];}
 

@@ -50,8 +50,8 @@
 		[containerView3 addSubview:contactName];
 		[self addSubview:containerView3];
 		
-		PictureView* person = [[PictureView alloc] initWithFrame:CGRectMake(200, 300, 360, 360)];
-		[person setResourceImage:@"person2.gif"];
+		UIImageView* person = [[UIImageView alloc] initWithFrame:CGRectMake(200, 300, 360, 360)];
+		person.image = [UIImage imageNamed:@"person2.gif"];
 		[ self addSubview:person];
 		
 		
