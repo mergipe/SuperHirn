@@ -9,7 +9,7 @@
 {
     if ((self = [super initWithFrame:frame])) 
 	{
-		self.backgroundColor = [UIColor grayColor];
+		self.backgroundColor = [UIColor whiteColor];
 		NSArray *viewsToRemove = [self subviews];
 		for (UIView *v in viewsToRemove) {
 			[v removeFromSuperview];
@@ -50,7 +50,7 @@
 	CGContextSetLineWidth(context, 100); 
 	CGContextScaleCTM(context, 1,2);
 	CGContextBeginPath(context);
-	CGFloat c[4] = {1,1,1,0.5};
+	CGFloat c[4] = {1,1,1,1};
 	CGContextSetFillColor(context, c);
 	CGContextFillRect(context, self.frame);
 	CGContextStrokePath(context);
