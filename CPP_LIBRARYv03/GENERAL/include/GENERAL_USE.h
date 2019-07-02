@@ -4,6 +4,10 @@
 //  Lukas.Mueller@imsb.biol.ethz.ch
 //  Group of Prof. Ruedi Aebersold, IMSB, ETH Hoenggerberg, Zurich
 //
+//  modified by Gustavo Mendes Maciel, 02.07.19
+//  gmmaciel.bh2@gmail.com
+//  Added <cstring> include to deal with compilation errors
+//
 //
 // **********************************************************************//
 //  INLCUDE FILE FOR GENERAL LIBRARY OBJECTS//
@@ -250,6 +254,7 @@
 #define USE_FILE_SYS
 #define USE_FILE_READER
 #define USE_ALL_MATH_TOOLS
+#define USE_CSTRING
 #define INCLUDE_MS2_INFO
 #endif
 
@@ -282,6 +287,8 @@
 #define USE_ALL_STANDART_CLASSES
 #define USE_READ_PARAM
 #define USE_ALL_MATH_TOOLS
+
+#define USE_CSTRING
 #define INCLUDE_DATA_PLOTTER
 #endif
 
@@ -294,11 +301,13 @@
 #ifdef USE_FILE_READER
 #define USE_FILE_SYS
 #define USE_ALL_MATH_TOOLS
+#define USE_CSTRING
 #define INCLUDE_FILE_READER
 #endif
 
 #ifdef USE_FILE_SYS
 #define USE_ALL_MATH_TOOLS
+#define USE_CSTRING
 #define INCLUDE_FILE_SYS
 #endif
 
@@ -325,6 +334,10 @@
 
 #ifdef USE_TINY_XML
 #define INCLUDE_TINY_XML
+#endif
+
+#ifdef USE_CSTRING
+#define INCLUDE_CSTRING
 #endif
 
 //////////////////////////////////////////////////
@@ -361,6 +374,10 @@ extern "C"{
 extern "C"{
 #include <lowess.h>
 }
+#endif
+
+#ifdef INCLUDE_CSTRING
+#include <cstring>
 #endif
 
 ////////////////////////////////////////////////////

@@ -15,6 +15,7 @@ c++ code.  You may need to tell your compiler this explicitly.
     email                : ppatrick@student.ethz.ch
     additional work for C++, >2GB files in WIN32, and portability (C) 2004 by Brian Pratt, Insilicos LLC 
     additional work for mzData input (C) 2005 Brian Pratt Insilicos LLC
+    modifief to deal with compilation errors, by Gustavo Mendes Maciel (gmmaciel.bh2@gmail.com), 02/07/19
  ***************************************************************************/
 
 /***************************************************************************
@@ -1654,7 +1655,7 @@ RAMPREAL *readPeaks(RAMPFILE *pFI,
               {
                   const char* pEndAttrValue;
                   pEndAttrValue = strchr( pBeginData + strlen( "contentType=\"") + 1 , '\"' );
-                  pEndAttrValue  = '\0';
+                  pEndAttrValue  = "\0";
                   fprintf(stderr, "%s Unsupported content type\n" , pBeginData ); 
                   return NULL;
               }
@@ -1673,7 +1674,7 @@ RAMPREAL *readPeaks(RAMPFILE *pFI,
               {
                   const char* pEndAttrValue;
                   pEndAttrValue = strchr( pBeginData + strlen( "compressionType=\"") + 1 , '\"' );
-                  pEndAttrValue = '\0';
+                  pEndAttrValue = "\0";
                   fprintf(stderr, "%s Unsupported compression type\n" , pBeginData ); 
                   return NULL;
               }
