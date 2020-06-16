@@ -17,6 +17,7 @@
 // **********************************************************************//
 
 #define USE_LC_MS_XML_WRITER
+#define USE_LC_MS_XML_READER
 #define USE_MS2_INFO
 
 #include "GENERAL_USE.h"
@@ -561,7 +562,7 @@ void LC_MS_XML_writer::write_LC_MS_run_2_XML_tag(LC_MS* IN){
       // open a MS1 tag:
       sprintf(buffer,"<LC_MS_RUN ");  
       // MS1-peak info
-      sprintf(buffer,"%sname=\"%s\" number_of_features=\"%d\">\n", buffer,IN->get_spec_name().c_str(),IN->get_nb_features());  
+      sprintf(buffer,"%sname=\"%s\" number_of_features=\"%d\" tr_min=\"%f\" tr_max=\"%f\" m_z_min=\"%f\" m_z_max=\"%f\">\n", buffer,IN->get_spec_name().c_str(),IN->get_nb_features(), LC_MS_XML_reader::TR_MIN, LC_MS_XML_reader::TR_MAX, LC_MS_XML_reader::FEATURE_MZ_MIN, LC_MS_XML_reader::FEATURE_MZ_MAX);  
       // write to the file:
       WRITER->write(buffer,strlen(buffer));
       

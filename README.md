@@ -7,3 +7,5 @@ and at [SourceForge](https://sourceforge.net/projects/superhirn/).
 ### New features
 - Extraction of aligned LC-MS runs to XML files, using one of the runs as a
 reference for the alignment
+- Inclusion of retention time and mass-to-charge ratio intervals in output XML
+files

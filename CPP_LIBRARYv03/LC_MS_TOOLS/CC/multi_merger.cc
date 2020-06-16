@@ -204,7 +204,7 @@ void multi_merger::merge_max_related_pair(int new_merge_ID) {
     merged_LC_MS->set_spectrum_ID(new_merge_ID);
 
     // print content of the merged spectrum:
-    // merged_LC_MS->show_info();
+    merged_LC_MS->show_info();
 
     // insert now into merged LC_MS list:
     insert_merged_LC_MS(merged_LC_MS);

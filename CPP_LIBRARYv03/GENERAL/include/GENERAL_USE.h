@@ -126,6 +126,7 @@
 #define USE_FEATURE_LC_PROFILE
 #define USE_MS2_INFO
 #define USE_ALL_MATH_TOOLS
+#define USE_LC_MS_XML_READER
 #define INCLUDE_LC_MS_XML_WRITER
 #endif
 
